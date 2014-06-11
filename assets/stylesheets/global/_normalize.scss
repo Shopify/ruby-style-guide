@@ -1,0 +1,33 @@
+html,body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: $white;
+}
+
+article, aside, details, figcaption, figure, dialog, footer, header, hgroup, menu, nav, section, img {
+  display: block;
+}
+
+img {
+  max-width: 100%;
+}
+
+address {
+  font-style: normal;
+}
+
+form {
+  margin: 0;
+}
+
+input {
+  margin: 0;
+}
+
+fieldset {
+  border: 0;
+  margin: 0;
+  padding: 0;
+}
