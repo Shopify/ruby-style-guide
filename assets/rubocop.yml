@@ -1,4 +1,6 @@
 AllCops:
+  DisabledByDefault: true
+  DisplayCopNames: true
   Exclude:
     - vendor/**/*
     - app/models/pagination/query_parser.rb
@@ -69,6 +71,24 @@ Style/AndOr:
 
 Style/SpaceInsideStringInterpolation:
   EnforcedStyle: space
+
+Style/MultilineTernaryOperator:
+  Enabled: true
+
+Style/DefWithParentheses:
+  Enabled: true
+
+Style/For:
+  EnforcedStyle: each
+
+Style/MultilineIfThen:
+  Enabled: true
+
+Style/BlockDelimiters:
+  Enabled: true
+
+Style/RedundantReturn:
+  Enabled: true
 
 Metrics/LineLength:
   Max: 120
