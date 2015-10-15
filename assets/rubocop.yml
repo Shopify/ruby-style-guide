@@ -3,6 +3,60 @@ AllCops:
     - vendor/**/*
     - app/models/pagination/query_parser.rb
 
+Metrics/LineLength:
+  Max: 120
+
+Srtyle/AlignHash:
+  Enabled: true
+
+Style/BlockEndNewline:
+  Enabled: true
+
+Style/CaseIndentation:
+  Enabled: true
+
+Style/EmptyLineBetweenDefs:
+  Enabled: true
+
+Style/Encoding:
+  Enabled: false
+
+Style/EndOfLine:
+  Enabled: true
+
+Style/IndentHash:
+  Enabled: true
+
+Style/IndentationConsistency:
+  Enabled: true
+
+Style/SpaceAfterColon:
+  Enabled: true
+
+Style/SpaceAfterComma:
+  Enabled: true
+
+Style/SpaceAfterSemicolon:
+  Enabled: true
+
+Style/SpaceAroundOperators:
+  Enabled: true
+
+Style/SpaceInsideBrackets:
+  Enabled: true
+
+Style/SpaceInsideParens:
+  Enabled: true
+
+Style/SpaceInsideStringInterpolation:
+  EnforcedStyle: space
+
+Style/TrailingWhitespace:
+  Enabled: true
+
+Style/Tab:
+  Enabled: true
+
 # Allow both hash syntaxes
 Style/HashSyntax:
   Enabled: false
