@@ -99,3 +99,26 @@ Style/PredicateName:
 Style/CollectionMethods:
   Enable: true
 
+# The rest
+
+Style/ClassMethods:
+  Enabled: true
+
+Style/Alias:
+  Enabled: true
+
+Lint/HandleExceptions:
+  Enabled: true
+
+Metrics/MethodLength:
+  Enabled: true
+
+Metrics/ParameterLists:
+  Enabled: true
+
+Style/OptionHash:
+  SuspiciousParamNames:
+    - parameters
+
+Style/AccessorMethodName:
+  Enabled: true
