@@ -1,4 +1,6 @@
 AllCops:
+  DisabledByDefault: true
+  DisplayCopNames: true
   Exclude:
     - vendor/**/*
     - app/models/pagination/query_parser.rb
@@ -98,4 +100,3 @@ Style/PredicateName:
 
 Style/CollectionMethods:
   Enable: true
-
