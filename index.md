@@ -1,10 +1,6 @@
 ---
-layout: post
-title:  "Ruby Style Guide"
-date:   2015-10-15 10:48:00
-categories: ruby styleguide
+layout: default
 ---
-
 [Download .rubocop.yml](/assets/rubocop.yml)
 
 Ruby is the main language at Shopify. We are primarily a Ruby shop and we are probably one of the largest out there. Ruby is the go-to language for new web projects and scripting.
@@ -15,7 +11,7 @@ We expect all developers at Shopify to have at least a passing understanding of 
 
 * Make all lines of your methods operate on the same level of abstraction. (Single Level of Abstraction Principle)
 * Code in a functional way. Avoid mutation (side effects) when you can.
-* Do not program defensively. (See http://www.erlang.se/doc/programming_rules.shtml#HDR11.)
+* Do not program defensively. (See [http://www.erlang.se/doc/programming_rules.shtml#HDR11](http://www.erlang.se/doc/programming_rules.shtml#HDR11)).
 * Do not mutate arguments unless that is the purpose of the method.
 * Do not mess around in core classes when writing libraries.
 * Keep the code simple.
@@ -110,3 +106,56 @@ We expect all developers at Shopify to have at least a passing understanding of 
 * Avoid using `update_all`. If you do use it, use a scoped association (`Shop.where(amount: nil).update_all(amount: 0)`) instead of the two-argument version (`Shop.update_all({amount: 0}, amount: nil)`). But seriously, you probably shouldn't be doing it in the first place.
 * Avoid using `flunk` if an `assert_*` or `refute_*` family method will suffice.
 * Avoid using `refute_*` if an `assert_*` can do.
+
+<div class="github-fork-ribbon-wrapper right fixed" style="width: 150px;height: 150px;position: fixed;overflow: hidden;top: 0;z-index: 9999;pointer-events: none;right: 0;"><div class="github-fork-ribbon" style="position: absolute;padding: 2px 0;background-color: #333;background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.15));-webkit-box-shadow: 0 2px 3px 0 rgba(0, 0, 0, 0.5);-moz-box-shadow: 0 2px 3px 0 rgba(0, 0, 0, 0.5);box-shadow: 0 2px 3px 0 rgba(0, 0, 0, 0.5);z-index: 9999;pointer-events: auto;top: 42px;right: -43px;-webkit-transform: rotate(45deg);-moz-transform: rotate(45deg);-ms-transform: rotate(45deg);-o-transform: rotate(45deg);transform: rotate(45deg);"><a href="https://github.com/Shopify/styleguide" style="font: 700 13px &quot;Helvetica Neue&quot;, Helvetica, Arial, sans-serif;color: #fff;text-decoration: none;text-shadow: 0 -1px rgba(0, 0, 0, 0.5);text-align: center;width: 200px;line-height: 20px;display: inline-block;padding: 2px 0;border-width: 1px 0;border-style: dotted;border-color: rgba(255, 255, 255, 0.7);">Fork me on GitHub</a></div></div>
+
+## Editor integration
+
+### Emacs
+
+[rubocop.el](https://github.com/bbatsov/rubocop-emacs) is a simple
+Emacs interface for RuboCop. It allows you to run RuboCop inside Emacs
+and quickly jump between problems in your code.
+
+[flycheck](https://github.com/lunaryorn/flycheck) > 0.9 also supports
+RuboCop and uses it by default when available.
+
+### Vim
+
+The [vim-rubocop](https://github.com/ngmy/vim-rubocop) plugin runs
+RuboCop and displays the results in Vim.
+
+There's also a RuboCop checker in
+[syntastic](https://github.com/scrooloose/syntastic).
+
+### Sublime Text
+
+If you're a ST user you might find the
+[Sublime RuboCop plugin](https://github.com/pderichs/sublime_rubocop)
+useful.
+
+### TextMate2
+
+The [textmate2-rubocop](https://github.com/mrdougal/textmate2-rubocop)
+bundle displays formatted RuboCop results in a new window.
+Installation instructions can be found [here](https://github.com/mrdougal/textmate2-rubocop#installation).
+
+### Atom
+
+The [atom-lint](https://github.com/yujinakayama/atom-lint) package
+runs RuboCop and highlights the offenses in Atom.
+
+You can also use the [linter-rubocop](https://github.com/AtomLinter/linter-rubocop)
+plugin for Atom's [linter](https://github.com/AtomLinter/Linter).
+
+## Git pre-commit hook integration
+
+[overcommit](https://github.com/brigade/overcommit) is a fully configurable and
+extendable Git commit hook manager. To use RuboCop with overcommit, add the
+following to your `.overcommit.yml` file:
+
+```yaml
+PreCommit:
+  RuboCop:
+    enabled: true
+```

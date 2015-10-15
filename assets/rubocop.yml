@@ -1,4 +1,6 @@
 AllCops:
+  DisabledByDefault: true
+  DisplayCopNames: true
   Exclude:
     - vendor/**/*
     - app/models/pagination/query_parser.rb
@@ -90,3 +92,29 @@ Style/RedundantReturn:
 
 Metrics/LineLength:
   Max: 120
+
+# Naming
+
+Style/FileName:
+  Enable: true
+
+Style/ClassAndModuleCamelCase:
+  Enable: ture
+
+Style/ConstantName:
+  Enable: true
+
+Style/SingleLineBlockParams:
+  Enabled: true
+
+Lint/UselessAssignment:
+  Enable: true
+
+Style/OpMethod:
+  Enable: true
+
+Style/PredicateName:
+  Enable: true
+
+Style/CollectionMethods:
+  Enable: true
