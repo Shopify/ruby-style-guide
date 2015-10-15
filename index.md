@@ -11,7 +11,7 @@ We expect all developers at Shopify to have at least a passing understanding of 
 
 * Make all lines of your methods operate on the same level of abstraction. (Single Level of Abstraction Principle)
 * Code in a functional way. Avoid mutation (side effects) when you can.
-* Do not program defensively. (See http://www.erlang.se/doc/programming_rules.shtml#HDR11.)
+* Do not program defensively. (See [http://www.erlang.se/doc/programming_rules.shtml#HDR11](http://www.erlang.se/doc/programming_rules.shtml#HDR11)).
 * Do not mutate arguments unless that is the purpose of the method.
 * Do not mess around in core classes when writing libraries.
 * Keep the code simple.
