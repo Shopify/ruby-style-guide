@@ -69,3 +69,6 @@ Style/AndOr:
 
 Style/SpaceInsideStringInterpolation:
   EnforcedStyle: space
+
+Metrics/LineLength:
+  Max: 120
