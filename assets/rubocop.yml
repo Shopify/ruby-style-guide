@@ -1,0 +1,17 @@
+AllCops:
+  Exclude:
+    - vendor/**/*
+    - app/models/pagination/query_parser.rb
+
+# Allow both hash syntaxes
+Style/HashSyntax:
+  Enabled: false
+
+Style/AndOr:
+  EnforcedStyle: conditionals
+  SupportedStyles:
+    - always
+    - conditionals
+
+Style/SpaceInsideStringInterpolation:
+  EnforcedStyle: space

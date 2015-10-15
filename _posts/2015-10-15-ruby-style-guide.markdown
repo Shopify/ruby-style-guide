@@ -5,6 +5,8 @@ date:   2015-10-15 10:48:00
 categories: ruby styleguide
 ---
 
+[Download .rubocop.yml](/assets/rubocop.yml)
+
 Ruby is the main language at Shopify. We are primarily a Ruby shop and we are probably one of the largest out there. Ruby is the go-to language for new web projects and scripting.
 
 We expect all developers at Shopify to have at least a passing understanding of Ruby. It's a great language. It will make you a better developer no matter what you work in day to day. What follows is a loose coding style to follow while developing in Ruby.
