@@ -1,3 +1,2 @@
-assets/stylesheets/.sass-cache/*
-assets/stylesheets/stylesheet.css
-assets/stylesheets/.sass-cache
+_site
+.sass-cache

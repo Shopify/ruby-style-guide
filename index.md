@@ -1,5 +1,3 @@
-# Ruby style guide
-
 ---
 layout: default
 ---

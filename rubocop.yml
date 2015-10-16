@@ -1,0 +1,144 @@
+AllCops:
+  DisabledByDefault: true
+  DisplayCopNames: true
+  Exclude:
+    - vendor/**/*
+    - app/models/pagination/query_parser.rb
+
+Metrics/LineLength:
+  Max: 120
+
+Srtyle/AlignHash:
+  Enabled: true
+
+Style/BlockEndNewline:
+  Enabled: true
+
+Style/CaseIndentation:
+  Enabled: true
+
+Style/EmptyLineBetweenDefs:
+  Enabled: true
+
+Style/Encoding:
+  Enabled: false
+
+Style/EndOfLine:
+  Enabled: true
+
+Style/IndentHash:
+  Enabled: true
+
+Style/IndentationConsistency:
+  Enabled: true
+
+Style/SpaceAfterColon:
+  Enabled: true
+
+Style/SpaceAfterComma:
+  Enabled: true
+
+Style/SpaceAfterSemicolon:
+  Enabled: true
+
+Style/SpaceAroundOperators:
+  Enabled: true
+
+Style/SpaceInsideBrackets:
+  Enabled: true
+
+Style/SpaceInsideParens:
+  Enabled: true
+
+Style/SpaceInsideStringInterpolation:
+  EnforcedStyle: space
+
+Style/TrailingWhitespace:
+  Enabled: true
+
+Style/Tab:
+  Enabled: true
+
+# Allow both hash syntaxes
+Style/HashSyntax:
+  Enabled: false
+
+Style/AndOr:
+  EnforcedStyle: conditionals
+  SupportedStyles:
+    - always
+    - conditionals
+
+Style/SpaceInsideStringInterpolation:
+  EnforcedStyle: space
+
+Style/MultilineTernaryOperator:
+  Enabled: true
+
+Style/DefWithParentheses:
+  Enabled: true
+
+Style/For:
+  EnforcedStyle: each
+
+Style/MultilineIfThen:
+  Enabled: true
+
+Style/BlockDelimiters:
+  Enabled: true
+
+Style/RedundantReturn:
+  Enabled: true
+
+Metrics/LineLength:
+  Max: 120
+
+# Naming
+
+Style/FileName:
+  Enable: true
+
+Style/ClassAndModuleCamelCase:
+  Enable: ture
+
+Style/ConstantName:
+  Enable: true
+
+Style/SingleLineBlockParams:
+  Enabled: true
+
+Lint/UselessAssignment:
+  Enable: true
+
+Style/OpMethod:
+  Enable: true
+
+Style/PredicateName:
+  Enable: true
+
+Style/CollectionMethods:
+  Enable: true
+
+# The rest
+
+Style/ClassMethods:
+  Enabled: true
+
+Style/Alias:
+  Enabled: true
+
+Lint/HandleExceptions:
+  Enabled: true
+
+Metrics/MethodLength:
+  Enabled: true
+
+Metrics/ParameterLists:
+  Enabled: true
+
+Style/OptionHash:
+  SuspiciousParamNames:
+    - parameters
+
+Style/AccessorMethodName:
+  Enabled: true

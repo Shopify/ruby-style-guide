@@ -1,177 +1,23 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="utf-8">
-    <title>Shopify Styleguide</title>
-    <link rel="stylesheet" href="assets/stylesheets/stylesheet.css">
-</head>
-<body>
-  <div id="sidebar">
+---
+layout: default
+---
 
-    <a class="sidebar-account has-dropdown">
-      <img class="ico ico-header-gravatar sidebar-account-avatar" src="//secure.gravatar.com/avatar/5538630c1f90010178946214e660e1af.jpg?s=29&amp;d=https%3A%2F%2Fcdn.shopify.com%2Fs%2Fassets%2Fno-gravatar-491ca019951b360fde362cb1f6701549.png">
-      <span class="sidebar-account-shop" data-bind="shop.name">Black Milk Clothing</span>
-      <span class="sidebar-account-user">
-        <span>Christopher Lobay</span>
-        <i class="ico ico-16 ico-disclosure account-overview-name-disclosure"></i>
-      </span>
-    </a>
+<div class="home">
 
-    <form class="sidebar-search has-dropdown" autocomplete="off">
-      <input type="text" id="global-search-input" placeholder="Search" />
-    </form>
+  <h1 class="page-heading">Posts</h1>
 
-    <nav class="is-active">
-      <h2 class="sidebar-nav-heading">Your store</h2>
-      <ol class="sidebar-nav-group">
-        <li>
-          <a class="sidebar-nav-link is-selected" href="/admin">
-            <i class="ico ico-16-svg ico-sidebar-home"></i>Dashboard
-          </a> 
-        </li>
-        <li id="nav-admin-orders-refresh" always-refresh="">
-          <a class="sidebar-nav-link" href="/admin/orders">
-            <i class="ico ico-16-svg ico-sidebar-orders"></i>Orders
-            <span title="Open orders" class="sidebar-nav-link-badge">7343</span>
-          </a>
-        </li>
-        <li>
-          <a class="sidebar-nav-link" href="/admin/customers">
-            <i class="ico ico-16-svg ico-sidebar-customers"></i>Customers
-          </a>
-        </li>
-        <li>
-          <a class="sidebar-nav-link" href="/admin/products">
-            <i class="ico ico-16-svg ico-sidebar-products"></i>Products
-          </a>
-        </li>
-        <li>
-          <a class="sidebar-nav-link" href="/admin/collections">
-            <i class="ico ico-16-svg ico-sidebar-collections"></i>Collections
-          </a>
-        </li>
-        <li>
-          <a class="sidebar-nav-link" href="/admin/discounts">
-            <i class="ico ico-16-svg ico-sidebar-discounts"></i>Discounts
-          </a>
-        </li>
-        <li>
-          <a class="sidebar-nav-link" href="/admin/gift_cards">
-            <i class="ico ico-16-svg ico-sidebar-giftcards"></i>Gift Cards
-          </a>
-        </li>
-        <li>
-          <a class="sidebar-nav-link" href="/admin/reports">
-            <i class="ico ico-16-svg ico-sidebar-reports"></i>Reports
-          </a>
-        </li>
-      </ol>
-      
-      <h2 class="sidebar-nav-heading">Your website</h2>
-      <ol class="sidebar-nav-group">
-        <li>
-          <a class="sidebar-nav-link blogs" href="/admin/articles">
-            <i class="ico ico-16-svg ico-sidebar-blogs"></i>Blog Posts
-          </a>
-        </li>
-        <li class=" ">
-          <a class="sidebar-nav-link pages" href="/admin/pages">
-            <i class="ico ico-16-svg ico-sidebar-pages"></i>Pages
-          </a>
-        </li>
-        <li class="">
-          <a class="sidebar-nav-link links" data-section="links" href="/admin/links">
-            <i class="ico ico-16-svg ico-sidebar-navigation"></i>Navigation
-          </a>
-        </li>
-        <li class="themes">
-          <a class="sidebar-nav-link themes" data-section="themes" href="/admin/themes">
-            <i class="ico ico-16-svg ico-sidebar-themes"></i>Themes
-          </a>
-        </li>
-      </ol>
-      <h2 class="sidebar-nav-heading">Configuration</h2>
-      <ol class="sidebar-nav-group">
-        <li class="apps  ">
-          <a class="sidebar-nav-link apps" data-section="apps" href="/admin/apps">
-            <i class="ico ico-16-svg ico-sidebar-apps"></i>Apps
-          </a>
-        </li>
-        <li class="settings ">
-          <a class="sidebar-nav-link settings" href="/admin/settings/general">
-            <i class="ico ico-16-svg ico-sidebar-settings"></i>Settings
-          </a>
-        </li>
-      </ol>
-    </nav>
-  
-  
-  <div class="shopify-context">
-    <div class="shopify-location-staff">
-      Logged in as staff
-    </div>
-    <div class="shopify-location-next">
-      Admin Next
-    </div>
-  </div>
-  
-  <nav class="nav-bottom separate-layer">
-    <ul>
-      <li class="nav-bottom-link-container">
-          <a class="nav-bottom-link tooltip tooltip-top tooltip-left-align" track-click="Click Need Help from Profile, Need Help" data-dropdown="~ .dropdown">
-            <div class="tooltip-container tooltip-sidebar-need-help">
-              <span class="tooltip-label">Need help?</span>
-            </div>
-            <i class="ico ico-20-svg ico-sidebar-bottom-help"></i>
-          </a>
-          <div class="dropdown display-from-bottom left-aligned sl">
-            <ul>
-              <li>
-                <a href="/admin/support/manual" target="_blank" track-click="Help Center (Manual), Need Help">
-                  <strong>Shopify Help Center ›</strong>
-                </a>
-              </li>
-              <li>
-                <a href="https://ecommerce.shopify.com/forums" target="_blank" track-click="Shopify Forums, Need Help">Community Forums</a>
-              </li>
-              <li>
-                <a href="http://experts.shopify.com/?itcat=experts&amp;itterm=admin_help_experts" target="_blank" track-click="Hire Shopify Expert, Need Help">Hire an Expert</a>
-              </li>
-              <li>
-                <a href="#">Keyboard Shortcuts</a>
-              </li>
-            </ul>
-          </div>
+  <ul class="post-list">
+    {% for post in site.posts %}
+      <li>
+        <span class="post-meta">{{ post.date | date: "%b %-d, %Y" }}</span>
+
+        <h2>
+          <a class="post-link" href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
+        </h2>
       </li>
-      <li class="nav-bottom-link-container">
-        <a class="nav-bottom-link tooltip tooltip-top" href="http://lobay.myshopify.com" target="shopify_storeview" track-click="View your website, Global">
-          <div class="tooltip-container">
-            <span class="tooltip-label">View your website</span>
-          </div>
-          <i class="ico ico-20-svg ico-sidebar-bottom-website"></i>
-        </a>    
-      </li>
-      <li class="nav-bottom-link-container" id="unviewed_announcements">
-        <a class="nav-bottom-link tooltip tooltip-top tooltip-right-align" href="/admin/announcements">
-          <div class="tooltip-container tooltip-sidebar-announcements">
-            <span class="tooltip-label">Announcements</span>
-          </div>
-          <i class="ico ico-20-svg ico-sidebar-bottom-announcements-inactive"></i>
-          <div id="feature_announcement_dropdown" class="dropdown dropdown-padded">
-            <div class="dropdown-body tc">
-              <label class="s-none">You have news!</label>
-            </div>
-          </div>
-        </a>    
-      </li>
-    </ul>
-  </nav>
+    {% endfor %}
+  </ul>
+
+  <p class="rss-subscribe">subscribe <a href="{{ "/feed.xml" | prepend: site.baseurl }}">via RSS</a></p>
+
 </div>
-
-<div id="content">
-  <h1>This is a headline</h1>
-  <p>This is a paragraph! </p>
-</div>
-
-</body>
-</html>
