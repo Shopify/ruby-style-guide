@@ -1,7 +1,7 @@
 ---
 layout: default
 ---
-[Download .rubocop.yml](/assets/rubocop.yml)
+[Download .rubocop.yml](/rubocop.yml)
 
 Ruby is the main language at Shopify. We are primarily a Ruby shop and we are probably one of the largest out there. Ruby is the go-to language for new web projects and scripting.
 
@@ -36,7 +36,7 @@ We expect all developers at Shopify to have at least a passing understanding of 
 * Use empty lines to break up a long method into logical paragraphs.
 * Keep lines fewer than 120 characters.
 * Avoid trailing whitespace.
-* Files should end with a new line  
+* Files should end with a new line
 * `end` should always align with the beginning of the line that started the block or method.
 * Multi line hashes are indented like everything else with 2 spaces. `}` gets its own line.
 * code blocks behind a ```||= begin``` are still normal code blocks and should be indented with two spaces and a matching end on it's own line.
