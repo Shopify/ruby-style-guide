@@ -1,8 +1,6 @@
 # Ruby style guide
 
----
-layout: default
----
+
 [Download .rubocop.yml](/rubocop.yml)
 
 Ruby is the main language at Shopify. We are primarily a Ruby shop and we are probably one of the largest out there. Ruby is the go-to language for new web projects and scripting.
@@ -57,7 +55,8 @@ We expect all developers at Shopify to have at least a passing understanding of 
 
     has_many :variants
 ```
-    but
+but
+
 ```ruby
     x = Math.sin(y)
     array.delete(e)
