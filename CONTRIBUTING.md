@@ -8,4 +8,4 @@ When proposing changes/additions to the Ruby style guide:
   any of these.
 
 * If you have any questions or need feedback, feel free to hit up
-  #ruby-style-guide on Slack.
+  \#ruby-style-guide on Slack.
