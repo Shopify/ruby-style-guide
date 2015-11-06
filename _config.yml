@@ -4,8 +4,6 @@ description: "Shopify's Ruby style guide"
 
 # Build settings
 markdown: redcarpet
-sass:
-  style: compressed
 redcarpet:
   extensions:
     - autolink
