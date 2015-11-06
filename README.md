@@ -44,78 +44,167 @@ developing in Ruby.
 
 ## Formatting
 
-* Write your code in ASCII (or UTF-8, if you have to).
+* Use `UTF-8` as the source file encoding.
 
 * Use 2 space indent, no tabs.
 
 * Use Unix-style line endings.
 
-* Use spaces around operators and after commas, colons and semicolons
+* Don't use `;` to separate statements and expressions. As a corollary - use one
+  expression per line.
 
-* No spaces after `(`, `[` and before `]`,` )`.
+* Use spaces around operators, after commas, colons and semicolons, around
+  `{` and before `}`.
 
-* Spaces after `{` or `}` for string interpolation. (ex: `"Hello #{ world }"`)
+* No spaces after `(`, `[` and before `]`, `)`.
+
+* No space after the `!` operator.
+
+* No space inside range literals.
 
 * Indent `when` as deep as `case`.
 
-* Use an empty line before the return value of a method (unless it only has one
-  line), and an empty line between `def`s.
+* Use empty lines between method definitions and also to break up methods into
+  logical paragraphs internally.
 
-* Use empty lines to break up a long method into logical paragraphs.
+* Use spaces around the `=` operator when assigning default values to method
+  parameters.
 
-* Keep lines fewer than 120 characters.
+* Avoid line continuation `\` where not required. In practice, avoid using line
+  continuations for anything but string concatenation.
+
+* Align the parameters of a method call, if they span more than one line, with
+  one level of indentation relative to the start of the line with the method
+  call.
+
+    ```ruby
+    # starting point (line is too long)
+    def send_mail(source)
+      Mailer.deliver(to: 'bob@example.com', from: 'us@example.com', subject: 'Important message', body: source.text)
+    end
+
+    # bad (double indent)
+    def send_mail(source)
+      Mailer.deliver(
+          to: 'bob@example.com',
+          from: 'us@example.com',
+          subject: 'Important message',
+          body: source.text)
+    end
+
+    # good
+    def send_mail(source)
+      Mailer.deliver(
+        to: 'bob@example.com',
+        from: 'us@example.com',
+        subject: 'Important message',
+        body: source.text
+      )
+    end
+    ```
+
+* Align the elements of array literals spanning multiple lines.
+
+* Limit lines to 120 characters.
 
 * Avoid trailing whitespace.
 
-* Files should end with a new line
+* End each file with a newline.
 
-* `end` should always align with the beginning of the line that started the
-  block or method.
+* Don't use block comments:
 
-* Multi line hashes are indented like everything else with 2 spaces. `}` gets
-  its own line.
+    ```ruby
+    # bad
+    =begin
+    comment line
+    another comment line
+    =end
 
-* code blocks behind a `||= begin` are still normal code blocks and should
-  be indented with two spaces and a matching end on it's own line.
+    # good
+    # comment line
+    # another comment line
+    ```
 
 
 ## Syntax
 
-* Use `def` with parentheses when there are arguments.
+* Use `::` only to reference constants(this includes classes and modules) and
+  constructors (like `Array()` or `Nokogiri::HTML()`). Do not use `::` for
+  regular method invocation.
 
-* Never use `for`, unless you know exactly why, in .rb files.
+* Use def with parentheses when there are parameters. Omit the parentheses when
+  the method doesn't accept any parameters.
+
+* Never use `for`, unless you know exactly why.
 
 * Never use `then`.
 
-* Use `when x; ...` for one-line cases.
-
-* Use `&&/||` for boolean expressions, `and/or` for control flow. (Rule of
-  thumb: if you have to use outer parentheses, you are using the wrong
-  operators.)
-  [More info](http://devblog.avdi.org/2014/08/26/how-to-use-rubys-english-andor-operators-without-going-nuts/).
-
-* Avoid multiline `?:`, use `if`.
-
-* Suppress superfluous parentheses when calling class methods.
+* Favor the ternary operator(`?:`) over `if/then/else/end` constructs.
 
     ```ruby
-    has_many :variants
+    # bad
+    result = if some_condition then something else something_else end
 
-    # but
-
-    x = Math.sin(y)
-    array.delete(e)
+    # good
+    result = some_condition ? something : something_else
     ```
 
-* Prefer `{...}` over `do...end`.  Multiline `{...}` is fine in exceptional
-  cases: having different statement endings (`}` for blocks, `end` for
-  `if/while/...`) makes it easier to see what ends where.  But use `do...end`
-  for control flow and method definitions (e.g. in Rakefiles and certain DSLs).
-  Avoid `do...end` when chaining.
+* Use one expression per branch in a ternary operator. This also means that
+  ternary operators must not be nested. Prefer if/else constructs in these
+  cases.
 
-* Avoid `return` where not required.
+* Use `when x then ...` for one-line cases.
 
-* Avoid line continuation (`\`).
+* Use `!` instead of `not`.
+
+* Don't use `and` and `or` keywords. Always use `&&` and `||` instead.
+
+* Avoid multiline `?:` (the ternary operator); use `if/unless` instead.
+
+* Favor modifier `if/unless` usage when you have a single-line body.
+
+
+    ```ruby
+    # bad
+    if some_condition
+      do_something
+    end
+
+    # good
+    do_something if some_condition
+    ```
+
+* Favor `unless` over `if` for negative conditions.
+
+* Do not use `unless` with `else`. Rewrite these with the positive case first.
+
+* Omit parentheses around parameters for methods that are part of an internal
+  DSL (e.g. Rake, Rails, RSpec), methods that have "keyword" status in Ruby
+  (e.g. `attr_reader`, `puts`) and attribute access methods. Use parentheses
+  around the arguments of all other method invocations.
+
+* Omit the outer braces around an implicit options hash.
+
+* Use the proc invocation shorthand when the invoked method is the only
+  operation of a block.
+
+    ```ruby
+    # bad
+    names.map { |name| name.upcase }
+
+    # good
+    names.map(&:upcase)
+    ```
+
+* Prefer `{...}` over `do...end` for single-line blocks. Avoid using `{...}` for
+  multi-line blocks. Always use `do...end` for "control flow" and "method
+  definitions" (e.g. in Rakefiles and certain DSLs). Avoid `do...end` when
+  chaining.
+
+* Avoid `return` where not required for control flow.
+
+* Avoid `self` where not required (it is only required when calling a self
+  write accessor).
 
 * Using the return value of `=` is okay:
 
@@ -123,32 +212,101 @@ developing in Ruby.
     if v = /foo/.match(string) ...
     ```
 
-* Use `||=` freely.
+* Use `||=` to initialize variables only if they're not already initialized.
+
+* Don't use `||=` to initialize boolean variables (consider what would happen if
+  the current value happened to be `false`).
+
+    ```ruby
+    # bad - would set enabled to true even if it was false
+    @enabled ||= true
+
+    # good
+    @enabled = true if enabled.nil?
+
+    # also valid - defined? workaround
+    @enabled = true unless defined?(@enabled)
+    ```
+
+* Do not put a space between a method name and the opening parenthesis.
+
+* Use the new lambda literal syntax for single-line body blocks. Use the lambda
+  method for multi-line blocks.
+
+    ```ruby
+    # bad
+    l = lambda { |a, b| a + b }
+    l.call(1, 2)
+
+    # good
+    l = ->(a, b) { a + b }
+    l.call(1, 2)
+
+    l = lambda do |a, b|
+      tmp = a * 7
+      tmp * b / 50
+    end
+    ```
+
+* Prefer `proc` over `Proc.new`.
+
+* Prefix with `_` unused block parameters and local variables. It's also
+  acceptable to use just `_`.
+
+* Prefer a guard clause when you can assert invalid data. A guard clause is a
+  conditional statement at the top of a function that bails out as soon as it
+  can.
+
+    ```ruby
+    # bad
+    def compute_thing(thing)
+      if thing[:foo]
+        update_with_bar(thing)
+        if thing[:foo][:bar]
+          partial_compute(thing)
+        else
+          re_compute(thing)
+        end
+      end
+    end
+
+    # good
+    def compute_thing(thing)
+      return unless thing[:foo]
+      update_with_bar(thing[:foo])
+      return re_compute(thing) unless thing[:foo][:bar]
+      partial_compute(thing)
+    end
+    ```
 
 * Use non-OO regexps (they won't make the code better).  Freely use `=~`,
   `$0-9`, `$~`, `$\` and `$'` when needed.
 
 * Prefer keyword arguments over options hash.
 
+* Prefer `map` over `collect`, `find` over `detect`, `select` over `find_all`,
+  `size` over `length`.
+
 
 ## Naming
 
-* Use snake_case for methods.
+* Use `snake_case` for symbols, methods and variables.
 
-* Use CamelCase for classes and modules. (Keep acronyms like HTTP, RFC, XML
-  uppercase.)
+* Use `CamelCase` for classes and modules (keep acronyms like HTTP, RFC, XML
+  uppercase).
 
-* Use SCREAMING_SNAKE_CASE for other constants.
+* Use `snake_case` for naming files and directories, e.g. `hello_world.rb`.
 
-* Use _ or names prefixed with _ for unused variables.
+* Aim to have just a single class/module per source file. Name the file name
+  as the class/module, but replacing `CamelCase` with `snake_case`.
+
+* Use `SCREAMING_SNAKE_CASE` for other constants.
 
 * When using inject with short blocks, name the arguments according to what is
   being injected, e.g. `|hash, e|` (mnemonic: hash, element)
 
-* When defining binary operators, name the argument `other`.
-
-* Prefer `map` over `collect`, `find` over `detect`, `select` over `find_all`,
-  `size` over `length`.
+* When defining binary operators, name the parameter `other`(`<<` and `[]` are
+  exceptions to the rule, since their semantics are different).
 
 * The names of predicate methods (methods that return a boolean value) should
   end in a question mark. (i.e. `Array#empty?`). Methods that don't return a
