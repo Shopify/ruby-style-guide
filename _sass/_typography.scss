@@ -1,0 +1,192 @@
+/*============================================================================
+  Font Family Declarations
+==============================================================================*/
+
+/*================ Brandon ================*/
+@font-face {
+  font-family: 'Brandon';
+  src: url('/fonts/Brandon_txt_light-webfont.woff') format('woff'),
+       url('/fonts/Brandon_txt_light-webfont.ttf') format('truetype');
+  font-weight: $font-weight-light;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Brandon';
+  src: url('/fonts/Brandon_txt_reg-webfont.woff') format('woff'),
+       url('/fonts/Brandon_txt_reg-webfont.ttf') format('truetype');
+  font-weight: $font-weight-regular;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Brandon';
+  src: url('/fonts/Brandon_txt_med-webfont.woff') format('woff'),
+       url('/fonts/Brandon_txt_med-webfont.ttf') format('truetype');
+  font-weight: $font-weight-medium;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Brandon';
+  src: url('/fonts/Brandon_txt_bld-webfont.woff') format('woff'),
+       url('/fonts/Brandon_txt_bld-webfont.ttf') format('truetype');
+  font-weight: $font-weight-bold;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Brandon';
+  src: url('/fonts/Brandon_txt_blk-webfont.woff') format('woff'),
+       url('/fonts/Brandon_txt_blk-webfont.ttf') format('truetype');
+  font-weight: $font-weight-black;
+  font-style: normal;
+}
+
+body {
+  font-family: 'Brandon';
+  line-height: 1.6em;
+}
+
+
+h1, h2, h3, h4, h5, h6, p {
+  margin: 0;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  margin-top: $default-spacing-tripled;
+}
+
+h1:first-child {
+  margin-top: 0;
+}
+
+h3 {
+  margin-top: $default-spacing-doubled;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  line-height: 1;
+  color: $primary;
+
+  + * {
+    margin-top: $default-spacing;
+  }
+}
+
+h1 {
+  font-size: 42px;
+  font-weight: 500;
+}
+
+h2 {
+  font-size: 28px;
+}
+
+h3 {
+  font-size: 20px;
+}
+
+h2 + h3 {
+  margin-top: $default-spacing-doubled;
+}
+
+p + p {
+  margin-top: $default-spacing-halved;
+}
+
+code {
+  display: inline-block;
+  background: $gray;
+  border: 1px solid $gray-dark;
+  padding: 0 0.25em;
+  border-radius: 4px;
+}
+
+pre {
+  margin: .8em 0;
+}
+
+pre > code {
+  padding: $default-spacing-halved;
+}
+
+a {
+  color: #000;
+  text-decoration: none;
+  background-image: linear-gradient(to bottom, rgba(255,255,255,0) 93%, $primary 93%);
+}
+
+a:hover,
+a:focus {
+  color: $primary;
+}
+
+::selection {
+  background-color: rgba($yellow, .7);
+}
+
+ul li {
+  margin-bottom: $default-spacing-halved;
+}
+
+ul li ul {
+  margin-top: $default-spacing-halved;
+}
+
+ul li ul li {
+  margin-bottom: $default-spacing-halved;
+}
+
+
+.tip {
+  padding: $default-spacing-halved $default-spacing;
+  border-radius: 6px;
+  margin: $default-spacing 0;
+  background-color: #F3F3F3;
+}
+
+.pro-tip {
+  padding: $default-spacing-halved $default-spacing;
+  border-radius: 6px;
+  margin: $default-spacing 0;
+  background-color: rgba($yellow, .5);
+}
+.pro-tip a {
+  background-image: linear-gradient(to bottom, rgba(255,255,255,0) 93%, #000 93%);
+}
+.pro-tip a:hover {
+  color: #666;
+  background-image: linear-gradient(to bottom, rgba(255,255,255,0) 93%, $gray-darker 93%);
+}
+
+.pro-tip h1, .pro-tip h2, .pro-tip h3, .pro-tip h4, .pro-tip h5, .pro-tip h6 {
+  margin-top: $default-spacing-halved;
+}
+
+.pro-tip--important {
+  background-color: $red;
+}
+
+dl:last-child {
+  margin-bottom: 0;
+}
+
+dt {
+  margin-bottom: $default-spacing-halved;
+
+  > code {
+    color: $pink;
+  }
+}
+
+dd + dt {
+  margin-top: $default-spacing;
+}
+
+p.lead {
+  color: $gray-darker;
+  font-size: 22px;
+  line-height: 1.4;
+}
+
