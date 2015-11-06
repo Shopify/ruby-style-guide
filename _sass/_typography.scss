@@ -5,40 +5,40 @@
 /*================ Brandon ================*/
 @font-face {
   font-family: 'Brandon';
-  src: url('/fonts/Brandon_txt_light-webfont.woff') format('woff'),
-       url('/fonts/Brandon_txt_light-webfont.ttf') format('truetype');
+  src: url('../fonts/Brandon_txt_light-webfont.woff') format('woff'),
+       url('../fonts/Brandon_txt_light-webfont.ttf') format('truetype');
   font-weight: $font-weight-light;
   font-style: normal;
 }
 
 @font-face {
   font-family: 'Brandon';
-  src: url('/fonts/Brandon_txt_reg-webfont.woff') format('woff'),
-       url('/fonts/Brandon_txt_reg-webfont.ttf') format('truetype');
+  src: url('../fonts/Brandon_txt_reg-webfont.woff') format('woff'),
+       url('../fonts/Brandon_txt_reg-webfont.ttf') format('truetype');
   font-weight: $font-weight-regular;
   font-style: normal;
 }
 
 @font-face {
   font-family: 'Brandon';
-  src: url('/fonts/Brandon_txt_med-webfont.woff') format('woff'),
-       url('/fonts/Brandon_txt_med-webfont.ttf') format('truetype');
+  src: url('../fonts/Brandon_txt_med-webfont.woff') format('woff'),
+       url('../fonts/Brandon_txt_med-webfont.ttf') format('truetype');
   font-weight: $font-weight-medium;
   font-style: normal;
 }
 
 @font-face {
   font-family: 'Brandon';
-  src: url('/fonts/Brandon_txt_bld-webfont.woff') format('woff'),
-       url('/fonts/Brandon_txt_bld-webfont.ttf') format('truetype');
+  src: url('../fonts/Brandon_txt_bld-webfont.woff') format('woff'),
+       url('../fonts/Brandon_txt_bld-webfont.ttf') format('truetype');
   font-weight: $font-weight-bold;
   font-style: normal;
 }
 
 @font-face {
   font-family: 'Brandon';
-  src: url('/fonts/Brandon_txt_blk-webfont.woff') format('woff'),
-       url('/fonts/Brandon_txt_blk-webfont.ttf') format('truetype');
+  src: url('../fonts/Brandon_txt_blk-webfont.woff') format('woff'),
+       url('../fonts/Brandon_txt_blk-webfont.ttf') format('truetype');
   font-weight: $font-weight-black;
   font-style: normal;
 }
