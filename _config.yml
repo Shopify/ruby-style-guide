@@ -8,3 +8,5 @@ redcarpet:
   extensions:
     - autolink
     - space_after_headers
+exclude:
+  - CONTRIBUTING.md
