@@ -420,6 +420,139 @@ developing in Ruby.
 * Avoid `alias` when `alias_method` will do.
 
 
+## Exceptions
+
+* Signal exceptions using the `raise` method.
+
+* Don't specify `RuntimeError` explicitly in the two argument version of
+  `raise`.
+
+    ```ruby
+    # bad
+    raise RuntimeError, 'message'
+
+    # good - signals a RuntimeError by default
+    raise 'message'
+    ```
+
+* Prefer supplying an exception class and a message as two separate arguments
+  to `raise`, instead of an exception instance.
+
+    ```ruby
+    # bad
+    raise SomeException.new('message')
+    # Note that there is no way to do `raise SomeException.new('message'), backtrace`.
+
+    # good
+    raise SomeException, 'message'
+    # Consistent with `raise SomeException, 'message', backtrace`.
+    ```
+
+* Do not return from an `ensure` block. If you explicitly return from a method
+  inside an `ensure` block, the return will take precedence over any exception
+  being raised, and the method will return as if no exception had been raised at
+  all. In effect, the exception will be silently thrown away.
+
+    ```ruby
+    def foo
+      raise
+    ensure
+      return 'very bad idea'
+    end
+    ```
+
+* Use *implicit begin blocks* where possible.
+
+    ```ruby
+    # bad
+    def foo
+      begin
+        # main logic goes here
+      rescue
+        # failure handling goes here
+      end
+    end
+
+    # good
+    def foo
+      # main logic goes here
+    rescue
+      # failure handling goes here
+    end
+    ```
+
+* Don't suppress exceptions.
+
+    ```ruby
+    # bad
+    begin
+      # an exception occurs here
+    rescue SomeError
+      # the rescue clause does absolutely nothing
+    end
+
+    # bad - `rescue nil` swallows all errors, including syntax errors, and
+    # makes them hard to track down.
+    do_something rescue nil
+    ```
+
+* Avoid using `rescue` in its modifier form.
+
+    ```ruby
+    # bad - this catches exceptions of StandardError class and its descendant classes
+    read_file rescue handle_error($!)
+
+    # good - this catches only the exceptions of Errno::ENOENT class and its descendant classes
+    def foo
+      read_file
+    rescue Errno::ENOENT => error
+      handle_error(error)
+    end
+    ```
+
+* Avoid rescuing the `Exception` class.
+
+    ```ruby
+    # bad
+    begin
+      # calls to exit and kill signals will be caught (except kill -9)
+      exit
+    rescue Exception
+      puts "you didn't really want to exit, right?"
+      # exception handling
+    end
+
+    # good
+    begin
+      # a blind rescue rescues from StandardError, not Exception.
+    rescue => error
+      # exception handling
+    end
+    ```
+
+* Favor the use of exceptions for the standard library over introducing new
+  exception classes.
+
+* Don't use single letter variables for exceptions (`error` isn't that hard to
+  type).
+
+    ```ruby
+    # bad
+    begin
+      # an exception occurs here
+    rescue => e
+      # exception handling
+    end
+
+    # good
+    begin
+      # an exception occurs here
+    rescue => error
+      # exception handling
+    end
+    ```
+
+
 ## The rest
 
 * Prefer using `hash.fetch(:key)` over `hash[:key]` when you expect `:key` to be
@@ -446,9 +579,6 @@ developing in Ruby.
   don't need a bang for that. Bangs are to mark a more dangerous version of a
   method, e.g. `save` returns a `bool` in ActiveRecord, whereas `save!` will
   throw an exception on failure.
-
-* Avoid using `rescue nil`. It swallows all errors, including syntax errors, and
-  makes them hard to track down.
 
 * Avoid using `update_all`. If you do use it, use a scoped association
   (`Shop.where(amount: nil).update_all(amount: 0)`) instead of the two-argument
