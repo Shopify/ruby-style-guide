@@ -322,6 +322,104 @@ developing in Ruby.
 * If you really need them, could you instead clarify your code?
 
 
+## Classes & Modules
+
+* Prefer modules to classes with only class methods. Classes should be used
+  only when it makes sense to create instances out of them.
+
+    ```ruby
+    # bad
+    class SomeClass
+      def self.some_method
+        # body omitted
+      end
+
+      def self.some_other_method
+      end
+    end
+
+    # good
+    module SomeModule
+      module_function
+
+      def some_method
+        # body omitted
+      end
+
+      def some_other_method
+      end
+    end
+    ```
+
+* Favor the use of `module_function` over `extend self` when you want to turn a
+  module's instance methods into class methods.
+
+* When designing class hierarchies make sure that they conform to the [Liskov
+  Substitution
+  Principle](https://en.wikipedia.org/wiki/Liskov_substitution_principle).
+
+* Use the [`attr` family of methods](http://ruby-doc.org/core-2.2.3/Module.html#method-i-attr_accessor)
+  to define trivial accessors or mutators.
+
+    ```ruby
+    # bad
+    class Person
+      def initialize(first_name, last_name)
+        @first_name = first_name
+        @last_name = last_name
+      end
+
+      def first_name
+        @first_name
+      end
+
+      def last_name
+        @last_name
+      end
+    end
+
+    # good
+    class Person
+      attr_reader :first_name, :last_name
+
+      def initialize(first_name, last_name)
+        @first_name = first_name
+        @last_name = last_name
+      end
+    end
+    ```
+
+* Avoid the use of `attr`. Use `attr_reader` and `attr_accessor` instead.
+
+* Avoid the usage of class (`@@`) variables due to their "nasty" behavior in
+  inheritance.
+
+* Indent the `public`, `protected`, and `private` methods as much as the method
+  definitions they apply to. Leave one blank line above the visibility modifier
+  and one blank line below in order to emphasize that it applies to all methods
+  below it.
+
+    ```ruby
+    class SomeClass
+      def public_method
+        # ...
+      end
+
+      private
+
+      def private_method
+        # ...
+      end
+
+      def another_private_method
+        # ...
+      end
+    end
+    ```
+
+* Avoid `alias` when `alias_method` will do.
+
+
 ## The rest
 
 * Prefer using `hash.fetch(:key)` over `hash[:key]` when you expect `:key` to be
@@ -331,10 +429,6 @@ developing in Ruby.
 * Prefer using `hash.fetch(:key, nil)` over `hash[:key]` when `:key` may not be
   set and `nil` is the default value you want to use in that case.
 
-* Avoid using modules whenever possible, especially if it is only used in one
-  place. If you really need to encapsulate the code you should be creating a
-  class.
-
 * Avoid hashes-as-optional-parameters in general. Does the method do too much?
 
 * Avoid long methods.
@@ -342,8 +436,6 @@ developing in Ruby.
 * Avoid long parameter lists.
 
 * Use `def self.method` to define singleton methods.
-
-* Avoid `alias` when `alias_method` will do.
 
 * Avoid needless metaprogramming.
 
