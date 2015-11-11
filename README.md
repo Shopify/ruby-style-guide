@@ -639,6 +639,98 @@ developing in Ruby.
     ```
 
 
+## Strings
+
+* Prefer string interpolation and string formatting instead of string
+  concatenation:
+
+    ```ruby
+    # bad
+    email_with_name = user.name + ' <' + user.email + '>'
+
+    # good
+    email_with_name = "#{user.name} <#{user.email}>"
+
+    # good
+    email_with_name = format('%s <%s>', user.name, user.email)
+    ```
+
+* With interpolated expressions, there should be no padded-spacing inside the
+  braces.
+
+    ```ruby
+    # bad
+    "From: #{ user.first_name }, #{ user.last_name }"
+
+    # good
+    "From: #{user.first_name}, #{user.last_name}"
+    ```
+
+* Adopt a consistent string literal quoting style.
+
+* Don't use the character literal syntax `?x`.
+
+* Don't leave out `{}` around instance and global variables being interpolated
+  into a string.
+
+    ```ruby
+    class Person
+      attr_reader :first_name, :last_name
+
+      def initialize(first_name, last_name)
+        @first_name = first_name
+        @last_name = last_name
+      end
+
+      # bad - valid, but awkward
+      def to_s
+        "#@first_name #@last_name"
+      end
+
+      # good
+      def to_s
+        "#{@first_name} #{@last_name}"
+      end
+    end
+
+    $global = 0
+    # bad
+    puts "$global = #$global"
+
+    # good
+    puts "$global = #{$global}"
+    ```
+
+* Don't use `Object#to_s` on interpolated objects. It's invoked on them
+  automatically.
+
+    ```ruby
+    # bad
+    message = "This is the #{result.to_s}."
+
+    # good
+    message = "This is the #{result}."
+    ```
+
+* Don't use `String#gsub` in scenarios in which you can use a faster more
+  specialized alternative.
+
+    ```ruby
+    url = 'http://example.com'
+    str = 'lisp-case-rules'
+
+    # bad
+    url.gsub('http://', 'https://')
+    str.gsub('-', '_')
+    str.gsub('case', '')
+
+    # good
+    url.sub('http://', 'https://')
+    str.tr('-', '_')
+    str.delete('case')
+    ```
+
+
 ## The rest
 
 * Avoid hashes-as-optional-parameters in general. Does the method do too much?
