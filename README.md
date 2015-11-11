@@ -553,14 +553,93 @@ developing in Ruby.
     ```
 
 
+## Collections
+
+* Prefer literal array and hash creation notation (unless you need to pass
+  parameters to their constructors, that is).
+
+    ```ruby
+    # bad
+    arr = Array.new
+    hash = Hash.new
+
+    # good
+    arr = []
+    hash = {}
+    ```
+
+* Prefer `%w` to the literal array syntax when you need an array of words
+  (non-empty strings without spaces and special characters in them).  Apply this
+  rule only to arrays with two or more elements.
+
+    ```ruby
+    # bad
+    STATES = ['draft', 'open', 'closed']
+
+    # good
+    STATES = %w(draft open closed)
+    ```
+
+* Prefer `%i` to the literal array syntax when you need an array of symbols.
+  Apply this rule only to arrays with two or more elements.
+
+    ```ruby
+    # bad
+    STATES = [:draft, :open, :closed]
+
+    # good
+    STATES = %i(draft open closed)
+    ```
+
+* When accessing the first or last element from an array, prefer `first` or
+  `last` over `[0]` or `[-1]`.
+
+* Avoid the use of mutable objects as hash keys.
+
+* Use the Ruby 1.9 hash literal syntax when your hash keys are symbols.
+
+* Use `Hash#key?` instead of `Hash#has_key?` and `Hash#value?` instead of
+  `Hash#has_value?`. As noted
+  [here](http://blade.nagaokaut.ac.jp/cgi-bin/scat.rb/ruby/ruby-core/43765) by
+  Matz, the longer forms are considered deprecated.
+
+    ```ruby
+    # bad
+    hash.has_key?(:test)
+    hash.has_value?(value)
+
+    # good
+    hash.key?(:test)
+    hash.value?(value)
+    ```
+
+* Use `Hash#fetch` when dealing with hash keys that should be present.
+
+    ```ruby
+    heroes = { batman: 'Bruce Wayne', superman: 'Clark Kent' }
+    # bad - if we make a mistake we might not spot it right away
+    heroes[:batman] # => "Bruce Wayne"
+    heroes[:supermann] # => nil
+
+    # good - fetch raises a KeyError making the problem obvious
+    heroes.fetch(:supermann)
+    ```
+
+* Introduce default values for hash keys via `Hash#fetch` as opposed to using
+  custom logic.
+
+    ```ruby
+    batman = { name: 'Bruce Wayne', is_evil: false }
+
+    # bad - if we just use || operator with falsy value we won't get the expected result
+    batman[:is_evil] || true # => true
+
+    # good - fetch work correctly with falsy values
+    batman.fetch(:is_evil, true) # => false
+    ```
+
+
 ## The rest
-
-* Prefer using `hash.fetch(:key)` over `hash[:key]` when you expect `:key` to be
-  set. This will lead to better error messages and stack traces when it isn't.
-  ([longer rationale](http://www.bitzesty.com/blog/2014/5/19/hashfetch-in-ruby-development))
-
-* Prefer using `hash.fetch(:key, nil)` over `hash[:key]` when `:key` may not be
-  set and `nil` is the default value you want to use in that case.
 
 * Avoid hashes-as-optional-parameters in general. Does the method do too much?
 
