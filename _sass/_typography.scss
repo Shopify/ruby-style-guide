@@ -54,15 +54,11 @@ h1, h2, h3, h4, h5, h6, p {
 }
 
 h1, h2, h3, h4, h5, h6 {
-  margin-top: $default-spacing-tripled;
+  margin-top: $default-spacing-doubled;
 }
 
 h1:first-child {
   margin-top: 0;
-}
-
-h3 {
-  margin-top: $default-spacing-doubled;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -87,28 +83,38 @@ h3 {
   font-size: 20px;
 }
 
-h2 + h3 {
-  margin-top: $default-spacing-doubled;
-}
-
 p + p {
   margin-top: $default-spacing-halved;
 }
 
 code {
-  display: inline-block;
-  background: $gray;
-  border: 1px solid $gray-dark;
-  padding: 0 0.25em;
-  border-radius: 4px;
+  background-color: $gray;
+  padding: 0.2em 0;
+  margin: 0;
+  font-size: 85%;
+  border-radius: 3px;
+
+  &:before, &:after {
+    letter-spacing: -0.2em;
+    content: "\00a0";
+  }
 }
 
 pre {
-  margin: .8em 0;
+  margin-top: $default-spacing-halved;
+  word-break: normal;
+  padding: $default-spacing-halved;
+  overflow: auto;
+  line-height: 1.45;
+  background-color: $gray;
+  border-radius: 3px;
+  word-wrap: normal;
 }
 
 pre > code {
-  padding: $default-spacing-halved;
+  &:before, &:after {
+    content: none;
+  }
 }
 
 a {
@@ -136,36 +142,6 @@ ul li ul {
 
 ul li ul li {
   margin-bottom: $default-spacing-halved;
-}
-
-
-.tip {
-  padding: $default-spacing-halved $default-spacing;
-  border-radius: 6px;
-  margin: $default-spacing 0;
-  background-color: #F3F3F3;
-}
-
-.pro-tip {
-  padding: $default-spacing-halved $default-spacing;
-  border-radius: 6px;
-  margin: $default-spacing 0;
-  background-color: rgba($yellow, .5);
-}
-.pro-tip a {
-  background-image: linear-gradient(to bottom, rgba(255,255,255,0) 93%, #000 93%);
-}
-.pro-tip a:hover {
-  color: #666;
-  background-image: linear-gradient(to bottom, rgba(255,255,255,0) 93%, $gray-darker 93%);
-}
-
-.pro-tip h1, .pro-tip h2, .pro-tip h3, .pro-tip h4, .pro-tip h5, .pro-tip h6 {
-  margin-top: $default-spacing-halved;
-}
-
-.pro-tip--important {
-  background-color: $red;
 }
 
 dl:last-child {
