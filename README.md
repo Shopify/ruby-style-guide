@@ -22,7 +22,7 @@ developing in Ruby.
 
 * Code in a functional way. Avoid mutation (side effects) when you can.
 
-* Do not program defensively. (See
+* Do not program defensively (see
   http://www.erlang.se/doc/programming_rules.shtml#HDR11).
 
 * Do not mutate arguments unless that is the purpose of the method.
@@ -279,6 +279,8 @@ developing in Ruby.
     end
     ```
 
+* Avoid hashes-as-optional-parameters in general. Does the method do too much?
+
 * Prefer keyword arguments over options hash.
 
 * Prefer `map` over `collect`, `find` over `detect`, `select` over `find_all`,
@@ -306,7 +308,7 @@ developing in Ruby.
   exceptions to the rule, since their semantics are different).
 
 * The names of predicate methods (methods that return a boolean value) should
-  end in a question mark. (i.e. `Array#empty?`). Methods that don't return a
+  end in a question mark (i.e. `Array#empty?`). Methods that don't return a
   boolean, shouldn't end in a question mark.
 
 
@@ -566,8 +568,7 @@ developing in Ruby.
     ```
 
 * Prefer `%w` to the literal array syntax when you need an array of words
-  (non-empty strings without spaces and special characters in them).  Apply this
-  rule only to arrays with two or more elements.
+  (non-empty strings without spaces and special characters in them).
 
     ```ruby
     # bad
@@ -594,6 +595,17 @@ developing in Ruby.
 * Avoid the use of mutable objects as hash keys.
 
 * Use the Ruby 1.9 hash literal syntax when your hash keys are symbols.
+
+* Don't mix the Ruby 1.9 hash syntax with hash rockets in the same hash literal.
+  When you've got keys that are not symbols stick to the hash rockets syntax.
+
+    ```ruby
+    # bad
+    { a: 1, 'b' => 2 }
+
+    # good
+    { :a => 1, 'b' => 2 }
+    ```
 
 * Use `Hash#key?` instead of `Hash#has_key?` and `Hash#value?` instead of
   `Hash#has_value?`. As noted
@@ -665,7 +677,9 @@ developing in Ruby.
 
 * Adopt a consistent string literal quoting style.
 
-* Don't use the character literal syntax `?x`.
+* Don't use the character literal syntax `?x`. Since Ruby 1.9 it's basically
+  redundant - `?x` would interpreted as `'x'` (a string with a single character
+  in it).
 
 * Don't leave out `{}` around instance and global variables being interpolated
   into a string.
@@ -694,7 +708,7 @@ developing in Ruby.
     # bad
     puts "$global = #$global"
 
-    # good
+    # fine, but don't use globals
     puts "$global = #{$global}"
     ```
 
@@ -727,6 +741,28 @@ developing in Ruby.
     str.delete('case')
     ```
 
+* When using heredocs for multi-line strings keep in mind the fact that they
+  preserve leading whitespace. It's a good practice to employ some margin based
+  on which to trim the excessive whitespace.
+
+    ```ruby
+    code = <<-END.gsub(/^\s+\|/, '')
+      |def test
+      |  some_method
+      |  other_method
+      |end
+    END
+    # => "def test\n  some_method\n  other_method\nend\n"
+
+    # In Rails you can use `#strip_heredoc` to achieve the same result
+    code = <<-END.strip_heredoc
+      def test
+        some_method
+        other_method
+      end
+    END
+    # => "def test\n  some_method\n  other_method\nend\n"
+    ```
 
 ## Regular expressions
 
@@ -744,17 +780,15 @@ developing in Ruby.
     ```
 
 * Don't use the cryptic Perl-legacy variables denoting last regexp group
-  matches (`$1`, `$2`, etc). Use `Regexp.last_match(n)` instead.
+  matches (`$1`, `$2`, etc). Use `Regexp#match` instead.
 
     ```ruby
-    /(regexp)/ =~ string
-    ...
-
     # bad
+    /(regexp)/ =~ string
     process $1
 
     # good
-    process Regexp.last_match(1)
+    /(regexp)/.match(string)[1]
     ```
 
 * Avoid using numbered groups as it can be hard to track what they contain.
@@ -815,8 +849,6 @@ developing in Ruby.
 
 
 ## The rest
-
-* Avoid hashes-as-optional-parameters in general. Does the method do too much?
 
 * Avoid long methods.
 
