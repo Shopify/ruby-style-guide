@@ -279,9 +279,6 @@ developing in Ruby.
     end
     ```
 
-* Use non-OO regexps (they won't make the code better).  Freely use `=~`,
-  `$0-9`, `$~`, `$\` and `$'` when needed.
-
 * Prefer keyword arguments over options hash.
 
 * Prefer `map` over `collect`, `find` over `detect`, `select` over `find_all`,
@@ -731,6 +728,92 @@ developing in Ruby.
     ```
 
 
+## Regular expressions
+
+* Don't use regular expressions if you just need plain text search in string:
+  `string['text']`
+
+* Use non-capturing groups when you don't use the captured result.
+
+    ```ruby
+    # bad
+    /(first|second)/
+
+    # good
+    /(?:first|second)/
+    ```
+
+* Don't use the cryptic Perl-legacy variables denoting last regexp group
+  matches (`$1`, `$2`, etc). Use `Regexp.last_match(n)` instead.
+
+    ```ruby
+    /(regexp)/ =~ string
+    ...
+
+    # bad
+    process $1
+
+    # good
+    process Regexp.last_match(1)
+    ```
+
+* Avoid using numbered groups as it can be hard to track what they contain.
+  Named groups can be used instead.
+
+    ```ruby
+    # bad
+    /(regexp)/ =~ string
+    ...
+    process Regexp.last_match(1)
+
+    # good
+    /(?<meaningful_var>regexp)/ =~ string
+    ...
+    process meaningful_var
+    ```
+
+* Be careful with `^` and `$` as they match start/end of line, not string
+  endings.  If you want to match the whole string use: `\A` and `\z` (not to be
+  confused with `\Z` which is the equivalent of `/\n?\z/`).
+
+    ```ruby
+    string = "some injection\nusername"
+    string[/^username$/]   # matches
+    string[/\Ausername\z/] # doesn't match
+    ```
+
+
+## Percent Literals
+
+* Use `%()`(it's a shorthand for `%Q`) for single-line strings which require
+  both interpolation and embedded double-quotes. For multi-line strings, prefer
+  heredocs.
+
+* Avoid `%q` unless you have a string with both `'` and `"` in it. Regular
+  string literals are more readable and should be preferred unless a lot of
+  characters would have to be escaped in them.
+
+* Use `%r` only for regular expressions matching *at least* one '/'
+  character.
+
+    ```ruby
+    # bad
+    %r{\s+}
+
+    # good
+    %r{^/(.*)$}
+    %r{^/blog/2011/(.*)$}
+    ```
+
+* Avoid the use of `%s`. Use `:"some string"` to create a symbol with spaces in
+  it.
+
+* Prefer `()` as delimiters for all `%` literals, except `%r`. Since parentheses
+  often appear inside regular expressions in many scenarios a less common
+  character like `{` might be a better choice for a delimiter, depending on the
+  regexp's content.
+
+
 ## The rest
 
 * Avoid hashes-as-optional-parameters in general. Does the method do too much?
@@ -759,3 +842,10 @@ developing in Ruby.
 * Avoid using `flunk` if an `assert_*` or `refute_*` family method will suffice.
 
 * Avoid using `refute_*` if an `assert_*` can do.
+
+* Prefer `public_send` over `send` so as not to circumvent `private`/`protected`
+  visibility.
+
+* Write `ruby -w` safe code.
+
+* Avoid more than three levels of block nesting.
