@@ -22,7 +22,7 @@ developing in Ruby.
 
 * Code in a functional way. Avoid mutation (side effects) when you can.
 
-* Do not program defensively. (See
+* Do not program defensively (see
   http://www.erlang.se/doc/programming_rules.shtml#HDR11).
 
 * Do not mutate arguments unless that is the purpose of the method.
@@ -279,8 +279,7 @@ developing in Ruby.
     end
     ```
 
-* Use non-OO regexps (they won't make the code better).  Freely use `=~`,
-  `$0-9`, `$~`, `$\` and `$'` when needed.
+* Avoid hashes-as-optional-parameters in general. Does the method do too much?
 
 * Prefer keyword arguments over options hash.
 
@@ -309,7 +308,7 @@ developing in Ruby.
   exceptions to the rule, since their semantics are different).
 
 * The names of predicate methods (methods that return a boolean value) should
-  end in a question mark. (i.e. `Array#empty?`). Methods that don't return a
+  end in a question mark (i.e. `Array#empty?`). Methods that don't return a
   boolean, shouldn't end in a question mark.
 
 
@@ -553,16 +552,303 @@ developing in Ruby.
     ```
 
 
+## Collections
+
+* Prefer literal array and hash creation notation (unless you need to pass
+  parameters to their constructors, that is).
+
+    ```ruby
+    # bad
+    arr = Array.new
+    hash = Hash.new
+
+    # good
+    arr = []
+    hash = {}
+    ```
+
+* Prefer `%w` to the literal array syntax when you need an array of words
+  (non-empty strings without spaces and special characters in them).
+
+    ```ruby
+    # bad
+    STATES = ['draft', 'open', 'closed']
+
+    # good
+    STATES = %w(draft open closed)
+    ```
+
+* Prefer `%i` to the literal array syntax when you need an array of symbols.
+  Apply this rule only to arrays with two or more elements.
+
+    ```ruby
+    # bad
+    STATES = [:draft, :open, :closed]
+
+    # good
+    STATES = %i(draft open closed)
+    ```
+
+* When accessing the first or last element from an array, prefer `first` or
+  `last` over `[0]` or `[-1]`.
+
+* Avoid the use of mutable objects as hash keys.
+
+* Use the Ruby 1.9 hash literal syntax when your hash keys are symbols.
+
+* Don't mix the Ruby 1.9 hash syntax with hash rockets in the same hash literal.
+  When you've got keys that are not symbols stick to the hash rockets syntax.
+
+    ```ruby
+    # bad
+    { a: 1, 'b' => 2 }
+
+    # good
+    { :a => 1, 'b' => 2 }
+    ```
+
+* Use `Hash#key?` instead of `Hash#has_key?` and `Hash#value?` instead of
+  `Hash#has_value?`. As noted
+  [here](http://blade.nagaokaut.ac.jp/cgi-bin/scat.rb/ruby/ruby-core/43765) by
+  Matz, the longer forms are considered deprecated.
+
+    ```ruby
+    # bad
+    hash.has_key?(:test)
+    hash.has_value?(value)
+
+    # good
+    hash.key?(:test)
+    hash.value?(value)
+    ```
+
+* Use `Hash#fetch` when dealing with hash keys that should be present.
+
+    ```ruby
+    heroes = { batman: 'Bruce Wayne', superman: 'Clark Kent' }
+    # bad - if we make a mistake we might not spot it right away
+    heroes[:batman] # => "Bruce Wayne"
+    heroes[:supermann] # => nil
+
+    # good - fetch raises a KeyError making the problem obvious
+    heroes.fetch(:supermann)
+    ```
+
+* Introduce default values for hash keys via `Hash#fetch` as opposed to using
+  custom logic.
+
+    ```ruby
+    batman = { name: 'Bruce Wayne', is_evil: false }
+
+    # bad - if we just use || operator with falsy value we won't get the expected result
+    batman[:is_evil] || true # => true
+
+    # good - fetch work correctly with falsy values
+    batman.fetch(:is_evil, true) # => false
+    ```
+
+
+## Strings
+
+* Prefer string interpolation and string formatting instead of string
+  concatenation:
+
+    ```ruby
+    # bad
+    email_with_name = user.name + ' <' + user.email + '>'
+
+    # good
+    email_with_name = "#{user.name} <#{user.email}>"
+
+    # good
+    email_with_name = format('%s <%s>', user.name, user.email)
+    ```
+
+* With interpolated expressions, there should be no padded-spacing inside the
+  braces.
+
+    ```ruby
+    # bad
+    "From: #{ user.first_name }, #{ user.last_name }"
+
+    # good
+    "From: #{user.first_name}, #{user.last_name}"
+    ```
+
+* Adopt a consistent string literal quoting style.
+
+* Don't use the character literal syntax `?x`. Since Ruby 1.9 it's basically
+  redundant - `?x` would interpreted as `'x'` (a string with a single character
+  in it).
+
+* Don't leave out `{}` around instance and global variables being interpolated
+  into a string.
+
+    ```ruby
+    class Person
+      attr_reader :first_name, :last_name
+
+      def initialize(first_name, last_name)
+        @first_name = first_name
+        @last_name = last_name
+      end
+
+      # bad - valid, but awkward
+      def to_s
+        "#@first_name #@last_name"
+      end
+
+      # good
+      def to_s
+        "#{@first_name} #{@last_name}"
+      end
+    end
+
+    $global = 0
+    # bad
+    puts "$global = #$global"
+
+    # fine, but don't use globals
+    puts "$global = #{$global}"
+    ```
+
+* Don't use `Object#to_s` on interpolated objects. It's invoked on them
+  automatically.
+
+    ```ruby
+    # bad
+    message = "This is the #{result.to_s}."
+
+    # good
+    message = "This is the #{result}."
+    ```
+
+* Don't use `String#gsub` in scenarios in which you can use a faster more
+  specialized alternative.
+
+    ```ruby
+    url = 'http://example.com'
+    str = 'lisp-case-rules'
+
+    # bad
+    url.gsub('http://', 'https://')
+    str.gsub('-', '_')
+    str.gsub('case', '')
+
+    # good
+    url.sub('http://', 'https://')
+    str.tr('-', '_')
+    str.delete('case')
+    ```
+
+* When using heredocs for multi-line strings keep in mind the fact that they
+  preserve leading whitespace. It's a good practice to employ some margin based
+  on which to trim the excessive whitespace.
+
+    ```ruby
+    code = <<-END.gsub(/^\s+\|/, '')
+      |def test
+      |  some_method
+      |  other_method
+      |end
+    END
+    # => "def test\n  some_method\n  other_method\nend\n"
+
+    # In Rails you can use `#strip_heredoc` to achieve the same result
+    code = <<-END.strip_heredoc
+      def test
+        some_method
+        other_method
+      end
+    END
+    # => "def test\n  some_method\n  other_method\nend\n"
+    ```
+
+## Regular expressions
+
+* Don't use regular expressions if you just need plain text search in string:
+  `string['text']`
+
+* Use non-capturing groups when you don't use the captured result.
+
+    ```ruby
+    # bad
+    /(first|second)/
+
+    # good
+    /(?:first|second)/
+    ```
+
+* Don't use the cryptic Perl-legacy variables denoting last regexp group
+  matches (`$1`, `$2`, etc). Use `Regexp#match` instead.
+
+    ```ruby
+    # bad
+    /(regexp)/ =~ string
+    process $1
+
+    # good
+    /(regexp)/.match(string)[1]
+    ```
+
+* Avoid using numbered groups as it can be hard to track what they contain.
+  Named groups can be used instead.
+
+    ```ruby
+    # bad
+    /(regexp)/ =~ string
+    ...
+    process Regexp.last_match(1)
+
+    # good
+    /(?<meaningful_var>regexp)/ =~ string
+    ...
+    process meaningful_var
+    ```
+
+* Be careful with `^` and `$` as they match start/end of line, not string
+  endings.  If you want to match the whole string use: `\A` and `\z` (not to be
+  confused with `\Z` which is the equivalent of `/\n?\z/`).
+
+    ```ruby
+    string = "some injection\nusername"
+    string[/^username$/]   # matches
+    string[/\Ausername\z/] # doesn't match
+    ```
+
+
+## Percent Literals
+
+* Use `%()`(it's a shorthand for `%Q`) for single-line strings which require
+  both interpolation and embedded double-quotes. For multi-line strings, prefer
+  heredocs.
+
+* Avoid `%q` unless you have a string with both `'` and `"` in it. Regular
+  string literals are more readable and should be preferred unless a lot of
+  characters would have to be escaped in them.
+
+* Use `%r` only for regular expressions matching *at least* one '/'
+  character.
+
+    ```ruby
+    # bad
+    %r{\s+}
+
+    # good
+    %r{^/(.*)$}
+    %r{^/blog/2011/(.*)$}
+    ```
+
+* Avoid the use of `%s`. Use `:"some string"` to create a symbol with spaces in
+  it.
+
+* Prefer `()` as delimiters for all `%` literals, except `%r`. Since parentheses
+  often appear inside regular expressions in many scenarios a less common
+  character like `{` might be a better choice for a delimiter, depending on the
+  regexp's content.
+
+
 ## The rest
-
-* Prefer using `hash.fetch(:key)` over `hash[:key]` when you expect `:key` to be
-  set. This will lead to better error messages and stack traces when it isn't.
-  ([longer rationale](http://www.bitzesty.com/blog/2014/5/19/hashfetch-in-ruby-development))
-
-* Prefer using `hash.fetch(:key, nil)` over `hash[:key]` when `:key` may not be
-  set and `nil` is the default value you want to use in that case.
-
-* Avoid hashes-as-optional-parameters in general. Does the method do too much?
 
 * Avoid long methods.
 
@@ -588,3 +874,10 @@ developing in Ruby.
 * Avoid using `flunk` if an `assert_*` or `refute_*` family method will suffice.
 
 * Avoid using `refute_*` if an `assert_*` can do.
+
+* Prefer `public_send` over `send` so as not to circumvent `private`/`protected`
+  visibility.
+
+* Write `ruby -w` safe code.
+
+* Avoid more than three levels of block nesting.
