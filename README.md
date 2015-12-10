@@ -314,11 +314,17 @@ developing in Ruby.
 
 ## Comments
 
-* Comments longer than a word are capitalized and use punctuation.
+* Good comments focuses on the reader of the code, by helping them understand the code. The reader may not have the same understanding, experience and knowledge as you. As a writer, take this into account.
 
-* Avoid superfluous comments.
+* A big problem with comments is that they can get out of sync with the code easily. When refactoring code, refactor the surrounding comments are refactored as well.
 
-* If you really need them, could you instead clarify your code?
+* Write good copy, and use proper capitalization and punctuation.
+
+* Focus on **why** your code is the way it is if this is not obvious, not **how** your code works.
+
+* Avoid superfluous comments. If they are about how your code works, should you clarify your code instead?
+
+* For a good discussion on the costs and benefits of comments, see http://c2.com/cgi/wiki?CommentCostsAndBenefits.
 
 
 ## Classes & Modules
