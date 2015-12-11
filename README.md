@@ -98,7 +98,7 @@ developing in Ruby.
         to: 'bob@example.com',
         from: 'us@example.com',
         subject: 'Important message',
-        body: source.text
+        body: source.text,
       )
     end
     ```
