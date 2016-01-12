@@ -64,6 +64,30 @@ developing in Ruby.
 
 * Indent `when` as deep as `case`.
 
+* When assigning the result of a conditional expression to a variable, align its
+  branches with the variable that receives the return value.
+
+    ```ruby
+    # bad
+    result =
+      if some_cond
+        # ...
+        # ...
+        calc_something
+      else
+        calc_something_else
+      end
+
+    # good
+    result = if some_cond
+      # ...
+      # ...
+      calc_something
+    else
+      calc_something_else
+    end
+    ```
+
 * Use empty lines between method definitions and also to break up methods into
   logical paragraphs internally.
 
