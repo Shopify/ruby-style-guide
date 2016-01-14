@@ -27,7 +27,7 @@ developing in Ruby.
 
 * Do not mutate arguments unless that is the purpose of the method.
 
-* Do not mess around in core classes when writing libraries.
+* Do not mess around in / monkeypatch core classes when writing libraries.
 
 * Keep the code simple.
 
@@ -338,9 +338,9 @@ developing in Ruby.
 
 ## Comments
 
-* Good comments focuses on the reader of the code, by helping them understand the code. The reader may not have the same understanding, experience and knowledge as you. As a writer, take this into account.
+* Good comments focus on the reader of the code, by helping them understand the code. The reader may not have the same understanding, experience and knowledge as you. As a writer, take this into account.
 
-* A big problem with comments is that they can get out of sync with the code easily. When refactoring code, refactor the surrounding comments are refactored as well.
+* A big problem with comments is that they can get out of sync with the code easily. When refactoring code, refactor the surrounding comments as well.
 
 * Write good copy, and use proper capitalization and punctuation.
 
@@ -559,7 +559,7 @@ developing in Ruby.
     end
     ```
 
-* Favor the use of exceptions for the standard library over introducing new
+* Favor the use of exceptions from the standard library over introducing new
   exception classes.
 
 * Don't use single letter variables for exceptions (`error` isn't that hard to
