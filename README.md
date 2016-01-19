@@ -878,6 +878,70 @@ developing in Ruby.
   regexp's content.
 
 
+## Testing
+
+* Treat test code like any other code you write. This means: keep readability,
+  maintainability, complexity, etc. in mind.
+
+* Minitest is the preferred test framework.
+
+* A test case should only test a single aspect of your code.
+
+* A good test case consists of three parts:
+
+  1. Setup of the environment
+  2. The action that is the subject of the test
+  3. Asserting that the action did what you expect it do to.
+
+  Consider separating these parts by a newline for readability, especially
+  when your environment setup is complicated and you want to run multiple assertions
+  afterwards.
+
+  ```ruby
+  test 'sending a password reset email clears the password hash and set a reset token' do
+    user = User.create!(email: 'bob@example.com')
+    user.mark_as_verified
+
+    user.send_password_reset_email
+
+    assert_nil user.password_hash
+    refute_nil user.reset_token
+  end
+  ```
+
+* A complex test should be split into multiple simpler tests that test functionality in isolation.
+
+* Prefer using `test 'foo'`-style syntax to define test cases over `def test_foo`.
+
+* Prefer using assertion methods that will yield a more descriptive error message.
+
+  ```ruby
+  # bad
+  assert user.valid?
+  assert user.name == 'tobi'
+
+
+  # good
+  assert_predicate user, :valid?
+  assert_equal 'tobi', user.name
+  ```
+
+* Avoid using `assert_nothing_raised`. Use a positive assertion instead.
+
+* Prefer using assertions over expectations. Expectations lead to more brittle tests,
+  especially in combination with singleton objects.
+
+    ```ruby
+    # bad
+    StatsD.expects(:increment).with('metric')
+    do_something
+
+    # good
+    assert_statsd_increment('metric') do
+      do_something
+    end
+    ```
+
 ## The rest
 
 * Avoid long methods.
@@ -900,10 +964,6 @@ developing in Ruby.
   (`Shop.where(amount: nil).update_all(amount: 0)`) instead of the two-argument
   version (`Shop.update_all({amount: 0}, amount: nil)`). But seriously, you
   probably shouldn't be doing it in the first place.
-
-* Avoid using `flunk` if an `assert_*` or `refute_*` family method will suffice.
-
-* Avoid using `refute_*` if an `assert_*` can do.
 
 * Prefer `public_send` over `send` so as not to circumvent `private`/`protected`
   visibility.
