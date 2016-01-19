@@ -909,11 +909,22 @@ developing in Ruby.
   end
   ```
 
+* A complex test should be split into multiple simpler tests that test functionality in isolation.
+
 * Prefer using `test 'foo'`-style syntax to define test cases over `def test_foo`.
 
-* Avoid using `flunk` if an `assert_*` or `refute_*` family method will suffice.
+* Prefer using assertion methods that will yield a more descriptive error message.
 
-* Avoid using `refute_*` if an `assert_*` can do.
+  ```ruby
+  # bad
+  assert user.valid?
+  assert user.name == 'tobi'
+
+
+  # good
+  assert_predicate user, :valid?
+  assert_equal 'tobi', user.name
+  ```
 
 * Avoid using `assert_nothing_raised`. Use a positive assertion instead.
 
