@@ -62,7 +62,7 @@ developing in Ruby.
 
 * No space inside range literals.
 
-* Indent `when` as deep as `case`.
+* Indent `when` as deep as the `case` line.
 
 * When assigning the result of a conditional expression to a variable, align its
   branches with the variable that receives the return value.
