@@ -207,6 +207,19 @@ developing in Ruby.
   (e.g. `attr_reader`, `puts`) and attribute access methods. Use parentheses
   around the arguments of all other method invocations.
 
+  Due to `{` having a higher precedence than `do` you may need to use parenthesis
+  to DSL calls to pass a multi-line lambda as an argument to the call.
+
+    ```ruby
+    # good
+    scope :pending, -> { where(pending: true) }
+
+    scope(:pending, lambda do
+      ...
+      ...
+    end
+    ```
+
 * Omit the outer braces around an implicit options hash.
 
 * Use the proc invocation shorthand when the invoked method is the only
