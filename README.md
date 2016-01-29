@@ -207,17 +207,20 @@ developing in Ruby.
   (e.g. `attr_reader`, `puts`) and attribute access methods. Use parentheses
   around the arguments of all other method invocations.
 
-  Due to `{` having a higher precedence than `do` you may need to use parenthesis
-  to DSL calls to pass a multi-line lambda as an argument to the call.
+* Use class methods instead of a rails scope with a multi-line lambda
 
     ```ruby
-    # good
-    scope :pending, -> { where(pending: true) }
-
+    # bad
     scope(:pending, lambda do
       ...
       ...
     end)
+
+    # good
+    def self.pending
+      ...
+      ...
+    end
     ```
 
 * Omit the outer braces around an implicit options hash.
