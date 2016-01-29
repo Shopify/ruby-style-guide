@@ -217,7 +217,7 @@ developing in Ruby.
     scope(:pending, lambda do
       ...
       ...
-    end
+    end)
     ```
 
 * Omit the outer braces around an implicit options hash.
