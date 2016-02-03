@@ -207,6 +207,22 @@ developing in Ruby.
   (e.g. `attr_reader`, `puts`) and attribute access methods. Use parentheses
   around the arguments of all other method invocations.
 
+* Use class methods instead of a rails scope with a multi-line lambda
+
+    ```ruby
+    # bad
+    scope(:pending, lambda do
+      ...
+      ...
+    end)
+
+    # good
+    def self.pending
+      ...
+      ...
+    end
+    ```
+
 * Omit the outer braces around an implicit options hash.
 
 * Use the proc invocation shorthand when the invoked method is the only
