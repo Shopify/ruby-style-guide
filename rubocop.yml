@@ -1,0 +1,69 @@
+Lint/AssignmentInCondition:
+  Enabled: false
+
+Style/ClassAndModuleChildren:
+  Enabled: false
+
+Style/Documentation:
+  Enabled: false
+
+Style/MultilineOperationIndentation:
+  Enabled: false
+
+Style/AlignParameters:
+  EnforcedStyle: with_fixed_indentation
+
+Style/FirstParameterIndentation:
+  EnforcedStyle: consistent
+
+Style/TrailingCommaInLiteral:
+  Enabled: false
+
+Style/SignalException:
+  EnforcedStyle: only_raise
+
+Style/NumericLiterals:
+  Enabled: false
+
+Style/CaseIndentation:
+  IndentWhenRelativeTo: end
+
+Style/IndentHash:
+  EnforcedStyle: consistent
+
+Metrics/AbcSize:
+  Enabled: false
+
+Metrics/CyclomaticComplexity:
+  Enabled: false
+
+Style/StringLiterals:
+  Enabled: false
+
+Metrics/ClassLength:
+  Enabled: false
+
+Metrics/MethodLength:
+  Enabled: false
+
+Metrics/ParameterLists:
+  Max: 5
+  CountKeywordArgs: false
+
+Metrics/PerceivedComplexity:
+  Enabled: false
+
+Lint/EndAlignment:
+  AlignWith: variable
+
+Style/FrozenStringLiteralComment:
+  Enabled: false
+
+Style/Alias:
+  EnforcedStyle: prefer_alias_method
+
+Style/MutableConstant:
+  Enabled: false
+
+Performance/Casecmp:
+  Enabled: false
