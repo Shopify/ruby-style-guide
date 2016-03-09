@@ -70,3 +70,6 @@ Style/MutableConstant:
 
 Performance/Casecmp:
   Enabled: false
+
+Style/AsciiComments:
+  Enabled: false
