@@ -16,6 +16,9 @@ Style/AlignParameters:
 Style/FirstParameterIndentation:
   EnforcedStyle: consistent
 
+Style/TrailingCommaInArguments:
+  Enabled: false
+
 Style/TrailingCommaInLiteral:
   Enabled: false
 
