@@ -127,6 +127,21 @@ developing in Ruby.
     end
     ```
 
+* When chaining methods on multiple lines, indent successive calls by one level of indentation.
+
+    ```ruby
+    # bad (indented to the previous call)
+    User.pluck(:name)
+        .sort(&:casecmp)
+        .chunk { |n| n[0] }
+
+    # good
+    User
+      .pluck(:name)
+      .sort(&:casecmp)
+      .chunk { |n| n[0] }
+    ```
+
 * Align the elements of array literals spanning multiple lines.
 
 * Limit lines to 120 characters.
