@@ -73,3 +73,7 @@ Performance/Casecmp:
 
 Style/AsciiComments:
   Enabled: false
+
+Style/MultilineMethodCallIndentation:
+  EnforcedStyle: indented
+  IndentationWidth: 2
