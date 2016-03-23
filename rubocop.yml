@@ -31,6 +31,9 @@ Style/NumericLiterals:
 Style/CaseIndentation:
   IndentWhenRelativeTo: end
 
+Style/IndentArray:
+  EnforcedStyle: consistent
+
 Style/IndentHash:
   EnforcedStyle: consistent
 
