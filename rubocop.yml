@@ -86,3 +86,6 @@ Style/MultilineMethodCallIndentation:
 
 Metrics/LineLength:
   Max: 120
+
+Style/TrivialAccessors:
+  AllowPredicates: true
