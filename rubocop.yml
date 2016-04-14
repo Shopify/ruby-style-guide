@@ -83,3 +83,6 @@ Style/AsciiComments:
 Style/MultilineMethodCallIndentation:
   EnforcedStyle: indented
   IndentationWidth: 2
+
+Metrics/LineLength:
+  Max: 120
