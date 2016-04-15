@@ -3,10 +3,5 @@ title: 'Ruby style guide'
 description: "Shopify's Ruby style guide"
 
 # Build settings
-markdown: redcarpet
-redcarpet:
-  extensions:
-    - autolink
-    - space_after_headers
 exclude:
   - CONTRIBUTING.md

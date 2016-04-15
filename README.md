@@ -23,7 +23,7 @@ developing in Ruby.
 * Code in a functional way. Avoid mutation (side effects) when you can.
 
 * Do not program defensively (see
-  http://www.erlang.se/doc/programming_rules.shtml#HDR11).
+  [http://www.erlang.se/doc/programming_rules.shtml#HDR11](http://www.erlang.se/doc/programming_rules.shtml#HDR11)).
 
 * Do not mutate arguments unless that is the purpose of the method.
 
@@ -67,26 +67,26 @@ developing in Ruby.
 * When assigning the result of a conditional expression to a variable, align its
   branches with the variable that receives the return value.
 
-    ```ruby
-    # bad
-    result =
-      if some_cond
-        # ...
-        # ...
-        calc_something
-      else
-        calc_something_else
-      end
-
-    # good
-    result = if some_cond
+  ~~~ ruby
+  # bad
+  result =
+    if some_cond
       # ...
       # ...
       calc_something
     else
       calc_something_else
     end
-    ```
+
+  # good
+  result = if some_cond
+    # ...
+    # ...
+    calc_something
+  else
+    calc_something_else
+  end
+  ~~~
 
 * Use empty lines between method definitions and also to break up methods into
   logical paragraphs internally.
@@ -101,46 +101,46 @@ developing in Ruby.
   one level of indentation relative to the start of the line with the method
   call.
 
-    ```ruby
-    # starting point (line is too long)
-    def send_mail(source)
-      Mailer.deliver(to: 'bob@example.com', from: 'us@example.com', subject: 'Important message', body: source.text)
-    end
+  ~~~ ruby
+  # starting point (line is too long)
+  def send_mail(source)
+    Mailer.deliver(to: 'bob@example.com', from: 'us@example.com', subject: 'Important message', body: source.text)
+  end
 
-    # bad (double indent)
-    def send_mail(source)
-      Mailer.deliver(
-          to: 'bob@example.com',
-          from: 'us@example.com',
-          subject: 'Important message',
-          body: source.text)
-    end
-
-    # good
-    def send_mail(source)
-      Mailer.deliver(
+  # bad (double indent)
+  def send_mail(source)
+    Mailer.deliver(
         to: 'bob@example.com',
         from: 'us@example.com',
         subject: 'Important message',
-        body: source.text,
-      )
-    end
-    ```
+        body: source.text)
+  end
+
+  # good
+  def send_mail(source)
+    Mailer.deliver(
+      to: 'bob@example.com',
+      from: 'us@example.com',
+      subject: 'Important message',
+      body: source.text,
+    )
+  end
+  ~~~
 
 * When chaining methods on multiple lines, indent successive calls by one level of indentation.
 
-    ```ruby
-    # bad (indented to the previous call)
-    User.pluck(:name)
-        .sort(&:casecmp)
-        .chunk { |n| n[0] }
-
-    # good
-    User
-      .pluck(:name)
+  ~~~ ruby
+  # bad (indented to the previous call)
+  User.pluck(:name)
       .sort(&:casecmp)
       .chunk { |n| n[0] }
-    ```
+
+  # good
+  User
+    .pluck(:name)
+    .sort(&:casecmp)
+    .chunk { |n| n[0] }
+  ~~~
 
 * Align the elements of array literals spanning multiple lines.
 
@@ -152,17 +152,17 @@ developing in Ruby.
 
 * Don't use block comments:
 
-    ```ruby
-    # bad
-    =begin
-    comment line
-    another comment line
-    =end
+  ~~~ ruby
+  # bad
+  =begin
+  comment line
+  another comment line
+  =end
 
-    # good
-    # comment line
-    # another comment line
-    ```
+  # good
+  # comment line
+  # another comment line
+  ~~~
 
 
 ## Syntax
@@ -180,13 +180,13 @@ developing in Ruby.
 
 * Favor the ternary operator(`?:`) over `if/then/else/end` constructs.
 
-    ```ruby
-    # bad
-    result = if some_condition then something else something_else end
+  ~~~ ruby
+  # bad
+  result = if some_condition then something else something_else end
 
-    # good
-    result = some_condition ? something : something_else
-    ```
+  # good
+  result = some_condition ? something : something_else
+  ~~~
 
 * Use one expression per branch in a ternary operator. This also means that
   ternary operators must not be nested. Prefer if/else constructs in these
@@ -202,16 +202,15 @@ developing in Ruby.
 
 * Favor modifier `if/unless` usage when you have a single-line body.
 
+  ~~~ ruby
+  # bad
+  if some_condition
+    do_something
+  end
 
-    ```ruby
-    # bad
-    if some_condition
-      do_something
-    end
-
-    # good
-    do_something if some_condition
-    ```
+  # good
+  do_something if some_condition
+  ~~~
 
 * Favor `unless` over `if` for negative conditions.
 
@@ -224,32 +223,32 @@ developing in Ruby.
 
 * Use class methods instead of a rails scope with a multi-line lambda
 
-    ```ruby
-    # bad
-    scope(:pending, lambda do
-      ...
-      ...
-    end)
+  ~~~ ruby
+  # bad
+  scope(:pending, lambda do
+    ...
+    ...
+  end)
 
-    # good
-    def self.pending
-      ...
-      ...
-    end
-    ```
+  # good
+  def self.pending
+    ...
+    ...
+  end
+  ~~~
 
 * Omit the outer braces around an implicit options hash.
 
 * Use the proc invocation shorthand when the invoked method is the only
   operation of a block.
 
-    ```ruby
-    # bad
-    names.map { |name| name.upcase }
+  ~~~ ruby
+  # bad
+  names.map { |name| name.upcase }
 
-    # good
-    names.map(&:upcase)
-    ```
+  # good
+  names.map(&:upcase)
+  ~~~
 
 * Prefer `{...}` over `do...end` for single-line blocks. Avoid using `{...}` for
   multi-line blocks. Always use `do...end` for "control flow" and "method
@@ -263,45 +262,45 @@ developing in Ruby.
 
 * Using the return value of `=` is okay:
 
-    ```ruby
-    if v = /foo/.match(string) ...
-    ```
+  ~~~ ruby
+  if v = /foo/.match(string) ...
+  ~~~
 
 * Use `||=` to initialize variables only if they're not already initialized.
 
 * Don't use `||=` to initialize boolean variables (consider what would happen if
   the current value happened to be `false`).
 
-    ```ruby
-    # bad - would set enabled to true even if it was false
-    @enabled ||= true
+  ~~~ ruby
+  # bad - would set enabled to true even if it was false
+  @enabled ||= true
 
-    # good
-    @enabled = true if enabled.nil?
+  # good
+  @enabled = true if enabled.nil?
 
-    # also valid - defined? workaround
-    @enabled = true unless defined?(@enabled)
-    ```
+  # also valid - defined? workaround
+  @enabled = true unless defined?(@enabled)
+  ~~~
 
 * Do not put a space between a method name and the opening parenthesis.
 
 * Use the new lambda literal syntax for single-line body blocks. Use the lambda
   method for multi-line blocks.
 
-    ```ruby
-    # bad
-    l = lambda { |a, b| a + b }
-    l.call(1, 2)
+  ~~~ ruby
+  # bad
+  l = lambda { |a, b| a + b }
+  l.call(1, 2)
 
-    # good
-    l = ->(a, b) { a + b }
-    l.call(1, 2)
+  # good
+  l = ->(a, b) { a + b }
+  l.call(1, 2)
 
-    l = lambda do |a, b|
-      tmp = a * 7
-      tmp * b / 50
-    end
-    ```
+  l = lambda do |a, b|
+    tmp = a * 7
+    tmp * b / 50
+  end
+  ~~~
 
 * Prefer `proc` over `Proc.new`.
 
@@ -312,27 +311,27 @@ developing in Ruby.
   conditional statement at the top of a function that bails out as soon as it
   can.
 
-    ```ruby
-    # bad
-    def compute_thing(thing)
-      if thing[:foo]
-        update_with_bar(thing)
-        if thing[:foo][:bar]
-          partial_compute(thing)
-        else
-          re_compute(thing)
-        end
+  ~~~ ruby
+  # bad
+  def compute_thing(thing)
+    if thing[:foo]
+      update_with_bar(thing)
+      if thing[:foo][:bar]
+        partial_compute(thing)
+      else
+        re_compute(thing)
       end
     end
+  end
 
-    # good
-    def compute_thing(thing)
-      return unless thing[:foo]
-      update_with_bar(thing[:foo])
-      return re_compute(thing) unless thing[:foo][:bar]
-      partial_compute(thing)
-    end
-    ```
+  # good
+  def compute_thing(thing)
+    return unless thing[:foo]
+    update_with_bar(thing[:foo])
+    return re_compute(thing) unless thing[:foo][:bar]
+    partial_compute(thing)
+  end
+  ~~~
 
 * Avoid hashes-as-optional-parameters in general. Does the method do too much?
 
@@ -379,7 +378,8 @@ developing in Ruby.
 
 * Avoid superfluous comments. If they are about how your code works, should you clarify your code instead?
 
-* For a good discussion on the costs and benefits of comments, see http://c2.com/cgi/wiki?CommentCostsAndBenefits.
+* For a good discussion on the costs and benefits of comments, see 
+  [http://c2.com/cgi/wiki?CommentCostsAndBenefits](http://c2.com/cgi/wiki?CommentCostsAndBenefits).
 
 
 ## Classes & Modules
@@ -387,29 +387,29 @@ developing in Ruby.
 * Prefer modules to classes with only class methods. Classes should be used
   only when it makes sense to create instances out of them.
 
-    ```ruby
-    # bad
-    class SomeClass
-      def self.some_method
-        # body omitted
-      end
-
-      def self.some_other_method
-      end
+  ~~~ ruby
+  # bad
+  class SomeClass
+    def self.some_method
+      # body omitted
     end
 
-    # good
-    module SomeModule
-      module_function
-
-      def some_method
-        # body omitted
-      end
-
-      def some_other_method
-      end
+    def self.some_other_method
     end
-    ```
+  end
+
+  # good
+  module SomeModule
+    module_function
+
+    def some_method
+      # body omitted
+    end
+
+    def some_other_method
+    end
+  end
+  ~~~
 
 * Favor the use of `module_function` over `extend self` when you want to turn a
   module's instance methods into class methods.
@@ -421,33 +421,33 @@ developing in Ruby.
 * Use the [`attr` family of methods](http://ruby-doc.org/core-2.2.3/Module.html#method-i-attr_accessor)
   to define trivial accessors or mutators.
 
-    ```ruby
-    # bad
-    class Person
-      def initialize(first_name, last_name)
-        @first_name = first_name
-        @last_name = last_name
-      end
-
-      def first_name
-        @first_name
-      end
-
-      def last_name
-        @last_name
-      end
+  ~~~ ruby
+  # bad
+  class Person
+    def initialize(first_name, last_name)
+      @first_name = first_name
+      @last_name = last_name
     end
 
-    # good
-    class Person
-      attr_reader :first_name, :last_name
-
-      def initialize(first_name, last_name)
-        @first_name = first_name
-        @last_name = last_name
-      end
+    def first_name
+      @first_name
     end
-    ```
+
+    def last_name
+      @last_name
+    end
+  end
+
+  # good
+  class Person
+    attr_reader :first_name, :last_name
+
+    def initialize(first_name, last_name)
+      @first_name = first_name
+      @last_name = last_name
+    end
+  end
+  ~~~
 
 * Avoid the use of `attr`. Use `attr_reader` and `attr_accessor` instead.
 
@@ -459,23 +459,23 @@ developing in Ruby.
   and one blank line below in order to emphasize that it applies to all methods
   below it.
 
-    ```ruby
-    class SomeClass
-      def public_method
-        # ...
-      end
-
-      private
-
-      def private_method
-        # ...
-      end
-
-      def another_private_method
-        # ...
-      end
+  ~~~ ruby
+  class SomeClass
+    def public_method
+      # ...
     end
-    ```
+
+    private
+
+    def private_method
+      # ...
+    end
+
+    def another_private_method
+      # ...
+    end
+  end
+  ~~~
 
 * Avoid `alias` when `alias_method` will do.
 
@@ -487,108 +487,108 @@ developing in Ruby.
 * Don't specify `RuntimeError` explicitly in the two argument version of
   `raise`.
 
-    ```ruby
-    # bad
-    raise RuntimeError, 'message'
+  ~~~ ruby
+  # bad
+  raise RuntimeError, 'message'
 
-    # good - signals a RuntimeError by default
-    raise 'message'
-    ```
+  # good - signals a RuntimeError by default
+  raise 'message'
+  ~~~
 
 * Prefer supplying an exception class and a message as two separate arguments
   to `raise`, instead of an exception instance.
 
-    ```ruby
-    # bad
-    raise SomeException.new('message')
-    # Note that there is no way to do `raise SomeException.new('message'), backtrace`.
+  ~~~ ruby
+  # bad
+  raise SomeException.new('message')
+  # Note that there is no way to do `raise SomeException.new('message'), backtrace`.
 
-    # good
-    raise SomeException, 'message'
-    # Consistent with `raise SomeException, 'message', backtrace`.
-    ```
+  # good
+  raise SomeException, 'message'
+  # Consistent with `raise SomeException, 'message', backtrace`.
+  ~~~
 
 * Do not return from an `ensure` block. If you explicitly return from a method
   inside an `ensure` block, the return will take precedence over any exception
   being raised, and the method will return as if no exception had been raised at
   all. In effect, the exception will be silently thrown away.
 
-    ```ruby
-    def foo
-      raise
-    ensure
-      return 'very bad idea'
-    end
-    ```
+  ~~~ ruby
+  def foo
+    raise
+  ensure
+    return 'very bad idea'
+  end
+  ~~~
 
 * Use *implicit begin blocks* where possible.
 
-    ```ruby
-    # bad
-    def foo
-      begin
-        # main logic goes here
-      rescue
-        # failure handling goes here
-      end
-    end
-
-    # good
-    def foo
+  ~~~ ruby
+  # bad
+  def foo
+    begin
       # main logic goes here
     rescue
       # failure handling goes here
     end
-    ```
+  end
+
+  # good
+  def foo
+    # main logic goes here
+  rescue
+    # failure handling goes here
+  end
+  ~~~
 
 * Don't suppress exceptions.
 
-    ```ruby
-    # bad
-    begin
-      # an exception occurs here
-    rescue SomeError
-      # the rescue clause does absolutely nothing
-    end
+  ~~~ ruby
+  # bad
+  begin
+    # an exception occurs here
+  rescue SomeError
+    # the rescue clause does absolutely nothing
+  end
 
-    # bad - `rescue nil` swallows all errors, including syntax errors, and
-    # makes them hard to track down.
-    do_something rescue nil
-    ```
+  # bad - `rescue nil` swallows all errors, including syntax errors, and
+  # makes them hard to track down.
+  do_something rescue nil
+  ~~~
 
 * Avoid using `rescue` in its modifier form.
 
-    ```ruby
-    # bad - this catches exceptions of StandardError class and its descendant classes
-    read_file rescue handle_error($!)
+  ~~~ ruby
+  # bad - this catches exceptions of StandardError class and its descendant classes
+  read_file rescue handle_error($!)
 
-    # good - this catches only the exceptions of Errno::ENOENT class and its descendant classes
-    def foo
-      read_file
-    rescue Errno::ENOENT => error
-      handle_error(error)
-    end
-    ```
+  # good - this catches only the exceptions of Errno::ENOENT class and its descendant classes
+  def foo
+    read_file
+  rescue Errno::ENOENT => error
+    handle_error(error)
+  end
+  ~~~
 
 * Avoid rescuing the `Exception` class.
 
-    ```ruby
-    # bad
-    begin
-      # calls to exit and kill signals will be caught (except kill -9)
-      exit
-    rescue Exception
-      puts "you didn't really want to exit, right?"
-      # exception handling
-    end
+  ~~~ ruby
+  # bad
+  begin
+    # calls to exit and kill signals will be caught (except kill -9)
+    exit
+  rescue Exception
+    puts "you didn't really want to exit, right?"
+    # exception handling
+  end
 
-    # good
-    begin
-      # a blind rescue rescues from StandardError, not Exception.
-    rescue => error
-      # exception handling
-    end
-    ```
+  # good
+  begin
+    # a blind rescue rescues from StandardError, not Exception.
+  rescue => error
+    # exception handling
+  end
+  ~~~
 
 * Favor the use of exceptions from the standard library over introducing new
   exception classes.
@@ -596,21 +596,21 @@ developing in Ruby.
 * Don't use single letter variables for exceptions (`error` isn't that hard to
   type).
 
-    ```ruby
-    # bad
-    begin
-      # an exception occurs here
-    rescue => e
-      # exception handling
-    end
+  ~~~ ruby
+  # bad
+  begin
+    # an exception occurs here
+  rescue => e
+    # exception handling
+  end
 
-    # good
-    begin
-      # an exception occurs here
-    rescue => error
-      # exception handling
-    end
-    ```
+  # good
+  begin
+    # an exception occurs here
+  rescue => error
+    # exception handling
+  end
+  ~~~
 
 
 ## Collections
@@ -618,37 +618,37 @@ developing in Ruby.
 * Prefer literal array and hash creation notation (unless you need to pass
   parameters to their constructors, that is).
 
-    ```ruby
-    # bad
-    arr = Array.new
-    hash = Hash.new
+  ~~~ ruby
+  # bad
+  arr = Array.new
+  hash = Hash.new
 
-    # good
-    arr = []
-    hash = {}
-    ```
+  # good
+  arr = []
+  hash = {}
+  ~~~
 
 * Prefer `%w` to the literal array syntax when you need an array of words
   (non-empty strings without spaces and special characters in them).
 
-    ```ruby
-    # bad
-    STATES = ['draft', 'open', 'closed']
+  ~~~ ruby
+  # bad
+  STATES = ['draft', 'open', 'closed']
 
-    # good
-    STATES = %w(draft open closed)
-    ```
+  # good
+  STATES = %w(draft open closed)
+  ~~~
 
 * Prefer `%i` to the literal array syntax when you need an array of symbols.
   Apply this rule only to arrays with two or more elements.
 
-    ```ruby
-    # bad
-    STATES = [:draft, :open, :closed]
+  ~~~ ruby
+  # bad
+  STATES = [:draft, :open, :closed]
 
-    # good
-    STATES = %i(draft open closed)
-    ```
+  # good
+  STATES = %i(draft open closed)
+  ~~~
 
 * When accessing the first or last element from an array, prefer `first` or
   `last` over `[0]` or `[-1]`.
@@ -660,53 +660,53 @@ developing in Ruby.
 * Don't mix the Ruby 1.9 hash syntax with hash rockets in the same hash literal.
   When you've got keys that are not symbols stick to the hash rockets syntax.
 
-    ```ruby
-    # bad
-    { a: 1, 'b' => 2 }
+  ~~~ ruby
+  # bad
+  { a: 1, 'b' => 2 }
 
-    # good
-    { :a => 1, 'b' => 2 }
-    ```
+  # good
+  { :a => 1, 'b' => 2 }
+  ~~~
 
 * Use `Hash#key?` instead of `Hash#has_key?` and `Hash#value?` instead of
   `Hash#has_value?`. As noted
   [here](http://blade.nagaokaut.ac.jp/cgi-bin/scat.rb/ruby/ruby-core/43765) by
   Matz, the longer forms are considered deprecated.
 
-    ```ruby
-    # bad
-    hash.has_key?(:test)
-    hash.has_value?(value)
+  ~~~ ruby
+  # bad
+  hash.has_key?(:test)
+  hash.has_value?(value)
 
-    # good
-    hash.key?(:test)
-    hash.value?(value)
-    ```
+  # good
+  hash.key?(:test)
+  hash.value?(value)
+  ~~~
 
 * Use `Hash#fetch` when dealing with hash keys that should be present.
 
-    ```ruby
-    heroes = { batman: 'Bruce Wayne', superman: 'Clark Kent' }
-    # bad - if we make a mistake we might not spot it right away
-    heroes[:batman] # => "Bruce Wayne"
-    heroes[:supermann] # => nil
+  ~~~ ruby
+  heroes = { batman: 'Bruce Wayne', superman: 'Clark Kent' }
+  # bad - if we make a mistake we might not spot it right away
+  heroes[:batman] # => "Bruce Wayne"
+  heroes[:supermann] # => nil
 
-    # good - fetch raises a KeyError making the problem obvious
-    heroes.fetch(:supermann)
-    ```
+  # good - fetch raises a KeyError making the problem obvious
+  heroes.fetch(:supermann)
+  ~~~
 
 * Introduce default values for hash keys via `Hash#fetch` as opposed to using
   custom logic.
 
-    ```ruby
-    batman = { name: 'Bruce Wayne', is_evil: false }
+  ~~~ ruby
+  batman = { name: 'Bruce Wayne', is_evil: false }
 
-    # bad - if we just use || operator with falsy value we won't get the expected result
-    batman[:is_evil] || true # => true
+  # bad - if we just use || operator with falsy value we won't get the expected result
+  batman[:is_evil] || true # => true
 
-    # good - fetch work correctly with falsy values
-    batman.fetch(:is_evil, true) # => false
-    ```
+  # good - fetch work correctly with falsy values
+  batman.fetch(:is_evil, true) # => false
+  ~~~
 
 
 ## Strings
@@ -714,27 +714,27 @@ developing in Ruby.
 * Prefer string interpolation and string formatting instead of string
   concatenation:
 
-    ```ruby
-    # bad
-    email_with_name = user.name + ' <' + user.email + '>'
+  ~~~ ruby
+  # bad
+  email_with_name = user.name + ' <' + user.email + '>'
 
-    # good
-    email_with_name = "#{user.name} <#{user.email}>"
+  # good
+  email_with_name = "#{user.name} <#{user.email}>"
 
-    # good
-    email_with_name = format('%s <%s>', user.name, user.email)
-    ```
+  # good
+  email_with_name = format('%s <%s>', user.name, user.email)
+  ~~~
 
 * With interpolated expressions, there should be no padded-spacing inside the
   braces.
 
-    ```ruby
-    # bad
-    "From: #{ user.first_name }, #{ user.last_name }"
+  ~~~ ruby
+  # bad
+  "From: #{ user.first_name }, #{ user.last_name }"
 
-    # good
-    "From: #{user.first_name}, #{user.last_name}"
-    ```
+  # good
+  "From: #{user.first_name}, #{user.last_name}"
+  ~~~
 
 * Adopt a consistent string literal quoting style.
 
@@ -745,85 +745,85 @@ developing in Ruby.
 * Don't leave out `{}` around instance and global variables being interpolated
   into a string.
 
-    ```ruby
-    class Person
-      attr_reader :first_name, :last_name
+  ~~~ ruby
+  class Person
+    attr_reader :first_name, :last_name
 
-      def initialize(first_name, last_name)
-        @first_name = first_name
-        @last_name = last_name
-      end
-
-      # bad - valid, but awkward
-      def to_s
-        "#@first_name #@last_name"
-      end
-
-      # good
-      def to_s
-        "#{@first_name} #{@last_name}"
-      end
+    def initialize(first_name, last_name)
+      @first_name = first_name
+      @last_name = last_name
     end
 
-    $global = 0
-    # bad
-    puts "$global = #$global"
+    # bad - valid, but awkward
+    def to_s
+      "#@first_name #@last_name"
+    end
 
-    # fine, but don't use globals
-    puts "$global = #{$global}"
-    ```
+    # good
+    def to_s
+      "#{@first_name} #{@last_name}"
+    end
+  end
+
+  $global = 0
+  # bad
+  puts "$global = #$global"
+
+  # fine, but don't use globals
+  puts "$global = #{$global}"
+  ~~~
 
 * Don't use `Object#to_s` on interpolated objects. It's invoked on them
   automatically.
 
-    ```ruby
-    # bad
-    message = "This is the #{result.to_s}."
+  ~~~ ruby
+  # bad
+  message = "This is the #{result.to_s}."
 
-    # good
-    message = "This is the #{result}."
-    ```
+  # good
+  message = "This is the #{result}."
+  ~~~
 
 * Don't use `String#gsub` in scenarios in which you can use a faster more
   specialized alternative.
 
-    ```ruby
-    url = 'http://example.com'
-    str = 'lisp-case-rules'
+  ~~~ ruby
+  url = 'http://example.com'
+  str = 'lisp-case-rules'
 
-    # bad
-    url.gsub('http://', 'https://')
-    str.gsub('-', '_')
-    str.gsub('case', '')
+  # bad
+  url.gsub('http://', 'https://')
+  str.gsub('-', '_')
+  str.gsub('case', '')
 
-    # good
-    url.sub('http://', 'https://')
-    str.tr('-', '_')
-    str.delete('case')
-    ```
+  # good
+  url.sub('http://', 'https://')
+  str.tr('-', '_')
+  str.delete('case')
+  ~~~
 
 * When using heredocs for multi-line strings keep in mind the fact that they
   preserve leading whitespace. It's a good practice to employ some margin based
   on which to trim the excessive whitespace.
 
-    ```ruby
-    code = <<-END.gsub(/^\s+\|/, '')
-      |def test
-      |  some_method
-      |  other_method
-      |end
-    END
-    # => "def test\n  some_method\n  other_method\nend\n"
+  ~~~ ruby
+  code = <<-END.gsub(/^\s+\|/, '')
+    |def test
+    |  some_method
+    |  other_method
+    |end
+  END
+  # => "def test\n  some_method\n  other_method\nend\n"
 
-    # In Rails you can use `#strip_heredoc` to achieve the same result
-    code = <<-END.strip_heredoc
-      def test
-        some_method
-        other_method
-      end
-    END
-    # => "def test\n  some_method\n  other_method\nend\n"
-    ```
+  # In Rails you can use `#strip_heredoc` to achieve the same result
+  code = <<-END.strip_heredoc
+    def test
+      some_method
+      other_method
+    end
+  END
+  # => "def test\n  some_method\n  other_method\nend\n"
+  ~~~
 
 ## Regular expressions
 
@@ -832,50 +832,50 @@ developing in Ruby.
 
 * Use non-capturing groups when you don't use the captured result.
 
-    ```ruby
-    # bad
-    /(first|second)/
+  ~~~ ruby
+  # bad
+  /(first|second)/
 
-    # good
-    /(?:first|second)/
-    ```
+  # good
+  /(?:first|second)/
+  ~~~
 
 * Don't use the cryptic Perl-legacy variables denoting last regexp group
   matches (`$1`, `$2`, etc). Use `Regexp#match` instead.
 
-    ```ruby
-    # bad
-    /(regexp)/ =~ string
-    process $1
+  ~~~ ruby
+  # bad
+  /(regexp)/ =~ string
+  process $1
 
-    # good
-    /(regexp)/.match(string)[1]
-    ```
+  # good
+  /(regexp)/.match(string)[1]
+  ~~~
 
 * Avoid using numbered groups as it can be hard to track what they contain.
   Named groups can be used instead.
 
-    ```ruby
-    # bad
-    /(regexp)/ =~ string
-    ...
-    process Regexp.last_match(1)
+  ~~~ ruby
+  # bad
+  /(regexp)/ =~ string
+  ...
+  process Regexp.last_match(1)
 
-    # good
-    /(?<meaningful_var>regexp)/ =~ string
-    ...
-    process meaningful_var
-    ```
+  # good
+  /(?<meaningful_var>regexp)/ =~ string
+  ...
+  process meaningful_var
+  ~~~
 
 * Be careful with `^` and `$` as they match start/end of line, not string
   endings.  If you want to match the whole string use: `\A` and `\z` (not to be
   confused with `\Z` which is the equivalent of `/\n?\z/`).
 
-    ```ruby
-    string = "some injection\nusername"
-    string[/^username$/]   # matches
-    string[/\Ausername\z/] # doesn't match
-    ```
+  ~~~ ruby
+  string = "some injection\nusername"
+  string[/^username$/]   # matches
+  string[/\Ausername\z/] # doesn't match
+  ~~~
 
 
 ## Percent Literals
@@ -891,14 +891,14 @@ developing in Ruby.
 * Use `%r` only for regular expressions matching *at least* one '/'
   character.
 
-    ```ruby
-    # bad
-    %r{\s+}
+  ~~~ ruby
+  # bad
+  %r{\s+}
 
-    # good
-    %r{^/(.*)$}
-    %r{^/blog/2011/(.*)$}
-    ```
+  # good
+  %r{^/(.*)$}
+  %r{^/blog/2011/(.*)$}
+  ~~~
 
 * Avoid the use of `%s`. Use `:"some string"` to create a symbol with spaces in
   it.
@@ -923,21 +923,21 @@ developing in Ruby.
     2. The action that is the subject of the test
     3. Asserting that the action did what you expect it do to.
 
-    Consider separating these parts by a newline for readability, especially
-    when your environment setup is complicated and you want to run multiple
-    assertions afterwards.
+  Consider separating these parts by a newline for readability, especially
+  when your environment setup is complicated and you want to run multiple
+  assertions afterwards.
 
-    ```ruby
-    test 'sending a password reset email clears the password hash and set a reset token' do
-      user = User.create!(email: 'bob@example.com')
-      user.mark_as_verified
+  ~~~ ruby
+  test 'sending a password reset email clears the password hash and set a reset token' do
+    user = User.create!(email: 'bob@example.com')
+    user.mark_as_verified
 
-      user.send_password_reset_email
+    user.send_password_reset_email
 
-      assert_nil user.password_hash
-      refute_nil user.reset_token
-    end
-    ```
+    assert_nil user.password_hash
+    refute_nil user.reset_token
+  end
+    ~~~
 
 * A complex test should be split into multiple simpler tests that test
   functionality in isolation.
@@ -948,32 +948,32 @@ developing in Ruby.
 * Prefer using assertion methods that will yield a more descriptive error
   message.
 
-    ```ruby
-    # bad
-    assert user.valid?
-    assert user.name == 'tobi'
+  ~~~ ruby
+  # bad
+  assert user.valid?
+  assert user.name == 'tobi'
 
 
-    # good
-    assert_predicate user, :valid?
-    assert_equal 'tobi', user.name
-    ```
+  # good
+  assert_predicate user, :valid?
+  assert_equal 'tobi', user.name
+  ~~~
 
 * Avoid using `assert_nothing_raised`. Use a positive assertion instead.
 
 * Prefer using assertions over expectations. Expectations lead to more brittle
   tests, especially in combination with singleton objects.
 
-    ```ruby
-    # bad
-    StatsD.expects(:increment).with('metric')
-    do_something
+  ~~~ ruby
+  # bad
+  StatsD.expects(:increment).with('metric')
+  do_something
 
-    # good
-    assert_statsd_increment('metric') do
-      do_something
-    end
-    ```
+  # good
+  assert_statsd_increment('metric') do
+    do_something
+  end
+  ~~~
 
 ## The rest
 
