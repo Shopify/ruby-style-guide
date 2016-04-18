@@ -100,7 +100,7 @@ code {
   }
 }
 
-pre {
+.highlight {
   margin-top: $default-spacing-halved;
   word-break: normal;
   padding: $default-spacing-halved;
@@ -111,7 +111,7 @@ pre {
   word-wrap: normal;
 }
 
-pre > code {
+.highlight > code {
   &:before, &:after {
     content: none;
   }
