@@ -84,5 +84,8 @@ Style/MultilineMethodCallIndentation:
   EnforcedStyle: indented
   IndentationWidth: 2
 
+Style/TrailingUnderscoreVariable:
+  Enabled: false
+
 Metrics/LineLength:
   Max: 120
