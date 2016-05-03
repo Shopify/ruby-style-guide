@@ -92,3 +92,6 @@ Style/TrailingUnderscoreVariable:
 
 Metrics/LineLength:
   Max: 120
+
+Style/ModuleFunction:
+  Enabled: false

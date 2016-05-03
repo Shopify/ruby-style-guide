@@ -378,7 +378,7 @@ developing in Ruby.
 
 * Avoid superfluous comments. If they are about how your code works, should you clarify your code instead?
 
-* For a good discussion on the costs and benefits of comments, see 
+* For a good discussion on the costs and benefits of comments, see
   [http://c2.com/cgi/wiki?CommentCostsAndBenefits](http://c2.com/cgi/wiki?CommentCostsAndBenefits).
 
 
@@ -389,21 +389,21 @@ developing in Ruby.
 
   ~~~ ruby
   # bad
-  class SomeClass
-    def self.some_method
-      # body omitted
+  module SomeModule
+    module_function
+
+    def some_method
     end
 
-    def self.some_other_method
+    def some_other_method
     end
   end
 
   # good
   module SomeModule
-    module_function
+    extend self
 
     def some_method
-      # body omitted
     end
 
     def some_other_method
@@ -411,7 +411,7 @@ developing in Ruby.
   end
   ~~~
 
-* Favor the use of `module_function` over `extend self` when you want to turn a
+* Favor the use of `extend self` over `module_function` when you want to turn a
   module's instance methods into class methods.
 
 * When designing class hierarchies make sure that they conform to the [Liskov
