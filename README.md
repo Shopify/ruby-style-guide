@@ -414,6 +414,49 @@ developing in Ruby.
 * Favor the use of `extend self` over `module_function` when you want to turn a
   module's instance methods into class methods.
 
+* Use a `class << self` block over `def self.` when defining class methods, and
+  group them together within a single block.
+
+  ~~~ ruby
+  # bad
+  class SomeClass
+    def self.method1
+    end
+
+    def method2
+    end
+
+    private
+
+    def method3
+    end
+
+    def self.method4 # this is actually not private
+    end
+  end
+
+  # good
+  class SomeClass
+    class << self
+      def method1
+      end
+
+      private
+
+      def method4
+      end
+    end
+
+    def method2
+    end
+
+    private
+
+    def method3
+    end
+  end
+  ~~~
+
 * When designing class hierarchies make sure that they conform to the [Liskov
   Substitution
   Principle](https://en.wikipedia.org/wiki/Liskov_substitution_principle).
