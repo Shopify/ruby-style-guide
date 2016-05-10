@@ -164,6 +164,22 @@ developing in Ruby.
   # another comment line
   ~~~
 
+* Closing method call brace must be on the line after the last argument when
+  opening brace is on a separate line from the first argument.
+
+  ~~~ ruby
+  # bad
+  method(
+    arg_1,
+    arg_2)
+
+  # good
+  method(
+    arg_1,
+    arg_2,
+  )
+  ~~~
+
 
 ## Syntax
 
@@ -751,6 +767,31 @@ developing in Ruby.
   batman.fetch(:is_evil, true) # => false
   ~~~
 
+* Closing `]` and `}` must be on the line after the last element when
+  opening brace is on a separate line from the first element.
+
+  ~~~ ruby
+  # bad
+  [
+    1,
+    2]
+
+  {
+    a: 1,
+    b: 2}
+
+  # good
+  [
+    1,
+    2,
+  ]
+
+  {
+    a: 1,
+    b: 2,
+  }
+  ~~~
+
 
 ## Strings
 
@@ -980,7 +1021,7 @@ developing in Ruby.
     assert_nil user.password_hash
     refute_nil user.reset_token
   end
-    ~~~
+  ~~~
 
 * A complex test should be split into multiple simpler tests that test
   functionality in isolation.
