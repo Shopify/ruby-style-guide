@@ -167,9 +167,32 @@ developing in Ruby.
 
 ## Syntax
 
-* Use `::` only to reference constants(this includes classes and modules) and
+* Use `::` only to reference constants (this includes classes and modules) and
   constructors (like `Array()` or `Nokogiri::HTML()`). Do not use `::` for
   regular method invocation.
+
+* Avoid using `::` for defining class and modules, or for inheritance, since
+  constant lookup will not search in parent classes/modules.
+
+  ~~~ ruby
+  # bad
+  module A
+    FOO = 'test'
+  end
+
+  class A::B
+    puts FOO  # this will raise a NameError exception
+  end
+
+  # good
+  module A
+    FOO = 'test'
+
+    class B
+      puts FOO
+    end
+  end
+  ~~~
 
 * Use def with parentheses when there are parameters. Omit the parentheses when
   the method doesn't accept any parameters.
