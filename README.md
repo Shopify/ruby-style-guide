@@ -196,7 +196,8 @@ developing in Ruby.
 
 * Use `!` instead of `not`.
 
-* Don't use `and` and `or` keywords. Always use `&&` and `||` instead.
+* Prefer `&&`/`||` over `and`/`or`.
+  [More info on `and/or` for control flow](http://devblog.avdi.org/2014/08/26/how-to-use-rubys-english-andor-operators-without-going-nuts/).
 
 * Avoid multiline `?:` (the ternary operator); use `if/unless` instead.
 
