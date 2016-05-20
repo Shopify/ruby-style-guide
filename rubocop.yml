@@ -92,3 +92,6 @@ Metrics/LineLength:
 
 Style/ModuleFunction:
   Enabled: false
+
+Style/DoubleNegation:
+  Enabled: false
