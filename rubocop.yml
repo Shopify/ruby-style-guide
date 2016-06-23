@@ -19,6 +19,9 @@ Style/TrailingCommaInArguments:
 Style/TrailingCommaInLiteral:
   Enabled: false
 
+Style/ExtraSpacing:
+  AllowForAlignment: true
+
 Style/SignalException:
   EnforcedStyle: only_raise
 
