@@ -148,6 +148,8 @@ developing in Ruby.
 
 * Avoid trailing whitespace.
 
+* Avoid extra whitespace, except for alignment purposes.
+
 * End each file with a newline.
 
 * Don't use block comments:
