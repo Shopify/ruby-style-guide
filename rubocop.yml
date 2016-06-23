@@ -20,7 +20,7 @@ Style/TrailingCommaInLiteral:
   Enabled: false
 
 Style/ExtraSpacing:
-  Enabled: false
+  AllowForAlignment: true
 
 Style/SignalException:
   EnforcedStyle: only_raise
