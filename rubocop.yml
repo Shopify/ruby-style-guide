@@ -3,6 +3,9 @@ AllCops:
   - 'db/schema.rb'
   DisabledByDefault: true
 
+Lint/AssignmentInCondition:
+  Enabled: true
+
 Layout/AccessModifierIndentation:
   EnforcedStyle: indent
   SupportedStyles:
