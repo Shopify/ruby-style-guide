@@ -904,12 +904,12 @@ developing in Ruby.
   # bad
   url.gsub('http://', 'https://')
   str.gsub('-', '_')
-  str.gsub('case', '')
+  str.gsub(/[aeiou]/, '')
 
   # good
   url.sub('http://', 'https://')
   str.tr('-', '_')
-  str.delete('case')
+  str.delete('aeiou')
   ~~~
 
 * When using heredocs for multi-line strings keep in mind the fact that they
