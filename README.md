@@ -219,7 +219,7 @@ developing in Ruby.
 
 * Never use `then`.
 
-* Favor the ternary operator(`?:`) over `if/then/else/end` constructs.
+* Favour the ternary operator(`?:`) over `if/then/else/end` constructs.
 
   ~~~ ruby
   # bad
@@ -242,19 +242,7 @@ developing in Ruby.
 
 * Avoid multiline `?:` (the ternary operator); use `if/unless` instead.
 
-* Favor modifier `if/unless` usage when you have a single-line body.
-
-  ~~~ ruby
-  # bad
-  if some_condition
-    do_something
-  end
-
-  # good
-  do_something if some_condition
-  ~~~
-
-* Favor `unless` over `if` for negative conditions.
+* Favour `unless` over `if` for negative conditions.
 
 * Do not use `unless` with `else`. Rewrite these with the positive case first.
 
@@ -453,7 +441,7 @@ developing in Ruby.
   end
   ~~~
 
-* Favor the use of `extend self` over `module_function` when you want to turn a
+* Favour the use of `extend self` over `module_function` when you want to turn a
   module's instance methods into class methods.
 
 * Use a `class << self` block over `def self.` when defining class methods, and
@@ -675,7 +663,7 @@ developing in Ruby.
   end
   ~~~
 
-* Favor the use of exceptions from the standard library over introducing new
+* Favour the use of exceptions from the standard library over introducing new
   exception classes.
 
 * Don't use single letter variables for exceptions (`error` isn't that hard to
