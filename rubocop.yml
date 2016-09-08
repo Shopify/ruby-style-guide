@@ -22,6 +22,9 @@ Style/TrailingCommaInLiteral:
 Style/ExtraSpacing:
   AllowForAlignment: true
 
+Style/GuardClause:
+  Enabled: false
+
 Style/SignalException:
   EnforcedStyle: only_raise
 
