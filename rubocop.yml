@@ -104,3 +104,6 @@ Style/DoubleNegation:
 
 Style/SingleLineBlockParams:
   Enabled: false
+  
+Style/StructInheritance:
+  Enabled: false
