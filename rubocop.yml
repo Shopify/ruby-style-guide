@@ -107,3 +107,6 @@ Style/SingleLineBlockParams:
   
 Style/StructInheritance:
   Enabled: false
+  
+Style/IfUnlessModifier:
+  Enabled: false
