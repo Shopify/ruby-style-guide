@@ -31,6 +31,9 @@ Style/SignalException:
 Style/NumericLiterals:
   Enabled: false
 
+Style/NumericLiteralPrefix:
+  EnforcedOctalStyle: zero_only
+
 Style/CaseIndentation:
   IndentWhenRelativeTo: end
 
