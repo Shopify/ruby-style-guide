@@ -22,9 +22,6 @@ developing in Ruby.
 
 * Code in a functional way. Avoid mutation (side effects) when you can.
 
-* Do not program defensively (see
-  [http://www.erlang.se/doc/programming_rules.shtml#HDR11](http://www.erlang.se/doc/programming_rules.shtml#HDR11)).
-
 * Do not mutate arguments unless that is the purpose of the method.
 
 * Do not mess around in / monkeypatch core classes when writing libraries.
