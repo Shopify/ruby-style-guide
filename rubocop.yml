@@ -74,6 +74,12 @@ Metrics/PerceivedComplexity:
 Lint/EndAlignment:
   AlignWith: variable
 
+Lint/PercentSymbolArray:
+  Enabled: true
+
+Lint/PercentStringArray:
+  Enabled: true
+
 Style/FrozenStringLiteralComment:
   Enabled: false
 
