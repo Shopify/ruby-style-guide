@@ -113,9 +113,12 @@ Style/DoubleNegation:
 
 Style/SingleLineBlockParams:
   Enabled: false
-  
+
 Style/StructInheritance:
   Enabled: false
-  
+
 Style/IfUnlessModifier:
+  Enabled: false
+
+Style/VariableNumber:
   Enabled: false
