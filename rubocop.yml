@@ -103,7 +103,7 @@ Style/TrailingUnderscoreVariable:
   Enabled: false
 
 Metrics/LineLength:
-  Max: 120
+  Enabled: false
 
 Style/ModuleFunction:
   Enabled: false

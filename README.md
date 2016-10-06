@@ -144,8 +144,6 @@ developing in Ruby.
 
 * Align the elements of array literals spanning multiple lines.
 
-* Limit lines to 120 characters.
-
 * Avoid trailing whitespace.
 
 * Avoid extra whitespace, except for alignment purposes.
