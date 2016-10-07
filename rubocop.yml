@@ -122,3 +122,7 @@ Style/IfUnlessModifier:
 
 Style/VariableNumber:
   Enabled: false
+
+AllCops:
+  Exclude:
+    - 'db/schema.rb'
