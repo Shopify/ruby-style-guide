@@ -125,6 +125,9 @@ Style/IfUnlessModifier:
 
 Style/VariableNumber:
   Enabled: false
+  
+Style/Lambda:
+  Enabled: false
 
 AllCops:
   Exclude:
