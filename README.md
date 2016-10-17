@@ -255,7 +255,7 @@ developing in Ruby.
 
   ~~~ ruby
   # bad
-  scope(:pending, lambda do
+  scope(:pending, -> do
     ...
     ...
   end)
@@ -314,19 +314,23 @@ developing in Ruby.
 
 * Do not put a space between a method name and the opening parenthesis.
 
-* Use the new lambda literal syntax for single-line body blocks. Use the lambda
-  method for multi-line blocks.
+* Use the new lambda literal syntax.
 
   ~~~ ruby
   # bad
   l = lambda { |a, b| a + b }
   l.call(1, 2)
+  
+  l = lambda do |a, b|
+    tmp = a * 7
+    tmp * b / 50
+  end
 
   # good
   l = ->(a, b) { a + b }
   l.call(1, 2)
 
-  l = lambda do |a, b|
+  l = ->(a, b) do
     tmp = a * 7
     tmp * b / 50
   end
