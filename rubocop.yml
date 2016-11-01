@@ -129,6 +129,9 @@ Style/VariableNumber:
 Style/Lambda:
   Enabled: false
 
+Style/IfInsideElse:
+  Enabled: false
+
 AllCops:
   Exclude:
     - 'db/schema.rb'
