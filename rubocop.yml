@@ -34,6 +34,9 @@ Style/NumericLiterals:
 Style/NumericLiteralPrefix:
   EnforcedOctalStyle: zero_only
 
+Style/NumericPredicate:
+  Enabled: false
+
 Style/CaseIndentation:
   IndentWhenRelativeTo: end
 
