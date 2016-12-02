@@ -128,8 +128,23 @@ Style/IfUnlessModifier:
 
 Style/VariableNumber:
   Enabled: false
-  
+
 Style/Lambda:
+  Enabled: false
+
+Style/EmptyMethod:
+  Enabled: false
+
+Bundler/OrderedGems:
+  Enabled: false
+
+Lint/EmptyWhen:
+  Enabled: false
+
+Style/SpaceInLambdaLiteral:
+  Enabled: false
+
+Lint/EmptyWhen:
   Enabled: false
 
 AllCops:
