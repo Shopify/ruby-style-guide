@@ -509,6 +509,8 @@ Metrics/LineLength:
   - http
   - https
   IgnoreCopDirectives: false
+  IgnoredPatterns:
+  - '\A\s*test\s.*(do|->)\Z'
 
 Metrics/ParameterLists:
   Max: 5
