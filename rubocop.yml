@@ -1112,9 +1112,6 @@ Performance/StartWith:
 Performance/StringReplacement:
   Enabled: true
 
-Performance/TimesMap:
-  Enabled: true
-
 Rails/Delegate:
   Enabled: true
 
