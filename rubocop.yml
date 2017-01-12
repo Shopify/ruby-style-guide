@@ -2,7 +2,6 @@ AllCops:
   Exclude:
   - 'db/schema.rb'
   DisabledByDefault: true
-  TargetRubyVersion: 2.3
 
 Style/AccessModifierIndentation:
   EnforcedStyle: indent
