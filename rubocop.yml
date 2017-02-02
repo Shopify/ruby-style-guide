@@ -332,12 +332,8 @@ Style/PercentQLiterals:
 Style/PredicateName:
   NamePrefix:
   - is_
-  - has_
-  - have_
   NamePrefixBlacklist:
   - is_
-  - has_
-  - have_
   NameWhitelist:
   - is_a?
   Exclude:
