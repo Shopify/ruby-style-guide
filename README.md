@@ -320,7 +320,7 @@ developing in Ruby.
   # bad
   l = lambda { |a, b| a + b }
   l.call(1, 2)
-  
+
   l = lambda do |a, b|
     tmp = a * 7
     tmp * b / 50
@@ -395,9 +395,9 @@ developing in Ruby.
 * When defining binary operators, name the parameter `other`(`<<` and `[]` are
   exceptions to the rule, since their semantics are different).
 
-* The names of predicate methods (methods that return a boolean value) should
-  end in a question mark (i.e. `Array#empty?`). Methods that don't return a
-  boolean, shouldn't end in a question mark.
+* The names of predicate methods (methods that return a boolean value) should end in a question mark (i.e. `Array#empty?`). Methods that don't return a boolean, shouldn't end in a question mark.
+
+* Method names should not be prefixed with `is_`. E.g. prefer `empty?` of `is_empty?`.
 
 
 ## Comments
