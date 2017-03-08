@@ -397,7 +397,7 @@ developing in Ruby.
 
 * The names of predicate methods (methods that return a boolean value) should end in a question mark (i.e. `Array#empty?`). Methods that don't return a boolean, shouldn't end in a question mark.
 
-* Method names should not be prefixed with `is_`. E.g. prefer `empty?` of `is_empty?`.
+* Method names should not be prefixed with `is_`. E.g. prefer `empty?` over `is_empty?`.
 
 
 ## Comments
@@ -420,6 +420,9 @@ developing in Ruby.
 
 * Prefer modules to classes with only class methods. Classes should be used
   only when it makes sense to create instances out of them.
+
+* Favour the use of `extend self` over `module_function` when you want to turn a
+  module's instance methods into class methods.
 
   ~~~ ruby
   # bad
@@ -444,9 +447,6 @@ developing in Ruby.
     end
   end
   ~~~
-
-* Favour the use of `extend self` over `module_function` when you want to turn a
-  module's instance methods into class methods.
 
 * Use a `class << self` block over `def self.` when defining class methods, and
   group them together within a single block.
