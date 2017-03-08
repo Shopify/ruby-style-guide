@@ -927,6 +927,19 @@ developing in Ruby.
   # => "def test\n  some_method\n  other_method\nend\n"
   ~~~
 
+* In Ruby 2.3, prefer ["squiggly heredoc"](https://github.com/ruby/ruby/pull/878)
+  syntax, which has the same semantics as `strip_heredoc` from Rails:
+
+  ~~~ruby
+  code = <<~END
+    def test
+      some_method
+      other_method
+    end
+  END
+  # => "def test\n  some_method\n  other_method\nend\n"
+  ~~~
+
 ## Regular expressions
 
 * Don't use regular expressions if you just need plain text search in string:
