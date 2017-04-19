@@ -915,6 +915,9 @@ Style/WhileUntilDo:
 Style/ZeroLengthPredicate:
   Enabled: true
 
+Layout/IndentHeredoc:
+  EnforcedStyle: squiggly
+
 Lint/AmbiguousOperator:
   Enabled: true
 
