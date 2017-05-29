@@ -3,7 +3,7 @@ AllCops:
   - 'db/schema.rb'
   DisabledByDefault: true
 
-Style/AccessModifierIndentation:
+Layout/AccessModifierIndentation:
   EnforcedStyle: indent
   SupportedStyles:
   - outdent
@@ -16,7 +16,7 @@ Style/Alias:
   - prefer_alias
   - prefer_alias_method
 
-Style/AlignHash:
+Layout/AlignHash:
   EnforcedHashRocketStyle: key
   EnforcedColonStyle: key
   EnforcedLastArgumentHashStyle: ignore_implicit
@@ -26,7 +26,7 @@ Style/AlignHash:
   - ignore_implicit
   - ignore_explicit
 
-Style/AlignParameters:
+Layout/AlignParameters:
   EnforcedStyle: with_fixed_indentation
   SupportedStyles:
   - with_first_parameter
@@ -79,7 +79,7 @@ Style/BracesAroundHashParameters:
   - no_braces
   - context_dependent
 
-Style/CaseIndentation:
+Layout/CaseIndentation:
   EnforcedStyle: end
   SupportedStyles:
   - case
@@ -122,7 +122,7 @@ Style/ConditionalAssignment:
   - assign_inside_condition
   SingleLineConditionsOnly: true
 
-Style/DotPosition:
+Layout/DotPosition:
   EnforcedStyle: leading
   SupportedStyles:
   - leading
@@ -135,30 +135,30 @@ Style/EmptyElse:
   - nil
   - both
 
-Style/EmptyLineBetweenDefs:
+Layout/EmptyLineBetweenDefs:
   AllowAdjacentOneLineDefs: false
 
-Style/EmptyLinesAroundBlockBody:
+Layout/EmptyLinesAroundBlockBody:
   EnforcedStyle: no_empty_lines
   SupportedStyles:
   - empty_lines
   - no_empty_lines
 
-Style/EmptyLinesAroundClassBody:
-  EnforcedStyle: no_empty_lines
-  SupportedStyles:
-  - empty_lines
-  - empty_lines_except_namespace
-  - no_empty_lines
-
-Style/EmptyLinesAroundModuleBody:
+Layout/EmptyLinesAroundClassBody:
   EnforcedStyle: no_empty_lines
   SupportedStyles:
   - empty_lines
   - empty_lines_except_namespace
   - no_empty_lines
 
-Style/ExtraSpacing:
+Layout/EmptyLinesAroundModuleBody:
+  EnforcedStyle: no_empty_lines
+  SupportedStyles:
+  - empty_lines
+  - empty_lines_except_namespace
+  - no_empty_lines
+
+Layout/ExtraSpacing:
   AllowForAlignment: true
   ForceEqualSignAlignment: false
 
@@ -168,7 +168,7 @@ Style/FileName:
   Regex:
   IgnoreExecutableScripts: true
 
-Style/FirstParameterIndentation:
+Layout/FirstParameterIndentation:
   EnforcedStyle: consistent
   SupportedStyles:
   - consistent
@@ -213,16 +213,16 @@ Style/HashSyntax:
   UseHashRocketsWithSymbolValues: false
   PreferHashRocketsForNonAlnumEndingSymbols: false
 
-Style/IndentationConsistency:
+Layout/IndentationConsistency:
   EnforcedStyle: normal
   SupportedStyles:
   - normal
   - rails
 
-Style/IndentationWidth:
+Layout/IndentationWidth:
   Width: 2
 
-Style/IndentArray:
+Layout/IndentArray:
   EnforcedStyle: consistent
   SupportedStyles:
   - special_inside_parentheses
@@ -230,10 +230,10 @@ Style/IndentArray:
   - align_brackets
   IndentationWidth:
 
-Style/IndentAssignment:
+Layout/IndentAssignment:
   IndentationWidth:
 
-Style/IndentHash:
+Layout/IndentHash:
   EnforcedStyle: consistent
   SupportedStyles:
   - special_inside_parentheses
@@ -270,28 +270,28 @@ Style/MethodName:
   - snake_case
   - camelCase
 
-Style/MultilineArrayBraceLayout:
+Layout/MultilineArrayBraceLayout:
   EnforcedStyle: symmetrical
   SupportedStyles:
   - symmetrical
   - new_line
   - same_line
 
-Style/MultilineHashBraceLayout:
+Layout/MultilineHashBraceLayout:
   EnforcedStyle: symmetrical
   SupportedStyles:
   - symmetrical
   - new_line
   - same_line
 
-Style/MultilineMethodCallBraceLayout:
+Layout/MultilineMethodCallBraceLayout:
   EnforcedStyle: symmetrical
   SupportedStyles:
   - symmetrical
   - new_line
   - same_line
 
-Style/MultilineMethodCallIndentation:
+Layout/MultilineMethodCallIndentation:
   EnforcedStyle: indented
   SupportedStyles:
   - aligned
@@ -299,7 +299,7 @@ Style/MultilineMethodCallIndentation:
   - indented_relative_to_receiver
   IndentationWidth: 2
 
-Style/MultilineMethodDefinitionBraceLayout:
+Layout/MultilineMethodDefinitionBraceLayout:
   EnforcedStyle: symmetrical
   SupportedStyles:
   - symmetrical
@@ -382,7 +382,7 @@ Style/SignalException:
 Style/SingleLineMethods:
   AllowIfMethodIsEmpty: true
 
-Style/SpaceBeforeFirstArg:
+Layout/SpaceBeforeFirstArg:
   AllowForAlignment: true
 
 Style/SpecialGlobalVars:
@@ -403,28 +403,28 @@ Style/StringLiteralsInInterpolation:
   - single_quotes
   - double_quotes
 
-Style/SpaceAroundBlockParameters:
+Layout/SpaceAroundBlockParameters:
   EnforcedStyleInsidePipes: no_space
   SupportedStylesInsidePipes:
   - space
   - no_space
 
-Style/SpaceAroundEqualsInParameterDefault:
+Layout/SpaceAroundEqualsInParameterDefault:
   EnforcedStyle: space
   SupportedStyles:
   - space
   - no_space
 
-Style/SpaceAroundOperators:
+Layout/SpaceAroundOperators:
   AllowForAlignment: true
 
-Style/SpaceBeforeBlockBraces:
+Layout/SpaceBeforeBlockBraces:
   EnforcedStyle: space
   SupportedStyles:
   - space
   - no_space
 
-Style/SpaceInsideBlockBraces:
+Layout/SpaceInsideBlockBraces:
   EnforcedStyle: space
   SupportedStyles:
   - space
@@ -432,7 +432,7 @@ Style/SpaceInsideBlockBraces:
   EnforcedStyleForEmptyBraces: no_space
   SpaceBeforeBlockParameters: true
 
-Style/SpaceInsideHashLiteralBraces:
+Layout/SpaceInsideHashLiteralBraces:
   EnforcedStyle: space
   EnforcedStyleForEmptyBraces: no_space
   SupportedStyles:
@@ -440,7 +440,7 @@ Style/SpaceInsideHashLiteralBraces:
   - no_space
   - compact
 
-Style/SpaceInsideStringInterpolation:
+Layout/SpaceInsideStringInterpolation:
   EnforcedStyle: no_space
   SupportedStyles:
   - space
@@ -458,7 +458,7 @@ Style/TernaryParentheses:
   - require_no_parentheses
   AllowSafeAssignment: true
 
-Style/TrailingBlankLines:
+Layout/TrailingBlankLines:
   EnforcedStyle: final_newline
   SupportedStyles:
   - final_newline
@@ -645,7 +645,7 @@ Rails/Validation:
 Style/AccessorMethodName:
   Enabled: true
 
-Style/AlignArray:
+Layout/AlignArray:
   Enabled: true
 
 Style/ArrayJoin:
@@ -663,7 +663,7 @@ Style/BeginBlock:
 Style/BlockComments:
   Enabled: true
 
-Style/BlockEndNewline:
+Layout/BlockEndNewline:
   Enabled: true
 
 Style/CaseEquality:
@@ -681,13 +681,13 @@ Style/ClassMethods:
 Style/ClassVars:
   Enabled: true
 
-Style/ClosingParenthesisIndentation:
+Layout/ClosingParenthesisIndentation:
   Enabled: true
 
 Style/ColonMethodCall:
   Enabled: true
 
-Style/CommentIndentation:
+Layout/CommentIndentation:
   Enabled: true
 
 Style/ConstantName:
@@ -702,19 +702,19 @@ Style/EachForSimpleLoop:
 Style/EachWithObject:
   Enabled: true
 
-Style/ElseAlignment:
+Layout/ElseAlignment:
   Enabled: true
 
 Style/EmptyCaseCondition:
   Enabled: true
 
-Style/EmptyLines:
+Layout/EmptyLines:
   Enabled: true
 
-Style/EmptyLinesAroundAccessModifier:
+Layout/EmptyLinesAroundAccessModifier:
   Enabled: true
 
-Style/EmptyLinesAroundMethodBody:
+Layout/EmptyLinesAroundMethodBody:
   Enabled: true
 
 Style/EmptyLiteral:
@@ -723,13 +723,13 @@ Style/EmptyLiteral:
 Style/EndBlock:
   Enabled: true
 
-Style/EndOfLine:
+Layout/EndOfLine:
   Enabled: true
 
 Style/EvenOdd:
   Enabled: true
 
-Style/InitialIndentation:
+Layout/InitialIndentation:
   Enabled: true
 
 Style/FlipFlop:
@@ -750,7 +750,7 @@ Style/IdenticalConditionalBranches:
 Style/InfiniteLoop:
   Enabled: true
 
-Style/LeadingCommentSpace:
+Layout/LeadingCommentSpace:
   Enabled: true
 
 Style/LineEndConcatenation:
@@ -765,7 +765,7 @@ Style/MethodMissing:
 Style/MultilineBlockChain:
   Enabled: true
 
-Style/MultilineBlockLayout:
+Layout/MultilineBlockLayout:
   Enabled: true
 
 Style/MultilineIfThen:
@@ -831,7 +831,7 @@ Style/RedundantParentheses:
 Style/RedundantSelf:
   Enabled: true
 
-Style/RescueEnsureAlignment:
+Layout/RescueEnsureAlignment:
   Enabled: true
 
 Style/RescueModifier:
@@ -840,55 +840,55 @@ Style/RescueModifier:
 Style/SelfAssignment:
   Enabled: true
 
-Style/SpaceAfterColon:
+Layout/SpaceAfterColon:
   Enabled: true
 
-Style/SpaceAfterComma:
+Layout/SpaceAfterComma:
   Enabled: true
 
-Style/SpaceAfterMethodName:
+Layout/SpaceAfterMethodName:
   Enabled: true
 
-Style/SpaceAfterNot:
+Layout/SpaceAfterNot:
   Enabled: true
 
-Style/SpaceAfterSemicolon:
+Layout/SpaceAfterSemicolon:
   Enabled: true
 
-Style/SpaceBeforeComma:
+Layout/SpaceBeforeComma:
   Enabled: true
 
-Style/SpaceBeforeComment:
+Layout/SpaceBeforeComment:
   Enabled: true
 
-Style/SpaceBeforeSemicolon:
+Layout/SpaceBeforeSemicolon:
   Enabled: true
 
-Style/SpaceAroundKeyword:
+Layout/SpaceAroundKeyword:
   Enabled: true
 
-Style/SpaceInsideArrayPercentLiteral:
+Layout/SpaceInsideArrayPercentLiteral:
   Enabled: true
 
-Style/SpaceInsidePercentLiteralDelimiters:
+Layout/SpaceInsidePercentLiteralDelimiters:
   Enabled: true
 
-Style/SpaceInsideBrackets:
+Layout/SpaceInsideBrackets:
   Enabled: true
 
-Style/SpaceInsideParens:
+Layout/SpaceInsideParens:
   Enabled: true
 
-Style/SpaceInsideRangeLiteral:
+Layout/SpaceInsideRangeLiteral:
   Enabled: true
 
 Style/SymbolLiteral:
   Enabled: true
 
-Style/Tab:
+Layout/Tab:
   Enabled: true
 
-Style/TrailingWhitespace:
+Layout/TrailingWhitespace:
   Enabled: true
 
 Style/UnlessElse:
@@ -915,7 +915,7 @@ Style/WhileUntilDo:
 Style/ZeroLengthPredicate:
   Enabled: true
 
-Style/IndentHeredoc:
+Layout/IndentHeredoc:
   EnforcedStyle: squiggly
 
 Lint/AmbiguousOperator:
