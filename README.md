@@ -246,12 +246,13 @@ developing in Ruby.
 
 * Do not use `unless` with `else`. Rewrite these with the positive case first.
 
-* Omit parentheses around parameters for single-line methods that are part
-  of an internal DSL (e.g. Rake, Rails, RSpec, etc., usually methods called
-  in the class definition), methods that have "keyword" status in Ruby
-  (e.g. `attr_reader`, `puts`) and attribute access methods. Use parentheses for
-  multiline method invocations. Also use parentheses around the arguments of
-  all other method invocations.
+* Use parentheses around the arguments of method invocations. Omit parentheses
+  when not providing arguments. Also omit parentheses when the invocation is
+  single-line and the method:
+  - is part of an internal DSL (e.g. Rake, Rails, RSpec, etc., usually methods
+    called in the class definition)
+  - has "keyword" status in Ruby (e.g. `attr_reader`, `puts`)
+  - is an attribute accessor
 
 * Use class methods instead of a rails scope with a multi-line lambda
 
