@@ -162,7 +162,7 @@ Layout/ExtraSpacing:
   AllowForAlignment: true
   ForceEqualSignAlignment: false
 
-Style/FileName:
+Naming/FileName:
   Exclude: []
   ExpectMatchingDefinition: false
   Regex:
@@ -264,7 +264,7 @@ Style/MethodDefParentheses:
   - require_no_parentheses
   - require_no_parentheses_except_multiline
 
-Style/MethodName:
+Naming/MethodName:
   EnforcedStyle: snake_case
   SupportedStyles:
   - snake_case
@@ -333,7 +333,7 @@ Style/PercentQLiterals:
   - lower_case_q
   - upper_case_q
 
-Style/PredicateName:
+Naming/PredicateName:
   NamePrefix:
   - is_
   NamePrefixBlacklist:
@@ -488,7 +488,7 @@ Style/TrivialAccessors:
   - to_s
   - to_sym
 
-Style/VariableName:
+Naming/VariableName:
   EnforcedStyle: snake_case
   SupportedStyles:
   - snake_case
@@ -642,7 +642,7 @@ Rails/Validation:
   Include:
   - app/models/**/*.rb
 
-Style/AccessorMethodName:
+Naming/AccessorMethodName:
   Enabled: true
 
 Layout/AlignArray:
@@ -651,7 +651,7 @@ Layout/AlignArray:
 Style/ArrayJoin:
   Enabled: true
 
-Style/AsciiIdentifiers:
+Naming/AsciiIdentifiers:
   Enabled: true
 
 Style/Attr:
@@ -672,7 +672,7 @@ Style/CaseEquality:
 Style/CharacterLiteral:
   Enabled: true
 
-Style/ClassAndModuleCamelCase:
+Naming/ClassAndModuleCamelCase:
   Enabled: true
 
 Style/ClassMethods:
@@ -690,7 +690,7 @@ Style/ColonMethodCall:
 Layout/CommentIndentation:
   Enabled: true
 
-Style/ConstantName:
+Naming/ConstantName:
   Enabled: true
 
 Style/DefWithParentheses:
