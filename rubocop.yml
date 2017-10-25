@@ -977,7 +977,7 @@ Lint/IneffectiveAccessModifier:
   Description: Checks for attempts to use `private` or `protected` to set the visibility
     of a class method, which does not work.
 
-Lint/LiteralInCondition:
+Lint/LiteralAsCondition:
   Enabled: true
 
 Lint/LiteralInInterpolation:
