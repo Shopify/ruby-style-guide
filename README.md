@@ -377,7 +377,7 @@ developing in Ruby.
 * Prefer `map` over `collect`, `find` over `detect`, `select` over `find_all`,
   `size` over `length`.
 
-* Do not use assignments in conditionals
+* Do not use assignments in conditionals.
 
 
 ## Naming
