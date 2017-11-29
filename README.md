@@ -293,12 +293,6 @@ developing in Ruby.
 * Avoid `self` where not required (it is only required when calling a self
   write accessor).
 
-* Using the return value of `=` is okay:
-
-  ~~~ ruby
-  if v = /foo/.match(string) ...
-  ~~~
-
 * Use `||=` to initialize variables only if they're not already initialized.
 
 * Don't use `||=` to initialize boolean variables (consider what would happen if
