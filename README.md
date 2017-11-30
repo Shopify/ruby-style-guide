@@ -293,6 +293,13 @@ developing in Ruby.
 * Avoid `self` where not required (it is only required when calling a self
   write accessor).
 
+* Using the return value of = in a conditional expression is okay if wrapped in
+  parenthesis
+
+  ~~~ ruby
+  if (v = /foo/.match(string))
+  ~~~
+
 * Use `||=` to initialize variables only if they're not already initialized.
 
 * Don't use `||=` to initialize boolean variables (consider what would happen if
@@ -370,8 +377,6 @@ developing in Ruby.
 
 * Prefer `map` over `collect`, `find` over `detect`, `select` over `find_all`,
   `size` over `length`.
-
-* Do not use assignments in conditionals.
 
 
 ## Naming
