@@ -1099,8 +1099,6 @@ developing in Ruby.
 
 * Avoid long parameter lists.
 
-* Use `def self.method` to define singleton methods.
-
 * Avoid needless metaprogramming.
 
 * Never start a method with `get_`.
