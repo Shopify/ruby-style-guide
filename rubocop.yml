@@ -495,7 +495,7 @@ Naming/VariableName:
   - camelCase
 
 Style/WhileUntilModifier:
-  MaxLineLength: 80
+  Enabled: true
 
 Style/WordArray:
   EnforcedStyle: percent
