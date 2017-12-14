@@ -420,6 +420,7 @@ Layout/SpaceAroundOperators:
 
 Layout/SpaceBeforeBlockBraces:
   EnforcedStyle: space
+  EnforcedStyleForEmptyBraces: space
   SupportedStyles:
   - space
   - no_space
@@ -873,7 +874,7 @@ Layout/SpaceInsideArrayPercentLiteral:
 Layout/SpaceInsidePercentLiteralDelimiters:
   Enabled: true
 
-Layout/SpaceInsideBrackets:
+Layout/SpaceInsideArrayLiteralBrackets:
   Enabled: true
 
 Layout/SpaceInsideParens:
