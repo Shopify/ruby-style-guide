@@ -420,6 +420,7 @@ Layout/SpaceAroundOperators:
 
 Layout/SpaceBeforeBlockBraces:
   EnforcedStyle: space
+  EnforcedStyleForEmptyBraces: space
   SupportedStyles:
   - space
   - no_space
