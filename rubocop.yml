@@ -873,7 +873,7 @@ Layout/SpaceInsideArrayPercentLiteral:
 Layout/SpaceInsidePercentLiteralDelimiters:
   Enabled: true
 
-Layout/SpaceInsideBrackets:
+Layout/SpaceInsideArrayLiteralBrackets:
   Enabled: true
 
 Layout/SpaceInsideParens:
