@@ -148,7 +148,7 @@ developing in Ruby.
 
 * Avoid trailing whitespace.
 
-* Avoid extra whitespace, except for alignment purposes.
+* Avoid extra whitespace, except for indentation purposes.
 
 * End each file with a newline.
 

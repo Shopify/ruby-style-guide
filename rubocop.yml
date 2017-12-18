@@ -159,7 +159,7 @@ Layout/EmptyLinesAroundModuleBody:
   - no_empty_lines
 
 Layout/ExtraSpacing:
-  AllowForAlignment: true
+  AllowForAlignment: false
   ForceEqualSignAlignment: false
 
 Naming/FileName:
