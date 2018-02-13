@@ -402,6 +402,8 @@ developing in Ruby.
 
 * Method names should not be prefixed with `is_`. E.g. prefer `empty?` over `is_empty?`.
 
+* Avoid magic numbers. Use a constant and give it a useful name.
+
 
 ## Comments
 
