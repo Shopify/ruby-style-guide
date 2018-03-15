@@ -1036,7 +1036,7 @@ Lint/UnderscorePrefixedVariableName:
 Lint/UnifiedInteger:
   Enabled: true
 
-Lint/UnneededDisable:
+Lint/UnneededCopDisableDirective:
   Enabled: true
 
 Lint/UnneededCopEnableDirective:
