@@ -721,6 +721,23 @@ developing in Ruby.
   STATES = %w(draft open closed)
   ~~~
 
+* Usage of trailing comma in multi-line collection literals is encouraged.
+  It makes diffs smaller and more meaningful.
+
+  ~~~ ruby
+  # not encouraged
+  {
+    foo: :bar,
+    baz: :toto
+  }
+
+  # encouraged
+  {
+    foo: :bar,
+    baz: :toto,
+  }
+  ~~~
+
 * Prefer `%i` to the literal array syntax when you need an array of symbols.
   Apply this rule only to arrays with two or more elements.
 
