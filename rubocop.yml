@@ -698,6 +698,9 @@ Layout/CommentIndentation:
 Naming/ConstantName:
   Enabled: true
 
+Style/DateTime:
+  Enabled: true
+
 Style/DefWithParentheses:
   Enabled: true
 

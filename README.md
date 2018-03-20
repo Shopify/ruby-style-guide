@@ -377,6 +377,11 @@ developing in Ruby.
 * Prefer `map` over `collect`, `find` over `detect`, `select` over `find_all`,
   `size` over `length`.
 
+* Prefer `Time` over `DateTime` since it supports proper time zones instead of
+  UTC offsets. [More info](https://gist.github.com/pixeltrix/e2298822dd89d854444b).
+  
+* Prefer `Time.iso8601(foo)` instead of `Time.parse(foo)` when expecting ISO8601 formatted
+  time strings like `"2018-03-20T11:16:39-04:00"`.
 
 ## Naming
 
