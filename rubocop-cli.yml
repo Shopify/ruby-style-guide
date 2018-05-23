@@ -1,3 +1,5 @@
+# Recommended rubocop version: ~> 0.56.0
+
 inherit_from:
   - http://shopify.github.io/ruby-style-guide/rubocop.yml
 
