@@ -1,3 +1,5 @@
+# Recommended rubocop version: ~> 0.56.0
+
 AllCops:
   Exclude:
   - 'db/schema.rb'
