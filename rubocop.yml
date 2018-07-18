@@ -1178,3 +1178,6 @@ Style/ModuleFunction:
 
 Lint/OrderedMagicComments:
   Enabled: true
+
+Sorbet/ConstantInConstantInclude:
+  Enabled: false
