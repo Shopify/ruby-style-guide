@@ -1,8 +1,9 @@
+# Recommended rubocop version: ~> 0.56.0
+
 AllCops:
   Exclude:
   - 'db/schema.rb'
   DisabledByDefault: true
-  StyleGuideBaseURL: https://shopify.github.io/ruby-style-guide/
 
 Layout/AccessModifierIndentation:
   EnforcedStyle: indent
