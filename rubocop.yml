@@ -101,7 +101,7 @@ Style/ClassCheck:
   - kind_of?
 
 Style/CommandLiteral:
-  EnforcedStyle: backticks
+  EnforcedStyle: percent_x
   SupportedStyles:
   - backticks
   - percent_x
