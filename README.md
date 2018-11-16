@@ -249,10 +249,30 @@ developing in Ruby.
 * Use parentheses around the arguments of method invocations. Omit parentheses
   when not providing arguments. Also omit parentheses when the invocation is
   single-line and the method:
-  - is part of an internal DSL (e.g. Rake, Rails, RSpec, etc., usually methods
-    called in the class definition)
-  - has "keyword" status in Ruby (e.g. `attr_reader`, `puts`)
-  - is an attribute accessor
+  - is a class method call with inplict receiver
+
+  ~~~ ruby
+  # bad
+  class User
+    include(Bar)
+    has_many(:posts)
+  end
+
+  # good
+  class User
+    include Bar
+    has_many :posts
+    SomeClass.some_method(:foo)
+  end
+  ~~~
+
+  - is one of the following methods:
+    * `require`
+    * `require_relative`
+    * `require_dependency`
+    * `yield`
+    * `raise`
+    * `puts`
 
 * Use class methods instead of a rails scope with a multi-line lambda
 
