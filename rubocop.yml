@@ -258,6 +258,19 @@ Style/Next:
 Style/NonNilCheck:
   IncludeSemanticChanges: false
 
+Style/MethodCallWithArgsParentheses:
+  Enabled: true
+  IgnoreMacros: true
+  IgnoredMethods:
+  - require
+  - require_relative
+  - require_dependency
+  - yield
+  - raise
+  - puts
+  Exclude:
+  - Gemfile
+
 Style/MethodDefParentheses:
   EnforcedStyle: require_parentheses
   SupportedStyles:
