@@ -270,6 +270,8 @@ Style/MethodCallWithArgsParentheses:
   - puts
   Exclude:
   - Gemfile
+  - 'gemfiles/*'
+  - '*.gemspec'
 
 Style/MethodDefParentheses:
   EnforcedStyle: require_parentheses
