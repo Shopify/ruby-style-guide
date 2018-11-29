@@ -1151,6 +1151,9 @@ Rails/HttpPositionalArguments:
   - spec/**/*
   - test/**/*
 
+Rails/InverseOf:
+  Enabled: true
+
 Rails/OutputSafety:
   Enabled: true
 
