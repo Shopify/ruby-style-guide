@@ -787,9 +787,6 @@ Style/MethodMissingSuper:
 Style/MissingRespondToMissing:
   Enabled: true
 
-Style/MultilineBlockChain:
-  Enabled: true
-
 Layout/MultilineBlockLayout:
   Enabled: true
 
