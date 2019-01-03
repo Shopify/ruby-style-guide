@@ -573,7 +573,7 @@ Lint/UnusedBlockArgument:
   AllowUnusedKeywordArguments: false
 
 Lint/UnusedMethodArgument:
-  AllowUnusedKeywordArguments: false
+  AllowUnusedKeywordArguments: true
   IgnoreEmptyMethods: true
 
 Performance/RedundantMerge:
