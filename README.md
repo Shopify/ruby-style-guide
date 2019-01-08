@@ -15,6 +15,21 @@ you work in day to day. What follows is a loose coding style to follow while
 developing in Ruby.
 
 
+## Usage
+
+To use this styleguide in your project:
+
+- Add the following code in your `.rubocop.yml` file:
+
+  ~~~yml
+  inherit_from:
+    - https://shopify.github.io/ruby-style-guide/rubocop.yml
+  ~~~
+
+- Run `bundle exec rubocop`
+- Add and commit the newly created `.rubocop-https---shopify-github-io-ruby-style-guide-rubocop-yml` to git
+- Periodically update the file by deleting it and running `bundle exec rubocop` again.
+
 ## General
 
 * Make all lines of your methods operate on the same level of abstraction.
@@ -250,6 +265,7 @@ developing in Ruby.
   when not providing arguments. Also omit parentheses when the invocation is
   single-line and the method:
   - is a class method call with implicit receiver
+  - is called by syntactic sugar (e.g: `1 + 1` calls the `+` method, `foo[bar]` calls the `[]` method, etc)
 
   ~~~ ruby
   # bad
