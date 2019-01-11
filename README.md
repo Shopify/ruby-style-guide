@@ -248,31 +248,54 @@ developing in Ruby.
 
 * Use parentheses around the arguments of method invocations. Omit parentheses
   when not providing arguments. Also omit parentheses when the invocation is
-  single-line and the method:
-  - is a class method call with inplict receiver
-
-  ~~~ ruby
-  # bad
-  class User
-    include(Bar)
-    has_many(:posts)
-  end
-
-  # good
-  class User
-    include Bar
-    has_many :posts
-    SomeClass.some_method(:foo)
-  end
-  ~~~
-
-  - is one of the following methods:
+  single-line and the method is one of:
     * `require`
     * `require_relative`
     * `require_dependency`
     * `yield`
     * `raise`
     * `puts`
+
+  ~~~ ruby
+  # bad
+  require("checkout")
+
+  class User
+    include Bar
+    has_many :posts
+  end
+
+  # bad
+  yield [
+    1,
+    2,
+  ]
+
+  # bad
+  raise StandardError,
+    "don't do that"
+
+  # good
+  require "checkout"
+
+  class User
+    include(Bar)
+    has_many(:posts)
+
+    puts "This is user"
+  end
+
+  # good
+  yield([
+    1,
+    2,
+  ])
+  raise(
+    StandardError,
+    "don't do that"
+  )
+  ~~~
+
 
 * Use class methods instead of a rails scope with a multi-line lambda
 
