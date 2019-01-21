@@ -249,7 +249,7 @@ developing in Ruby.
 * Use parentheses around the arguments of method invocations. Omit parentheses
   when not providing arguments. Also omit parentheses when the invocation is
   single-line and the method:
-  - is a class method call with inplict receiver
+  - is a class method call with implict receiver
 
   ~~~ ruby
   # bad
