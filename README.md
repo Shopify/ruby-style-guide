@@ -249,7 +249,7 @@ developing in Ruby.
 * Use parentheses around the arguments of method invocations. Omit parentheses
   when not providing arguments. Also omit parentheses when the invocation is
   single-line and the method:
-  - is a class method call with implict receiver
+  - is a class method call with implicit receiver
 
   ~~~ ruby
   # bad
@@ -399,7 +399,7 @@ developing in Ruby.
 
 * Prefer `Time` over `DateTime` since it supports proper time zones instead of
   UTC offsets. [More info](https://gist.github.com/pixeltrix/e2298822dd89d854444b).
-  
+
 * Prefer `Time.iso8601(foo)` instead of `Time.parse(foo)` when expecting ISO8601 formatted
   time strings like `"2018-03-20T11:16:39-04:00"`.
 
