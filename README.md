@@ -313,10 +313,11 @@ developing in Ruby.
 * Avoid `self` where not required (it is only required when calling a self
   write accessor).
 
-* Using the return value of `=` is okay:
+* Using the return value of = in a conditional expression is okay if wrapped in
+  parenthesis
 
   ~~~ ruby
-  if v = /foo/.match(string) ...
+  if (v = /foo/.match(string))
   ~~~
 
 * Use `||=` to initialize variables only if they're not already initialized.

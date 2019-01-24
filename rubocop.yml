@@ -4,6 +4,9 @@ AllCops:
   DisabledByDefault: true
   StyleGuideBaseURL: https://shopify.github.io/ruby-style-guide/
 
+Lint/AssignmentInCondition:
+  Enabled: true
+
 Layout/AccessModifierIndentation:
   EnforcedStyle: indent
   SupportedStyles:
