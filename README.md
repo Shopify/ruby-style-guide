@@ -273,6 +273,7 @@ developing in Ruby.
     * `yield`
     * `raise`
     * `puts`
+    * `test`
 
 * Use class methods instead of a rails scope with a multi-line lambda
 
