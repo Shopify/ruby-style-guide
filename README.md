@@ -1138,6 +1138,21 @@ developing in Ruby.
   end
   ~~~
 
+* When using expectations, avoid using `any_instance`. If your test requires
+  `any_instance` in order to pass, consider refactoring the code in question,
+  the test, or both to be more explicit about it's dependencies.
+
+  ~~~ ruby
+  # bad
+  User.any_instance.expects(:valid?)
+  UserValidator.validate_user(1)
+
+  # good
+  user = User.new
+  user.expects(:valid?)
+  UserValidator.validate_user(user)
+  ~~~
+
 ## The rest
 
 * Avoid long methods.
