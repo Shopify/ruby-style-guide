@@ -1066,11 +1066,9 @@ developing in Ruby.
 * Avoid the use of `%s`. Use `:"some string"` to create a symbol with spaces in
   it.
 
-* Prefer `()` as delimiters for all `%` literals, except `%r`. Since parentheses
-  often appear inside regular expressions in many scenarios a less common
-  character like `{` might be a better choice for a delimiter, depending on the
-  regexp's content.
-
+* Prefer `()` as delimiters for all `%` literals, except, as often occurs in
+  regular expressions, when parentheses appear inside the literal. Use the first
+  of `()`, `{}`, `[]`, `<>` which does not appear inside the literal.
 
 ## Testing
 
