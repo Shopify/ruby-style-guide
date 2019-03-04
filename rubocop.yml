@@ -745,7 +745,7 @@ Style/EvenOdd:
 Layout/InitialIndentation:
   Enabled: true
 
-Lint/FlipFlop:
+Style/FlipFlop:
   Enabled: true
 
 Style/IfInsideElse:
