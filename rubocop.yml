@@ -507,14 +507,6 @@ Naming/VariableName:
 Style/WhileUntilModifier:
   Enabled: true
 
-Style/WordArray:
-  EnforcedStyle: percent
-  SupportedStyles:
-  - percent
-  - brackets
-  MinSize: 0
-  WordRegex: !ruby/regexp /\A[\p{Word}\n\t]+\z/
-
 Metrics/BlockNesting:
   Max: 3
 
@@ -1011,6 +1003,12 @@ Lint/NonLocalExitFromIterator:
   Enabled: true
 
 Lint/ParenthesesAsGroupedExpression:
+  Enabled: true
+
+Lint/PercentStringArray:
+  Enabled: true
+
+Lint/PercentSymbolArray:
   Enabled: true
 
 Lint/RandOne:
