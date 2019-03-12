@@ -1013,12 +1013,6 @@ Lint/NonLocalExitFromIterator:
 Lint/ParenthesesAsGroupedExpression:
   Enabled: true
 
-Lint/PercentStringArray:
-  Enabled: true
-
-Lint/PercentSymbolArray:
-  Enabled: true
-
 Lint/RandOne:
   Description: Checks for `rand(1)` calls. Such calls always return `0` and most
     likely a mistake.
