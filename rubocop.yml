@@ -1014,10 +1014,10 @@ Lint/ParenthesesAsGroupedExpression:
   Enabled: true
 
 Lint/PercentStringArray:
-  Enabled: true
+  Enabled: false
 
 Lint/PercentSymbolArray:
-  Enabled: true
+  Enabled: false
 
 Lint/RandOne:
   Description: Checks for `rand(1)` calls. Such calls always return `0` and most
