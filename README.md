@@ -736,7 +736,7 @@ developing in Ruby.
   hash = {}
   ~~~
 
-* Prefer the literal array syntax to `%w`.
+* Prefer the literal array syntax to `%w`, except when it reads substantially more clearly in context.
 
   ~~~ ruby
   # bad
