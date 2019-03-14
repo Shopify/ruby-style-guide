@@ -736,15 +736,14 @@ developing in Ruby.
   hash = {}
   ~~~
 
-* Prefer `%w` to the literal array syntax when you need an array of words
-  (non-empty strings without spaces and special characters in them).
+* Prefer the literal array syntax to `%w`, except when it reads substantially more clearly in context.
 
   ~~~ ruby
   # bad
-  STATES = ['draft', 'open', 'closed']
+  STATES = %w(draft open closed)
 
   # good
-  STATES = %w(draft open closed)
+  STATES = ['draft', 'open', 'closed']
   ~~~
 
 * Usage of trailing comma in multi-line collection literals is encouraged.
@@ -764,15 +763,14 @@ developing in Ruby.
   }
   ~~~
 
-* Prefer `%i` to the literal array syntax when you need an array of symbols.
-  Apply this rule only to arrays with two or more elements.
+* Prefer the literal array syntax to `%i`.
 
   ~~~ ruby
   # bad
-  STATES = [:draft, :open, :closed]
+  STATES = %i(draft open closed)
 
   # good
-  STATES = %i(draft open closed)
+  STATES = [:draft, :open, :closed]
   ~~~
 
 * When accessing the first or last element from an array, prefer `first` or
