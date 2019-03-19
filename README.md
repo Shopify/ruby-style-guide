@@ -3,7 +3,7 @@ layout: default
 permalink: '/index.html'
 ---
 
-# Ruby style guide
+# Ruby Style Guide
 
 Ruby is the main language at Shopify. We are primarily a Ruby shop and we are
 probably one of the largest out there. Ruby is the go-to language for new web
@@ -14,21 +14,24 @@ Ruby. It's a great language. It will make you a better developer no matter what
 you work in day to day. What follows is a loose coding style to follow while
 developing in Ruby.
 
+We recommend using [RuboCop](https://github.com/rubocop-hq/rubocop) in your Ruby
+projects to help you adopt this Style Guide. To know how to install and use
+RuboCop please refer to [RuboCop's official documentation](https://docs.rubocop.org/en/latest/).
 
-## Usage
-
-To use this styleguide in your project:
-
-- Add the following code in your `.rubocop.yml` file:
+We offer a [default RuboCop configuration](https://shopify.github.io/ruby-style-guide/rubocop.yml)
+you can inherit from and be in sync with this Style Guide. Just add the following code
+to the top of your project's RuboCop configuration file:
 
   ~~~yml
   inherit_from:
     - https://shopify.github.io/ruby-style-guide/rubocop.yml
   ~~~
 
-- Run `bundle exec rubocop`
-- Add and commit the newly created `.rubocop-https---shopify-github-io-ruby-style-guide-rubocop-yml` to git
-- Periodically update the file by deleting it and running `bundle exec rubocop` again.
+After running RuboCop via `bundle exec rubocop` it will create a local copy of the
+Style Guide configuration, something like `.rubocop-https---shopify-github-io-ruby-style-guide-rubocop-yml`.
+Make sure to commit that file to git. Future changes to the Style Guide will be
+reflected on that file and you will see them in you git diff. For more information
+about inheriting configuration from a remote URL please check [RuboCop's documentation](https://docs.rubocop.org/en/latest/configuration/#inheriting-configuration-from-a-remote-url).
 
 ## General
 
