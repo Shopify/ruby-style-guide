@@ -1117,9 +1117,6 @@ Performance/StartWith:
 Performance/StringReplacement:
   Enabled: true
 
-Rails/ApplicationRecord:
-  Enabled: true
-
 Rails/DelegateAllowBlank:
   Enabled: true
 
