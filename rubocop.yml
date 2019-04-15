@@ -836,10 +836,16 @@ Style/RedundantParentheses:
 Style/RedundantSelf:
   Enabled: true
 
+Style/RedundantSortBy:
+  Enabled: true
+
 Layout/RescueEnsureAlignment:
   Enabled: true
 
 Style/RescueModifier:
+  Enabled: true
+
+Style/Sample:
   Enabled: true
 
 Style/SelfAssignment:
@@ -1093,16 +1099,10 @@ Performance/RangeInclude:
 Performance/RedundantMatch:
   Enabled: true
 
-Performance/RedundantSortBy:
-  Enabled: true
-
 Performance/RegexpMatch:
   Enabled: true
 
 Performance/ReverseEach:
-  Enabled: true
-
-Performance/Sample:
   Enabled: true
 
 Performance/Size:
