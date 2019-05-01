@@ -1176,3 +1176,8 @@ Style/ModuleFunction:
 
 Lint/OrderedMagicComments:
   Enabled: true
+  
+# TODO: this is due to DisabledByDefault: true not being respected
+# for custom cops. We disable it here to make it opt-in.
+Sorbet:
+  Enabled: false
