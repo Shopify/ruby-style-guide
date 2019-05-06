@@ -172,7 +172,7 @@ Naming/FileName:
   Regex:
   IgnoreExecutableScripts: true
 
-Layout/FirstParameterIndentation:
+Layout/IndentFirstArgument:
   EnforcedStyle: consistent
   SupportedStyles:
   - consistent
@@ -226,7 +226,7 @@ Layout/IndentationConsistency:
 Layout/IndentationWidth:
   Width: 2
 
-Layout/IndentArray:
+Layout/IndentFirstArrayElement:
   EnforcedStyle: consistent
   SupportedStyles:
   - special_inside_parentheses
@@ -237,7 +237,7 @@ Layout/IndentArray:
 Layout/IndentAssignment:
   IndentationWidth:
 
-Layout/IndentHash:
+Layout/IndentFirstHashElement:
   EnforcedStyle: consistent
   SupportedStyles:
   - special_inside_parentheses
