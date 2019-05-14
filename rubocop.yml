@@ -558,9 +558,6 @@ Lint/UnusedMethodArgument:
   AllowUnusedKeywordArguments: false
   IgnoreEmptyMethods: true
 
-Performance/RedundantMerge:
-  MaxKeyValuePairs: 2
-
 Rails/ActionFilter:
   EnforcedStyle: action
   SupportedStyles:
@@ -1069,51 +1066,6 @@ Lint/UselessSetterCall:
   Enabled: true
 
 Lint/Void:
-  Enabled: true
-
-Performance/CaseWhenSplat:
-  Enabled: true
-
-Performance/Count:
-  SafeMode: true
-
-Performance/Detect:
-  SafeMode: true
-
-Performance/DoubleStartEndWith:
-  Enabled: true
-
-Performance/EndWith:
-  Enabled: true
-
-Performance/FixedSize:
-  Enabled: true
-
-Performance/FlatMap:
-  EnabledForFlattenWithoutParams: false
-
-Performance/RangeInclude:
-  Enabled: true
-
-Performance/RedundantMatch:
-  Enabled: true
-
-Performance/RegexpMatch:
-  Enabled: true
-
-Performance/ReverseEach:
-  Enabled: true
-
-Performance/Size:
-  Enabled: true
-
-Performance/CompareWithBlock:
-  Enabled: true
-
-Performance/StartWith:
-  Enabled: true
-
-Performance/StringReplacement:
   Enabled: true
 
 Rails/ApplicationRecord:
