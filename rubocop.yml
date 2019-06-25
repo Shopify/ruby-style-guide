@@ -700,9 +700,6 @@ Style/DefWithParentheses:
 Style/EachForSimpleLoop:
   Enabled: true
 
-Style/EachWithObject:
-  Enabled: true
-
 Layout/ElseAlignment:
   Enabled: true
 
