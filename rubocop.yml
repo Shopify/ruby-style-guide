@@ -919,9 +919,6 @@ Style/WhenThen:
 Style/WhileUntilDo:
   Enabled: true
 
-Style/ZeroLengthPredicate:
-  Enabled: true
-
 Layout/IndentHeredoc:
   EnforcedStyle: squiggly
 
