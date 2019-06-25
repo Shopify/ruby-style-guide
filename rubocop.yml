@@ -38,7 +38,7 @@ Layout/AlignParameters:
   IndentationWidth:
 
 Style/AndOr:
-  EnforcedStyle: always
+  EnforcedStyle: conditionals
   SupportedStyles:
   - always
   - conditionals
