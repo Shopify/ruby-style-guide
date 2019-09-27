@@ -759,6 +759,9 @@ Layout/RescueEnsureAlignment:
 Style/RescueModifier:
   Enabled: true
 
+Style/ReturnNil:
+  Enabled: true
+
 Style/Sample:
   Enabled: true
 
