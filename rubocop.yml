@@ -819,13 +819,13 @@ Layout/TrailingWhitespace:
 Style/UnlessElse:
   Enabled: true
 
-Style/UnneededCapitalW:
+Style/RedundantCapitalW:
   Enabled: true
 
-Style/UnneededInterpolation:
+Style/RedundantInterpolation:
   Enabled: true
 
-Style/UnneededPercentQ:
+Style/RedundantPercentQ:
   Enabled: true
 
 Style/VariableInterpolation:
@@ -956,13 +956,13 @@ Lint/UnderscorePrefixedVariableName:
 Lint/UnifiedInteger:
   Enabled: true
 
-Lint/UnneededCopDisableDirective:
+Lint/RedundantCopDisableDirective:
   Enabled: true
 
-Lint/UnneededCopEnableDirective:
+Lint/RedundantCopEnableDirective:
   Enabled: true
 
-Lint/UnneededSplatExpansion:
+Lint/RedundantSplatExpansion:
   Enabled: true
 
 Lint/UnreachableCode:
