@@ -47,8 +47,3 @@ Style/GlobalVars:
 #   end
 Style/MultilineBlockChain:
   Enabled: false
-
-# Our extensive use of blocks in our CLI apps means that it is more
-# expessive and easier to read a block var name than a random yield
-Performance/RedundantBlockCall:
-  Enabled: false
