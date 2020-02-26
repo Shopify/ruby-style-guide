@@ -19,19 +19,21 @@ projects to help you adopt this Style Guide. To know how to install and use
 RuboCop please refer to [RuboCop's official documentation](https://docs.rubocop.org/en/latest/).
 
 We offer a [default RuboCop configuration](https://shopify.github.io/ruby-style-guide/rubocop.yml)
-you can inherit from and be in sync with this Style Guide. Just add the following code
-to the top of your project's RuboCop configuration file:
+you can inherit from and be in sync with this Style Guide. To use it, you can add this to your `Gemfile`:
 
-  ~~~yml
-  inherit_from:
-    - https://shopify.github.io/ruby-style-guide/rubocop.yml
+  ~~~ruby
+  gem 'rubocop-shopify'
   ~~~
 
-After running RuboCop via `bundle exec rubocop` it will create a local copy of the
-Style Guide configuration, something like `.rubocop-https---shopify-github-io-ruby-style-guide-rubocop-yml`.
-Make sure to commit that file to git. Future changes to the Style Guide will be
-reflected on that file and you will see them in you git diff. For more information
-about inheriting configuration from a remote URL please check [RuboCop's documentation](https://docs.rubocop.org/en/latest/configuration/#inheriting-configuration-from-a-remote-url).
+And add to the top of your project's RuboCop configuration file:
+
+  ~~~yml
+  inherit_gem:
+    rubocop-shopify: rubocop.yml
+  ~~~
+
+For more information about inheriting configuration from a gem please check
+[RuboCop's documentation](https://rubocop.readthedocs.io/en/latest/configuration/#inheriting-configuration-from-a-dependency-gem).
 
 ## General
 
