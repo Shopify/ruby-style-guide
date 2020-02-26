@@ -22,7 +22,9 @@ We offer a [default RuboCop configuration](https://shopify.github.io/ruby-style-
 you can inherit from and be in sync with this Style Guide. To use it, you can add this to your `Gemfile`:
 
   ~~~ruby
-  gem 'rubocop-shopify', require: false
+  group :test, :development do
+    gem 'rubocop-shopify', require: false
+  end
   ~~~
 
 And add to the top of your project's RuboCop configuration file:
