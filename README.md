@@ -4,6 +4,7 @@ permalink: '/index.html'
 ---
 
 # Ruby Style Guide
+[![Gem Version](https://badge.fury.io/rb/rubocop-shopify.svg)](https://badge.fury.io/rb/rubocop-shopify)
 
 Ruby is the main language at Shopify. We are primarily a Ruby shop and we are
 probably one of the largest out there. Ruby is the go-to language for new web
