@@ -20,5 +20,5 @@ Gem::Specification.new do |s|
     "source_code_uri"   => "https://github.com/Shopify/ruby-style-guide/tree/v#{s.version}",
   }
 
-  s.add_dependency "rubocop", ">= 0.78.0"
+  s.add_dependency "rubocop", ">= 0.81.0"
 end
