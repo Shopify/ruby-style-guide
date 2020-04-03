@@ -18,6 +18,7 @@ Gem::Specification.new do |s|
 
   s.metadata = {
     "source_code_uri"   => "https://github.com/Shopify/ruby-style-guide/tree/v#{s.version}",
+    "allowed_push_host" => "https://rubygems.org"
   }
 
   s.add_dependency "rubocop", ">= 0.81.0"
