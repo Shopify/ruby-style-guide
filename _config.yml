@@ -1,7 +1,3 @@
 # Site settings
 title: 'Ruby style guide'
 description: "Shopify's Ruby style guide"
-
-# Build settings
-exclude:
-  - CONTRIBUTING.md
