@@ -5,8 +5,8 @@ Gem::Specification.new do |s|
   s.name        = "rubocop-shopify"
   s.version     = "1.0.1"
   s.summary     = "Shopify's style guide for Ruby."
-  s.description = "Gem containing the rubocop.yml config that corresponds to the implementation of the Shopify's style" \
-                    " guide for Ruby."
+  s.description = "Gem containing the rubocop.yml config that corresponds to "\
+    "the implementation of the Shopify's style guide for Ruby."
 
   s.license = "MIT"
 
@@ -17,9 +17,9 @@ Gem::Specification.new do |s|
   s.files = ["rubocop.yml", "rubocop-cli.yml"]
 
   s.metadata = {
-    "source_code_uri"   => "https://github.com/Shopify/ruby-style-guide/tree/v#{s.version}",
-    "allowed_push_host" => "https://rubygems.org"
+    "source_code_uri" => "https://github.com/Shopify/ruby-style-guide/tree/v#{s.version}",
+    "allowed_push_host" => "https://rubygems.org",
   }
 
-  s.add_dependency "rubocop", ">= 0.81.0"
+  s.add_dependency("rubocop", ">= 0.81.0")
 end
