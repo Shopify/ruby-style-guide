@@ -2,7 +2,7 @@ PATH
   remote: .
   specs:
     rubocop-shopify (1.0.1)
-      rubocop (>= 0.81.0)
+      rubocop (~> 0.82.0)
 
 GEM
   remote: https://rubygems.org/
@@ -218,7 +218,7 @@ GEM
       faraday (>= 0.9)
       sawyer (~> 0.8.0, >= 0.5.3)
     parallel (1.19.1)
-    parser (2.7.1.0)
+    parser (2.7.1.1)
       ast (~> 2.4.0)
     pathutil (0.16.2)
       forwardable-extended (~> 2.6)
@@ -230,7 +230,7 @@ GEM
       ffi (~> 1.0)
     rexml (3.2.4)
     rouge (3.13.0)
-    rubocop (0.81.0)
+    rubocop (0.82.0)
       jaro_winkler (~> 1.5.1)
       parallel (~> 1.10)
       parser (>= 2.7.0.1)
@@ -268,6 +268,9 @@ DEPENDENCIES
   github-pages
   rake
   rubocop-shopify!
+
+RUBY VERSION
+   ruby 2.7.1p83
 
 BUNDLED WITH
    2.1.4

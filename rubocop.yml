@@ -659,6 +659,9 @@ Style/IfWithSemicolon:
 Style/IdenticalConditionalBranches:
   Enabled: true
 
+Layout/IndentationStyle:
+  Enabled: true
+
 Style/InfiniteLoop:
   Enabled: true
 
@@ -801,9 +804,6 @@ Layout/SpaceInsideRangeLiteral:
   Enabled: true
 
 Style/SymbolLiteral:
-  Enabled: true
-
-Layout/Tab:
   Enabled: true
 
 Layout/TrailingWhitespace:
