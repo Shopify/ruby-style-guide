@@ -9,9 +9,8 @@ AllCops:
   Exclude:
     - 'vendor/**/*'
 
-  # Mac OS High Sierra ships with Ruby 2.3.x
-  # Therefore we target Ruby 2.3
-  TargetRubyVersion: 2.3
+  # Mac OS Catalina ships with 2.6.3
+  TargetRubyVersion: 2.6
 
 # We disable this at entrypoint.
 # Due to CLI apps being invoked via an entry point,
