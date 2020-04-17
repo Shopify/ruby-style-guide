@@ -346,12 +346,6 @@ Style/PreferredHashMethods:
   - short
   - verbose
 
-Style/RaiseArgs:
-  EnforcedStyle: exploded
-  SupportedStyles:
-  - compact
-  - exploded
-
 Style/RedundantReturn:
   AllowMultipleReturnValues: false
 
