@@ -16,7 +16,7 @@ developing in Ruby.
 
 We recommend using [RuboCop](https://github.com/rubocop-hq/rubocop) in your Ruby
 projects to help you adopt this Style Guide. To know how to install and use
-RuboCop please refer to [RuboCop's official documentation](https://docs.rubocop.org/en/latest/).
+RuboCop please refer to [RuboCop's official documentation](https://docs.rubocop.org/rubocop/).
 
 We offer a [default RuboCop configuration](https://shopify.github.io/ruby-style-guide/rubocop.yml)
 you can inherit from and be in sync with this Style Guide. To use it, you can add this to your `Gemfile`:
