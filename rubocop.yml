@@ -1015,3 +1015,6 @@ Style/ModuleFunction:
 
 Lint/OrderedMagicComments:
   Enabled: true
+
+Lint/DeprecatedOpenSSLConstant:
+  Enabled: true
