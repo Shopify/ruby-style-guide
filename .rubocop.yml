@@ -5,3 +5,4 @@ AllCops:
   TargetRubyVersion: 2.7
   Exclude:
     - _site/**/*
+    - vendor/**/*
