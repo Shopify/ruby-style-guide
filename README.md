@@ -451,7 +451,7 @@ For more information about inheriting configuration from a gem please check
 
 * Avoid magic numbers. Use a constant and give it a useful name.
 
-* Avoid nomenclature that has (or could be interpretted to have) discriminatory origins.
+* Avoid nomenclature that has (or could be interpreted to have) discriminatory origins.
 
 ## Comments
 
