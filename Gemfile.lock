@@ -2,7 +2,7 @@ PATH
   remote: .
   specs:
     rubocop-shopify (1.0.4)
-      rubocop (>= 0.85, < 0.88)
+      rubocop (>= 0.85, < 0.89)
 
 GEM
   remote: https://rubygems.org/
@@ -230,7 +230,7 @@ GEM
     regexp_parser (1.7.1)
     rexml (3.2.4)
     rouge (3.19.0)
-    rubocop (0.87.1)
+    rubocop (0.88.0)
       parallel (~> 1.10)
       parser (>= 2.7.1.1)
       rainbow (>= 2.2.2, < 4.0)
