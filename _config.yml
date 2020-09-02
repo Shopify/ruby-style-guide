@@ -1,3 +1,9 @@
 # Site settings
 title: 'Ruby style guide'
 description: "Shopify's Ruby style guide"
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - Rakefile
+  - rubocop-shopify.gemspec
+  - shipit.rubygems.yml

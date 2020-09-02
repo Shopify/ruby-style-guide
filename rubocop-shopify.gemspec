@@ -21,5 +21,5 @@ Gem::Specification.new do |s|
     "allowed_push_host" => "https://rubygems.org",
   }
 
-  s.add_dependency("rubocop", ">= 0.89", "< 0.91")
+  s.add_dependency("rubocop", "~> 0.90")
 end
