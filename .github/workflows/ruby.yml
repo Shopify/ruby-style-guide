@@ -14,7 +14,7 @@ jobs:
       with:
         ruby-version: 2.7
     - name: Cache gems
-      uses: actions/cache@v1
+      uses: actions/cache@v2.1.1
       with:
         path: vendor/bundle
         key: ${{ runner.os }}-rubocop-${{ hashFiles('**/Gemfile.lock') }}
