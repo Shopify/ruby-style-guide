@@ -14,15 +14,21 @@ Ruby. It's a great language. It will make you a better developer no matter what
 you work in day to day. What follows is a loose coding style to follow while
 developing in Ruby.
 
+This Style Guide is the result of over a decade of Ruby development at Shopify.
+Much of its content is based on Bozhidar Batsov's [Ruby Style
+Guide](https://github.com/rubocop-hq/ruby-style-guide), adapted to Shopify by
+[many
+contributors](https://github.com/Shopify/ruby-style-guide/graphs/contributors).
+
+### Adoption with RuboCop
+
 We recommend using [RuboCop](https://github.com/rubocop-hq/rubocop) in your Ruby
 projects to help you adopt this Style Guide. To know how to install and use
 RuboCop please refer to [RuboCop's official
 documentation](https://docs.rubocop.org/rubocop/).
 
-We offer a [default RuboCop
-configuration](https://shopify.github.io/ruby-style-guide/rubocop.yml) you can
-inherit from and be in sync with this Style Guide. To use it, you can add this
-to your `Gemfile`:
+We offer a default RuboCop configuration you can inherit from and be in sync
+with this Style Guide. To use it, you can add this to your `Gemfile`:
 
   ~~~ruby
   gem 'rubocop-shopify', require: false
