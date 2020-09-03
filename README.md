@@ -43,7 +43,7 @@ And add to the top of your project's RuboCop configuration file:
 
 For more information about inheriting configuration from a gem please check
 [RuboCop's
-documentation](https://rubocop.readthedocs.io/en/latest/configuration/#inheriting-configuration-from-a-dependency-gem).
+documentation](https://docs.rubocop.org/rubocop/configuration.html#inheriting-configuration-from-a-dependency-gem).
 
 ## General
 
