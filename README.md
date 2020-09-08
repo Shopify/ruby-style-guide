@@ -14,12 +14,21 @@ Ruby. It's a great language. It will make you a better developer no matter what
 you work in day to day. What follows is a loose coding style to follow while
 developing in Ruby.
 
+This Style Guide is the result of over a decade of Ruby development at Shopify.
+Much of its content is based on Bozhidar Batsov's [Ruby Style
+Guide](https://github.com/rubocop-hq/ruby-style-guide), adapted to Shopify by
+[many
+contributors](https://github.com/Shopify/ruby-style-guide/graphs/contributors).
+
+### Adoption with RuboCop
+
 We recommend using [RuboCop](https://github.com/rubocop-hq/rubocop) in your Ruby
 projects to help you adopt this Style Guide. To know how to install and use
-RuboCop please refer to [RuboCop's official documentation](https://docs.rubocop.org/rubocop/).
+RuboCop please refer to [RuboCop's official
+documentation](https://docs.rubocop.org/rubocop/).
 
-We offer a [default RuboCop configuration](https://shopify.github.io/ruby-style-guide/rubocop.yml)
-you can inherit from and be in sync with this Style Guide. To use it, you can add this to your `Gemfile`:
+We offer a default RuboCop configuration you can inherit from and be in sync
+with this Style Guide. To use it, you can add this to your `Gemfile`:
 
   ~~~ruby
   gem 'rubocop-shopify', require: false
@@ -33,7 +42,8 @@ And add to the top of your project's RuboCop configuration file:
   ~~~
 
 For more information about inheriting configuration from a gem please check
-[RuboCop's documentation](https://rubocop.readthedocs.io/en/latest/configuration/#inheriting-configuration-from-a-dependency-gem).
+[RuboCop's
+documentation](https://docs.rubocop.org/rubocop/configuration.html#inheriting-configuration-from-a-dependency-gem).
 
 ## General
 
@@ -73,8 +83,8 @@ For more information about inheriting configuration from a gem please check
 * Don't use `;` to separate statements and expressions. As a corollary - use one
   expression per line.
 
-* Use spaces around operators, after commas, colons and semicolons, around
-  `{` and before `}`.
+* Use spaces around operators, after commas, colons and semicolons, around `{`
+  and before `}`.
 
 * No spaces after `(`, `[` and before `]`, `)`.
 
@@ -147,7 +157,8 @@ For more information about inheriting configuration from a gem please check
   end
   ~~~
 
-* When chaining methods on multiple lines, indent successive calls by one level of indentation.
+* When chaining methods on multiple lines, indent successive calls by one level
+  of indentation.
 
   ~~~ ruby
   # bad (indented to the previous call)
@@ -257,8 +268,8 @@ For more information about inheriting configuration from a gem please check
 
 * Use `!` instead of `not`.
 
-* Prefer `&&`/`||` over `and`/`or`.
-  [More info on `and/or` for control flow](http://devblog.avdi.org/2014/08/26/how-to-use-rubys-english-andor-operators-without-going-nuts/).
+* Prefer `&&`/`||` over `and`/`or`. [More info on `and/or` for control
+  flow](http://devblog.avdi.org/2014/08/26/how-to-use-rubys-english-andor-operators-without-going-nuts/).
 
 * Avoid multiline `?:` (the ternary operator); use `if/unless` instead.
 
@@ -270,7 +281,8 @@ For more information about inheriting configuration from a gem please check
   when not providing arguments. Also omit parentheses when the invocation is
   single-line and the method:
   - is a class method call with implicit receiver
-  - is called by syntactic sugar (e.g: `1 + 1` calls the `+` method, `foo[bar]` calls the `[]` method, etc)
+  - is called by syntactic sugar (e.g: `1 + 1` calls the `+` method, `foo[bar]`
+    calls the `[]` method, etc)
 
   ~~~ ruby
   # bad
@@ -331,8 +343,8 @@ For more information about inheriting configuration from a gem please check
 
 * Avoid `return` where not required for control flow.
 
-* Avoid `self` where not required (it is only required when calling a self
-  write accessor).
+* Avoid `self` where not required (it is only required when calling a self write
+  accessor).
 
 * Using the return value of = in a conditional expression is okay if wrapped in
   parenthesis
@@ -420,10 +432,11 @@ For more information about inheriting configuration from a gem please check
   `size` over `length`.
 
 * Prefer `Time` over `DateTime` since it supports proper time zones instead of
-  UTC offsets. [More info](https://gist.github.com/pixeltrix/e2298822dd89d854444b).
+  UTC offsets. [More
+  info](https://gist.github.com/pixeltrix/e2298822dd89d854444b).
 
-* Prefer `Time.iso8601(foo)` instead of `Time.parse(foo)` when expecting ISO8601 formatted
-  time strings like `"2018-03-20T11:16:39-04:00"`.
+* Prefer `Time.iso8601(foo)` instead of `Time.parse(foo)` when expecting ISO8601
+  formatted time strings like `"2018-03-20T11:16:39-04:00"`.
 
 ## Naming
 
@@ -434,8 +447,8 @@ For more information about inheriting configuration from a gem please check
 
 * Use `snake_case` for naming files and directories, e.g. `hello_world.rb`.
 
-* Aim to have just a single class/module per source file. Name the file name
-  as the class/module, but replacing `CamelCase` with `snake_case`.
+* Aim to have just a single class/module per source file. Name the file name as
+  the class/module, but replacing `CamelCase` with `snake_case`.
 
 * Use `SCREAMING_SNAKE_CASE` for other constants.
 
@@ -445,25 +458,34 @@ For more information about inheriting configuration from a gem please check
 * When defining binary operators, name the parameter `other`(`<<` and `[]` are
   exceptions to the rule, since their semantics are different).
 
-* The names of predicate methods (methods that return a boolean value) should end in a question mark (i.e. `Array#empty?`). Methods that don't return a boolean, shouldn't end in a question mark.
+* The names of predicate methods (methods that return a boolean value) should
+  end in a question mark (i.e. `Array#empty?`). Methods that don't return a
+  boolean, shouldn't end in a question mark.
 
-* Method names should not be prefixed with `is_`. E.g. prefer `empty?` over `is_empty?`.
+* Method names should not be prefixed with `is_`. E.g. prefer `empty?` over
+  `is_empty?`.
 
 * Avoid magic numbers. Use a constant and give it a useful name.
 
-* Avoid nomenclature that has (or could be interpreted to have) discriminatory origins.
+* Avoid nomenclature that has (or could be interpreted to have) discriminatory
+  origins.
 
 ## Comments
 
-* Good comments focus on the reader of the code, by helping them understand the code. The reader may not have the same understanding, experience and knowledge as you. As a writer, take this into account.
+* Good comments focus on the reader of the code, by helping them understand the
+  code. The reader may not have the same understanding, experience and knowledge
+  as you. As a writer, take this into account.
 
-* A big problem with comments is that they can get out of sync with the code easily. When refactoring code, refactor the surrounding comments as well.
+* A big problem with comments is that they can get out of sync with the code
+  easily. When refactoring code, refactor the surrounding comments as well.
 
 * Write good copy, and use proper capitalization and punctuation.
 
-* Focus on **why** your code is the way it is if this is not obvious, not **how** your code works.
+* Focus on **why** your code is the way it is if this is not obvious, not
+  **how** your code works.
 
-* Avoid superfluous comments. If they are about how your code works, should you clarify your code instead?
+* Avoid superfluous comments. If they are about how your code works, should you
+  clarify your code instead?
 
 * For a good discussion on the costs and benefits of comments, see
   [http://c2.com/cgi/wiki?CommentCostsAndBenefits](http://c2.com/cgi/wiki?CommentCostsAndBenefits).
@@ -471,8 +493,8 @@ For more information about inheriting configuration from a gem please check
 
 ## Classes & Modules
 
-* Prefer modules to classes with only class methods. Classes should be used
-  only when it makes sense to create instances out of them.
+* Prefer modules to classes with only class methods. Classes should be used only
+  when it makes sense to create instances out of them.
 
 * Favour the use of `extend self` over `module_function` when you want to turn a
   module's instance methods into class methods.
@@ -548,8 +570,9 @@ For more information about inheriting configuration from a gem please check
   Substitution
   Principle](https://en.wikipedia.org/wiki/Liskov_substitution_principle).
 
-* Use the [`attr` family of methods](http://ruby-doc.org/core-2.2.3/Module.html#method-i-attr_accessor)
-  to define trivial accessors or mutators.
+* Use the [`attr` family of
+  methods](http://ruby-doc.org/core-2.2.3/Module.html#method-i-attr_accessor) to
+  define trivial accessors or mutators.
 
   ~~~ ruby
   # bad
@@ -625,8 +648,8 @@ For more information about inheriting configuration from a gem please check
   raise 'message'
   ~~~
 
-* Prefer supplying an exception class and a message as two separate arguments
-  to `raise`, instead of an exception instance.
+* Prefer supplying an exception class and a message as two separate arguments to
+  `raise`, instead of an exception instance.
 
   ~~~ ruby
   # bad
@@ -758,7 +781,8 @@ For more information about inheriting configuration from a gem please check
   hash = {}
   ~~~
 
-* Prefer the literal array syntax to `%w`, except when it reads substantially more clearly in context.
+* Prefer the literal array syntax to `%w`, except when it reads substantially
+  more clearly in context.
 
   ~~~ ruby
   # bad
@@ -768,8 +792,8 @@ For more information about inheriting configuration from a gem please check
   STATES = ['draft', 'open', 'closed']
   ~~~
 
-* Usage of trailing comma in multi-line collection literals is encouraged.
-  It makes diffs smaller and more meaningful.
+* Usage of trailing comma in multi-line collection literals is encouraged. It
+  makes diffs smaller and more meaningful.
 
   ~~~ ruby
   # not encouraged
@@ -853,8 +877,8 @@ For more information about inheriting configuration from a gem please check
   batman.fetch(:is_evil, true) # => false
   ~~~
 
-* Closing `]` and `}` must be on the line after the last element when
-  opening brace is on a separate line from the first element.
+* Closing `]` and `}` must be on the line after the last element when opening
+  brace is on a separate line from the first element.
 
   ~~~ ruby
   # bad
@@ -995,8 +1019,9 @@ For more information about inheriting configuration from a gem please check
   # => "def test\n  some_method\n  other_method\nend\n"
   ~~~
 
-* In Ruby 2.3, prefer ["squiggly heredoc"](https://github.com/ruby/ruby/pull/878)
-  syntax, which has the same semantics as `strip_heredoc` from Rails:
+* In Ruby 2.3, prefer ["squiggly
+  heredoc"](https://github.com/ruby/ruby/pull/878) syntax, which has the same
+  semantics as `strip_heredoc` from Rails:
 
   ~~~ruby
   code = <<~END
@@ -1023,8 +1048,8 @@ For more information about inheriting configuration from a gem please check
   /(?:first|second)/
   ~~~
 
-* Don't use the cryptic Perl-legacy variables denoting last regexp group
-  matches (`$1`, `$2`, etc). Use `Regexp#match` instead.
+* Don't use the cryptic Perl-legacy variables denoting last regexp group matches
+  (`$1`, `$2`, etc). Use `Regexp#match` instead.
 
   ~~~ ruby
   # bad
@@ -1071,8 +1096,7 @@ For more information about inheriting configuration from a gem please check
   string literals are more readable and should be preferred unless a lot of
   characters would have to be escaped in them.
 
-* Use `%r` only for regular expressions matching *at least* one '/'
-  character.
+* Use `%r` only for regular expressions matching *at least* one '/' character.
 
   ~~~ ruby
   # bad
@@ -1104,9 +1128,9 @@ For more information about inheriting configuration from a gem please check
     2. The action that is the subject of the test
     3. Asserting that the action did what you expect it do to.
 
-  Consider separating these parts by a newline for readability, especially
-  when your environment setup is complicated and you want to run multiple
-  assertions afterwards.
+  Consider separating these parts by a newline for readability, especially when
+  your environment setup is complicated and you want to run multiple assertions
+  afterwards.
 
   ~~~ ruby
   test 'sending a password reset email clears the password hash and set a reset token' do
@@ -1123,8 +1147,8 @@ For more information about inheriting configuration from a gem please check
 * A complex test should be split into multiple simpler tests that test
   functionality in isolation.
 
-* Prefer using `test 'foo'`-style syntax to define test cases over
-  `def test_foo`.
+* Prefer using `test 'foo'`-style syntax to define test cases over `def
+  test_foo`.
 
 * Prefer using assertion methods that will yield a more descriptive error
   message.
