@@ -1,6 +1,6 @@
 # Site settings
-title: 'Ruby style guide'
-description: "Shopify's Ruby style guide"
+title: 'Ruby Style Guide'
+description: "Shopify's Ruby Style Guide"
 exclude:
   - Gemfile
   - Gemfile.lock
