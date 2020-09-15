@@ -1019,3 +1019,6 @@ Lint/OrderedMagicComments:
 
 Lint/DeprecatedOpenSSLConstant:
   Enabled: true
+
+Style/ImplicitRuntimeError:
+  Enabled: true
