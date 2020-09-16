@@ -45,6 +45,21 @@ For more information about inheriting configuration from a gem please check
 [RuboCop's
 documentation](https://docs.rubocop.org/rubocop/configuration.html#inheriting-configuration-from-a-dependency-gem).
 
+## Table of Contents
+
+* [General](#general)
+* [Formatting](#formatting)
+* [Syntax](#syntax)
+* [Naming](#naming)
+* [Classes and Modules](#classes-and-modules)
+* [Exceptions](#exceptions)
+* [Collections](#collections)
+* [Strings](#strings)
+* [Regular Expressions](#regular-expressions)
+* [Percent Literals](#percent-literals)
+* [Testing](#testing)
+* [The Rest](#the-rest)
+
 ## General
 
 * Make all lines of your methods operate on the same level of abstraction.
@@ -70,7 +85,6 @@ documentation](https://docs.rubocop.org/rubocop/configuration.html#inheriting-co
 * Be consistent.
 
 * Use common sense.
-
 
 ## Formatting
 
@@ -212,7 +226,6 @@ documentation](https://docs.rubocop.org/rubocop/configuration.html#inheriting-co
     arg_2,
   )
   ~~~
-
 
 ## Syntax
 
@@ -490,8 +503,7 @@ documentation](https://docs.rubocop.org/rubocop/configuration.html#inheriting-co
 * For a good discussion on the costs and benefits of comments, see
   [http://c2.com/cgi/wiki?CommentCostsAndBenefits](http://c2.com/cgi/wiki?CommentCostsAndBenefits).
 
-
-## Classes & Modules
+## Classes and Modules
 
 * Prefer modules to classes with only class methods. Classes should be used only
   when it makes sense to create instances out of them.
@@ -632,7 +644,6 @@ documentation](https://docs.rubocop.org/rubocop/configuration.html#inheriting-co
 
 * Avoid `alias` when `alias_method` will do.
 
-
 ## Exceptions
 
 * Signal exceptions using the `raise` method.
@@ -764,7 +775,6 @@ documentation](https://docs.rubocop.org/rubocop/configuration.html#inheriting-co
     # exception handling
   end
   ~~~
-
 
 ## Collections
 
@@ -902,7 +912,6 @@ documentation](https://docs.rubocop.org/rubocop/configuration.html#inheriting-co
   }
   ~~~
 
-
 ## Strings
 
 * Prefer string interpolation and string formatting instead of string
@@ -1033,7 +1042,7 @@ documentation](https://docs.rubocop.org/rubocop/configuration.html#inheriting-co
   # => "def test\n  some_method\n  other_method\nend\n"
   ~~~
 
-## Regular expressions
+## Regular Expressions
 
 * Don't use regular expressions if you just need plain text search in string:
   `string['text']`
@@ -1084,7 +1093,6 @@ documentation](https://docs.rubocop.org/rubocop/configuration.html#inheriting-co
   string[/^username$/]   # matches
   string[/\Ausername\z/] # doesn't match
   ~~~
-
 
 ## Percent Literals
 
@@ -1180,7 +1188,7 @@ documentation](https://docs.rubocop.org/rubocop/configuration.html#inheriting-co
   end
   ~~~
 
-## The rest
+## The Rest
 
 * Avoid long methods.
 
