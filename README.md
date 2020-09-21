@@ -441,8 +441,7 @@ documentation](https://docs.rubocop.org/rubocop/configuration.html#inheriting-co
 
 * Use `snake_case` for symbols, methods, and variables.
 
-* Use `CamelCase` for classes and modules, but keep acronyms like HTTP, RFC, XML
-  uppercase.
+* Use `CamelCase` for classes and modules.
 
 * Use `snake_case` for naming files and directories, e.g. `hello_world.rb`.
 
