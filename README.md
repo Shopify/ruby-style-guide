@@ -373,6 +373,21 @@ documentation](https://docs.rubocop.org/rubocop/configuration.html#inheriting-co
   @enabled = true unless defined?(@enabled)
   ~~~
 
+* Avoid using `||=` to memoize possibly falsey (`false` or `nil`) values.
+
+  ~~~ ruby
+  # bad - will repeat lookup each time if it returns nil
+  def existing_record
+    @existing_record ||= expensive_lookup_that_might_return_nil
+  end
+
+  # good
+  def existing_record
+    return @existing_record if defined?(@existing_record)
+    @existing_record = expensive_lookup_that_might_return_nil
+  end
+  ~~~
+
 * Avoid spaces between a method name and the opening parenthesis.
 
 * Prefer the lambda literal syntax over `lambda`.
