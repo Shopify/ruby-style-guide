@@ -67,18 +67,15 @@ documentation](https://docs.rubocop.org/rubocop/configuration.html#inheriting-co
 
 * Code in a functional way. Avoid mutation (side effects) when you can.
 
-* Do not program defensively (see
-  [http://www.erlang.se/doc/programming_rules.shtml#HDR11](http://www.erlang.se/doc/programming_rules.shtml#HDR11)).
+* [Avoid defensive programming](http://www.erlang.se/doc/programming_rules.shtml#HDR11)
 
-* Do not mutate arguments unless that is the purpose of the method.
+* Avoid mutating arguments.
 
-* Do not mess around in / monkeypatch core classes when writing libraries.
+* Avoid monkeypatching.
 
 * Keep the code simple.
 
-* Don't overdesign.
-
-* Don't underdesign.
+* Do the right amount of design, not too little but also not too much.
 
 * Avoid bugs.
 
@@ -94,17 +91,17 @@ documentation](https://docs.rubocop.org/rubocop/configuration.html#inheriting-co
 
 * Use Unix-style line endings.
 
-* Don't use `;` to separate statements and expressions. As a corollary - use one
+* Avoid using `;` to separate statements and expressions. Use one
   expression per line.
 
 * Use spaces around operators, after commas, colons and semicolons, around `{`
   and before `}`.
 
-* No spaces after `(`, `[` and before `]`, `)`.
+* Avoid spaces after `(`, `[` and before `]`, `)`.
 
-* No space after the `!` operator.
+* Avoid space after the `!` operator.
 
-* No space inside range literals.
+* Avoid space inside range literals.
 
 * Indent `when` as deep as the `case` line.
 
@@ -138,8 +135,7 @@ documentation](https://docs.rubocop.org/rubocop/configuration.html#inheriting-co
 * Use spaces around the `=` operator when assigning default values to method
   parameters.
 
-* Avoid line continuation `\` where not required. In practice, avoid using line
-  continuations for anything but string concatenation.
+* Avoid line continuation `\` where not required.
 
 * Align the parameters of a method call, if they span more than one line, with
   one level of indentation relative to the start of the line with the method
@@ -197,7 +193,7 @@ documentation](https://docs.rubocop.org/rubocop/configuration.html#inheriting-co
 
 * End each file with a newline.
 
-* Don't use block comments:
+* Avoid block comments:
 
   ~~~ ruby
   # bad
@@ -211,7 +207,7 @@ documentation](https://docs.rubocop.org/rubocop/configuration.html#inheriting-co
   # another comment line
   ~~~
 
-* Closing method call brace must be on the line after the last argument when
+* Place the closing method call brace on the line after the last argument when
   opening brace is on a separate line from the first argument.
 
   ~~~ ruby
@@ -230,7 +226,7 @@ documentation](https://docs.rubocop.org/rubocop/configuration.html#inheriting-co
 ## Syntax
 
 * Use `::` only to reference constants (this includes classes and modules) and
-  constructors (like `Array()` or `Nokogiri::HTML()`). Do not use `::` for
+  constructors (like `Array()` or `Nokogiri::HTML()`). Avoid `::` for
   regular method invocation.
 
 * Avoid using `::` for defining class and modules, or for inheritance, since
@@ -259,9 +255,9 @@ documentation](https://docs.rubocop.org/rubocop/configuration.html#inheriting-co
 * Use def with parentheses when there are parameters. Omit the parentheses when
   the method doesn't accept any parameters.
 
-* Never use `for`, unless you know exactly why.
+* Avoid `for`.
 
-* Never use `then`.
+* Avoid `then`.
 
 * Favour the ternary operator(`?:`) over `if/then/else/end` constructs.
 
@@ -277,18 +273,17 @@ documentation](https://docs.rubocop.org/rubocop/configuration.html#inheriting-co
   ternary operators must not be nested. Prefer if/else constructs in these
   cases.
 
+* Avoid multiline `?:` (the ternary operator); use `if/unless` instead.
+
 * Use `when x then ...` for one-line cases.
 
 * Use `!` instead of `not`.
 
-* Prefer `&&`/`||` over `and`/`or`. [More info on `and/or` for control
-  flow](http://devblog.avdi.org/2014/08/26/how-to-use-rubys-english-andor-operators-without-going-nuts/).
-
-* Avoid multiline `?:` (the ternary operator); use `if/unless` instead.
+* Prefer `&&`/`||` over `and`/`or`.
 
 * Favour `unless` over `if` for negative conditions.
 
-* Do not use `unless` with `else`. Rewrite these with the positive case first.
+* Avoid `unless` with `else`. Rewrite these with the positive case first.
 
 * Use parentheses around the arguments of method invocations. Omit parentheses
   when not providing arguments. Also omit parentheses when the invocation is
@@ -320,22 +315,6 @@ documentation](https://docs.rubocop.org/rubocop/configuration.html#inheriting-co
     * `raise`
     * `puts`
 
-* Use class methods instead of a rails scope with a multi-line lambda
-
-  ~~~ ruby
-  # bad
-  scope(:pending, -> do
-    ...
-    ...
-  end)
-
-  # good
-  def self.pending
-    ...
-    ...
-  end
-  ~~~
-
 * Omit the outer braces around an implicit options hash.
 
 * Use the proc invocation shorthand when the invoked method is the only
@@ -349,27 +328,39 @@ documentation](https://docs.rubocop.org/rubocop/configuration.html#inheriting-co
   names.map(&:upcase)
   ~~~
 
-* Prefer `{...}` over `do...end` for single-line blocks. Avoid using `{...}` for
-  multi-line blocks. Always use `do...end` for "control flow" and "method
-  definitions" (e.g. in Rakefiles and certain DSLs). Avoid `do...end` when
-  chaining.
+* Prefer `{...}` over `do...end` for single-line blocks.
 
-* Avoid `return` where not required for control flow.
+* Prefer `do..end` over `{...}` for multi-line blocks.
 
-* Avoid `self` where not required (it is only required when calling a self write
-  accessor).
+* Omit `return` where possible.
 
-* Using the return value of = in a conditional expression is okay if wrapped in
-  parenthesis
+* Omit `self` where possible.
 
   ~~~ ruby
-  if (v = /foo/.match(string))
+  # bad
+  self.my_method
+
+  # good
+  my_method
+
+  # also good
+  attr_writer :name
+
+  def my_method
+    self.name = 'Rafael' # `self` is neeeded to reference the attribute writer.
+  end
+  ~~~
+
+* Wrap assignment in parentheses when using its return value in a conditional
+  statement.
+
+  ~~~ ruby
+  if (value = /foo/.match(string))
   ~~~
 
 * Use `||=` to initialize variables only if they're not already initialized.
 
-* Don't use `||=` to initialize boolean variables (consider what would happen if
-  the current value happened to be `false`).
+* Avoid using `||=` to initialize boolean variables.
 
   ~~~ ruby
   # bad - would set enabled to true even if it was false
@@ -382,9 +373,9 @@ documentation](https://docs.rubocop.org/rubocop/configuration.html#inheriting-co
   @enabled = true unless defined?(@enabled)
   ~~~
 
-* Do not put a space between a method name and the opening parenthesis.
+* Avoid spaces between a method name and the opening parenthesis.
 
-* Use the new lambda literal syntax.
+* Prefer the lambda literal syntax over `lambda`.
 
   ~~~ ruby
   # bad
@@ -408,8 +399,7 @@ documentation](https://docs.rubocop.org/rubocop/configuration.html#inheriting-co
 
 * Prefer `proc` over `Proc.new`.
 
-* Prefix with `_` unused block parameters and local variables. It's also
-  acceptable to use just `_`.
+* Prefix unused block parameters with `_`. It's also acceptable to use just `_`.
 
 * Prefer a guard clause when you can assert invalid data. A guard clause is a
   conditional statement at the top of a function that bails out as soon as it
@@ -437,31 +427,27 @@ documentation](https://docs.rubocop.org/rubocop/configuration.html#inheriting-co
   end
   ~~~
 
-* Avoid hashes-as-optional-parameters in general. Does the method do too much?
-
 * Prefer keyword arguments over options hash.
 
 * Prefer `map` over `collect`, `find` over `detect`, `select` over `find_all`,
   `size` over `length`.
 
-* Prefer `Time` over `DateTime` since it supports proper time zones instead of
-  UTC offsets. [More
-  info](https://gist.github.com/pixeltrix/e2298822dd89d854444b).
+* Prefer `Time` over `DateTime`.
 
 * Prefer `Time.iso8601(foo)` instead of `Time.parse(foo)` when expecting ISO8601
   formatted time strings like `"2018-03-20T11:16:39-04:00"`.
 
 ## Naming
 
-* Use `snake_case` for symbols, methods and variables.
+* Use `snake_case` for symbols, methods, and variables.
 
-* Use `CamelCase` for classes and modules (keep acronyms like HTTP, RFC, XML
-  uppercase).
+* Use `CamelCase` for classes and modules, but keep acronyms like HTTP, RFC, XML
+  uppercase.
 
 * Use `snake_case` for naming files and directories, e.g. `hello_world.rb`.
 
-* Aim to have just a single class/module per source file. Name the file name as
-  the class/module, but replacing `CamelCase` with `snake_case`.
+* Define a single class or module per source file. Name the file name as the
+  class or module, but replacing `CamelCase` with `snake_case`.
 
 * Use `SCREAMING_SNAKE_CASE` for other constants.
 
@@ -471,45 +457,52 @@ documentation](https://docs.rubocop.org/rubocop/configuration.html#inheriting-co
 * When defining binary operators, name the parameter `other`(`<<` and `[]` are
   exceptions to the rule, since their semantics are different).
 
-* The names of predicate methods (methods that return a boolean value) should
-  end in a question mark (i.e. `Array#empty?`). Methods that don't return a
-  boolean, shouldn't end in a question mark.
+* Name predicate methods with a `?`. Predicate methods are methods that return a
+  boolean value.
 
-* Method names should not be prefixed with `is_`. E.g. prefer `empty?` over
-  `is_empty?`.
+* Avoid ending method names with a `?` if they don't return a boolean.
 
-* Avoid magic numbers. Use a constant and give it a useful name.
+* Avoid prefixing method names with `is_`.
+
+  ~~~ruby
+  # bad
+  def is_empty?
+  end
+
+  # good
+  def empty?
+  end
+  ~~~
+
+* Avoid starting method names with `get_`.
+
+* Avoid ending method names with `!` when there is no equivalent method without
+  the bang. Bangs are to mark a more dangerous version of a method, e.g. `save`
+  returns a boolean in ActiveRecord, whereas `save!` will throw an exception on
+  failure.
+
+* Avoid magic numbers. Use a constant and give it a meaningful name.
 
 * Avoid nomenclature that has (or could be interpreted to have) discriminatory
   origins.
 
 ## Comments
 
-* Good comments focus on the reader of the code, by helping them understand the
-  code. The reader may not have the same understanding, experience and knowledge
-  as you. As a writer, take this into account.
+* Include relevant context in comments, as readers might be missing it.
 
-* A big problem with comments is that they can get out of sync with the code
-  easily. When refactoring code, refactor the surrounding comments as well.
+* Keep comments in sync with code.
 
-* Write good copy, and use proper capitalization and punctuation.
+* Write comments using proper capitalization and punctuation.
 
-* Focus on **why** your code is the way it is if this is not obvious, not
-  **how** your code works.
-
-* Avoid superfluous comments. If they are about how your code works, should you
-  clarify your code instead?
-
-* For a good discussion on the costs and benefits of comments, see
-  [http://c2.com/cgi/wiki?CommentCostsAndBenefits](http://c2.com/cgi/wiki?CommentCostsAndBenefits).
+* Avoid superfluous comments. Focus on **why** the code is the way it is if
+  this is not obvious, not **how** the code works.
 
 ## Classes and Modules
 
 * Prefer modules to classes with only class methods. Classes should be used only
   when it makes sense to create instances out of them.
 
-* Favour the use of `extend self` over `module_function` when you want to turn a
-  module's instance methods into class methods.
+* Prefer `extend self` over `module_function`.
 
   ~~~ ruby
   # bad
@@ -578,13 +571,11 @@ documentation](https://docs.rubocop.org/rubocop/configuration.html#inheriting-co
   end
   ~~~
 
-* When designing class hierarchies make sure that they conform to the [Liskov
-  Substitution
-  Principle](https://en.wikipedia.org/wiki/Liskov_substitution_principle).
+* Respect the [Liskov Substitution Principle](https://en.wikipedia.org/wiki/Liskov_substitution_principle)
+  when designing class hierarchies.
 
-* Use the [`attr` family of
-  methods](http://ruby-doc.org/core-2.2.3/Module.html#method-i-attr_accessor) to
-  define trivial accessors or mutators.
+* Use `attr_accessor`, `attr_reader`, and `attr_writer` to define trivial
+  accessors and mutators.
 
   ~~~ ruby
   # bad
@@ -614,15 +605,13 @@ documentation](https://docs.rubocop.org/rubocop/configuration.html#inheriting-co
   end
   ~~~
 
-* Avoid the use of `attr`. Use `attr_reader` and `attr_accessor` instead.
+* Prefer `attr_reader` and `attr_accessor` over `attr`.
 
-* Avoid the usage of class (`@@`) variables due to their "nasty" behavior in
-  inheritance.
+* Avoid class (`@@`) variables.
 
 * Indent the `public`, `protected`, and `private` methods as much as the method
   definitions they apply to. Leave one blank line above the visibility modifier
-  and one blank line below in order to emphasize that it applies to all methods
-  below it.
+  and one blank line below it.
 
   ~~~ ruby
   class SomeClass
@@ -642,14 +631,13 @@ documentation](https://docs.rubocop.org/rubocop/configuration.html#inheriting-co
   end
   ~~~
 
-* Avoid `alias` when `alias_method` will do.
+* Prefer `alias_method` over `alias`.
 
 ## Exceptions
 
 * Signal exceptions using the `raise` method.
 
-* Don't specify `RuntimeError` explicitly in the two argument version of
-  `raise`.
+* Omit `RuntimeError` in the two argument version of `raise`.
 
   ~~~ ruby
   # bad
@@ -660,7 +648,7 @@ documentation](https://docs.rubocop.org/rubocop/configuration.html#inheriting-co
   ~~~
 
 * Prefer supplying an exception class and a message as two separate arguments to
-  `raise`, instead of an exception instance.
+  `raise` instead of an exception instance.
 
   ~~~ ruby
   # bad
@@ -672,12 +660,13 @@ documentation](https://docs.rubocop.org/rubocop/configuration.html#inheriting-co
   # Consistent with `raise SomeException, 'message', backtrace`.
   ~~~
 
-* Do not return from an `ensure` block. If you explicitly return from a method
+* Avoid returning from an `ensure` block. If you explicitly return from a method
   inside an `ensure` block, the return will take precedence over any exception
   being raised, and the method will return as if no exception had been raised at
   all. In effect, the exception will be silently thrown away.
 
   ~~~ ruby
+  # bad
   def foo
     raise
   ensure
@@ -685,7 +674,7 @@ documentation](https://docs.rubocop.org/rubocop/configuration.html#inheriting-co
   end
   ~~~
 
-* Use *implicit begin blocks* where possible.
+* Use implicit begin blocks where possible.
 
   ~~~ ruby
   # bad
@@ -705,7 +694,7 @@ documentation](https://docs.rubocop.org/rubocop/configuration.html#inheriting-co
   end
   ~~~
 
-* Don't suppress exceptions.
+* Avoid empty `rescue` statements.
 
   ~~~ ruby
   # bad
@@ -720,13 +709,15 @@ documentation](https://docs.rubocop.org/rubocop/configuration.html#inheriting-co
   do_something rescue nil
   ~~~
 
-* Avoid using `rescue` in its modifier form.
+* Avoid `rescue` in its modifier form.
 
   ~~~ ruby
-  # bad - this catches exceptions of StandardError class and its descendant classes
+  # bad - this catches exceptions of StandardError class and its descendant
+  # classes.
   read_file rescue handle_error($!)
 
-  # good - this catches only the exceptions of Errno::ENOENT class and its descendant classes
+  # good - this catches only the exceptions of Errno::ENOENT class and its
+  # descendant classes.
   def foo
     read_file
   rescue Errno::ENOENT => error
@@ -754,11 +745,10 @@ documentation](https://docs.rubocop.org/rubocop/configuration.html#inheriting-co
   end
   ~~~
 
-* Favour the use of exceptions from the standard library over introducing new
-  exception classes.
+* Prefer exceptions from the standard library over introducing new exception
+  classes.
 
-* Don't use single letter variables for exceptions (`error` isn't that hard to
-  type).
+* Use meaningful names for exception variables.
 
   ~~~ ruby
   # bad
@@ -778,8 +768,8 @@ documentation](https://docs.rubocop.org/rubocop/configuration.html#inheriting-co
 
 ## Collections
 
-* Prefer literal array and hash creation notation (unless you need to pass
-  parameters to their constructors, that is).
+* Use literal array and hash creation notation unless you need to pass
+  parameters to their constructors.
 
   ~~~ ruby
   # bad
@@ -791,8 +781,7 @@ documentation](https://docs.rubocop.org/rubocop/configuration.html#inheriting-co
   hash = {}
   ~~~
 
-* Prefer the literal array syntax to `%w`, except when it reads substantially
-  more clearly in context.
+* Prefer the literal array syntax over `%w` or `%i`.
 
   ~~~ ruby
   # bad
@@ -802,42 +791,39 @@ documentation](https://docs.rubocop.org/rubocop/configuration.html#inheriting-co
   STATES = ['draft', 'open', 'closed']
   ~~~
 
-* Usage of trailing comma in multi-line collection literals is encouraged. It
-  makes diffs smaller and more meaningful.
+* Append a trailing comma in multi-line collection literals.
 
   ~~~ ruby
-  # not encouraged
+  # bad
   {
     foo: :bar,
     baz: :toto
   }
 
-  # encouraged
+  # good
   {
     foo: :bar,
     baz: :toto,
   }
   ~~~
 
-* Prefer the literal array syntax to `%i`.
-
-  ~~~ ruby
-  # bad
-  STATES = %i(draft open closed)
-
-  # good
-  STATES = [:draft, :open, :closed]
-  ~~~
-
 * When accessing the first or last element from an array, prefer `first` or
   `last` over `[0]` or `[-1]`.
 
-* Avoid the use of mutable objects as hash keys.
+* Avoid mutable objects as hash keys.
 
-* Use the Ruby 1.9 hash literal syntax when your hash keys are symbols.
+* Use shorthand hash literal syntax when all keys are symbols.
 
-* Don't mix the Ruby 1.9 hash syntax with hash rockets in the same hash literal.
-  When you've got keys that are not symbols stick to the hash rockets syntax.
+  ~~~ ruby
+  # bad
+  { :a => 1, :b => 2 }
+
+  # good
+  { a: 1, b: 2 }
+  ~~~
+
+* Prefer hash rockets syntax over shorthand syntax when not all keys are
+  symbols.
 
   ~~~ ruby
   # bad
@@ -847,20 +833,9 @@ documentation](https://docs.rubocop.org/rubocop/configuration.html#inheriting-co
   { :a => 1, 'b' => 2 }
   ~~~
 
-* Use `Hash#key?` instead of `Hash#has_key?` and `Hash#value?` instead of
-  `Hash#has_value?`. As noted
-  [here](http://blade.nagaokaut.ac.jp/cgi-bin/scat.rb/ruby/ruby-core/43765) by
-  Matz, the longer forms are considered deprecated.
+* Prefer `Hash#key?` over `Hash#has_key?`.
 
-  ~~~ ruby
-  # bad
-  hash.has_key?(:test)
-  hash.has_value?(value)
-
-  # good
-  hash.key?(:test)
-  hash.value?(value)
-  ~~~
+* Prefer `Hash#value?` over `Hash#has_value?`.
 
 * Use `Hash#fetch` when dealing with hash keys that should be present.
 
@@ -887,7 +862,7 @@ documentation](https://docs.rubocop.org/rubocop/configuration.html#inheriting-co
   batman.fetch(:is_evil, true) # => false
   ~~~
 
-* Closing `]` and `}` must be on the line after the last element when opening
+* Place `]` and `}` on the line after the last element when opening
   brace is on a separate line from the first element.
 
   ~~~ ruby
@@ -928,8 +903,7 @@ documentation](https://docs.rubocop.org/rubocop/configuration.html#inheriting-co
   email_with_name = format('%s <%s>', user.name, user.email)
   ~~~
 
-* With interpolated expressions, there should be no padded-spacing inside the
-  braces.
+* Avoid padded-spacing inside braces in interpolated expressions.
 
   ~~~ ruby
   # bad
@@ -941,12 +915,10 @@ documentation](https://docs.rubocop.org/rubocop/configuration.html#inheriting-co
 
 * Adopt a consistent string literal quoting style.
 
-* Don't use the character literal syntax `?x`. Since Ruby 1.9 it's basically
-  redundant - `?x` would interpreted as `'x'` (a string with a single character
-  in it).
+* Avoid the character literal syntax `?x`.
 
-* Don't leave out `{}` around instance and global variables being interpolated
-  into a string.
+* Use `{}` around instance and global variables being interpolated into a
+  string.
 
   ~~~ ruby
   class Person
@@ -976,18 +948,17 @@ documentation](https://docs.rubocop.org/rubocop/configuration.html#inheriting-co
   puts "$global = #{$global}"
   ~~~
 
-* Don't use `Object#to_s` on interpolated objects. It's invoked on them
-  automatically.
+* Avoid `Object#to_s` on interpolated objects.
 
   ~~~ ruby
   # bad
   message = "This is the #{result.to_s}."
 
-  # good
+  # good - `result.to_s` is called implicitly.
   message = "This is the #{result}."
   ~~~
 
-* Don't use `String#gsub` in scenarios in which you can use a faster more
+* Avoid `String#gsub` in scenarios in which you can use a faster more
   specialized alternative.
 
   ~~~ ruby
@@ -1044,8 +1015,11 @@ documentation](https://docs.rubocop.org/rubocop/configuration.html#inheriting-co
 
 ## Regular Expressions
 
-* Don't use regular expressions if you just need plain text search in string:
-  `string['text']`
+* Prefer plain text search over regular expressions in strings.
+
+  ~~~ ruby
+  string['text']
+  ~~~
 
 * Use non-capturing groups when you don't use the captured result.
 
@@ -1057,8 +1031,7 @@ documentation](https://docs.rubocop.org/rubocop/configuration.html#inheriting-co
   /(?:first|second)/
   ~~~
 
-* Don't use the cryptic Perl-legacy variables denoting last regexp group matches
-  (`$1`, `$2`, etc). Use `Regexp#match` instead.
+* Prefer `Regexp#match` over Perl-legacy variables to capture group matches.
 
   ~~~ ruby
   # bad
@@ -1069,8 +1042,7 @@ documentation](https://docs.rubocop.org/rubocop/configuration.html#inheriting-co
   /(regexp)/.match(string)[1]
   ~~~
 
-* Avoid using numbered groups as it can be hard to track what they contain.
-  Named groups can be used instead.
+* Prefer named groups over numbered groups.
 
   ~~~ ruby
   # bad
@@ -1084,27 +1056,24 @@ documentation](https://docs.rubocop.org/rubocop/configuration.html#inheriting-co
   process meaningful_var
   ~~~
 
-* Be careful with `^` and `$` as they match start/end of line, not string
-  endings.  If you want to match the whole string use: `\A` and `\z` (not to be
-  confused with `\Z` which is the equivalent of `/\n?\z/`).
+* Prefer `\A` and `\z` over `^` and `$` when matching strings from start to end.
 
   ~~~ ruby
   string = "some injection\nusername"
-  string[/^username$/]   # matches
-  string[/\Ausername\z/] # doesn't match
+  string[/^username$/] # `^` and `$` matches start and end of lines.
+  string[/\Ausername\z/] # `\A` and `\z` matches start and end of strings.
   ~~~
 
 ## Percent Literals
 
-* Use `%()`(it's a shorthand for `%Q`) for single-line strings which require
-  both interpolation and embedded double-quotes. For multi-line strings, prefer
-  heredocs.
+* Use `%()` for single-line strings which require both interpolation and
+  embedded double-quotes. For multi-line strings, prefer heredocs.
 
 * Avoid `%q` unless you have a string with both `'` and `"` in it. Regular
   string literals are more readable and should be preferred unless a lot of
   characters would have to be escaped in them.
 
-* Use `%r` only for regular expressions matching *at least* one '/' character.
+* Use `%r` only for regular expressions matching at least one `/` character.
 
   ~~~ ruby
   # bad
@@ -1127,18 +1096,12 @@ documentation](https://docs.rubocop.org/rubocop/configuration.html#inheriting-co
 * Treat test code like any other code you write. This means: keep readability,
   maintainability, complexity, etc. in mind.
 
-* Minitest is the preferred test framework.
+* Prefer Minitest as the test framework.
 
-* A test case should only test a single aspect of your code.
+* Limit each test case to cover a single aspect of your code.
 
-* A good test case consists of three parts:
-    1. Setup of the environment
-    2. The action that is the subject of the test
-    3. Asserting that the action did what you expect it do to.
-
-  Consider separating these parts by a newline for readability, especially when
-  your environment setup is complicated and you want to run multiple assertions
-  afterwards.
+* Organize the setup, action, and assertion sections of the test case into
+  paragraphs separated by empty lines.
 
   ~~~ ruby
   test 'sending a password reset email clears the password hash and set a reset token' do
@@ -1152,8 +1115,8 @@ documentation](https://docs.rubocop.org/rubocop/configuration.html#inheriting-co
   end
   ~~~
 
-* A complex test should be split into multiple simpler tests that test
-  functionality in isolation.
+* Split complex test cases into multiple simpler tests that test functionality
+  in isolation.
 
 * Prefer using `test 'foo'`-style syntax to define test cases over `def
   test_foo`.
@@ -1195,14 +1158,6 @@ documentation](https://docs.rubocop.org/rubocop/configuration.html#inheriting-co
 * Avoid long parameter lists.
 
 * Avoid needless metaprogramming.
-
-* Never start a method with `get_`.
-
-* Never use a `!` at the end of a method name if you have no equivalent method
-  without the bang. Methods are expected to change internal object state; you
-  don't need a bang for that. Bangs are to mark a more dangerous version of a
-  method, e.g. `save` returns a `bool` in ActiveRecord, whereas `save!` will
-  throw an exception on failure.
 
 * Avoid using `update_all`. If you do use it, use a scoped association
   (`Shop.where(amount: nil).update_all(amount: 0)`) instead of the two-argument
