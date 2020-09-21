@@ -58,7 +58,6 @@ documentation](https://docs.rubocop.org/rubocop/configuration.html#inheriting-co
 * [Regular Expressions](#regular-expressions)
 * [Percent Literals](#percent-literals)
 * [Testing](#testing)
-* [The Rest](#the-rest)
 
 ## General
 
@@ -73,15 +72,18 @@ documentation](https://docs.rubocop.org/rubocop/configuration.html#inheriting-co
 
 * Avoid monkeypatching.
 
-* Keep the code simple.
+* Avoid long methods.
 
-* Do the right amount of design, not too little but also not too much.
+* Avoid long parameter lists.
 
-* Avoid bugs.
+* Avoid needless metaprogramming.
 
-* Be consistent.
+* Prefer `public_send` over `send` so as not to circumvent `private`/`protected`
+  visibility.
 
-* Use common sense.
+* Write `ruby -w` safe code.
+
+* Avoid more than three levels of block nesting.
 
 ## Formatting
 
@@ -1150,23 +1152,3 @@ documentation](https://docs.rubocop.org/rubocop/configuration.html#inheriting-co
     do_something
   end
   ~~~
-
-## The Rest
-
-* Avoid long methods.
-
-* Avoid long parameter lists.
-
-* Avoid needless metaprogramming.
-
-* Avoid using `update_all`. If you do use it, use a scoped association
-  (`Shop.where(amount: nil).update_all(amount: 0)`) instead of the two-argument
-  version (`Shop.update_all({amount: 0}, amount: nil)`). But seriously, you
-  probably shouldn't be doing it in the first place.
-
-* Prefer `public_send` over `send` so as not to circumvent `private`/`protected`
-  visibility.
-
-* Write `ruby -w` safe code.
-
-* Avoid more than three levels of block nesting.
