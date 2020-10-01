@@ -1,8 +1,8 @@
 PATH
   remote: .
   specs:
-    rubocop-shopify (1.0.5)
-      rubocop (~> 0.90)
+    rubocop-shopify (1.0.6)
+      rubocop (~> 0.92.0)
 
 GEM
   remote: https://rubygems.org/
@@ -232,7 +232,7 @@ GEM
     rb-fsevent (0.10.4)
     rb-inotify (0.10.1)
       ffi (~> 1.0)
-    regexp_parser (1.8.0)
+    regexp_parser (1.8.1)
     rexml (3.2.4)
     rouge (3.23.0)
     rubocop (0.92.0)
@@ -244,9 +244,8 @@ GEM
       rubocop-ast (>= 0.5.0)
       ruby-progressbar (~> 1.7)
       unicode-display_width (>= 1.4.0, < 2.0)
-    rubocop-ast (0.7.0)
+    rubocop-ast (0.7.1)
       parser (>= 2.7.1.5)
-      strscan (>= 1.0.0)
     ruby-enum (0.8.0)
       i18n
     ruby-progressbar (1.10.1)
@@ -262,7 +261,6 @@ GEM
       faraday (> 0.8, < 2.0)
     simpleidn (0.1.1)
       unf (~> 0.1.4)
-    strscan (1.0.3)
     terminal-table (1.8.0)
       unicode-display_width (~> 1.1, >= 1.1.1)
     thread_safe (0.3.6)
