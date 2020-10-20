@@ -45,6 +45,10 @@ For more information about inheriting configuration from a gem please check
 [RuboCop's
 documentation](https://docs.rubocop.org/rubocop/configuration.html#inheriting-configuration-from-a-dependency-gem).
 
+## Related Projects
+
+* [shopify-cops](https://github.com/Shopify/shopify-cops) (private to Shopify)
+
 ## Table of Contents
 
 * [General](#general)
