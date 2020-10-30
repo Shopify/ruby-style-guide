@@ -2,7 +2,7 @@ PATH
   remote: .
   specs:
     rubocop-shopify (1.0.6)
-      rubocop (~> 1.0)
+      rubocop (~> 1.1)
 
 GEM
   remote: https://rubygems.org/
@@ -24,7 +24,7 @@ GEM
     commonmarker (0.17.13)
       ruby-enum (~> 0.5)
     concurrent-ruby (1.1.7)
-    dnsruby (1.61.4)
+    dnsruby (1.61.5)
       simpleidn (~> 0.1)
     em-websocket (0.5.2)
       eventmachine (>= 0.12.9)
@@ -274,7 +274,7 @@ GEM
       unf_ext
     unf_ext (0.0.7.7)
     unicode-display_width (1.7.0)
-    zeitwerk (2.4.0)
+    zeitwerk (2.4.1)
 
 PLATFORMS
   ruby

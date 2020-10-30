@@ -4,10 +4,12 @@ updates:
 
   - package-ecosystem: bundler
     directory: '/'
+    versioning-strategy: increase
     schedule:
       interval: daily
 
   - package-ecosystem: github-actions
     directory: '/'
+    versioning-strategy: increase
     schedule:
       interval: daily

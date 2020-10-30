@@ -12,7 +12,7 @@ jobs:
     - name: Set up Ruby 2.7
       uses: actions/setup-ruby@v1.1.2
       with:
-        ruby-version: 2.7
+        ruby-version: '2.7.2'
     - name: Cache gems
       uses: actions/cache@v2.1.2
       with:
