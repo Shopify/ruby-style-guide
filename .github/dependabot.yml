@@ -10,6 +10,5 @@ updates:
 
   - package-ecosystem: github-actions
     directory: '/'
-    versioning-strategy: increase
     schedule:
       interval: daily
