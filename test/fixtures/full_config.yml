@@ -70,7 +70,7 @@ AllCops:
   ExtraDetails: false
   StyleGuideCopsOnly: false
   EnabledByDefault: false
-  DisabledByDefault: true
+  DisabledByDefault: false
   NewCops: pending
   UseCache: true
   MaxFilesInCache: 20000
@@ -89,7 +89,6 @@ AllCops:
     - sequel
     rubocop-rake:
     - rake
-  Enabled: true
 Bundler/DuplicatedGem:
   Description: Checks for duplicate gem entries in Gemfile.
   Enabled: false
@@ -3593,7 +3592,6 @@ Style/ZeroLengthPredicate:
   VersionAdded: '0.37'
   VersionChanged: '0.39'
 inherit_mode:
-  Enabled: true
   merge:
   - Exclude
   - Include
