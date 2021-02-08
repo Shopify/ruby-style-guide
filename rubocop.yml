@@ -1,6 +1,7 @@
 AllCops:
   Exclude:
-  - 'db/schema.rb'
+    - 'db/schema.rb'
+    - 'node_modules/**/*'
   DisabledByDefault: true
   StyleGuideBaseURL: https://shopify.github.io/ruby-style-guide/
 
