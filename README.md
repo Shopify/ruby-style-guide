@@ -31,7 +31,7 @@ We offer a default RuboCop configuration you can inherit from and be in sync
 with this Style Guide. To use it, you can add this to your `Gemfile`:
 
   ~~~ruby
-  gem 'rubocop-shopify', require: false
+  gem "rubocop-shopify", require: false
   ~~~
 
 And add to the top of your project's RuboCop configuration file:
@@ -146,24 +146,24 @@ documentation](https://docs.rubocop.org/rubocop/configuration.html#inheriting-co
   ~~~ ruby
   # starting point (line is too long)
   def send_mail(source)
-    Mailer.deliver(to: 'bob@example.com', from: 'us@example.com', subject: 'Important message', body: source.text)
+    Mailer.deliver(to: "bob@example.com", from: "us@example.com", subject: "Important message", body: source.text)
   end
 
   # bad (double indent)
   def send_mail(source)
     Mailer.deliver(
-        to: 'bob@example.com',
-        from: 'us@example.com',
-        subject: 'Important message',
+        to: "bob@example.com",
+        from: "us@example.com",
+        subject: "Important message",
         body: source.text)
   end
 
   # good
   def send_mail(source)
     Mailer.deliver(
-      to: 'bob@example.com',
-      from: 'us@example.com',
-      subject: 'Important message',
+      to: "bob@example.com",
+      from: "us@example.com",
+      subject: "Important message",
       body: source.text,
     )
   end
@@ -237,7 +237,7 @@ documentation](https://docs.rubocop.org/rubocop/configuration.html#inheriting-co
   ~~~ ruby
   # bad
   module A
-    FOO = 'test'
+    FOO = "test"
   end
 
   class A::B
@@ -246,7 +246,7 @@ documentation](https://docs.rubocop.org/rubocop/configuration.html#inheriting-co
 
   # good
   module A
-    FOO = 'test'
+    FOO = "test"
 
     class B
       puts FOO
@@ -349,7 +349,7 @@ documentation](https://docs.rubocop.org/rubocop/configuration.html#inheriting-co
   attr_writer :name
 
   def my_method
-    self.name = 'Rafael' # `self` is neeeded to reference the attribute writer.
+    self.name = "Rafael" # `self` is neeeded to reference the attribute writer.
   end
   ~~~
 
@@ -643,10 +643,10 @@ documentation](https://docs.rubocop.org/rubocop/configuration.html#inheriting-co
 
   ~~~ ruby
   # bad
-  raise RuntimeError, 'message'
+  raise RuntimeError, "message"
 
   # good - signals a RuntimeError by default
-  raise 'message'
+  raise "message"
   ~~~
 
 * Prefer supplying an exception class and a message as two separate arguments to
@@ -654,12 +654,12 @@ documentation](https://docs.rubocop.org/rubocop/configuration.html#inheriting-co
 
   ~~~ ruby
   # bad
-  raise SomeException.new('message')
-  # Note that there is no way to do `raise SomeException.new('message'), backtrace`.
+  raise SomeException.new("message")
+  # Note that there is no way to do `raise SomeException.new("message"), backtrace`.
 
   # good
-  raise SomeException, 'message'
-  # Consistent with `raise SomeException, 'message', backtrace`.
+  raise SomeException, "message"
+  # Consistent with `raise SomeException, "message", backtrace`.
   ~~~
 
 * Avoid returning from an `ensure` block. If you explicitly return from a method
@@ -672,7 +672,7 @@ documentation](https://docs.rubocop.org/rubocop/configuration.html#inheriting-co
   def foo
     raise
   ensure
-    return 'very bad idea'
+    return "very bad idea"
   end
   ~~~
 
@@ -790,7 +790,7 @@ documentation](https://docs.rubocop.org/rubocop/configuration.html#inheriting-co
   STATES = %w(draft open closed)
 
   # good
-  STATES = ['draft', 'open', 'closed']
+  STATES = ["draft", "open", "closed"]
   ~~~
 
 * Append a trailing comma in multi-line collection literals.
@@ -829,10 +829,10 @@ documentation](https://docs.rubocop.org/rubocop/configuration.html#inheriting-co
 
   ~~~ ruby
   # bad
-  { a: 1, 'b' => 2 }
+  { a: 1, "b" => 2 }
 
   # good
-  { :a => 1, 'b' => 2 }
+  { :a => 1, "b" => 2 }
   ~~~
 
 * Prefer `Hash#key?` over `Hash#has_key?`.
@@ -842,7 +842,7 @@ documentation](https://docs.rubocop.org/rubocop/configuration.html#inheriting-co
 * Use `Hash#fetch` when dealing with hash keys that should be present.
 
   ~~~ ruby
-  heroes = { batman: 'Bruce Wayne', superman: 'Clark Kent' }
+  heroes = { batman: "Bruce Wayne", superman: "Clark Kent" }
   # bad - if we make a mistake we might not spot it right away
   heroes[:batman] # => "Bruce Wayne"
   heroes[:supermann] # => nil
@@ -855,7 +855,7 @@ documentation](https://docs.rubocop.org/rubocop/configuration.html#inheriting-co
   custom logic.
 
   ~~~ ruby
-  batman = { name: 'Bruce Wayne', is_evil: false }
+  batman = { name: "Bruce Wayne", is_evil: false }
 
   # bad - if we just use || operator with falsy value we won't get the expected result
   batman[:is_evil] || true # => true
@@ -896,13 +896,13 @@ documentation](https://docs.rubocop.org/rubocop/configuration.html#inheriting-co
 
   ~~~ ruby
   # bad
-  email_with_name = user.name + ' <' + user.email + '>'
+  email_with_name = user.name + " <" + user.email + ">"
 
   # good
   email_with_name = "#{user.name} <#{user.email}>"
 
   # good
-  email_with_name = format('%s <%s>', user.name, user.email)
+  email_with_name = format("%s <%s>", user.name, user.email)
   ~~~
 
 * Avoid padded-spacing inside braces in interpolated expressions.
@@ -915,7 +915,18 @@ documentation](https://docs.rubocop.org/rubocop/configuration.html#inheriting-co
   "From: #{user.first_name}, #{user.last_name}"
   ~~~
 
-* Adopt a consistent string literal quoting style.
+* Use double-quoted strings.
+
+  ~~~ ruby
+  # bad
+  'Just some text'
+  'No special chars or interpolation'
+
+  # good
+  "Just some text"
+  "No special chars or interpolation"
+  "Every string in #{project} uses double_quotes"
+  ~~~
 
 * Avoid the character literal syntax `?x`.
 
@@ -964,18 +975,18 @@ documentation](https://docs.rubocop.org/rubocop/configuration.html#inheriting-co
   specialized alternative.
 
   ~~~ ruby
-  url = 'http://example.com'
-  str = 'lisp-case-rules'
+  url = "http://example.com"
+  str = "lisp-case-rules"
 
   # bad
-  url.gsub('http://', 'https://')
-  str.gsub('-', '_')
-  str.gsub(/[aeiou]/, '')
+  url.gsub("http://", "https://")
+  str.gsub("-", "_")
+  str.gsub(/[aeiou]/, "")
 
   # good
-  url.sub('http://', 'https://')
-  str.tr('-', '_')
-  str.delete('aeiou')
+  url.sub("http://", "https://")
+  str.tr("-", "_")
+  str.delete("aeiou")
   ~~~
 
 * When using heredocs for multi-line strings keep in mind the fact that they
@@ -983,7 +994,7 @@ documentation](https://docs.rubocop.org/rubocop/configuration.html#inheriting-co
   on which to trim the excessive whitespace.
 
   ~~~ ruby
-  code = <<-END.gsub(/^\s+\|/, '')
+  code = <<-END.gsub(/^\s+\|/, "")
     |def test
     |  some_method
     |  other_method
@@ -1020,7 +1031,7 @@ documentation](https://docs.rubocop.org/rubocop/configuration.html#inheriting-co
 * Prefer plain text search over regular expressions in strings.
 
   ~~~ ruby
-  string['text']
+  string["text"]
   ~~~
 
 * Use non-capturing groups when you don't use the captured result.
@@ -1106,8 +1117,8 @@ documentation](https://docs.rubocop.org/rubocop/configuration.html#inheriting-co
   paragraphs separated by empty lines.
 
   ~~~ ruby
-  test 'sending a password reset email clears the password hash and set a reset token' do
-    user = User.create!(email: 'bob@example.com')
+  test "sending a password reset email clears the password hash and set a reset token" do
+    user = User.create!(email: "bob@example.com")
     user.mark_as_verified
 
     user.send_password_reset_email
@@ -1120,7 +1131,7 @@ documentation](https://docs.rubocop.org/rubocop/configuration.html#inheriting-co
 * Split complex test cases into multiple simpler tests that test functionality
   in isolation.
 
-* Prefer using `test 'foo'`-style syntax to define test cases over `def
+* Prefer using `test "foo"`-style syntax to define test cases over `def
   test_foo`.
 
 * Prefer using assertion methods that will yield a more descriptive error
@@ -1129,12 +1140,12 @@ documentation](https://docs.rubocop.org/rubocop/configuration.html#inheriting-co
   ~~~ ruby
   # bad
   assert user.valid?
-  assert user.name == 'tobi'
+  assert user.name == "tobi"
 
 
   # good
   assert_predicate user, :valid?
-  assert_equal 'tobi', user.name
+  assert_equal "tobi", user.name
   ~~~
 
 * Avoid using `assert_nothing_raised`. Use a positive assertion instead.
@@ -1144,11 +1155,11 @@ documentation](https://docs.rubocop.org/rubocop/configuration.html#inheriting-co
 
   ~~~ ruby
   # bad
-  StatsD.expects(:increment).with('metric')
+  StatsD.expects(:increment).with("metric")
   do_something
 
   # good
-  assert_statsd_increment('metric') do
+  assert_statsd_increment("metric") do
     do_something
   end
   ~~~
