@@ -397,11 +397,14 @@ Style/StabbyLambdaParentheses:
   - require_parentheses
   - require_no_parentheses
 
+Style/StringLiterals:
+  Enabled: true
+  EnforcedStyle: double_quotes
+  ConsistentQuotesInMultiline: false
+
 Style/StringLiteralsInInterpolation:
-  EnforcedStyle: single_quotes
-  SupportedStyles:
-  - single_quotes
-  - double_quotes
+  Enabled: true
+  EnforcedStyle: double_quotes
 
 Layout/SpaceAroundBlockParameters:
   EnforcedStyleInsidePipes: no_space
