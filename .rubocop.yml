@@ -2,7 +2,8 @@ inherit_from:
   - rubocop.yml
 
 AllCops:
-  TargetRubyVersion: 2.7
+  TargetRubyVersion: 3.0
+  SuggestExtensions: false
   Exclude:
     - _site/**/*
     - vendor/**/*
