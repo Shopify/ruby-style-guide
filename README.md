@@ -1,6 +1,7 @@
 ---
-layout: default
-permalink: '/index.html'
+layout: base
+title: Ruby Style Guide
+permalink: '/'
 ---
 
 # Ruby Style Guide
@@ -66,7 +67,7 @@ documentation](https://docs.rubocop.org/rubocop/configuration.html#inheriting-co
 
 * Code in a functional way. Avoid mutation (side effects) when you can.
 
-* [Avoid defensive programming](http://www.erlang.se/doc/programming_rules.shtml#HDR11)
+* [Avoid defensive programming](http://www.erlang.se/doc/programming_rules.shtml#HDR11).
 
 * Avoid mutating arguments.
 
@@ -290,9 +291,9 @@ documentation](https://docs.rubocop.org/rubocop/configuration.html#inheriting-co
 * Use parentheses around the arguments of method invocations. Omit parentheses
   when not providing arguments. Also omit parentheses when the invocation is
   single-line and the method:
-  - is a class method call with implicit receiver
+  - is a class method call with implicit receiver.
   - is called by syntactic sugar (e.g: `1 + 1` calls the `+` method, `foo[bar]`
-    calls the `[]` method, etc)
+    calls the `[]` method, etc).
 
   ~~~ ruby
   # bad
