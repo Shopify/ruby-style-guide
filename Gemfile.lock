@@ -38,7 +38,7 @@ GEM
       multipart-post (>= 1.2, < 3)
       ruby2_keywords
     faraday-net_http (1.0.1)
-    ffi (1.14.2)
+    ffi (1.15.0)
     forwardable-extended (2.6.0)
     gemoji (3.0.1)
     github-pages (212)
@@ -217,9 +217,9 @@ GEM
       jekyll (>= 3.5, < 5.0)
       jekyll-feed (~> 0.9)
       jekyll-seo-tag (~> 2.1)
-    minitest (5.14.3)
+    minitest (5.14.4)
     multipart-post (2.1.1)
-    nokogiri (1.11.1)
+    nokogiri (1.11.2)
       mini_portile2 (~> 2.5.0)
       racc (~> 1.4)
     octokit (4.20.0)
@@ -278,6 +278,7 @@ GEM
       unf_ext
     unf_ext (0.0.7.7)
     unicode-display_width (1.7.0)
+    webrick (1.7.0)
     zeitwerk (2.4.2)
 
 PLATFORMS
@@ -287,6 +288,7 @@ DEPENDENCIES
   github-pages
   rake
   rubocop-shopify!
+  webrick
 
 BUNDLED WITH
-   2.1.4
+   2.2.3

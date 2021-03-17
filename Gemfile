@@ -6,3 +6,4 @@ gemspec
 
 gem "github-pages", group: "pages"
 gem "rake"
+gem "webrick"
