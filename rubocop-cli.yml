@@ -1,5 +1,6 @@
-inherit_from:
-  - http://shopify.github.io/ruby-style-guide/rubocop.yml
+inherit_gem:
+  rubocop-shopify:
+    - rubocop-cli.yml
 
 AllCops:
   # We don't always use bundler to make for a faster boot time.
