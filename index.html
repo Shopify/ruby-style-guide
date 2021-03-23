@@ -1,0 +1,668 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ruby Style Guide</title>
+<meta name="description" content="Shopify&#39;s Ruby Style Guide">
+<link rel="stylesheet" href="/css/main.css">
+
+  </head>
+
+  <body>
+    <section class="section">
+      <div class="container">
+        <div class="content">
+          <h1 id="ruby-style-guide">Ruby Style Guide</h1>
+<p>Ruby is the main language at Shopify. We are primarily a Ruby shop and we are
+probably one of the largest out there. Ruby is the go-to language for new web
+projects and scripting.</p>
+<p>We expect all developers at Shopify to have at least a passing understanding of
+Ruby. It's a great language. It will make you a better developer no matter what
+you work in day to day. What follows is a loose coding style to follow while
+developing in Ruby.</p>
+<p>This Style Guide is the result of over a decade of Ruby development at Shopify.
+Much of its content is based on Bozhidar Batsov's <a href="https://github.com/rubocop-hq/ruby-style-guide">Ruby Style
+Guide</a>, adapted to Shopify by
+<a href="https://github.com/Shopify/ruby-style-guide/graphs/contributors">many
+contributors</a>.</p>
+<h3 id="adoption-with-rubocop">Adoption with RuboCop</h3>
+<p>We recommend using <a href="https://github.com/rubocop-hq/rubocop">RuboCop</a> in your Ruby
+projects to help you adopt this Style Guide. To know how to install and use
+RuboCop please refer to <a href="https://docs.rubocop.org/rubocop/">RuboCop's official
+documentation</a>.</p>
+<p>We offer a default RuboCop configuration you can inherit from and be in sync
+with this Style Guide. To use it, you can add this to your <code>Gemfile</code>:</p>
+<pre class="language-ruby"><code class="language-ruby">gem <span class="prism--token prism--string">"rubocop-shopify"</span><span class="prism--token prism--punctuation">,</span> <span class="prism--token prism--keyword">require</span><span class="prism--token prism--punctuation">:</span> <span class="prism--token prism--boolean">false</span></code></pre>
+<p>And add to the top of your project's RuboCop configuration file:</p>
+<pre class="language-yml"><code class="language-yml"><span class="prism--token prism--key prism--atrule">inherit_gem</span><span class="prism--token prism--punctuation">:</span><br>  <span class="prism--token prism--key prism--atrule">rubocop-shopify</span><span class="prism--token prism--punctuation">:</span> rubocop.yml</code></pre>
+<p>For more information about inheriting configuration from a gem please check
+<a href="https://docs.rubocop.org/rubocop/configuration.html#inheriting-configuration-from-a-dependency-gem">RuboCop's
+documentation</a>.</p>
+<h2 id="table-of-contents">Table of Contents</h2>
+<ul>
+<li><a href="#general">General</a></li>
+<li><a href="#formatting">Formatting</a></li>
+<li><a href="#syntax">Syntax</a></li>
+<li><a href="#naming">Naming</a></li>
+<li><a href="#classes-and-modules">Classes and Modules</a></li>
+<li><a href="#exceptions">Exceptions</a></li>
+<li><a href="#collections">Collections</a></li>
+<li><a href="#strings">Strings</a></li>
+<li><a href="#regular-expressions">Regular Expressions</a></li>
+<li><a href="#percent-literals">Percent Literals</a></li>
+<li><a href="#testing">Testing</a></li>
+</ul>
+<h2 id="general">General</h2>
+<ul>
+<li>
+<p>Make all lines of your methods operate on the same level of abstraction.
+(Single Level of Abstraction Principle)</p>
+</li>
+<li>
+<p>Code in a functional way. Avoid mutation (side effects) when you can.</p>
+</li>
+<li>
+<p><a href="http://www.erlang.se/doc/programming_rules.shtml#HDR11">Avoid defensive programming</a>.</p>
+</li>
+<li>
+<p>Avoid mutating arguments.</p>
+</li>
+<li>
+<p>Avoid monkeypatching.</p>
+</li>
+<li>
+<p>Avoid long methods.</p>
+</li>
+<li>
+<p>Avoid long parameter lists.</p>
+</li>
+<li>
+<p>Avoid needless metaprogramming.</p>
+</li>
+<li>
+<p>Prefer <code>public_send</code> over <code>send</code> so as not to circumvent <code>private</code>/<code>protected</code>
+visibility.</p>
+</li>
+<li>
+<p>Write <code>ruby -w</code> safe code.</p>
+</li>
+<li>
+<p>Avoid more than three levels of block nesting.</p>
+</li>
+</ul>
+<h2 id="formatting">Formatting</h2>
+<ul>
+<li>
+<p>Use <code>UTF-8</code> as the source file encoding.</p>
+</li>
+<li>
+<p>Use 2 space indent, no tabs.</p>
+</li>
+<li>
+<p>Use Unix-style line endings.</p>
+</li>
+<li>
+<p>Avoid using <code>;</code> to separate statements and expressions. Use one
+expression per line.</p>
+</li>
+<li>
+<p>Use spaces around operators, after commas, colons and semicolons, around <code>{</code>
+and before <code>}</code>.</p>
+</li>
+<li>
+<p>Avoid spaces after <code>(</code>, <code>[</code> and before <code>]</code>, <code>)</code>.</p>
+</li>
+<li>
+<p>Avoid space after the <code>!</code> operator.</p>
+</li>
+<li>
+<p>Avoid space inside range literals.</p>
+</li>
+<li>
+<p>Indent <code>when</code> as deep as the <code>case</code> line.</p>
+</li>
+<li>
+<p>When assigning the result of a conditional expression to a variable, align its
+branches with the variable that receives the return value.</p>
+<pre class="language-ruby"><code class="language-ruby"><span class="prism--token prism--comment"># bad</span><br>result <span class="prism--token prism--operator">=</span><br>  <span class="prism--token prism--keyword">if</span> some_cond<br>    <span class="prism--token prism--comment"># ...</span><br>    <span class="prism--token prism--comment"># ...</span><br>    calc_something<br>  <span class="prism--token prism--keyword">else</span><br>    calc_something_else<br>  <span class="prism--token prism--keyword">end</span><br><br><span class="prism--token prism--comment"># good</span><br>result <span class="prism--token prism--operator">=</span> <span class="prism--token prism--keyword">if</span> some_cond<br>  <span class="prism--token prism--comment"># ...</span><br>  <span class="prism--token prism--comment"># ...</span><br>  calc_something<br><span class="prism--token prism--keyword">else</span><br>  calc_something_else<br><span class="prism--token prism--keyword">end</span></code></pre>
+</li>
+<li>
+<p>Use empty lines between method definitions and also to break up methods into
+logical paragraphs internally.</p>
+</li>
+<li>
+<p>Use spaces around the <code>=</code> operator when assigning default values to method
+parameters.</p>
+</li>
+<li>
+<p>Avoid line continuation <code>\</code> where not required.</p>
+</li>
+<li>
+<p>Align the parameters of a method call, if they span more than one line, with
+one level of indentation relative to the start of the line with the method
+call.</p>
+<pre class="language-ruby"><code class="language-ruby"><span class="prism--token prism--comment"># starting point (line is too long)</span><br><span class="prism--token prism--keyword">def</span> <span class="prism--token prism--method-definition"><span class="prism--token prism--function">send_mail</span></span><span class="prism--token prism--punctuation">(</span>source<span class="prism--token prism--punctuation">)</span><br>  <span class="prism--token prism--constant">Mailer</span><span class="prism--token prism--punctuation">.</span>deliver<span class="prism--token prism--punctuation">(</span>to<span class="prism--token prism--punctuation">:</span> <span class="prism--token prism--string">"bob@example.com"</span><span class="prism--token prism--punctuation">,</span> from<span class="prism--token prism--punctuation">:</span> <span class="prism--token prism--string">"us@example.com"</span><span class="prism--token prism--punctuation">,</span> subject<span class="prism--token prism--punctuation">:</span> <span class="prism--token prism--string">"Important message"</span><span class="prism--token prism--punctuation">,</span> body<span class="prism--token prism--punctuation">:</span> source<span class="prism--token prism--punctuation">.</span>text<span class="prism--token prism--punctuation">)</span><br><span class="prism--token prism--keyword">end</span><br><br><span class="prism--token prism--comment"># bad (double indent)</span><br><span class="prism--token prism--keyword">def</span> <span class="prism--token prism--method-definition"><span class="prism--token prism--function">send_mail</span></span><span class="prism--token prism--punctuation">(</span>source<span class="prism--token prism--punctuation">)</span><br>  <span class="prism--token prism--constant">Mailer</span><span class="prism--token prism--punctuation">.</span>deliver<span class="prism--token prism--punctuation">(</span><br>      to<span class="prism--token prism--punctuation">:</span> <span class="prism--token prism--string">"bob@example.com"</span><span class="prism--token prism--punctuation">,</span><br>      from<span class="prism--token prism--punctuation">:</span> <span class="prism--token prism--string">"us@example.com"</span><span class="prism--token prism--punctuation">,</span><br>      subject<span class="prism--token prism--punctuation">:</span> <span class="prism--token prism--string">"Important message"</span><span class="prism--token prism--punctuation">,</span><br>      body<span class="prism--token prism--punctuation">:</span> source<span class="prism--token prism--punctuation">.</span>text<span class="prism--token prism--punctuation">)</span><br><span class="prism--token prism--keyword">end</span><br><br><span class="prism--token prism--comment"># good</span><br><span class="prism--token prism--keyword">def</span> <span class="prism--token prism--method-definition"><span class="prism--token prism--function">send_mail</span></span><span class="prism--token prism--punctuation">(</span>source<span class="prism--token prism--punctuation">)</span><br>  <span class="prism--token prism--constant">Mailer</span><span class="prism--token prism--punctuation">.</span>deliver<span class="prism--token prism--punctuation">(</span><br>    to<span class="prism--token prism--punctuation">:</span> <span class="prism--token prism--string">"bob@example.com"</span><span class="prism--token prism--punctuation">,</span><br>    from<span class="prism--token prism--punctuation">:</span> <span class="prism--token prism--string">"us@example.com"</span><span class="prism--token prism--punctuation">,</span><br>    subject<span class="prism--token prism--punctuation">:</span> <span class="prism--token prism--string">"Important message"</span><span class="prism--token prism--punctuation">,</span><br>    body<span class="prism--token prism--punctuation">:</span> source<span class="prism--token prism--punctuation">.</span>text<span class="prism--token prism--punctuation">,</span><br>  <span class="prism--token prism--punctuation">)</span><br><span class="prism--token prism--keyword">end</span></code></pre>
+</li>
+<li>
+<p>When chaining methods on multiple lines, indent successive calls by one level
+of indentation.</p>
+<pre class="language-ruby"><code class="language-ruby"><span class="prism--token prism--comment"># bad (indented to the previous call)</span><br><span class="prism--token prism--constant">User</span><span class="prism--token prism--punctuation">.</span>pluck<span class="prism--token prism--punctuation">(</span><span class="prism--token prism--symbol">:name</span><span class="prism--token prism--punctuation">)</span><br>    <span class="prism--token prism--punctuation">.</span>sort<span class="prism--token prism--punctuation">(</span><span class="prism--token prism--operator">&amp;</span><span class="prism--token prism--symbol">:casecmp</span><span class="prism--token prism--punctuation">)</span><br>    <span class="prism--token prism--punctuation">.</span>chunk <span class="prism--token prism--punctuation">{</span> <span class="prism--token prism--operator">|</span>n<span class="prism--token prism--operator">|</span> n<span class="prism--token prism--punctuation">[</span><span class="prism--token prism--number">0</span><span class="prism--token prism--punctuation">]</span> <span class="prism--token prism--punctuation">}</span><br><br><span class="prism--token prism--comment"># good</span><br><span class="prism--token prism--constant">User</span><br>  <span class="prism--token prism--punctuation">.</span>pluck<span class="prism--token prism--punctuation">(</span><span class="prism--token prism--symbol">:name</span><span class="prism--token prism--punctuation">)</span><br>  <span class="prism--token prism--punctuation">.</span>sort<span class="prism--token prism--punctuation">(</span><span class="prism--token prism--operator">&amp;</span><span class="prism--token prism--symbol">:casecmp</span><span class="prism--token prism--punctuation">)</span><br>  <span class="prism--token prism--punctuation">.</span>chunk <span class="prism--token prism--punctuation">{</span> <span class="prism--token prism--operator">|</span>n<span class="prism--token prism--operator">|</span> n<span class="prism--token prism--punctuation">[</span><span class="prism--token prism--number">0</span><span class="prism--token prism--punctuation">]</span> <span class="prism--token prism--punctuation">}</span></code></pre>
+</li>
+<li>
+<p>Align the elements of array literals spanning multiple lines.</p>
+</li>
+<li>
+<p>Limit lines to 120 characters.</p>
+</li>
+<li>
+<p>Avoid trailing whitespace.</p>
+</li>
+<li>
+<p>Avoid extra whitespace, except for alignment purposes.</p>
+</li>
+<li>
+<p>End each file with a newline.</p>
+</li>
+<li>
+<p>Avoid block comments:</p>
+<pre class="language-ruby"><code class="language-ruby"><span class="prism--token prism--comment"># bad</span><br><span class="prism--token prism--comment">=begin<br>comment line<br>another comment line<br>=end</span><br><br><span class="prism--token prism--comment"># good</span><br><span class="prism--token prism--comment"># comment line</span><br><span class="prism--token prism--comment"># another comment line</span></code></pre>
+</li>
+<li>
+<p>Place the closing method call brace on the line after the last argument when
+opening brace is on a separate line from the first argument.</p>
+<pre class="language-ruby"><code class="language-ruby"><span class="prism--token prism--comment"># bad</span><br>method<span class="prism--token prism--punctuation">(</span><br>  arg_1<span class="prism--token prism--punctuation">,</span><br>  arg_2<span class="prism--token prism--punctuation">)</span><br><br><span class="prism--token prism--comment"># good</span><br>method<span class="prism--token prism--punctuation">(</span><br>  arg_1<span class="prism--token prism--punctuation">,</span><br>  arg_2<span class="prism--token prism--punctuation">,</span><br><span class="prism--token prism--punctuation">)</span></code></pre>
+</li>
+</ul>
+<h2 id="syntax">Syntax</h2>
+<ul>
+<li>
+<p>Use <code>::</code> only to reference constants (this includes classes and modules) and
+constructors (like <code>Array()</code> or <code>Nokogiri::HTML()</code>). Avoid <code>::</code> for
+regular method invocation.</p>
+</li>
+<li>
+<p>Avoid using <code>::</code> for defining class and modules, or for inheritance, since
+constant lookup will not search in parent classes/modules.</p>
+<pre class="language-ruby"><code class="language-ruby"><span class="prism--token prism--comment"># bad</span><br><span class="prism--token prism--keyword">module</span> <span class="prism--token prism--constant">A</span><br>  <span class="prism--token prism--constant">FOO</span> <span class="prism--token prism--operator">=</span> <span class="prism--token prism--string">"test"</span><br><span class="prism--token prism--keyword">end</span><br><br><span class="prism--token prism--keyword">class</span> <span class="prism--token prism--class-name">A</span><span class="prism--token prism--punctuation">:</span><span class="prism--token prism--punctuation">:</span><span class="prism--token prism--constant">B</span><br>  puts <span class="prism--token prism--constant">FOO</span>  <span class="prism--token prism--comment"># this will raise a NameError exception</span><br><span class="prism--token prism--keyword">end</span><br><br><span class="prism--token prism--comment"># good</span><br><span class="prism--token prism--keyword">module</span> <span class="prism--token prism--constant">A</span><br>  <span class="prism--token prism--constant">FOO</span> <span class="prism--token prism--operator">=</span> <span class="prism--token prism--string">"test"</span><br><br>  <span class="prism--token prism--keyword">class</span> <span class="prism--token prism--class-name">B</span><br>    puts <span class="prism--token prism--constant">FOO</span><br>  <span class="prism--token prism--keyword">end</span><br><span class="prism--token prism--keyword">end</span></code></pre>
+</li>
+<li>
+<p>Use def with parentheses when there are parameters. Omit the parentheses when
+the method doesn't accept any parameters.</p>
+</li>
+<li>
+<p>Avoid <code>for</code>.</p>
+</li>
+<li>
+<p>Avoid <code>then</code>.</p>
+</li>
+<li>
+<p>Favour the ternary operator(<code>?:</code>) over <code>if/then/else/end</code> constructs.</p>
+<pre class="language-ruby"><code class="language-ruby"><span class="prism--token prism--comment"># bad</span><br>result <span class="prism--token prism--operator">=</span> <span class="prism--token prism--keyword">if</span> some_condition <span class="prism--token prism--keyword">then</span> something <span class="prism--token prism--keyword">else</span> something_else <span class="prism--token prism--keyword">end</span><br><br><span class="prism--token prism--comment"># good</span><br>result <span class="prism--token prism--operator">=</span> some_condition <span class="prism--token prism--operator">?</span> something <span class="prism--token prism--punctuation">:</span> something_else</code></pre>
+</li>
+<li>
+<p>Use one expression per branch in a ternary operator. This also means that
+ternary operators must not be nested. Prefer if/else constructs in these
+cases.</p>
+</li>
+<li>
+<p>Avoid multiline <code>?:</code> (the ternary operator); use <code>if/unless</code> instead.</p>
+</li>
+<li>
+<p>Use <code>when x then ...</code> for one-line cases.</p>
+</li>
+<li>
+<p>Use <code>!</code> instead of <code>not</code>.</p>
+</li>
+<li>
+<p>Prefer <code>&amp;&amp;</code>/<code>||</code> over <code>and</code>/<code>or</code>.</p>
+</li>
+<li>
+<p>Favour <code>unless</code> over <code>if</code> for negative conditions.</p>
+</li>
+<li>
+<p>Avoid <code>unless</code> with <code>else</code>. Rewrite these with the positive case first.</p>
+</li>
+<li>
+<p>Use parentheses around the arguments of method invocations. Omit parentheses
+when not providing arguments. Also omit parentheses when the invocation is
+single-line and the method:</p>
+<ul>
+<li>is a class method call with implicit receiver.</li>
+<li>is called by syntactic sugar (e.g: <code>1 + 1</code> calls the <code>+</code> method, <code>foo[bar]</code>
+calls the <code>[]</code> method, etc).</li>
+</ul>
+<pre class="language-ruby"><code class="language-ruby"><span class="prism--token prism--comment"># bad</span><br><span class="prism--token prism--keyword">class</span> <span class="prism--token prism--class-name">User</span><br>  <span class="prism--token prism--keyword">include</span><span class="prism--token prism--punctuation">(</span><span class="prism--token prism--constant">Bar</span><span class="prism--token prism--punctuation">)</span><br>  has_many<span class="prism--token prism--punctuation">(</span><span class="prism--token prism--symbol">:posts</span><span class="prism--token prism--punctuation">)</span><br><span class="prism--token prism--keyword">end</span><br><br><span class="prism--token prism--comment"># good</span><br><span class="prism--token prism--keyword">class</span> <span class="prism--token prism--class-name">User</span><br>  <span class="prism--token prism--keyword">include</span> <span class="prism--token prism--constant">Bar</span><br>  has_many <span class="prism--token prism--symbol">:posts</span><br>  <span class="prism--token prism--constant">SomeClass</span><span class="prism--token prism--punctuation">.</span>some_method<span class="prism--token prism--punctuation">(</span><span class="prism--token prism--symbol">:foo</span><span class="prism--token prism--punctuation">)</span><br><span class="prism--token prism--keyword">end</span></code></pre>
+<ul>
+<li>is one of the following methods:
+<ul>
+<li><code>require</code></li>
+<li><code>require_relative</code></li>
+<li><code>require_dependency</code></li>
+<li><code>yield</code></li>
+<li><code>raise</code></li>
+<li><code>puts</code></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>Omit the outer braces around an implicit options hash.</p>
+</li>
+<li>
+<p>Use the proc invocation shorthand when the invoked method is the only
+operation of a block.</p>
+<pre class="language-ruby"><code class="language-ruby"><span class="prism--token prism--comment"># bad</span><br>names<span class="prism--token prism--punctuation">.</span>map <span class="prism--token prism--punctuation">{</span> <span class="prism--token prism--operator">|</span>name<span class="prism--token prism--operator">|</span> name<span class="prism--token prism--punctuation">.</span>upcase <span class="prism--token prism--punctuation">}</span><br><br><span class="prism--token prism--comment"># good</span><br>names<span class="prism--token prism--punctuation">.</span>map<span class="prism--token prism--punctuation">(</span><span class="prism--token prism--operator">&amp;</span><span class="prism--token prism--symbol">:upcase</span><span class="prism--token prism--punctuation">)</span></code></pre>
+</li>
+<li>
+<p>Prefer <code>{...}</code> over <code>do...end</code> for single-line blocks.</p>
+</li>
+<li>
+<p>Prefer <code>do..end</code> over <code>{...}</code> for multi-line blocks.</p>
+</li>
+<li>
+<p>Omit <code>return</code> where possible.</p>
+</li>
+<li>
+<p>Omit <code>self</code> where possible.</p>
+<pre class="language-ruby"><code class="language-ruby"><span class="prism--token prism--comment"># bad</span><br><span class="prism--token prism--keyword">self</span><span class="prism--token prism--punctuation">.</span>my_method<br><br><span class="prism--token prism--comment"># good</span><br>my_method<br><br><span class="prism--token prism--comment"># also good</span><br>attr_writer <span class="prism--token prism--symbol">:name</span><br><br><span class="prism--token prism--keyword">def</span> <span class="prism--token prism--method-definition"><span class="prism--token prism--function">my_method</span></span><br>  <span class="prism--token prism--keyword">self</span><span class="prism--token prism--punctuation">.</span>name <span class="prism--token prism--operator">=</span> <span class="prism--token prism--string">"Rafael"</span> <span class="prism--token prism--comment"># `self` is neeeded to reference the attribute writer.</span><br><span class="prism--token prism--keyword">end</span></code></pre>
+</li>
+<li>
+<p>Wrap assignment in parentheses when using its return value in a conditional
+statement.</p>
+<pre class="language-ruby"><code class="language-ruby"><span class="prism--token prism--keyword">if</span> <span class="prism--token prism--punctuation">(</span>value <span class="prism--token prism--operator">=</span> <span class="prism--token prism--regex">/foo/</span><span class="prism--token prism--punctuation">.</span>match<span class="prism--token prism--punctuation">(</span>string<span class="prism--token prism--punctuation">)</span><span class="prism--token prism--punctuation">)</span></code></pre>
+</li>
+<li>
+<p>Use <code>||=</code> to initialize variables only if they're not already initialized.</p>
+</li>
+<li>
+<p>Avoid using <code>||=</code> to initialize boolean variables.</p>
+<pre class="language-ruby"><code class="language-ruby"><span class="prism--token prism--comment"># bad - would set enabled to true even if it was false</span><br><span class="prism--token prism--variable">@enabled</span> <span class="prism--token prism--operator">||</span><span class="prism--token prism--operator">=</span> <span class="prism--token prism--boolean">true</span><br><br><span class="prism--token prism--comment"># good</span><br><span class="prism--token prism--variable">@enabled</span> <span class="prism--token prism--operator">=</span> <span class="prism--token prism--boolean">true</span> <span class="prism--token prism--keyword">if</span> enabled<span class="prism--token prism--punctuation">.</span><span class="prism--token prism--keyword">nil</span><span class="prism--token prism--operator">?</span><br><br><span class="prism--token prism--comment"># also valid - defined? workaround</span><br><span class="prism--token prism--variable">@enabled</span> <span class="prism--token prism--operator">=</span> <span class="prism--token prism--boolean">true</span> <span class="prism--token prism--keyword">unless</span> <span class="prism--token prism--keyword">defined</span><span class="prism--token prism--operator">?</span><span class="prism--token prism--punctuation">(</span><span class="prism--token prism--variable">@enabled</span><span class="prism--token prism--punctuation">)</span></code></pre>
+</li>
+<li>
+<p>Avoid spaces between a method name and the opening parenthesis.</p>
+</li>
+<li>
+<p>Prefer the lambda literal syntax over <code>lambda</code>.</p>
+<pre class="language-ruby"><code class="language-ruby"><span class="prism--token prism--comment"># bad</span><br>l <span class="prism--token prism--operator">=</span> lambda <span class="prism--token prism--punctuation">{</span> <span class="prism--token prism--operator">|</span>a<span class="prism--token prism--punctuation">,</span> b<span class="prism--token prism--operator">|</span> a <span class="prism--token prism--operator">+</span> b <span class="prism--token prism--punctuation">}</span><br>l<span class="prism--token prism--punctuation">.</span>call<span class="prism--token prism--punctuation">(</span><span class="prism--token prism--number">1</span><span class="prism--token prism--punctuation">,</span> <span class="prism--token prism--number">2</span><span class="prism--token prism--punctuation">)</span><br><br>l <span class="prism--token prism--operator">=</span> lambda <span class="prism--token prism--keyword">do</span> <span class="prism--token prism--operator">|</span>a<span class="prism--token prism--punctuation">,</span> b<span class="prism--token prism--operator">|</span><br>  tmp <span class="prism--token prism--operator">=</span> a <span class="prism--token prism--operator">*</span> <span class="prism--token prism--number">7</span><br>  tmp <span class="prism--token prism--operator">*</span> b <span class="prism--token prism--operator">/</span> <span class="prism--token prism--number">50</span><br><span class="prism--token prism--keyword">end</span><br><br><span class="prism--token prism--comment"># good</span><br>l <span class="prism--token prism--operator">=</span> <span class="prism--token prism--operator">-</span><span class="prism--token prism--operator">></span><span class="prism--token prism--punctuation">(</span>a<span class="prism--token prism--punctuation">,</span> b<span class="prism--token prism--punctuation">)</span> <span class="prism--token prism--punctuation">{</span> a <span class="prism--token prism--operator">+</span> b <span class="prism--token prism--punctuation">}</span><br>l<span class="prism--token prism--punctuation">.</span>call<span class="prism--token prism--punctuation">(</span><span class="prism--token prism--number">1</span><span class="prism--token prism--punctuation">,</span> <span class="prism--token prism--number">2</span><span class="prism--token prism--punctuation">)</span><br><br>l <span class="prism--token prism--operator">=</span> <span class="prism--token prism--operator">-</span><span class="prism--token prism--operator">></span><span class="prism--token prism--punctuation">(</span>a<span class="prism--token prism--punctuation">,</span> b<span class="prism--token prism--punctuation">)</span> <span class="prism--token prism--keyword">do</span><br>  tmp <span class="prism--token prism--operator">=</span> a <span class="prism--token prism--operator">*</span> <span class="prism--token prism--number">7</span><br>  tmp <span class="prism--token prism--operator">*</span> b <span class="prism--token prism--operator">/</span> <span class="prism--token prism--number">50</span><br><span class="prism--token prism--keyword">end</span></code></pre>
+</li>
+<li>
+<p>Prefer <code>proc</code> over <code>Proc.new</code>.</p>
+</li>
+<li>
+<p>Prefix unused block parameters with <code>_</code>. It's also acceptable to use just <code>_</code>.</p>
+</li>
+<li>
+<p>Prefer a guard clause when you can assert invalid data. A guard clause is a
+conditional statement at the top of a function that bails out as soon as it
+can.</p>
+<pre class="language-ruby"><code class="language-ruby"><span class="prism--token prism--comment"># bad</span><br><span class="prism--token prism--keyword">def</span> <span class="prism--token prism--method-definition"><span class="prism--token prism--function">compute_thing</span></span><span class="prism--token prism--punctuation">(</span>thing<span class="prism--token prism--punctuation">)</span><br>  <span class="prism--token prism--keyword">if</span> thing<span class="prism--token prism--punctuation">[</span><span class="prism--token prism--symbol">:foo</span><span class="prism--token prism--punctuation">]</span><br>    update_with_bar<span class="prism--token prism--punctuation">(</span>thing<span class="prism--token prism--punctuation">)</span><br>    <span class="prism--token prism--keyword">if</span> thing<span class="prism--token prism--punctuation">[</span><span class="prism--token prism--symbol">:foo</span><span class="prism--token prism--punctuation">]</span><span class="prism--token prism--punctuation">[</span><span class="prism--token prism--symbol">:bar</span><span class="prism--token prism--punctuation">]</span><br>      partial_compute<span class="prism--token prism--punctuation">(</span>thing<span class="prism--token prism--punctuation">)</span><br>    <span class="prism--token prism--keyword">else</span><br>      re_compute<span class="prism--token prism--punctuation">(</span>thing<span class="prism--token prism--punctuation">)</span><br>    <span class="prism--token prism--keyword">end</span><br>  <span class="prism--token prism--keyword">end</span><br><span class="prism--token prism--keyword">end</span><br><br><span class="prism--token prism--comment"># good</span><br><span class="prism--token prism--keyword">def</span> <span class="prism--token prism--method-definition"><span class="prism--token prism--function">compute_thing</span></span><span class="prism--token prism--punctuation">(</span>thing<span class="prism--token prism--punctuation">)</span><br>  <span class="prism--token prism--keyword">return</span> <span class="prism--token prism--keyword">unless</span> thing<span class="prism--token prism--punctuation">[</span><span class="prism--token prism--symbol">:foo</span><span class="prism--token prism--punctuation">]</span><br>  update_with_bar<span class="prism--token prism--punctuation">(</span>thing<span class="prism--token prism--punctuation">[</span><span class="prism--token prism--symbol">:foo</span><span class="prism--token prism--punctuation">]</span><span class="prism--token prism--punctuation">)</span><br>  <span class="prism--token prism--keyword">return</span> re_compute<span class="prism--token prism--punctuation">(</span>thing<span class="prism--token prism--punctuation">)</span> <span class="prism--token prism--keyword">unless</span> thing<span class="prism--token prism--punctuation">[</span><span class="prism--token prism--symbol">:foo</span><span class="prism--token prism--punctuation">]</span><span class="prism--token prism--punctuation">[</span><span class="prism--token prism--symbol">:bar</span><span class="prism--token prism--punctuation">]</span><br>  partial_compute<span class="prism--token prism--punctuation">(</span>thing<span class="prism--token prism--punctuation">)</span><br><span class="prism--token prism--keyword">end</span></code></pre>
+</li>
+<li>
+<p>Prefer keyword arguments over options hash.</p>
+</li>
+<li>
+<p>Prefer <code>map</code> over <code>collect</code>, <code>find</code> over <code>detect</code>, <code>select</code> over <code>find_all</code>,
+<code>size</code> over <code>length</code>.</p>
+</li>
+<li>
+<p>Prefer <code>Time</code> over <code>DateTime</code>.</p>
+</li>
+<li>
+<p>Prefer <code>Time.iso8601(foo)</code> instead of <code>Time.parse(foo)</code> when expecting ISO8601
+formatted time strings like <code>&quot;2018-03-20T11:16:39-04:00&quot;</code>.</p>
+</li>
+</ul>
+<h2 id="naming">Naming</h2>
+<ul>
+<li>
+<p>Use <code>snake_case</code> for symbols, methods, and variables.</p>
+</li>
+<li>
+<p>Use <code>CamelCase</code> for classes and modules, but keep acronyms like HTTP, RFC, XML
+uppercase.</p>
+</li>
+<li>
+<p>Use <code>snake_case</code> for naming files and directories, e.g. <code>hello_world.rb</code>.</p>
+</li>
+<li>
+<p>Define a single class or module per source file. Name the file name as the
+class or module, but replacing <code>CamelCase</code> with <code>snake_case</code>.</p>
+</li>
+<li>
+<p>Use <code>SCREAMING_SNAKE_CASE</code> for other constants.</p>
+</li>
+<li>
+<p>When using inject with short blocks, name the arguments according to what is
+being injected, e.g. <code>|hash, e|</code> (mnemonic: hash, element)</p>
+</li>
+<li>
+<p>When defining binary operators, name the parameter <code>other</code>(<code>&lt;&lt;</code> and <code>[]</code> are
+exceptions to the rule, since their semantics are different).</p>
+</li>
+<li>
+<p>Name predicate methods with a <code>?</code>. Predicate methods are methods that return a
+boolean value.</p>
+</li>
+<li>
+<p>Avoid ending method names with a <code>?</code> if they don't return a boolean.</p>
+</li>
+<li>
+<p>Avoid prefixing method names with <code>is_</code>.</p>
+<pre class="language-ruby"><code class="language-ruby"><span class="prism--token prism--comment"># bad</span><br><span class="prism--token prism--keyword">def</span> <span class="prism--token prism--method-definition"><span class="prism--token prism--function">is_empty</span></span><span class="prism--token prism--operator">?</span><br><span class="prism--token prism--keyword">end</span><br><br><span class="prism--token prism--comment"># good</span><br><span class="prism--token prism--keyword">def</span> <span class="prism--token prism--method-definition"><span class="prism--token prism--function">empty</span></span><span class="prism--token prism--operator">?</span><br><span class="prism--token prism--keyword">end</span></code></pre>
+</li>
+<li>
+<p>Avoid starting method names with <code>get_</code>.</p>
+</li>
+<li>
+<p>Avoid ending method names with <code>!</code> when there is no equivalent method without
+the bang. Bangs are to mark a more dangerous version of a method, e.g. <code>save</code>
+returns a boolean in ActiveRecord, whereas <code>save!</code> will throw an exception on
+failure.</p>
+</li>
+<li>
+<p>Avoid magic numbers. Use a constant and give it a meaningful name.</p>
+</li>
+<li>
+<p>Avoid nomenclature that has (or could be interpreted to have) discriminatory
+origins.</p>
+</li>
+</ul>
+<h2 id="comments">Comments</h2>
+<ul>
+<li>
+<p>Include relevant context in comments, as readers might be missing it.</p>
+</li>
+<li>
+<p>Keep comments in sync with code.</p>
+</li>
+<li>
+<p>Write comments using proper capitalization and punctuation.</p>
+</li>
+<li>
+<p>Avoid superfluous comments. Focus on <strong>why</strong> the code is the way it is if
+this is not obvious, not <strong>how</strong> the code works.</p>
+</li>
+</ul>
+<h2 id="classes-and-modules">Classes and Modules</h2>
+<ul>
+<li>
+<p>Prefer modules to classes with only class methods. Classes should be used only
+when it makes sense to create instances out of them.</p>
+</li>
+<li>
+<p>Prefer <code>extend self</code> over <code>module_function</code>.</p>
+<pre class="language-ruby"><code class="language-ruby"><span class="prism--token prism--comment"># bad</span><br><span class="prism--token prism--keyword">module</span> <span class="prism--token prism--constant">SomeModule</span><br>  module_function<br><br>  <span class="prism--token prism--keyword">def</span> <span class="prism--token prism--method-definition"><span class="prism--token prism--function">some_method</span></span><br>  <span class="prism--token prism--keyword">end</span><br><br>  <span class="prism--token prism--keyword">def</span> <span class="prism--token prism--method-definition"><span class="prism--token prism--function">some_other_method</span></span><br>  <span class="prism--token prism--keyword">end</span><br><span class="prism--token prism--keyword">end</span><br><br><span class="prism--token prism--comment"># good</span><br><span class="prism--token prism--keyword">module</span> <span class="prism--token prism--constant">SomeModule</span><br>  <span class="prism--token prism--keyword">extend</span> <span class="prism--token prism--keyword">self</span><br><br>  <span class="prism--token prism--keyword">def</span> <span class="prism--token prism--method-definition"><span class="prism--token prism--function">some_method</span></span><br>  <span class="prism--token prism--keyword">end</span><br><br>  <span class="prism--token prism--keyword">def</span> <span class="prism--token prism--method-definition"><span class="prism--token prism--function">some_other_method</span></span><br>  <span class="prism--token prism--keyword">end</span><br><span class="prism--token prism--keyword">end</span></code></pre>
+</li>
+<li>
+<p>Use a <code>class &lt;&lt; self</code> block over <code>def self.</code> when defining class methods, and
+group them together within a single block.</p>
+<pre class="language-ruby"><code class="language-ruby"><span class="prism--token prism--comment"># bad</span><br><span class="prism--token prism--keyword">class</span> <span class="prism--token prism--class-name">SomeClass</span><br>  <span class="prism--token prism--keyword">def</span> <span class="prism--token prism--method-definition"><span class="prism--token prism--keyword">self</span><span class="prism--token prism--punctuation">.</span><span class="prism--token prism--function">method1</span></span><br>  <span class="prism--token prism--keyword">end</span><br><br>  <span class="prism--token prism--keyword">def</span> <span class="prism--token prism--method-definition"><span class="prism--token prism--function">method2</span></span><br>  <span class="prism--token prism--keyword">end</span><br><br>  <span class="prism--token prism--keyword">private</span><br><br>  <span class="prism--token prism--keyword">def</span> <span class="prism--token prism--method-definition"><span class="prism--token prism--function">method3</span></span><br>  <span class="prism--token prism--keyword">end</span><br><br>  <span class="prism--token prism--keyword">def</span> <span class="prism--token prism--method-definition"><span class="prism--token prism--keyword">self</span><span class="prism--token prism--punctuation">.</span><span class="prism--token prism--function">method4</span></span> <span class="prism--token prism--comment"># this is actually not private</span><br>  <span class="prism--token prism--keyword">end</span><br><span class="prism--token prism--keyword">end</span><br><br><span class="prism--token prism--comment"># good</span><br><span class="prism--token prism--keyword">class</span> <span class="prism--token prism--class-name">SomeClass</span><br>  <span class="prism--token prism--keyword">class</span> <span class="prism--token prism--operator">&lt;</span><span class="prism--token prism--operator">&lt;</span> <span class="prism--token prism--keyword">self</span><br>    <span class="prism--token prism--keyword">def</span> <span class="prism--token prism--method-definition"><span class="prism--token prism--function">method1</span></span><br>    <span class="prism--token prism--keyword">end</span><br><br>    <span class="prism--token prism--keyword">private</span><br><br>    <span class="prism--token prism--keyword">def</span> <span class="prism--token prism--method-definition"><span class="prism--token prism--function">method4</span></span><br>    <span class="prism--token prism--keyword">end</span><br>  <span class="prism--token prism--keyword">end</span><br><br>  <span class="prism--token prism--keyword">def</span> <span class="prism--token prism--method-definition"><span class="prism--token prism--function">method2</span></span><br>  <span class="prism--token prism--keyword">end</span><br><br>  <span class="prism--token prism--keyword">private</span><br><br>  <span class="prism--token prism--keyword">def</span> <span class="prism--token prism--method-definition"><span class="prism--token prism--function">method3</span></span><br>  <span class="prism--token prism--keyword">end</span><br><span class="prism--token prism--keyword">end</span></code></pre>
+</li>
+<li>
+<p>Respect the <a href="https://en.wikipedia.org/wiki/Liskov_substitution_principle">Liskov Substitution Principle</a>
+when designing class hierarchies.</p>
+</li>
+<li>
+<p>Use <code>attr_accessor</code>, <code>attr_reader</code>, and <code>attr_writer</code> to define trivial
+accessors and mutators.</p>
+<pre class="language-ruby"><code class="language-ruby"><span class="prism--token prism--comment"># bad</span><br><span class="prism--token prism--keyword">class</span> <span class="prism--token prism--class-name">Person</span><br>  <span class="prism--token prism--keyword">def</span> <span class="prism--token prism--method-definition"><span class="prism--token prism--function">initialize</span></span><span class="prism--token prism--punctuation">(</span>first_name<span class="prism--token prism--punctuation">,</span> last_name<span class="prism--token prism--punctuation">)</span><br>    <span class="prism--token prism--variable">@first_name</span> <span class="prism--token prism--operator">=</span> first_name<br>    <span class="prism--token prism--variable">@last_name</span> <span class="prism--token prism--operator">=</span> last_name<br>  <span class="prism--token prism--keyword">end</span><br><br>  <span class="prism--token prism--keyword">def</span> <span class="prism--token prism--method-definition"><span class="prism--token prism--function">first_name</span></span><br>    <span class="prism--token prism--variable">@first_name</span><br>  <span class="prism--token prism--keyword">end</span><br><br>  <span class="prism--token prism--keyword">def</span> <span class="prism--token prism--method-definition"><span class="prism--token prism--function">last_name</span></span><br>    <span class="prism--token prism--variable">@last_name</span><br>  <span class="prism--token prism--keyword">end</span><br><span class="prism--token prism--keyword">end</span><br><br><span class="prism--token prism--comment"># good</span><br><span class="prism--token prism--keyword">class</span> <span class="prism--token prism--class-name">Person</span><br>  attr_reader <span class="prism--token prism--symbol">:first_name</span><span class="prism--token prism--punctuation">,</span> <span class="prism--token prism--symbol">:last_name</span><br><br>  <span class="prism--token prism--keyword">def</span> <span class="prism--token prism--method-definition"><span class="prism--token prism--function">initialize</span></span><span class="prism--token prism--punctuation">(</span>first_name<span class="prism--token prism--punctuation">,</span> last_name<span class="prism--token prism--punctuation">)</span><br>    <span class="prism--token prism--variable">@first_name</span> <span class="prism--token prism--operator">=</span> first_name<br>    <span class="prism--token prism--variable">@last_name</span> <span class="prism--token prism--operator">=</span> last_name<br>  <span class="prism--token prism--keyword">end</span><br><span class="prism--token prism--keyword">end</span></code></pre>
+</li>
+<li>
+<p>Prefer <code>attr_reader</code> and <code>attr_accessor</code> over <code>attr</code>.</p>
+</li>
+<li>
+<p>Avoid class (<code>@@</code>) variables.</p>
+</li>
+<li>
+<p>Indent the <code>public</code>, <code>protected</code>, and <code>private</code> methods as much as the method
+definitions they apply to. Leave one blank line above the visibility modifier
+and one blank line below it.</p>
+<pre class="language-ruby"><code class="language-ruby"><span class="prism--token prism--keyword">class</span> <span class="prism--token prism--class-name">SomeClass</span><br>  <span class="prism--token prism--keyword">def</span> <span class="prism--token prism--method-definition"><span class="prism--token prism--function">public_method</span></span><br>    <span class="prism--token prism--comment"># ...</span><br>  <span class="prism--token prism--keyword">end</span><br><br>  <span class="prism--token prism--keyword">private</span><br><br>  <span class="prism--token prism--keyword">def</span> <span class="prism--token prism--method-definition"><span class="prism--token prism--function">private_method</span></span><br>    <span class="prism--token prism--comment"># ...</span><br>  <span class="prism--token prism--keyword">end</span><br><br>  <span class="prism--token prism--keyword">def</span> <span class="prism--token prism--method-definition"><span class="prism--token prism--function">another_private_method</span></span><br>    <span class="prism--token prism--comment"># ...</span><br>  <span class="prism--token prism--keyword">end</span><br><span class="prism--token prism--keyword">end</span></code></pre>
+</li>
+<li>
+<p>Prefer <code>alias_method</code> over <code>alias</code>.</p>
+</li>
+</ul>
+<h2 id="exceptions">Exceptions</h2>
+<ul>
+<li>
+<p>Signal exceptions using the <code>raise</code> method.</p>
+</li>
+<li>
+<p>Omit <code>RuntimeError</code> in the two argument version of <code>raise</code>.</p>
+<pre class="language-ruby"><code class="language-ruby"><span class="prism--token prism--comment"># bad</span><br><span class="prism--token prism--keyword">raise</span> <span class="prism--token prism--constant">RuntimeError</span><span class="prism--token prism--punctuation">,</span> <span class="prism--token prism--string">"message"</span><br><br><span class="prism--token prism--comment"># good - signals a RuntimeError by default</span><br><span class="prism--token prism--keyword">raise</span> <span class="prism--token prism--string">"message"</span></code></pre>
+</li>
+<li>
+<p>Prefer supplying an exception class and a message as two separate arguments to
+<code>raise</code> instead of an exception instance.</p>
+<pre class="language-ruby"><code class="language-ruby"><span class="prism--token prism--comment"># bad</span><br><span class="prism--token prism--keyword">raise</span> <span class="prism--token prism--constant">SomeException</span><span class="prism--token prism--punctuation">.</span><span class="prism--token prism--keyword">new</span><span class="prism--token prism--punctuation">(</span><span class="prism--token prism--string">"message"</span><span class="prism--token prism--punctuation">)</span><br><span class="prism--token prism--comment"># Note that there is no way to do `raise SomeException.new("message"), backtrace`.</span><br><br><span class="prism--token prism--comment"># good</span><br><span class="prism--token prism--keyword">raise</span> <span class="prism--token prism--constant">SomeException</span><span class="prism--token prism--punctuation">,</span> <span class="prism--token prism--string">"message"</span><br><span class="prism--token prism--comment"># Consistent with `raise SomeException, "message", backtrace`.</span></code></pre>
+</li>
+<li>
+<p>Avoid returning from an <code>ensure</code> block. If you explicitly return from a method
+inside an <code>ensure</code> block, the return will take precedence over any exception
+being raised, and the method will return as if no exception had been raised at
+all. In effect, the exception will be silently thrown away.</p>
+<pre class="language-ruby"><code class="language-ruby"><span class="prism--token prism--comment"># bad</span><br><span class="prism--token prism--keyword">def</span> <span class="prism--token prism--method-definition"><span class="prism--token prism--function">foo</span></span><br>  <span class="prism--token prism--keyword">raise</span><br><span class="prism--token prism--keyword">ensure</span><br>  <span class="prism--token prism--keyword">return</span> <span class="prism--token prism--string">"very bad idea"</span><br><span class="prism--token prism--keyword">end</span></code></pre>
+</li>
+<li>
+<p>Use implicit begin blocks where possible.</p>
+<pre class="language-ruby"><code class="language-ruby"><span class="prism--token prism--comment"># bad</span><br><span class="prism--token prism--keyword">def</span> <span class="prism--token prism--method-definition"><span class="prism--token prism--function">foo</span></span><br>  <span class="prism--token prism--keyword">begin</span><br>    <span class="prism--token prism--comment"># main logic goes here</span><br>  <span class="prism--token prism--keyword">rescue</span><br>    <span class="prism--token prism--comment"># failure handling goes here</span><br>  <span class="prism--token prism--keyword">end</span><br><span class="prism--token prism--keyword">end</span><br><br><span class="prism--token prism--comment"># good</span><br><span class="prism--token prism--keyword">def</span> <span class="prism--token prism--method-definition"><span class="prism--token prism--function">foo</span></span><br>  <span class="prism--token prism--comment"># main logic goes here</span><br><span class="prism--token prism--keyword">rescue</span><br>  <span class="prism--token prism--comment"># failure handling goes here</span><br><span class="prism--token prism--keyword">end</span></code></pre>
+</li>
+<li>
+<p>Avoid empty <code>rescue</code> statements.</p>
+<pre class="language-ruby"><code class="language-ruby"><span class="prism--token prism--comment"># bad</span><br><span class="prism--token prism--keyword">begin</span><br>  <span class="prism--token prism--comment"># an exception occurs here</span><br><span class="prism--token prism--keyword">rescue</span> <span class="prism--token prism--constant">SomeError</span><br>  <span class="prism--token prism--comment"># the rescue clause does absolutely nothing</span><br><span class="prism--token prism--keyword">end</span><br><br><span class="prism--token prism--comment"># bad - `rescue nil` swallows all errors, including syntax errors, and</span><br><span class="prism--token prism--comment"># makes them hard to track down.</span><br>do_something <span class="prism--token prism--keyword">rescue</span> <span class="prism--token prism--keyword">nil</span></code></pre>
+</li>
+<li>
+<p>Avoid <code>rescue</code> in its modifier form.</p>
+<pre class="language-ruby"><code class="language-ruby"><span class="prism--token prism--comment"># bad - this catches exceptions of StandardError class and its descendant</span><br><span class="prism--token prism--comment"># classes.</span><br>read_file <span class="prism--token prism--keyword">rescue</span> handle_error<span class="prism--token prism--punctuation">(</span>$<span class="prism--token prism--operator">!</span><span class="prism--token prism--punctuation">)</span><br><br><span class="prism--token prism--comment"># good - this catches only the exceptions of Errno::ENOENT class and its</span><br><span class="prism--token prism--comment"># descendant classes.</span><br><span class="prism--token prism--keyword">def</span> <span class="prism--token prism--method-definition"><span class="prism--token prism--function">foo</span></span><br>  read_file<br><span class="prism--token prism--keyword">rescue</span> <span class="prism--token prism--constant">Errno</span><span class="prism--token prism--punctuation">:</span><span class="prism--token prism--punctuation">:</span><span class="prism--token prism--constant">ENOENT</span> <span class="prism--token prism--operator">=</span><span class="prism--token prism--operator">></span> error<br>  handle_error<span class="prism--token prism--punctuation">(</span>error<span class="prism--token prism--punctuation">)</span><br><span class="prism--token prism--keyword">end</span></code></pre>
+</li>
+<li>
+<p>Avoid rescuing the <code>Exception</code> class.</p>
+<pre class="language-ruby"><code class="language-ruby"><span class="prism--token prism--comment"># bad</span><br><span class="prism--token prism--keyword">begin</span><br>  <span class="prism--token prism--comment"># calls to exit and kill signals will be caught (except kill -9)</span><br>  exit<br><span class="prism--token prism--keyword">rescue</span> <span class="prism--token prism--builtin">Exception</span><br>  puts <span class="prism--token prism--string">"you didn't really want to exit, right?"</span><br>  <span class="prism--token prism--comment"># exception handling</span><br><span class="prism--token prism--keyword">end</span><br><br><span class="prism--token prism--comment"># good</span><br><span class="prism--token prism--keyword">begin</span><br>  <span class="prism--token prism--comment"># a blind rescue rescues from StandardError, not Exception.</span><br><span class="prism--token prism--keyword">rescue</span> <span class="prism--token prism--operator">=</span><span class="prism--token prism--operator">></span> error<br>  <span class="prism--token prism--comment"># exception handling</span><br><span class="prism--token prism--keyword">end</span></code></pre>
+</li>
+<li>
+<p>Prefer exceptions from the standard library over introducing new exception
+classes.</p>
+</li>
+<li>
+<p>Use meaningful names for exception variables.</p>
+<pre class="language-ruby"><code class="language-ruby"><span class="prism--token prism--comment"># bad</span><br><span class="prism--token prism--keyword">begin</span><br>  <span class="prism--token prism--comment"># an exception occurs here</span><br><span class="prism--token prism--keyword">rescue</span> <span class="prism--token prism--operator">=</span><span class="prism--token prism--operator">></span> e<br>  <span class="prism--token prism--comment"># exception handling</span><br><span class="prism--token prism--keyword">end</span><br><br><span class="prism--token prism--comment"># good</span><br><span class="prism--token prism--keyword">begin</span><br>  <span class="prism--token prism--comment"># an exception occurs here</span><br><span class="prism--token prism--keyword">rescue</span> <span class="prism--token prism--operator">=</span><span class="prism--token prism--operator">></span> error<br>  <span class="prism--token prism--comment"># exception handling</span><br><span class="prism--token prism--keyword">end</span></code></pre>
+</li>
+</ul>
+<h2 id="collections">Collections</h2>
+<ul>
+<li>
+<p>Use literal array and hash creation notation unless you need to pass
+parameters to their constructors.</p>
+<pre class="language-ruby"><code class="language-ruby"><span class="prism--token prism--comment"># bad</span><br>arr <span class="prism--token prism--operator">=</span> <span class="prism--token prism--builtin">Array</span><span class="prism--token prism--punctuation">.</span><span class="prism--token prism--keyword">new</span><br>hash <span class="prism--token prism--operator">=</span> <span class="prism--token prism--builtin">Hash</span><span class="prism--token prism--punctuation">.</span><span class="prism--token prism--keyword">new</span><br><br><span class="prism--token prism--comment"># good</span><br>arr <span class="prism--token prism--operator">=</span> <span class="prism--token prism--punctuation">[</span><span class="prism--token prism--punctuation">]</span><br>hash <span class="prism--token prism--operator">=</span> <span class="prism--token prism--punctuation">{</span><span class="prism--token prism--punctuation">}</span></code></pre>
+</li>
+<li>
+<p>Prefer the literal array syntax over <code>%w</code> or <code>%i</code>.</p>
+<pre class="language-ruby"><code class="language-ruby"><span class="prism--token prism--comment"># bad</span><br><span class="prism--token prism--constant">STATES</span> <span class="prism--token prism--operator">=</span> <span class="prism--token prism--string">%w(draft open closed)</span><br><br><span class="prism--token prism--comment"># good</span><br><span class="prism--token prism--constant">STATES</span> <span class="prism--token prism--operator">=</span> <span class="prism--token prism--punctuation">[</span><span class="prism--token prism--string">"draft"</span><span class="prism--token prism--punctuation">,</span> <span class="prism--token prism--string">"open"</span><span class="prism--token prism--punctuation">,</span> <span class="prism--token prism--string">"closed"</span><span class="prism--token prism--punctuation">]</span></code></pre>
+</li>
+<li>
+<p>Append a trailing comma in multi-line collection literals.</p>
+<pre class="language-ruby"><code class="language-ruby"><span class="prism--token prism--comment"># bad</span><br><span class="prism--token prism--punctuation">{</span><br>  foo<span class="prism--token prism--punctuation">:</span> <span class="prism--token prism--symbol">:bar</span><span class="prism--token prism--punctuation">,</span><br>  baz<span class="prism--token prism--punctuation">:</span> <span class="prism--token prism--symbol">:toto</span><br><span class="prism--token prism--punctuation">}</span><br><br><span class="prism--token prism--comment"># good</span><br><span class="prism--token prism--punctuation">{</span><br>  foo<span class="prism--token prism--punctuation">:</span> <span class="prism--token prism--symbol">:bar</span><span class="prism--token prism--punctuation">,</span><br>  baz<span class="prism--token prism--punctuation">:</span> <span class="prism--token prism--symbol">:toto</span><span class="prism--token prism--punctuation">,</span><br><span class="prism--token prism--punctuation">}</span></code></pre>
+</li>
+<li>
+<p>When accessing the first or last element from an array, prefer <code>first</code> or
+<code>last</code> over <code>[0]</code> or <code>[-1]</code>.</p>
+</li>
+<li>
+<p>Avoid mutable objects as hash keys.</p>
+</li>
+<li>
+<p>Use shorthand hash literal syntax when all keys are symbols.</p>
+<pre class="language-ruby"><code class="language-ruby"><span class="prism--token prism--comment"># bad</span><br><span class="prism--token prism--punctuation">{</span> <span class="prism--token prism--symbol">:a</span> <span class="prism--token prism--operator">=</span><span class="prism--token prism--operator">></span> <span class="prism--token prism--number">1</span><span class="prism--token prism--punctuation">,</span> <span class="prism--token prism--symbol">:b</span> <span class="prism--token prism--operator">=</span><span class="prism--token prism--operator">></span> <span class="prism--token prism--number">2</span> <span class="prism--token prism--punctuation">}</span><br><br><span class="prism--token prism--comment"># good</span><br><span class="prism--token prism--punctuation">{</span> a<span class="prism--token prism--punctuation">:</span> <span class="prism--token prism--number">1</span><span class="prism--token prism--punctuation">,</span> b<span class="prism--token prism--punctuation">:</span> <span class="prism--token prism--number">2</span> <span class="prism--token prism--punctuation">}</span></code></pre>
+</li>
+<li>
+<p>Prefer hash rockets syntax over shorthand syntax when not all keys are
+symbols.</p>
+<pre class="language-ruby"><code class="language-ruby"><span class="prism--token prism--comment"># bad</span><br><span class="prism--token prism--punctuation">{</span> a<span class="prism--token prism--punctuation">:</span> <span class="prism--token prism--number">1</span><span class="prism--token prism--punctuation">,</span> <span class="prism--token prism--string">"b"</span> <span class="prism--token prism--operator">=</span><span class="prism--token prism--operator">></span> <span class="prism--token prism--number">2</span> <span class="prism--token prism--punctuation">}</span><br><br><span class="prism--token prism--comment"># good</span><br><span class="prism--token prism--punctuation">{</span> <span class="prism--token prism--symbol">:a</span> <span class="prism--token prism--operator">=</span><span class="prism--token prism--operator">></span> <span class="prism--token prism--number">1</span><span class="prism--token prism--punctuation">,</span> <span class="prism--token prism--string">"b"</span> <span class="prism--token prism--operator">=</span><span class="prism--token prism--operator">></span> <span class="prism--token prism--number">2</span> <span class="prism--token prism--punctuation">}</span></code></pre>
+</li>
+<li>
+<p>Prefer <code>Hash#key?</code> over <code>Hash#has_key?</code>.</p>
+</li>
+<li>
+<p>Prefer <code>Hash#value?</code> over <code>Hash#has_value?</code>.</p>
+</li>
+<li>
+<p>Use <code>Hash#fetch</code> when dealing with hash keys that should be present.</p>
+<pre class="language-ruby"><code class="language-ruby">heroes <span class="prism--token prism--operator">=</span> <span class="prism--token prism--punctuation">{</span> batman<span class="prism--token prism--punctuation">:</span> <span class="prism--token prism--string">"Bruce Wayne"</span><span class="prism--token prism--punctuation">,</span> superman<span class="prism--token prism--punctuation">:</span> <span class="prism--token prism--string">"Clark Kent"</span> <span class="prism--token prism--punctuation">}</span><br><span class="prism--token prism--comment"># bad - if we make a mistake we might not spot it right away</span><br>heroes<span class="prism--token prism--punctuation">[</span><span class="prism--token prism--symbol">:batman</span><span class="prism--token prism--punctuation">]</span> <span class="prism--token prism--comment"># => "Bruce Wayne"</span><br>heroes<span class="prism--token prism--punctuation">[</span><span class="prism--token prism--symbol">:supermann</span><span class="prism--token prism--punctuation">]</span> <span class="prism--token prism--comment"># => nil</span><br><br><span class="prism--token prism--comment"># good - fetch raises a KeyError making the problem obvious</span><br>heroes<span class="prism--token prism--punctuation">.</span>fetch<span class="prism--token prism--punctuation">(</span><span class="prism--token prism--symbol">:supermann</span><span class="prism--token prism--punctuation">)</span></code></pre>
+</li>
+<li>
+<p>Introduce default values for hash keys via <code>Hash#fetch</code> as opposed to using
+custom logic.</p>
+<pre class="language-ruby"><code class="language-ruby">batman <span class="prism--token prism--operator">=</span> <span class="prism--token prism--punctuation">{</span> name<span class="prism--token prism--punctuation">:</span> <span class="prism--token prism--string">"Bruce Wayne"</span><span class="prism--token prism--punctuation">,</span> is_evil<span class="prism--token prism--punctuation">:</span> <span class="prism--token prism--boolean">false</span> <span class="prism--token prism--punctuation">}</span><br><br><span class="prism--token prism--comment"># bad - if we just use || operator with falsy value we won't get the expected result</span><br>batman<span class="prism--token prism--punctuation">[</span><span class="prism--token prism--symbol">:is_evil</span><span class="prism--token prism--punctuation">]</span> <span class="prism--token prism--operator">||</span> <span class="prism--token prism--boolean">true</span> <span class="prism--token prism--comment"># => true</span><br><br><span class="prism--token prism--comment"># good - fetch work correctly with falsy values</span><br>batman<span class="prism--token prism--punctuation">.</span>fetch<span class="prism--token prism--punctuation">(</span><span class="prism--token prism--symbol">:is_evil</span><span class="prism--token prism--punctuation">,</span> <span class="prism--token prism--boolean">true</span><span class="prism--token prism--punctuation">)</span> <span class="prism--token prism--comment"># => false</span></code></pre>
+</li>
+<li>
+<p>Place <code>]</code> and <code>}</code> on the line after the last element when opening
+brace is on a separate line from the first element.</p>
+<pre class="language-ruby"><code class="language-ruby"><span class="prism--token prism--comment"># bad</span><br><span class="prism--token prism--punctuation">[</span><br>  <span class="prism--token prism--number">1</span><span class="prism--token prism--punctuation">,</span><br>  <span class="prism--token prism--number">2</span><span class="prism--token prism--punctuation">]</span><br><br><span class="prism--token prism--punctuation">{</span><br>  a<span class="prism--token prism--punctuation">:</span> <span class="prism--token prism--number">1</span><span class="prism--token prism--punctuation">,</span><br>  b<span class="prism--token prism--punctuation">:</span> <span class="prism--token prism--number">2</span><span class="prism--token prism--punctuation">}</span><br><br><span class="prism--token prism--comment"># good</span><br><span class="prism--token prism--punctuation">[</span><br>  <span class="prism--token prism--number">1</span><span class="prism--token prism--punctuation">,</span><br>  <span class="prism--token prism--number">2</span><span class="prism--token prism--punctuation">,</span><br><span class="prism--token prism--punctuation">]</span><br><br><span class="prism--token prism--punctuation">{</span><br>  a<span class="prism--token prism--punctuation">:</span> <span class="prism--token prism--number">1</span><span class="prism--token prism--punctuation">,</span><br>  b<span class="prism--token prism--punctuation">:</span> <span class="prism--token prism--number">2</span><span class="prism--token prism--punctuation">,</span><br><span class="prism--token prism--punctuation">}</span></code></pre>
+</li>
+</ul>
+<h2 id="strings">Strings</h2>
+<ul>
+<li>
+<p>Prefer string interpolation and string formatting instead of string
+concatenation:</p>
+<pre class="language-ruby"><code class="language-ruby"><span class="prism--token prism--comment"># bad</span><br>email_with_name <span class="prism--token prism--operator">=</span> user<span class="prism--token prism--punctuation">.</span>name <span class="prism--token prism--operator">+</span> <span class="prism--token prism--string">" &lt;"</span> <span class="prism--token prism--operator">+</span> user<span class="prism--token prism--punctuation">.</span>email <span class="prism--token prism--operator">+</span> <span class="prism--token prism--string">">"</span><br><br><span class="prism--token prism--comment"># good</span><br>email_with_name <span class="prism--token prism--operator">=</span> <span class="prism--token prism--string">"<span class="prism--token prism--interpolation"><span class="prism--token prism--delimiter prism--tag">#{</span>user<span class="prism--token prism--punctuation">.</span>name<span class="prism--token prism--delimiter prism--tag">}</span></span> &lt;<span class="prism--token prism--interpolation"><span class="prism--token prism--delimiter prism--tag">#{</span>user<span class="prism--token prism--punctuation">.</span>email<span class="prism--token prism--delimiter prism--tag">}</span></span>>"</span><br><br><span class="prism--token prism--comment"># good</span><br>email_with_name <span class="prism--token prism--operator">=</span> format<span class="prism--token prism--punctuation">(</span><span class="prism--token prism--string">"%s &lt;%s>"</span><span class="prism--token prism--punctuation">,</span> user<span class="prism--token prism--punctuation">.</span>name<span class="prism--token prism--punctuation">,</span> user<span class="prism--token prism--punctuation">.</span>email<span class="prism--token prism--punctuation">)</span></code></pre>
+</li>
+<li>
+<p>Avoid padded-spacing inside braces in interpolated expressions.</p>
+<pre class="language-ruby"><code class="language-ruby"><span class="prism--token prism--comment"># bad</span><br><span class="prism--token prism--string">"From: <span class="prism--token prism--interpolation"><span class="prism--token prism--delimiter prism--tag">#{</span> user<span class="prism--token prism--punctuation">.</span>first_name <span class="prism--token prism--delimiter prism--tag">}</span></span>, <span class="prism--token prism--interpolation"><span class="prism--token prism--delimiter prism--tag">#{</span> user<span class="prism--token prism--punctuation">.</span>last_name <span class="prism--token prism--delimiter prism--tag">}</span></span>"</span><br><br><span class="prism--token prism--comment"># good</span><br><span class="prism--token prism--string">"From: <span class="prism--token prism--interpolation"><span class="prism--token prism--delimiter prism--tag">#{</span>user<span class="prism--token prism--punctuation">.</span>first_name<span class="prism--token prism--delimiter prism--tag">}</span></span>, <span class="prism--token prism--interpolation"><span class="prism--token prism--delimiter prism--tag">#{</span>user<span class="prism--token prism--punctuation">.</span>last_name<span class="prism--token prism--delimiter prism--tag">}</span></span>"</span></code></pre>
+</li>
+<li>
+<p>Use double-quoted strings.</p>
+<pre class="language-ruby"><code class="language-ruby"><span class="prism--token prism--comment"># bad</span><br><span class="prism--token prism--string">'Just some text'</span><br><span class="prism--token prism--string">'No special chars or interpolation'</span><br><br><span class="prism--token prism--comment"># good</span><br><span class="prism--token prism--string">"Just some text"</span><br><span class="prism--token prism--string">"No special chars or interpolation"</span><br><span class="prism--token prism--string">"Every string in <span class="prism--token prism--interpolation"><span class="prism--token prism--delimiter prism--tag">#{</span>project<span class="prism--token prism--delimiter prism--tag">}</span></span> uses double_quotes"</span></code></pre>
+</li>
+<li>
+<p>Avoid the character literal syntax <code>?x</code>.</p>
+</li>
+<li>
+<p>Use <code>{}</code> around instance and global variables being interpolated into a
+string.</p>
+<pre class="language-ruby"><code class="language-ruby"><span class="prism--token prism--keyword">class</span> <span class="prism--token prism--class-name">Person</span><br>  attr_reader <span class="prism--token prism--symbol">:first_name</span><span class="prism--token prism--punctuation">,</span> <span class="prism--token prism--symbol">:last_name</span><br><br>  <span class="prism--token prism--keyword">def</span> <span class="prism--token prism--method-definition"><span class="prism--token prism--function">initialize</span></span><span class="prism--token prism--punctuation">(</span>first_name<span class="prism--token prism--punctuation">,</span> last_name<span class="prism--token prism--punctuation">)</span><br>    <span class="prism--token prism--variable">@first_name</span> <span class="prism--token prism--operator">=</span> first_name<br>    <span class="prism--token prism--variable">@last_name</span> <span class="prism--token prism--operator">=</span> last_name<br>  <span class="prism--token prism--keyword">end</span><br><br>  <span class="prism--token prism--comment"># bad - valid, but awkward</span><br>  <span class="prism--token prism--keyword">def</span> <span class="prism--token prism--method-definition"><span class="prism--token prism--function">to_s</span></span><br>    <span class="prism--token prism--string">"#@first_name #@last_name"</span><br>  <span class="prism--token prism--keyword">end</span><br><br>  <span class="prism--token prism--comment"># good</span><br>  <span class="prism--token prism--keyword">def</span> <span class="prism--token prism--method-definition"><span class="prism--token prism--function">to_s</span></span><br>    <span class="prism--token prism--string">"<span class="prism--token prism--interpolation"><span class="prism--token prism--delimiter prism--tag">#{</span><span class="prism--token prism--variable">@first_name</span><span class="prism--token prism--delimiter prism--tag">}</span></span> <span class="prism--token prism--interpolation"><span class="prism--token prism--delimiter prism--tag">#{</span><span class="prism--token prism--variable">@last_name</span><span class="prism--token prism--delimiter prism--tag">}</span></span>"</span><br>  <span class="prism--token prism--keyword">end</span><br><span class="prism--token prism--keyword">end</span><br><br><span class="prism--token prism--variable">$global</span> <span class="prism--token prism--operator">=</span> <span class="prism--token prism--number">0</span><br><span class="prism--token prism--comment"># bad</span><br>puts <span class="prism--token prism--string">"$global = #$global"</span><br><br><span class="prism--token prism--comment"># fine, but don't use globals</span><br>puts <span class="prism--token prism--string">"$global = <span class="prism--token prism--interpolation"><span class="prism--token prism--delimiter prism--tag">#{</span><span class="prism--token prism--variable">$global</span><span class="prism--token prism--delimiter prism--tag">}</span></span>"</span></code></pre>
+</li>
+<li>
+<p>Avoid <code>Object#to_s</code> on interpolated objects.</p>
+<pre class="language-ruby"><code class="language-ruby"><span class="prism--token prism--comment"># bad</span><br>message <span class="prism--token prism--operator">=</span> <span class="prism--token prism--string">"This is the <span class="prism--token prism--interpolation"><span class="prism--token prism--delimiter prism--tag">#{</span>result<span class="prism--token prism--punctuation">.</span>to_s<span class="prism--token prism--delimiter prism--tag">}</span></span>."</span><br><br><span class="prism--token prism--comment"># good - `result.to_s` is called implicitly.</span><br>message <span class="prism--token prism--operator">=</span> <span class="prism--token prism--string">"This is the <span class="prism--token prism--interpolation"><span class="prism--token prism--delimiter prism--tag">#{</span>result<span class="prism--token prism--delimiter prism--tag">}</span></span>."</span></code></pre>
+</li>
+<li>
+<p>Avoid <code>String#gsub</code> in scenarios in which you can use a faster more
+specialized alternative.</p>
+<pre class="language-ruby"><code class="language-ruby">url <span class="prism--token prism--operator">=</span> <span class="prism--token prism--string">"http://example.com"</span><br>str <span class="prism--token prism--operator">=</span> <span class="prism--token prism--string">"lisp-case-rules"</span><br><br><span class="prism--token prism--comment"># bad</span><br>url<span class="prism--token prism--punctuation">.</span>gsub<span class="prism--token prism--punctuation">(</span><span class="prism--token prism--string">"http://"</span><span class="prism--token prism--punctuation">,</span> <span class="prism--token prism--string">"https://"</span><span class="prism--token prism--punctuation">)</span><br>str<span class="prism--token prism--punctuation">.</span>gsub<span class="prism--token prism--punctuation">(</span><span class="prism--token prism--string">"-"</span><span class="prism--token prism--punctuation">,</span> <span class="prism--token prism--string">"_"</span><span class="prism--token prism--punctuation">)</span><br>str<span class="prism--token prism--punctuation">.</span>gsub<span class="prism--token prism--punctuation">(</span><span class="prism--token prism--regex">/[aeiou]/</span><span class="prism--token prism--punctuation">,</span> <span class="prism--token prism--string">""</span><span class="prism--token prism--punctuation">)</span><br><br><span class="prism--token prism--comment"># good</span><br>url<span class="prism--token prism--punctuation">.</span>sub<span class="prism--token prism--punctuation">(</span><span class="prism--token prism--string">"http://"</span><span class="prism--token prism--punctuation">,</span> <span class="prism--token prism--string">"https://"</span><span class="prism--token prism--punctuation">)</span><br>str<span class="prism--token prism--punctuation">.</span>tr<span class="prism--token prism--punctuation">(</span><span class="prism--token prism--string">"-"</span><span class="prism--token prism--punctuation">,</span> <span class="prism--token prism--string">"_"</span><span class="prism--token prism--punctuation">)</span><br>str<span class="prism--token prism--punctuation">.</span>delete<span class="prism--token prism--punctuation">(</span><span class="prism--token prism--string">"aeiou"</span><span class="prism--token prism--punctuation">)</span></code></pre>
+</li>
+<li>
+<p>When using heredocs for multi-line strings keep in mind the fact that they
+preserve leading whitespace. It's a good practice to employ some margin based
+on which to trim the excessive whitespace.</p>
+<pre class="language-ruby"><code class="language-ruby">code <span class="prism--token prism--operator">=</span> <span class="prism--token prism--operator">&lt;</span><span class="prism--token prism--operator">&lt;</span><span class="prism--token prism--operator">-</span><span class="prism--token prism--keyword">END</span><span class="prism--token prism--punctuation">.</span>gsub<span class="prism--token prism--punctuation">(</span><span class="prism--token prism--regex">/^\s+\|/</span><span class="prism--token prism--punctuation">,</span> <span class="prism--token prism--string">""</span><span class="prism--token prism--punctuation">)</span><br>  <span class="prism--token prism--operator">|</span><span class="prism--token prism--keyword">def</span> <span class="prism--token prism--method-definition"><span class="prism--token prism--function">test</span></span><br>  <span class="prism--token prism--operator">|</span>  some_method<br>  <span class="prism--token prism--operator">|</span>  other_method<br>  <span class="prism--token prism--operator">|</span><span class="prism--token prism--keyword">end</span><br><span class="prism--token prism--keyword">END</span><br><span class="prism--token prism--comment"># => "def test\n  some_method\n  other_method\nend\n"</span><br><br><span class="prism--token prism--comment"># In Rails you can use `#strip_heredoc` to achieve the same result</span><br>code <span class="prism--token prism--operator">=</span> <span class="prism--token prism--operator">&lt;</span><span class="prism--token prism--operator">&lt;</span><span class="prism--token prism--operator">-</span><span class="prism--token prism--keyword">END</span><span class="prism--token prism--punctuation">.</span>strip_heredoc<br>  <span class="prism--token prism--keyword">def</span> <span class="prism--token prism--method-definition"><span class="prism--token prism--function">test</span></span><br>    some_method<br>    other_method<br>  <span class="prism--token prism--keyword">end</span><br><span class="prism--token prism--keyword">END</span><br><span class="prism--token prism--comment"># => "def test\n  some_method\n  other_method\nend\n"</span></code></pre>
+</li>
+<li>
+<p>In Ruby 2.3, prefer <a href="https://github.com/ruby/ruby/pull/878">&quot;squiggly
+heredoc&quot;</a> syntax, which has the same
+semantics as <code>strip_heredoc</code> from Rails:</p>
+<pre class="language-ruby"><code class="language-ruby">code <span class="prism--token prism--operator">=</span> <span class="prism--token prism--operator">&lt;</span><span class="prism--token prism--operator">&lt;</span><span class="prism--token prism--operator">~</span><span class="prism--token prism--keyword">END</span><br>  <span class="prism--token prism--keyword">def</span> <span class="prism--token prism--method-definition"><span class="prism--token prism--function">test</span></span><br>    some_method<br>    other_method<br>  <span class="prism--token prism--keyword">end</span><br><span class="prism--token prism--keyword">END</span><br><span class="prism--token prism--comment"># => "def test\n  some_method\n  other_method\nend\n"</span></code></pre>
+</li>
+</ul>
+<h2 id="regular-expressions">Regular Expressions</h2>
+<ul>
+<li>
+<p>Prefer plain text search over regular expressions in strings.</p>
+<pre class="language-ruby"><code class="language-ruby">string<span class="prism--token prism--punctuation">[</span><span class="prism--token prism--string">"text"</span><span class="prism--token prism--punctuation">]</span></code></pre>
+</li>
+<li>
+<p>Use non-capturing groups when you don't use the captured result.</p>
+<pre class="language-ruby"><code class="language-ruby"><span class="prism--token prism--comment"># bad</span><br><span class="prism--token prism--regex">/(first|second)/</span><br><br><span class="prism--token prism--comment"># good</span><br><span class="prism--token prism--regex">/(?:first|second)/</span></code></pre>
+</li>
+<li>
+<p>Prefer <code>Regexp#match</code> over Perl-legacy variables to capture group matches.</p>
+<pre class="language-ruby"><code class="language-ruby"><span class="prism--token prism--comment"># bad</span><br><span class="prism--token prism--operator">/</span><span class="prism--token prism--punctuation">(</span>regexp<span class="prism--token prism--punctuation">)</span><span class="prism--token prism--operator">/</span> <span class="prism--token prism--operator">=</span><span class="prism--token prism--operator">~</span> string<br>process $<span class="prism--token prism--number">1</span><br><br><span class="prism--token prism--comment"># good</span><br><span class="prism--token prism--regex">/(regexp)/</span><span class="prism--token prism--punctuation">.</span>match<span class="prism--token prism--punctuation">(</span>string<span class="prism--token prism--punctuation">)</span><span class="prism--token prism--punctuation">[</span><span class="prism--token prism--number">1</span><span class="prism--token prism--punctuation">]</span></code></pre>
+</li>
+<li>
+<p>Prefer named groups over numbered groups.</p>
+<pre class="language-ruby"><code class="language-ruby"><span class="prism--token prism--comment"># bad</span><br><span class="prism--token prism--operator">/</span><span class="prism--token prism--punctuation">(</span>regexp<span class="prism--token prism--punctuation">)</span><span class="prism--token prism--operator">/</span> <span class="prism--token prism--operator">=</span><span class="prism--token prism--operator">~</span> string<br><span class="prism--token prism--punctuation">.</span><span class="prism--token prism--punctuation">.</span><span class="prism--token prism--punctuation">.</span><br>process <span class="prism--token prism--builtin">Regexp</span><span class="prism--token prism--punctuation">.</span>last_match<span class="prism--token prism--punctuation">(</span><span class="prism--token prism--number">1</span><span class="prism--token prism--punctuation">)</span><br><br><span class="prism--token prism--comment"># good</span><br><span class="prism--token prism--operator">/</span><span class="prism--token prism--punctuation">(</span><span class="prism--token prism--operator">?</span><span class="prism--token prism--operator">&lt;</span>meaningful_var<span class="prism--token prism--operator">></span>regexp<span class="prism--token prism--punctuation">)</span><span class="prism--token prism--operator">/</span> <span class="prism--token prism--operator">=</span><span class="prism--token prism--operator">~</span> string<br><span class="prism--token prism--punctuation">.</span><span class="prism--token prism--punctuation">.</span><span class="prism--token prism--punctuation">.</span><br>process meaningful_var</code></pre>
+</li>
+<li>
+<p>Prefer <code>\A</code> and <code>\z</code> over <code>^</code> and <code>$</code> when matching strings from start to end.</p>
+<pre class="language-ruby"><code class="language-ruby">string <span class="prism--token prism--operator">=</span> <span class="prism--token prism--string">"some injection\nusername"</span><br>string<span class="prism--token prism--punctuation">[</span><span class="prism--token prism--operator">/</span><span class="prism--token prism--operator">^</span>username$<span class="prism--token prism--operator">/</span><span class="prism--token prism--punctuation">]</span> <span class="prism--token prism--comment"># `^` and `$` matches start and end of lines.</span><br>string<span class="prism--token prism--punctuation">[</span><span class="prism--token prism--operator">/</span>\<span class="prism--token prism--constant">Ausername</span>\z<span class="prism--token prism--operator">/</span><span class="prism--token prism--punctuation">]</span> <span class="prism--token prism--comment"># `\A` and `\z` matches start and end of strings.</span></code></pre>
+</li>
+</ul>
+<h2 id="percent-literals">Percent Literals</h2>
+<ul>
+<li>
+<p>Use <code>%()</code> for single-line strings which require both interpolation and
+embedded double-quotes. For multi-line strings, prefer heredocs.</p>
+</li>
+<li>
+<p>Avoid <code>%q</code> unless you have a string with both <code>'</code> and <code>&quot;</code> in it. Regular
+string literals are more readable and should be preferred unless a lot of
+characters would have to be escaped in them.</p>
+</li>
+<li>
+<p>Use <code>%r</code> only for regular expressions matching at least one <code>/</code> character.</p>
+<pre class="language-ruby"><code class="language-ruby"><span class="prism--token prism--comment"># bad</span><br><span class="prism--token prism--regex">%r{\s+}</span><br><br><span class="prism--token prism--comment"># good</span><br><span class="prism--token prism--regex">%r{^/(.*)$}</span><br><span class="prism--token prism--regex">%r{^/blog/2011/(.*)$}</span></code></pre>
+</li>
+<li>
+<p>Avoid the use of <code>%s</code>. Use <code>:&quot;some string&quot;</code> to create a symbol with spaces in
+it.</p>
+</li>
+<li>
+<p>Prefer <code>()</code> as delimiters for all <code>%</code> literals, except, as often occurs in
+regular expressions, when parentheses appear inside the literal. Use the first
+of <code>()</code>, <code>{}</code>, <code>[]</code>, <code>&lt;&gt;</code> which does not appear inside the literal.</p>
+</li>
+</ul>
+<h2 id="testing">Testing</h2>
+<ul>
+<li>
+<p>Treat test code like any other code you write. This means: keep readability,
+maintainability, complexity, etc. in mind.</p>
+</li>
+<li>
+<p>Prefer Minitest as the test framework.</p>
+</li>
+<li>
+<p>Limit each test case to cover a single aspect of your code.</p>
+</li>
+<li>
+<p>Organize the setup, action, and assertion sections of the test case into
+paragraphs separated by empty lines.</p>
+<pre class="language-ruby"><code class="language-ruby">test <span class="prism--token prism--string">"sending a password reset email clears the password hash and set a reset token"</span> <span class="prism--token prism--keyword">do</span><br>  user <span class="prism--token prism--operator">=</span> <span class="prism--token prism--constant">User</span><span class="prism--token prism--punctuation">.</span>create<span class="prism--token prism--operator">!</span><span class="prism--token prism--punctuation">(</span>email<span class="prism--token prism--punctuation">:</span> <span class="prism--token prism--string">"bob@example.com"</span><span class="prism--token prism--punctuation">)</span><br>  user<span class="prism--token prism--punctuation">.</span>mark_as_verified<br><br>  user<span class="prism--token prism--punctuation">.</span>send_password_reset_email<br><br>  assert_nil user<span class="prism--token prism--punctuation">.</span>password_hash<br>  refute_nil user<span class="prism--token prism--punctuation">.</span>reset_token<br><span class="prism--token prism--keyword">end</span></code></pre>
+</li>
+<li>
+<p>Split complex test cases into multiple simpler tests that test functionality
+in isolation.</p>
+</li>
+<li>
+<p>Prefer using <code>test &quot;foo&quot;</code>-style syntax to define test cases over <code>def test_foo</code>.</p>
+</li>
+<li>
+<p>Prefer using assertion methods that will yield a more descriptive error
+message.</p>
+<pre class="language-ruby"><code class="language-ruby"><span class="prism--token prism--comment"># bad</span><br>assert user<span class="prism--token prism--punctuation">.</span>valid<span class="prism--token prism--operator">?</span><br>assert user<span class="prism--token prism--punctuation">.</span>name <span class="prism--token prism--operator">==</span> <span class="prism--token prism--string">"tobi"</span><br><br><br><span class="prism--token prism--comment"># good</span><br>assert_predicate user<span class="prism--token prism--punctuation">,</span> <span class="prism--token prism--symbol">:valid?</span><br>assert_equal <span class="prism--token prism--string">"tobi"</span><span class="prism--token prism--punctuation">,</span> user<span class="prism--token prism--punctuation">.</span>name</code></pre>
+</li>
+<li>
+<p>Avoid using <code>assert_nothing_raised</code>. Use a positive assertion instead.</p>
+</li>
+<li>
+<p>Prefer using assertions over expectations. Expectations lead to more brittle
+tests, especially in combination with singleton objects.</p>
+<pre class="language-ruby"><code class="language-ruby"><span class="prism--token prism--comment"># bad</span><br><span class="prism--token prism--constant">StatsD</span><span class="prism--token prism--punctuation">.</span>expects<span class="prism--token prism--punctuation">(</span><span class="prism--token prism--symbol">:increment</span><span class="prism--token prism--punctuation">)</span><span class="prism--token prism--punctuation">.</span>with<span class="prism--token prism--punctuation">(</span><span class="prism--token prism--string">"metric"</span><span class="prism--token prism--punctuation">)</span><br>do_something<br><br><span class="prism--token prism--comment"># good</span><br>assert_statsd_increment<span class="prism--token prism--punctuation">(</span><span class="prism--token prism--string">"metric"</span><span class="prism--token prism--punctuation">)</span> <span class="prism--token prism--keyword">do</span><br>  do_something<br><span class="prism--token prism--keyword">end</span></code></pre>
+</li>
+</ul>
+
+        </div>
+
+        <footer class="footer">
+  <div class="content has-text-centered is-small">
+    <p>Copyright © 2021 Shopify Inc.</p>
+  </div>
+</footer>
+
+      </div>
+    </section>
+  </body>
+</html>

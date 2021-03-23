@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title></title>
+<meta name="description" content="Shopify&#39;s Ruby Style Guide">
+<link rel="stylesheet" href="/css/main.css">
+
+  </head>
+
+  <body>
+    <section class="section">
+      <div class="container">
+        <div class="content">
+          <h2 id="editor-integration">Editor integration</h2>
+<h3 id="emacs">Emacs</h3>
+<p><a href="https://github.com/bbatsov/rubocop-emacs">rubocop.el</a> is a simple
+Emacs interface for RuboCop. It allows you to run RuboCop inside Emacs
+and quickly jump between problems in your code.</p>
+<p><a href="https://github.com/lunaryorn/flycheck">flycheck</a> &gt; 0.9 also supports
+RuboCop and uses it by default when available.</p>
+<h3 id="vim">Vim</h3>
+<p>The <a href="https://github.com/ngmy/vim-rubocop">vim-rubocop</a> plugin runs
+RuboCop and displays the results in Vim.</p>
+<p>There's also a RuboCop checker in
+<a href="https://github.com/scrooloose/syntastic">syntastic</a>.</p>
+<h3 id="sublime-text">Sublime Text</h3>
+<p>If you're a ST user you might find the
+<a href="https://github.com/pderichs/sublime_rubocop">Sublime RuboCop plugin</a>
+useful.</p>
+<h3 id="textmate2">TextMate2</h3>
+<p>The <a href="https://github.com/mrdougal/textmate2-rubocop">textmate2-rubocop</a>
+bundle displays formatted RuboCop results in a new window.
+Installation instructions can be found <a href="https://github.com/mrdougal/textmate2-rubocop#installation">here</a>.</p>
+<h3 id="atom">Atom</h3>
+<p>The <a href="https://github.com/yujinakayama/atom-lint">atom-lint</a> package
+runs RuboCop and highlights the offenses in Atom.</p>
+<p>You can also use the <a href="https://github.com/AtomLinter/linter-rubocop">linter-rubocop</a>
+plugin for Atom's <a href="https://github.com/AtomLinter/Linter">linter</a>.</p>
+<h2 id="git-pre-commit-hook-integration">Git pre-commit hook integration</h2>
+<p><a href="https://github.com/brigade/overcommit">overcommit</a> is a fully configurable and
+extendable Git commit hook manager. To use RuboCop with overcommit, add the
+following to your <code>.overcommit.yml</code> file:</p>
+<pre class="language-yaml"><code class="language-yaml"><span class="prism--token prism--key prism--atrule">PreCommit</span><span class="prism--token prism--punctuation">:</span><br>  <span class="prism--token prism--key prism--atrule">RuboCop</span><span class="prism--token prism--punctuation">:</span><br>    <span class="prism--token prism--key prism--atrule">enabled</span><span class="prism--token prism--punctuation">:</span> <span class="prism--token prism--boolean prism--important">true</span></code></pre>
+
+        </div>
+
+        <footer class="footer">
+  <div class="content has-text-centered is-small">
+    <p>Copyright © 2021 Shopify Inc.</p>
+  </div>
+</footer>
+
+      </div>
+    </section>
+  </body>
+</html>
