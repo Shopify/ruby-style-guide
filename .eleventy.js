@@ -14,6 +14,7 @@ module.exports = function (eleventyConfig) {
   })
   eleventyConfig.setUseGitIgnore(false)
   eleventyConfig.addPassthroughCopy('CNAME')
+  eleventyConfig.addPassthroughCopy('rubocop.yml')
   eleventyConfig.addPassthroughCopy({
     'node_modules/@fortawesome/fontawesome-free/webfonts': 'fonts/fontawesome'
   })
