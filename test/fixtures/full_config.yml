@@ -59,7 +59,10 @@ AllCops:
   - "**/Vagabondfile"
   - "**/Vagrantfile"
   Exclude:
-  - "/db/schema.rb"
+  - "/node_modules/**/*"
+  - "/tmp/**/*"
+  - "/vendor/**/*"
+  - "/.git/**/*"
   DefaultFormatter: progress
   DisplayCopNames: true
   DisplayStyleGuide: false
@@ -3574,3 +3577,8 @@ Style/ZeroLengthPredicate:
   Safe: false
   VersionAdded: '0.37'
   VersionChanged: '0.39'
+inherit_mode:
+  Enabled: true
+  merge:
+  - Exclude
+  - Include
