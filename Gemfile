@@ -4,4 +4,7 @@ source "https://rubygems.org"
 
 gemspec
 
+gem "diffy"
+gem "minitest"
+gem "pry-byebug"
 gem "rake"
