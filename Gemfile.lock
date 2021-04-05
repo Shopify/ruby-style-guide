@@ -8,9 +8,20 @@ GEM
   remote: https://rubygems.org/
   specs:
     ast (2.4.2)
+    byebug (11.1.3)
+    coderay (1.1.3)
+    diffy (3.4.0)
+    method_source (1.0.0)
+    minitest (5.14.4)
     parallel (1.20.1)
     parser (3.0.0.0)
       ast (~> 2.4.1)
+    pry (0.13.1)
+      coderay (~> 1.1)
+      method_source (~> 1.0)
+    pry-byebug (3.9.0)
+      byebug (~> 11.0)
+      pry (~> 0.13.0)
     rainbow (3.0.0)
     rake (13.0.3)
     regexp_parser (2.1.1)
@@ -33,6 +44,9 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  diffy
+  minitest
+  pry-byebug
   rake
   rubocop-shopify!
 

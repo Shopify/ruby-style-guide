@@ -13,5 +13,5 @@ jobs:
       uses: ruby/setup-ruby@v1
       with:
         bundler-cache: true
-    - name: RuboCop
-      run: bundle exec rubocop
+    - name: RuboCop and Tests
+      run: bundle exec rake
