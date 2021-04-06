@@ -176,6 +176,7 @@ Layout/AccessModifierIndentation:
   SupportedStyles:
   - outdent
   - indent
+  IndentationWidth:
 Layout/ArgumentAlignment:
   Description: Align the arguments of a method call if they span more than one line.
   StyleGuide: "#no-double-indent"
@@ -204,6 +205,7 @@ Layout/AssignmentIndentation:
   Enabled: true
   VersionAdded: '0.49'
   VersionChanged: '0.77'
+  IndentationWidth:
 Layout/BeginEndAlignment:
   Description: Align ends corresponding to begins correctly.
   Enabled: false
@@ -236,6 +238,7 @@ Layout/CaseIndentation:
   - case
   - end
   IndentOneStep: false
+  IndentationWidth:
 Layout/ClassStructure:
   Description: Enforces a configured order of definitions within a class body.
   StyleGuide: "#consistent-classes"
@@ -384,7 +387,10 @@ Layout/EmptyLinesAroundClassBody:
   SupportedStyles:
   - empty_lines
   - empty_lines_except_namespace
+  - empty_lines_special
   - no_empty_lines
+  - beginning_only
+  - ending_only
 Layout/EmptyLinesAroundExceptionHandlingKeywords:
   Description: Keeps track of empty lines around exception handling keywords.
   StyleGuide: "#empty-lines-around-bodies"
@@ -404,6 +410,7 @@ Layout/EmptyLinesAroundModuleBody:
   SupportedStyles:
   - empty_lines
   - empty_lines_except_namespace
+  - empty_lines_special
   - no_empty_lines
 Layout/EndAlignment:
   Description: Align ends correctly.
@@ -454,6 +461,7 @@ Layout/FirstArrayElementIndentation:
   - special_inside_parentheses
   - consistent
   - align_brackets
+  IndentationWidth:
 Layout/FirstArrayElementLineBreak:
   Description: Checks for a line break before the first element in a multi-line array.
   Enabled: false
@@ -468,6 +476,7 @@ Layout/FirstHashElementIndentation:
   - special_inside_parentheses
   - consistent
   - align_braces
+  IndentationWidth:
 Layout/FirstHashElementLineBreak:
   Description: Checks for a line break before the first element in a multi-line hash.
   Enabled: false
@@ -534,7 +543,7 @@ Layout/IndentationConsistency:
   EnforcedStyle: normal
   SupportedStyles:
   - normal
-  - rails
+  - indented_internal_methods
   Reference:
   - https://edgeguides.rubyonrails.org/contributing_to_ruby_on_rails.html#follow-the-coding-conventions
 Layout/IndentationStyle:
@@ -695,6 +704,7 @@ Layout/ParameterAlignment:
   SupportedStyles:
   - with_first_parameter
   - with_fixed_indentation
+  IndentationWidth:
 Layout/RescueEnsureAlignment:
   Description: Align rescues and ensures correctly.
   Enabled: true
@@ -1744,6 +1754,7 @@ Naming/FileName:
   Exclude: []
   ExpectMatchingDefinition: false
   CheckDefinitionPathHierarchy: true
+  Regex:
   IgnoreExecutableScripts: true
   AllowedAcronyms:
   - CLI
@@ -2047,6 +2058,7 @@ Style/BlockDelimiters:
   - line_count_based
   - semantic
   - braces_for_chaining
+  - always_braces
   ProceduralMethods:
   - benchmark
   - bm
@@ -2202,6 +2214,7 @@ Style/CommentAnnotation:
   - OPTIMIZE
   - HACK
   - REVIEW
+  - NOTE
 Style/CommentedKeyword:
   Description: Do not place comments on the same line as certain keywords.
   Enabled: false
@@ -2419,8 +2432,8 @@ Style/For:
   VersionChanged: '0.59'
   EnforcedStyle: each
   SupportedStyles:
-  - for
   - each
+  - for
 Style/FormatString:
   Description: Enforce the use of Kernel#sprintf, Kernel#format or String#%.
   StyleGuide: "#sprintf"
@@ -2453,6 +2466,7 @@ Style/FrozenStringLiteralComment:
   EnforcedStyle: always
   SupportedStyles:
   - always
+  - always_true
   - never
   SafeAutoCorrect: true
   Details: 'Add `# frozen_string_literal: true` to the top of the file. Frozen string
@@ -3419,6 +3433,7 @@ Style/TernaryParentheses:
   SupportedStyles:
   - require_parentheses
   - require_no_parentheses
+  - require_parentheses_when_complex
   AllowSafeAssignment: true
 Style/TrailingBodyOnClass:
   Description: Class body goes below class statement.
