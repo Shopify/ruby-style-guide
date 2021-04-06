@@ -17,7 +17,16 @@ class ConfigTest < Minitest::Test
         original_config, tempfile.path, source: "files", context: 5
       ).to_s
 
-      assert(diff.empty?, diff)
+      error_message = <<~ERROR
+        Error: unexpected RuboCop configuration changes were detected.
+
+        #{diff}
+
+        If these changes are intentional, please update the config dump
+        by running `bundle exec rake config:dump`.
+      ERROR
+
+      assert(diff.empty?, error_message)
     end
   end
 end
