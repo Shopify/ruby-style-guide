@@ -36,6 +36,7 @@ with this Style Guide. To use it, you can add this to your <code>Gemfile</code>:
 <pre class="language-ruby"><code class="language-ruby">gem <span class="prism--token prism--string">"rubocop-shopify"</span><span class="prism--token prism--punctuation">,</span> <span class="prism--token prism--keyword">require</span><span class="prism--token prism--punctuation">:</span> <span class="prism--token prism--boolean">false</span></code></pre>
 <p>And add to the top of your project's RuboCop configuration file:</p>
 <pre class="language-yml"><code class="language-yml"><span class="prism--token prism--key prism--atrule">inherit_gem</span><span class="prism--token prism--punctuation">:</span><br>  <span class="prism--token prism--key prism--atrule">rubocop-shopify</span><span class="prism--token prism--punctuation">:</span> rubocop.yml</code></pre>
+<p>Any <code>Include</code> or <code>Exclude</code> configuration provided will be merged with RuboCop's defaults.</p>
 <p>For more information about inheriting configuration from a gem please check
 <a href="https://docs.rubocop.org/rubocop/configuration.html#inheriting-configuration-from-a-dependency-gem">RuboCop's
 documentation</a>.</p>
