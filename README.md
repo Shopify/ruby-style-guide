@@ -42,6 +42,8 @@ And add to the top of your project's RuboCop configuration file:
     rubocop-shopify: rubocop.yml
   ~~~
 
+Any `Include` or `Exclude` configuration provided will be merged with RuboCop's defaults.
+
 For more information about inheriting configuration from a gem please check
 [RuboCop's
 documentation](https://docs.rubocop.org/rubocop/configuration.html#inheriting-configuration-from-a-dependency-gem).

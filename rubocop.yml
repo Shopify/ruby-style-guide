@@ -1,6 +1,9 @@
+inherit_mode:
+  merge:
+    - Exclude
+    - Include
+
 AllCops:
-  Exclude:
-  - 'db/schema.rb'
   DisabledByDefault: true
   StyleGuideBaseURL: https://shopify.github.io/ruby-style-guide/
 
