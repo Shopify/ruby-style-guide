@@ -1471,7 +1471,7 @@ Lint/SymbolConversion:
   - consistent
 Lint/Syntax:
   Description: Checks for syntax errors.
-  Enabled: false
+  Enabled: true
   VersionAdded: '0.9'
 Lint/ToEnumArguments:
   Description: This cop ensures that `to_enum`/`enum_for`, called for the current
