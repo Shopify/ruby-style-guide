@@ -1024,3 +1024,6 @@ Lint/OrderedMagicComments:
 
 Lint/DeprecatedOpenSSLConstant:
   Enabled: true
+
+Lint/Syntax:
+  Enabled: true
