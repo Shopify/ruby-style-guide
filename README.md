@@ -319,6 +319,7 @@ documentation](https://docs.rubocop.org/rubocop/configuration.html#inheriting-co
     * `yield`
     * `raise`
     * `puts`
+    * `test`
 
 * Omit the outer braces around an implicit options hash.
 

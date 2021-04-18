@@ -265,6 +265,7 @@ Style/MethodCallWithArgsParentheses:
   - yield
   - raise
   - puts
+  - test
   Exclude:
   - '**/Gemfile'
 
