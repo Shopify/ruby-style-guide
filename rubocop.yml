@@ -542,6 +542,9 @@ Layout/DefEndAlignment:
   - start_of_line
   - def
 
+Layout/BeginEndAlignment:
+  Enabled: true
+
 Lint/InheritException:
   EnforcedStyle: runtime_error
   SupportedStyles:

@@ -134,6 +134,24 @@ documentation](https://docs.rubocop.org/rubocop/configuration.html#inheriting-co
   end
   ~~~
 
+* When assigning the result of a begin block, align rescue/ensure/end with the start of the line
+
+  ~~~ ruby
+  # bad
+  host = begin
+           URI.parse(value).host
+         rescue URI::Error
+           nil
+         end
+
+  # good
+  host = begin
+    URI.parse(value).host
+  rescue URI::Error
+    nil
+  end
+  ~~~
+
 * Use empty lines between method definitions and also to break up methods into
   logical paragraphs internally.
 

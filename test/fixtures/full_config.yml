@@ -206,7 +206,7 @@ Layout/AssignmentIndentation:
   VersionChanged: '0.77'
 Layout/BeginEndAlignment:
   Description: Align ends corresponding to begins correctly.
-  Enabled: false
+  Enabled: true
   VersionAdded: '0.91'
   EnforcedStyleAlignWith: start_of_line
   SupportedStylesAlignWith:
