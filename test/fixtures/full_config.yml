@@ -704,6 +704,12 @@ Layout/ParameterAlignment:
   - with_first_parameter
   - with_fixed_indentation
   IndentationWidth:
+Layout/RedundantLineBreak:
+  Description: Do not break up an expression into multiple lines when it fits on a
+    single line.
+  Enabled: false
+  InspectBlocks: false
+  VersionAdded: '1.13'
 Layout/RescueEnsureAlignment:
   Description: Align rescues and ensures correctly.
   Enabled: true
@@ -928,6 +934,8 @@ Lint/AmbiguousBlockAssociation:
   StyleGuide: "#syntax"
   Enabled: false
   VersionAdded: '0.48'
+  VersionChanged: '1.13'
+  IgnoredMethods: []
 Lint/AmbiguousOperator:
   Description: Checks for ambiguous operators in the first argument of a method invocation
     without parentheses.
