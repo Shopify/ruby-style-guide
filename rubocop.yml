@@ -631,7 +631,7 @@ Style/SwapValues:
   Enabled: false
 
 Style/SymbolArray:
-  Enabled: false
+  EnforcedStyle: brackets
 
 Style/TrailingBodyOnMethodDefinition:
   Enabled: false
@@ -655,7 +655,7 @@ Style/UnpackFirst:
   Enabled: false
 
 Style/WordArray:
-  Enabled: false
+  EnforcedStyle: brackets
 
 Style/YodaCondition:
   Enabled: false
