@@ -3401,10 +3401,10 @@ Style/SwapValues:
 Style/SymbolArray:
   Description: Use %i or %I for arrays of symbols.
   StyleGuide: "#percent-i"
-  Enabled: false
+  Enabled: true
   VersionAdded: '0.9'
   VersionChanged: '0.49'
-  EnforcedStyle: percent
+  EnforcedStyle: brackets
   MinSize: 2
   SupportedStyles:
   - percent
@@ -3563,10 +3563,10 @@ Style/WhileUntilModifier:
 Style/WordArray:
   Description: Use %w or %W for arrays of words.
   StyleGuide: "#percent-w"
-  Enabled: false
+  Enabled: true
   VersionAdded: '0.9'
   VersionChanged: '0.36'
-  EnforcedStyle: percent
+  EnforcedStyle: brackets
   SupportedStyles:
   - percent
   - brackets
