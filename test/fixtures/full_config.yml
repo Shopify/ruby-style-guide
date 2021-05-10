@@ -108,6 +108,19 @@ Bundler/GemComment:
   - "**/gems.rb"
   IgnoredGems: []
   OnlyFor: []
+Bundler/GemVersion:
+  Description: Requires or forbids specifying gem versions.
+  Enabled: false
+  VersionAdded: '1.14'
+  EnforcedStyle: required
+  SupportedStyles:
+  - required
+  - forbidden
+  Include:
+  - "**/*.gemfile"
+  - "**/Gemfile"
+  - "**/gems.rb"
+  AllowedGems: []
 Bundler/InsecureProtocolSource:
   Description: The source `:gemcutter`, `:rubygems` and `:rubyforge` are deprecated
     because HTTP requests are insecure. Please change your source to 'https://rubygems.org'
@@ -714,6 +727,10 @@ Layout/RescueEnsureAlignment:
   Description: Align rescues and ensures correctly.
   Enabled: true
   VersionAdded: '0.49'
+Layout/SingleLineBlockChain:
+  Description: Put method call on a separate line if chained to a single line block.
+  Enabled: false
+  VersionAdded: '1.14'
 Layout/SpaceAfterColon:
   Description: Use spaces after colons.
   StyleGuide: "#spaces-operators"
