@@ -1497,7 +1497,7 @@ Lint/SuppressedException:
   VersionChanged: '1.12'
 Lint/SymbolConversion:
   Description: Checks for unnecessary symbol conversions.
-  Enabled: false
+  Enabled: true
   VersionAdded: '1.9'
   EnforcedStyle: strict
   SupportedStyles:
