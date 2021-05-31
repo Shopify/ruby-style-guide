@@ -1,12 +1,9 @@
-name: GitHub Pages
+name: Node
 
-on:
-  push:
-    branches:
-      - main
+on: [push, pull_request]
 
 jobs:
-  deploy:
+  build:
     runs-on: ubuntu-latest
 
     steps:
@@ -16,16 +13,10 @@ jobs:
         uses: actions/setup-node@v2.1.5
         with:
           node-version: '16'
-          check-version: true
+          check-latest: true
 
       - name: Install packages
         run: npm ci
 
       - name: Build
         run: npm run build
-
-      - name: Deploy
-        uses: peaceiris/actions-gh-pages@v3.8.0
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./_site
