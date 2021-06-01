@@ -370,7 +370,7 @@ documentation](https://docs.rubocop.org/rubocop/configuration.html#inheriting-co
   attr_writer :name
 
   def my_method
-    self.name = "Rafael" # `self` is neeeded to reference the attribute writer.
+    self.name = "Rafael" # `self` is needed to reference the attribute writer.
   end
   ~~~
 
@@ -390,7 +390,7 @@ documentation](https://docs.rubocop.org/rubocop/configuration.html#inheriting-co
   @enabled ||= true
 
   # good
-  @enabled = true if enabled.nil?
+  @enabled = true if @enabled.nil?
 
   # also valid - defined? workaround
   @enabled = true unless defined?(@enabled)
