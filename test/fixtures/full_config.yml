@@ -3493,7 +3493,7 @@ Style/TrailingCommaInArrayLiteral:
   StyleGuide: "#no-trailing-array-commas"
   Enabled: true
   VersionAdded: '0.53'
-  EnforcedStyleForMultiline: comma
+  EnforcedStyleForMultiline: consistent_comma
   SupportedStylesForMultiline:
   - comma
   - consistent_comma
@@ -3506,7 +3506,7 @@ Style/TrailingCommaInBlockArgs:
 Style/TrailingCommaInHashLiteral:
   Description: Checks for trailing comma in hash literals.
   Enabled: true
-  EnforcedStyleForMultiline: comma
+  EnforcedStyleForMultiline: consistent_comma
   SupportedStylesForMultiline:
   - comma
   - consistent_comma
