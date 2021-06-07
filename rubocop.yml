@@ -156,6 +156,9 @@ Lint/EmptyExpression:
 Lint/EmptyFile:
   Enabled: false
 
+Lint/EmptyInPattern:
+  Enabled: false
+
 Lint/EmptyWhen:
   Enabled: false
 
@@ -486,6 +489,9 @@ Style/IfUnlessModifier:
 Style/IfWithBooleanLiteralBranches:
   Enabled: false
 
+Style/InPatternThen:
+  Enabled: true
+
 Style/InverseMethods:
   Enabled: false
 
@@ -525,6 +531,9 @@ Style/MultilineBlockChain:
 Style/MultilineIfModifier:
   Enabled: false
 
+Style/MultilineInPatternThen:
+  Enabled: false
+
 Style/MultilineWhenThen:
   Enabled: false
 
@@ -560,6 +569,9 @@ Style/OrAssignment:
 
 Style/PercentLiteralDelimiters:
   Enabled: false
+
+Style/QuotedSymbols:
+  Enabled: true
 
 Style/RandomWithOffset:
   Enabled: false
