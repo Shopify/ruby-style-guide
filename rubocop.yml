@@ -252,6 +252,9 @@ Lint/SendWithMixinArgument:
 Lint/ShadowedArgument:
   Enabled: false
 
+Lint/ShadowingOuterLocalVariable:
+  Enabled: false
+
 Lint/StructNewOverride:
   Enabled: false
 
