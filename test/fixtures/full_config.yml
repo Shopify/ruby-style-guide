@@ -241,10 +241,11 @@ Layout/BlockEndNewline:
   Enabled: true
   VersionAdded: '0.49'
 Layout/CaseIndentation:
-  Description: Indentation of when in a case/when/[else/]end.
+  Description: Indentation of when in a case/(when|in)/[else/]end.
   StyleGuide: "#indent-when-to-case"
   Enabled: true
   VersionAdded: '0.49'
+  VersionChanged: '1.16'
   EnforcedStyle: end
   SupportedStyles:
   - case
@@ -518,7 +519,7 @@ Layout/HashAlignment:
   Enabled: true
   AllowMultipleStyles: true
   VersionAdded: '0.49'
-  VersionChanged: '0.77'
+  VersionChanged: '1.16'
   EnforcedHashRocketStyle: key
   SupportedHashRocketStyles:
   - key
@@ -1143,6 +1144,10 @@ Lint/EmptyFile:
   Enabled: false
   AllowComments: true
   VersionAdded: '0.90'
+Lint/EmptyInPattern:
+  Description: Checks for the presence of `in` pattern branches without a body.
+  Enabled: false
+  VersionAdded: '1.16'
 Lint/EmptyInterpolation:
   Description: Checks for empty string interpolation.
   Enabled: true
@@ -1499,6 +1504,7 @@ Lint/SymbolConversion:
   Description: Checks for unnecessary symbol conversions.
   Enabled: false
   VersionAdded: '1.9'
+  VersionChanged: '1.16'
   EnforcedStyle: strict
   SupportedStyles:
   - strict
@@ -2537,8 +2543,10 @@ Style/HashEachMethods:
   Description: Use Hash#each_key and Hash#each_value.
   StyleGuide: "#hash-each"
   Enabled: false
-  VersionAdded: '0.80'
   Safe: false
+  VersionAdded: '0.80'
+  VersionChanged: '1.16'
+  AllowedReceivers: []
 Style/HashExcept:
   Description: Checks for usages of `Hash#reject`, `Hash#select`, and `Hash#filter`
     methods that can be replaced with `Hash#except` method.
@@ -2582,6 +2590,7 @@ Style/IdenticalConditionalBranches:
     the end of each branch, which can validly be moved out of the conditional.
   Enabled: true
   VersionAdded: '0.36'
+  VersionChanged: '1.16'
 Style/IfInsideElse:
   Description: Finds if nodes inside else, which can be converted to elsif.
   Enabled: true
@@ -2617,6 +2626,11 @@ Style/ImplicitRuntimeError:
     rather than just a message.
   Enabled: false
   VersionAdded: '0.41'
+Style/InPatternThen:
+  Description: Checks for `in;` uses in `case` expressions.
+  StyleGuide: "#no-in-pattern-semicolons"
+  Enabled: true
+  VersionAdded: '1.16'
 Style/InfiniteLoop:
   Description: Use Kernel#loop for infinite loops. This cop is unsafe in the body
     may raise a `StopIteration` exception.
@@ -2806,6 +2820,11 @@ Style/MultilineIfThen:
   Enabled: true
   VersionAdded: '0.9'
   VersionChanged: '0.26'
+Style/MultilineInPatternThen:
+  Description: Do not use `then` for multi-line `in` statement.
+  StyleGuide: "#no-then"
+  Enabled: false
+  VersionAdded: '1.16'
 Style/MultilineMemoization:
   Description: Wrap multiline memoizations in a `begin` and `end` block.
   Enabled: true
@@ -3083,6 +3102,15 @@ Style/Proc:
   Enabled: true
   VersionAdded: '0.9'
   VersionChanged: '0.18'
+Style/QuotedSymbols:
+  Description: Use a consistent style for quoted symbols.
+  Enabled: true
+  VersionAdded: '1.16'
+  EnforcedStyle: same_as_string_literals
+  SupportedStyles:
+  - same_as_string_literals
+  - single_quotes
+  - double_quotes
 Style/RaiseArgs:
   Description: Checks the arguments passed to raise/fail.
   StyleGuide: "#exception-class-messages"
