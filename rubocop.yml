@@ -285,6 +285,9 @@ Lint/UnmodifiedReduceAccumulator:
 Lint/UnreachableLoop:
   Enabled: false
 
+Lint/UnusedMethodArgument:
+  Enabled: false
+
 Lint/UriEscapeUnescape:
   Enabled: false
 
