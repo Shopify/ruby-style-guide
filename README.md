@@ -632,6 +632,46 @@ documentation](https://docs.rubocop.org/rubocop/configuration.html#inheriting-co
 
 * Avoid class (`@@`) variables.
 
+* Avoid using instance variables on singleton objects (for example, classes
+  and modules), as they might cause thread-safety issues.
+
+  ~~~ ruby
+  # bad
+  class Processor
+    class << self
+      attr_reader :thing
+
+      def call(thing, action)
+        @thing = thing
+        thing.prepare_for_action
+        process(action)
+      end
+
+      private
+
+      def process(action)
+        Actions.for(action).perform_with(thing)
+      end
+    end
+  end
+
+  # good
+  class Processor
+    class << self
+      def call(thing, action)
+        thing.prepare_for_action
+        process(action, thing)
+      end
+
+      private
+
+      def process(action, thing)
+        Actions.for(action).perform_with(thing)
+      end
+    end
+  end
+  ~~~
+
 * Indent the `public`, `protected`, and `private` methods as much as the method
   definitions they apply to. Leave one blank line above the visibility modifier
   and one blank line below it.
