@@ -1857,7 +1857,7 @@ Naming/HeredocDelimiterNaming:
   - !ruby/regexp /(^|\s)(EO[A-Z]{1}|END)(\s|$)/
 Naming/InclusiveLanguage:
   Description: Recommend the use of inclusive language instead of problematic terms.
-  Enabled: false
+  Enabled: true
   VersionAdded: '1.18'
   CheckIdentifiers: true
   CheckConstants: true
@@ -1882,6 +1882,15 @@ Naming/InclusiveLanguage:
       - replica
       - secondary
       - follower
+    master:
+      Suggestions:
+      - main
+      - primary
+      - leader
+      AllowedRegex:
+      - !ruby/regexp /master[_\s\.]key/
+      - blob/master/
+      - origin/master
 Naming/MemoizedInstanceVariableName:
   Description: Memoized method name should match memo instance variable name.
   Enabled: false
