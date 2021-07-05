@@ -81,6 +81,9 @@ Layout/HashAlignment:
 Layout/LeadingEmptyLines:
   Enabled: false
 
+Layout/LineEndStringConcatenationIndentation:
+  Enabled: false
+
 Layout/LineLength:
   IgnoreCopDirectives: false
   IgnoredPatterns:
@@ -334,6 +337,9 @@ Naming/HeredocDelimiterCase:
   Enabled: false
 
 Naming/HeredocDelimiterNaming:
+  Enabled: false
+
+Naming/InclusiveLanguage:
   Enabled: false
 
 Naming/MemoizedInstanceVariableName:
