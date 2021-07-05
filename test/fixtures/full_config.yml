@@ -595,6 +595,16 @@ Layout/LeadingEmptyLines:
   Enabled: false
   VersionAdded: '0.57'
   VersionChanged: '0.77'
+Layout/LineEndStringConcatenationIndentation:
+  Description: Checks the indentation of the next line after a line that ends with
+    a string literal and a backslash.
+  Enabled: false
+  VersionAdded: '1.18'
+  EnforcedStyle: aligned
+  SupportedStyles:
+  - aligned
+  - indented
+  IndentationWidth:
 Layout/LineLength:
   Description: Checks that line length does not exceed the configured limit.
   StyleGuide: "#max-line-length"
@@ -1845,6 +1855,33 @@ Naming/HeredocDelimiterNaming:
   VersionAdded: '0.50'
   ForbiddenDelimiters:
   - !ruby/regexp /(^|\s)(EO[A-Z]{1}|END)(\s|$)/
+Naming/InclusiveLanguage:
+  Description: Recommend the use of inclusive language instead of problematic terms.
+  Enabled: false
+  VersionAdded: '1.18'
+  CheckIdentifiers: true
+  CheckConstants: true
+  CheckVariables: true
+  CheckStrings: false
+  CheckSymbols: true
+  CheckComments: true
+  CheckFilepaths: true
+  FlaggedTerms:
+    whitelist:
+      Regex: !ruby/regexp /white[-_\s]?list/
+      Suggestions:
+      - allowlist
+      - permit
+    blacklist:
+      Regex: !ruby/regexp /black[-_\s]?list/
+      Suggestions:
+      - denylist
+      - block
+    slave:
+      Suggestions:
+      - replica
+      - secondary
+      - follower
 Naming/MemoizedInstanceVariableName:
   Description: Memoized method name should match memo instance variable name.
   Enabled: false
@@ -2246,6 +2283,7 @@ Style/CommentAnnotation:
   - HACK
   - REVIEW
   - NOTE
+  RequireColon: true
 Style/CommentedKeyword:
   Description: Do not place comments on the same line as certain keywords.
   Enabled: false
@@ -3403,7 +3441,8 @@ Style/StringConcatenation:
   Enabled: false
   Safe: false
   VersionAdded: '0.89'
-  VersionChanged: '1.6'
+  VersionChanged: '1.18'
+  Mode: aggressive
 Style/StringHashKeys:
   Description: Prefer symbols instead of strings as hash keys.
   StyleGuide: "#symbols-as-keys"
