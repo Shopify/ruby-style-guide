@@ -569,7 +569,7 @@ on which to trim the excessive whitespace.</p>
 <p>In Ruby 2.3, prefer <a href="https://github.com/ruby/ruby/pull/878">&quot;squiggly
 heredoc&quot;</a> syntax, which has the same
 semantics as <code>strip_heredoc</code> from Rails:</p>
-<pre class="language-ruby"><code class="language-ruby">code <span class="prism--token prism--operator">=</span> <span class="prism--token prism--operator">&lt;</span><span class="prism--token prism--operator">&lt;</span><span class="prism--token prism--operator">~</span><span class="prism--token prism--keyword">END</span><br>  <span class="prism--token prism--keyword">def</span> <span class="prism--token prism--method-definition"><span class="prism--token prism--function">test</span></span><br>    some_method<br>    other_method<br>  <span class="prism--token prism--keyword">end</span><br><span class="prism--token prism--keyword">END</span><br><span class="prism--token prism--comment"># => "def test\n  some_method\n  other_method\nend\n"</span></code></pre>
+<pre class="language-ruby"><code class="language-ruby">code <span class="prism--token prism--operator">=</span> <span class="prism--token prism--string prism--heredoc-string"><span class="prism--token prism--delimiter prism--symbol"><span class="prism--token prism--punctuation">&lt;&lt;~</span>END</span><br>  def test<br>    some_method<br>    other_method<br>  <span class="prism--token prism--delimiter prism--symbol">end</span></span><br><span class="prism--token prism--keyword">END</span><br><span class="prism--token prism--comment"># => "def test\n  some_method\n  other_method\nend\n"</span></code></pre>
 </li>
 </ul>
 <h2 id="regular-expressions" tabindex="-1">Regular Expressions</h2>
