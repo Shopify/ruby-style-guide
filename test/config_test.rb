@@ -3,6 +3,7 @@
 require "test_helper"
 require "diffy"
 require "rubocop"
+require "rake"
 
 class ConfigTest < Minitest::Test
   def test_config_is_unchanged
