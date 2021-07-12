@@ -21,6 +21,6 @@
     "eslint-plugin-promise": "^5.1.0",
     "eslint-plugin-standard": "^5.0.0",
     "markdown-it-anchor": "^8.1.0",
-    "sass": "^1.35.1"
+    "sass": "^1.35.2"
   }
 }
