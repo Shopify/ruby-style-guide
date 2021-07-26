@@ -431,7 +431,7 @@ Style/DocumentDynamicEvalDefinition:
   Enabled: false
 
 Style/Documentation:
-  Enabled: false
+  Enabled: true
 
 Style/DoubleCopDisableDirective:
   Enabled: false

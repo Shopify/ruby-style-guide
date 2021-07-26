@@ -2357,7 +2357,7 @@ Style/DocumentDynamicEvalDefinition:
   VersionChanged: '1.3'
 Style/Documentation:
   Description: Document classes and non-namespace modules.
-  Enabled: false
+  Enabled: true
   VersionAdded: '0.9'
   AllowedConstants: []
   Exclude:
