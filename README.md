@@ -520,6 +520,23 @@ documentation](https://docs.rubocop.org/rubocop/configuration.html#inheriting-co
 * Avoid superfluous comments. Focus on **why** the code is the way it is if
   this is not obvious, not **how** the code works.
 
+* Short, top-level comments on classes and modules (that are more than a namespace) are
+  encouraged. Again, these comments should be about the purpose of the relevant code,
+  not a description of the implementation which will be brittle to refactorings and grow
+  stale quickly. Good comments on design intent support the long-term understanding
+  and maintainability of code.
+
+  ~~~ ruby
+  # bad - don't use a scramble of words from the constant to describe it
+  # User class
+  class User
+
+  # good
+  # Represents a users synced from X external system.
+  # This is used for the ownership of objects from system X, not for authentication.
+  class User
+  ~~~
+
 ## Classes and Modules
 
 * Prefer modules to classes with only class methods. Classes should be used only
