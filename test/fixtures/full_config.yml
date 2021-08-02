@@ -951,7 +951,7 @@ Layout/TrailingWhitespace:
   Enabled: true
   VersionAdded: '0.49'
   VersionChanged: '1.0'
-  AllowInHeredoc: false
+  AllowInHeredoc: true
 Lint/AmbiguousAssignment:
   Description: Checks for mistyped shorthand assignments.
   Enabled: false

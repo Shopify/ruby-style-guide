@@ -108,6 +108,10 @@ Layout/SpaceBeforeBrackets:
 Layout/SpaceInLambdaLiteral:
   Enabled: false
 
+Layout/TrailingWhitespace:
+  Enabled: true
+  AllowInHeredoc: true
+
 Lint/AmbiguousAssignment:
   Enabled: false
 
