@@ -351,6 +351,7 @@ Naming/InclusiveLanguage:
         - !ruby/regexp '/master[_\s\.]key/' # Rails master key
         - 'blob/master/'
         - 'origin/master'
+        - 'mastercard'
 
 Naming/MemoizedInstanceVariableName:
   Enabled: false

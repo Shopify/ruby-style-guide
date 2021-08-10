@@ -1891,6 +1891,7 @@ Naming/InclusiveLanguage:
       - !ruby/regexp /master[_\s\.]key/
       - blob/master/
       - origin/master
+      - mastercard
 Naming/MemoizedInstanceVariableName:
   Description: Memoized method name should match memo instance variable name.
   Enabled: false
