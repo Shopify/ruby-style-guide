@@ -971,6 +971,12 @@ Lint/AmbiguousOperator:
   Enabled: true
   VersionAdded: '0.17'
   VersionChanged: '0.83'
+Lint/AmbiguousRange:
+  Description: Checks for ranges with ambiguous boundaries.
+  Enabled: false
+  VersionAdded: '1.19'
+  SafeAutoCorrect: false
+  RequireParenthesesForMethodChains: false
 Lint/AmbiguousRegexpLiteral:
   Description: Checks for ambiguous regexp literals in the first argument of a method
     invocation without parentheses.
@@ -1281,7 +1287,6 @@ Lint/MultipleComparison:
   Enabled: false
   VersionAdded: '0.47'
   VersionChanged: '1.1'
-  AllowMethodComparison: true
 Lint/NestedMethodDefinition:
   Description: Do not use nested method definitions.
   StyleGuide: "#no-nested-methods"
@@ -1878,6 +1883,7 @@ Naming/InclusiveLanguage:
       - denylist
       - block
     slave:
+      WholeWord: true
       Suggestions:
       - replica
       - secondary
@@ -2296,8 +2302,9 @@ Style/CommentAnnotation:
 Style/CommentedKeyword:
   Description: Do not place comments on the same line as certain keywords.
   Enabled: false
+  SafeAutoCorrect: false
   VersionAdded: '0.51'
-  VersionChanged: '1.7'
+  VersionChanged: '1.19'
 Style/ConditionalAssignment:
   Description: Use the return value of `if` and `case` statements for assignment to
     a variable and variable comparison instead of assigning that variable inside of
@@ -2637,8 +2644,9 @@ Style/IdenticalConditionalBranches:
   Description: Checks that conditional statements do not have an identical line at
     the end of each branch, which can validly be moved out of the conditional.
   Enabled: true
+  SafeAutoCorrect: false
   VersionAdded: '0.36'
-  VersionChanged: '1.16'
+  VersionChanged: '1.19'
 Style/IfInsideElse:
   Description: Finds if nodes inside else, which can be converted to elsif.
   Enabled: true
@@ -2904,6 +2912,7 @@ Style/MultipleComparison:
   Enabled: false
   VersionAdded: '0.49'
   VersionChanged: '1.1'
+  AllowMethodComparison: true
 Style/MutableConstant:
   Description: Do not assign mutable objects to constants.
   Enabled: false
@@ -3072,6 +3081,7 @@ Style/OptionHash:
   - args
   - params
   - parameters
+  Allowlist: []
 Style/OptionalArguments:
   Description: Checks for optional arguments that do not appear at the end of the
     argument list.
@@ -3275,6 +3285,10 @@ Style/RedundantSelfAssignment:
   Enabled: false
   Safe: false
   VersionAdded: '0.90'
+Style/RedundantSelfAssignmentBranch:
+  Description: Checks for places where conditional branch makes redundant self-assignment.
+  Enabled: false
+  VersionAdded: '1.19'
 Style/RedundantSort:
   Description: Use `min` instead of `sort.first`, `max_by` instead of `sort_by...last`,
     etc.
@@ -3412,6 +3426,7 @@ Style/SpecialGlobalVars:
   VersionAdded: '0.13'
   VersionChanged: '0.36'
   SafeAutoCorrect: false
+  RequireEnglish: true
   EnforcedStyle: use_english_names
   SupportedStyles:
   - use_perl_names
@@ -3655,7 +3670,7 @@ Style/VariableInterpolation:
   VersionChanged: '0.20'
 Style/WhenThen:
   Description: Use when x then ... for one-line cases.
-  StyleGuide: "#one-line-cases"
+  StyleGuide: "#no-when-semicolons"
   Enabled: true
   VersionAdded: '0.9'
 Style/WhileUntilDo:
@@ -3674,7 +3689,7 @@ Style/WordArray:
   StyleGuide: "#percent-w"
   Enabled: true
   VersionAdded: '0.9'
-  VersionChanged: '0.36'
+  VersionChanged: '1.19'
   EnforcedStyle: brackets
   SupportedStyles:
   - percent

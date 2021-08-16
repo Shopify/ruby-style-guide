@@ -114,6 +114,9 @@ Lint/AmbiguousAssignment:
 Lint/AmbiguousBlockAssociation:
   Enabled: false
 
+Lint/AmbiguousRange:
+  Enabled: false
+
 Lint/BooleanSymbol:
   Enabled: false
 
@@ -623,6 +626,9 @@ Style/RedundantRegexpEscape:
   Enabled: false
 
 Style/RedundantSelfAssignment:
+  Enabled: false
+
+Style/RedundantSelfAssignmentBranch:
   Enabled: false
 
 Style/RedundantSort:
