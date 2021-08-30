@@ -9,6 +9,9 @@ AllCops:
 Bundler/DuplicatedGem:
   Enabled: false
 
+Bundler/GemFilename:
+  Enabled: false
+
 Bundler/InsecureProtocolSource:
   Enabled: false
 
