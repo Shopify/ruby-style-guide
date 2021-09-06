@@ -468,7 +468,7 @@ Style/ExpandPathArguments:
   Enabled: false
 
 Style/ExplicitBlockArgument:
-  Enabled: false
+  Enabled: true
 
 Style/ExponentialNotation:
   Enabled: false

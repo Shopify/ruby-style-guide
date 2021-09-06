@@ -2502,7 +2502,7 @@ Style/ExplicitBlockArgument:
   Description: Consider using explicit block argument to avoid writing block literal
     that just passes its arguments to another block.
   StyleGuide: "#block-argument"
-  Enabled: false
+  Enabled: true
   VersionAdded: '0.89'
   VersionChanged: '1.8'
 Style/ExponentialNotation:
