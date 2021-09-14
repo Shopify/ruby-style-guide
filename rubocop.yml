@@ -117,6 +117,9 @@ Lint/AmbiguousAssignment:
 Lint/AmbiguousBlockAssociation:
   Enabled: false
 
+Lint/AmbiguousOperatorPrecedence:
+  Enabled: false
+
 Lint/AmbiguousRange:
   Enabled: false
 
@@ -181,6 +184,9 @@ Lint/HashCompareByIdentity:
   Enabled: false
 
 Lint/IdentityComparison:
+  Enabled: false
+
+Lint/IncompatibleIoSelectWithFiberScheduler:
   Enabled: false
 
 Lint/InterpolationCheck:

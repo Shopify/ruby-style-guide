@@ -624,7 +624,6 @@ Layout/LineLength:
   Enabled: true
   VersionAdded: '0.25'
   VersionChanged: '1.4'
-  AutoCorrect: true
   Max: 120
   AllowHeredoc: true
   AllowURI: true
@@ -984,6 +983,11 @@ Lint/AmbiguousOperator:
   Enabled: true
   VersionAdded: '0.17'
   VersionChanged: '0.83'
+Lint/AmbiguousOperatorPrecedence:
+  Description: Checks for expressions containing multiple binary operations with ambiguous
+    precedence.
+  Enabled: false
+  VersionAdded: '1.21'
 Lint/AmbiguousRange:
   Description: Checks for ranges with ambiguous boundaries.
   Enabled: false
@@ -1247,6 +1251,10 @@ Lint/ImplicitStringConcatenation:
     be represented as a single string literal.
   Enabled: true
   VersionAdded: '0.36'
+Lint/IncompatibleIoSelectWithFiberScheduler:
+  Description: Checks for `IO.select` that is incompatible with Fiber Scheduler.
+  Enabled: false
+  VersionAdded: '1.21'
 Lint/IneffectiveAccessModifier:
   Description: Checks for attempts to use `private` or `protected` to set the visibility
     of a class method, which does not work.
@@ -1884,6 +1892,7 @@ Naming/InclusiveLanguage:
   Description: Recommend the use of inclusive language instead of problematic terms.
   Enabled: true
   VersionAdded: '1.18'
+  VersionChanged: '1.21'
   CheckIdentifiers: true
   CheckConstants: true
   CheckVariables: true
@@ -2080,8 +2089,9 @@ Style/AndOr:
   Description: Use &&/|| instead of and/or.
   StyleGuide: "#no-and-or-or"
   Enabled: true
+  SafeAutoCorrect: false
   VersionAdded: '0.9'
-  VersionChanged: '0.25'
+  VersionChanged: '1.21'
   EnforcedStyle: always
   SupportedStyles:
   - always
@@ -2111,7 +2121,7 @@ Style/AsciiComments:
   StyleGuide: "#english-comments"
   Enabled: false
   VersionAdded: '0.9'
-  VersionChanged: '0.52'
+  VersionChanged: '1.21'
   AllowedChars:
   - "©"
 Style/Attr:
