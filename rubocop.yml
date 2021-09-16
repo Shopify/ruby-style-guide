@@ -6,15 +6,6 @@ inherit_mode:
 AllCops:
   StyleGuideBaseURL: https://shopify.github.io/ruby-style-guide/
 
-Bundler/DuplicatedGem:
-  Enabled: false
-
-Bundler/GemFilename:
-  Enabled: false
-
-Bundler/InsecureProtocolSource:
-  Enabled: false
-
 Bundler/OrderedGems:
   Enabled: false
 

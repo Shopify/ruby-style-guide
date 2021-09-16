@@ -91,7 +91,7 @@ AllCops:
     - rake
 Bundler/DuplicatedGem:
   Description: Checks for duplicate gem entries in Gemfile.
-  Enabled: false
+  Enabled: true
   VersionAdded: '0.46'
   Include:
   - "**/*.gemfile"
@@ -110,7 +110,7 @@ Bundler/GemComment:
   OnlyFor: []
 Bundler/GemFilename:
   Description: Enforces the filename for managing gems.
-  Enabled: false
+  Enabled: true
   VersionAdded: '1.20'
   EnforcedStyle: Gemfile
   SupportedStyles:
@@ -138,7 +138,7 @@ Bundler/InsecureProtocolSource:
   Description: The source `:gemcutter`, `:rubygems` and `:rubyforge` are deprecated
     because HTTP requests are insecure. Please change your source to 'https://rubygems.org'
     if possible, or 'http://rubygems.org' if not.
-  Enabled: false
+  Enabled: true
   VersionAdded: '0.50'
   Include:
   - "**/*.gemfile"
