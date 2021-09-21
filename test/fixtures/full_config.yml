@@ -158,20 +158,20 @@ Bundler/OrderedGems:
 Gemspec/DateAssignment:
   Description: Checks that `date =` is not used in gemspec file, it is set automatically
     when the gem is packaged.
-  Enabled: false
+  Enabled: true
   VersionAdded: '1.10'
   Include:
   - "**/*.gemspec"
 Gemspec/DuplicatedAssignment:
   Description: An attribute assignment method calls should be listed only once in
     a gemspec.
-  Enabled: false
+  Enabled: true
   VersionAdded: '0.52'
   Include:
   - "**/*.gemspec"
 Gemspec/OrderedDependencies:
   Description: Dependencies in the gemspec should be alphabetically sorted.
-  Enabled: false
+  Enabled: true
   VersionAdded: '0.51'
   TreatCommentsAsGroupSeparators: true
   ConsiderPunctuation: false
@@ -188,7 +188,7 @@ Gemspec/RequiredRubyVersion:
 Gemspec/RubyVersionGlobalsUsage:
   Description: Checks usage of RUBY_VERSION in gemspec.
   StyleGuide: "#no-ruby-version-in-the-gemspec"
-  Enabled: false
+  Enabled: true
   VersionAdded: '0.72'
   Include:
   - "**/*.gemspec"
