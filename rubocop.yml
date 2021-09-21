@@ -10,18 +10,9 @@ Bundler/OrderedGems:
   Enabled: false
 
 Gemspec/DateAssignment:
-  Enabled: false
-
-Gemspec/DuplicatedAssignment:
-  Enabled: false
-
-Gemspec/OrderedDependencies:
-  Enabled: false
+  Enabled: true
 
 Gemspec/RequiredRubyVersion:
-  Enabled: false
-
-Gemspec/RubyVersionGlobalsUsage:
   Enabled: false
 
 Layout/ArgumentAlignment:
