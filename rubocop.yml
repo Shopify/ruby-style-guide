@@ -21,28 +21,7 @@ Layout/ArgumentAlignment:
 Layout/CaseIndentation:
   EnforcedStyle: end
 
-Layout/ClosingHeredocIndentation:
-  Enabled: false
-
-Layout/EmptyComment:
-  Enabled: false
-
 Layout/EmptyLineAfterGuardClause:
-  Enabled: false
-
-Layout/EmptyLineAfterMagicComment:
-  Enabled: false
-
-Layout/EmptyLinesAroundArguments:
-  Enabled: false
-
-Layout/EmptyLinesAroundAttributeAccessor:
-  Enabled: false
-
-Layout/EmptyLinesAroundBeginBody:
-  Enabled: false
-
-Layout/EmptyLinesAroundExceptionHandlingKeywords:
   Enabled: false
 
 Layout/EndAlignment:
@@ -57,17 +36,12 @@ Layout/FirstArrayElementIndentation:
 Layout/FirstHashElementIndentation:
   EnforcedStyle: consistent
 
-Layout/FirstParameterIndentation:
-  Enabled: false
-
 Layout/HashAlignment:
   EnforcedLastArgumentHashStyle: ignore_implicit
 
-Layout/LeadingEmptyLines:
-  Enabled: false
-
 Layout/LineEndStringConcatenationIndentation:
-  Enabled: false
+  Enabled: true
+  EnforcedStyle: indented
 
 Layout/LineLength:
   IgnoreCopDirectives: false
@@ -79,19 +53,13 @@ Layout/MultilineMethodCallIndentation:
   IndentationWidth: 2
 
 Layout/MultilineOperationIndentation:
-  Enabled: false
+  EnforcedStyle: indented
 
 Layout/ParameterAlignment:
   EnforcedStyle: with_fixed_indentation
 
-Layout/SpaceAroundMethodCallOperator:
-  Enabled: false
-
 Layout/SpaceBeforeBrackets:
-  Enabled: false
-
-Layout/SpaceInLambdaLiteral:
-  Enabled: false
+  Enabled: true
 
 Lint/AmbiguousAssignment:
   Enabled: false

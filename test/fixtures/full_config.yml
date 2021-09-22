@@ -285,7 +285,7 @@ Layout/ClassStructure:
   - private_methods
 Layout/ClosingHeredocIndentation:
   Description: Checks the indentation of here document closings.
-  Enabled: false
+  Enabled: true
   VersionAdded: '0.57'
 Layout/ClosingParenthesisIndentation:
   Description: Checks the indentation of hanging closing parentheses.
@@ -326,7 +326,7 @@ Layout/ElseAlignment:
   VersionAdded: '0.49'
 Layout/EmptyComment:
   Description: Checks empty comment.
-  Enabled: false
+  Enabled: true
   VersionAdded: '0.53'
   AllowBorderComment: true
   AllowMarginComment: true
@@ -338,7 +338,7 @@ Layout/EmptyLineAfterGuardClause:
 Layout/EmptyLineAfterMagicComment:
   Description: Add an empty line after magic comments to separate them from code.
   StyleGuide: "#separate-magic-comments-from-code"
-  Enabled: false
+  Enabled: true
   VersionAdded: '0.49'
 Layout/EmptyLineAfterMultilineCondition:
   Description: Enforces empty line after multiline condition.
@@ -375,12 +375,12 @@ Layout/EmptyLinesAroundAccessModifier:
   - https://edgeguides.rubyonrails.org/contributing_to_ruby_on_rails.html#follow-the-coding-conventions
 Layout/EmptyLinesAroundArguments:
   Description: Keeps track of empty lines around method arguments.
-  Enabled: false
+  Enabled: true
   VersionAdded: '0.52'
 Layout/EmptyLinesAroundAttributeAccessor:
   Description: Keep blank lines around attribute accessors.
   StyleGuide: "#empty-lines-around-attribute-accessor"
-  Enabled: false
+  Enabled: true
   VersionAdded: '0.83'
   VersionChanged: '0.84'
   AllowAliasSyntax: true
@@ -392,7 +392,7 @@ Layout/EmptyLinesAroundAttributeAccessor:
 Layout/EmptyLinesAroundBeginBody:
   Description: Keeps track of empty lines around begin-end bodies.
   StyleGuide: "#empty-lines-around-bodies"
-  Enabled: false
+  Enabled: true
   VersionAdded: '0.49'
 Layout/EmptyLinesAroundBlockBody:
   Description: Keeps track of empty lines around block bodies.
@@ -420,7 +420,7 @@ Layout/EmptyLinesAroundClassBody:
 Layout/EmptyLinesAroundExceptionHandlingKeywords:
   Description: Keeps track of empty lines around exception handling keywords.
   StyleGuide: "#empty-lines-around-bodies"
-  Enabled: false
+  Enabled: true
   VersionAdded: '0.49'
 Layout/EmptyLinesAroundMethodBody:
   Description: Keeps track of empty lines around method bodies.
@@ -519,7 +519,7 @@ Layout/FirstMethodParameterLineBreak:
   VersionAdded: '0.49'
 Layout/FirstParameterIndentation:
   Description: Checks the indentation of the first parameter in a method definition.
-  Enabled: false
+  Enabled: true
   VersionAdded: '0.49'
   VersionChanged: '0.77'
   EnforcedStyle: consistent
@@ -605,15 +605,15 @@ Layout/LeadingCommentSpace:
   AllowGemfileRubyComment: false
 Layout/LeadingEmptyLines:
   Description: Check for unnecessary blank lines at the beginning of a file.
-  Enabled: false
+  Enabled: true
   VersionAdded: '0.57'
   VersionChanged: '0.77'
 Layout/LineEndStringConcatenationIndentation:
   Description: Checks the indentation of the next line after a line that ends with
     a string literal and a backslash.
-  Enabled: false
+  Enabled: true
   VersionAdded: '1.18'
-  EnforcedStyle: aligned
+  EnforcedStyle: indented
   SupportedStyles:
   - aligned
   - indented
@@ -721,9 +721,9 @@ Layout/MultilineMethodDefinitionBraceLayout:
   - same_line
 Layout/MultilineOperationIndentation:
   Description: Checks indentation of binary operations that span more than one line.
-  Enabled: false
+  Enabled: true
   VersionAdded: '0.49'
-  EnforcedStyle: aligned
+  EnforcedStyle: indented
   SupportedStyles:
   - aligned
   - indented
@@ -804,7 +804,7 @@ Layout/SpaceAroundKeyword:
   VersionAdded: '0.49'
 Layout/SpaceAroundMethodCallOperator:
   Description: Checks method call operators to not have spaces around them.
-  Enabled: false
+  Enabled: true
   VersionAdded: '0.82'
 Layout/SpaceAroundOperators:
   Description: Use a single space around operators.
@@ -832,7 +832,7 @@ Layout/SpaceBeforeBlockBraces:
 Layout/SpaceBeforeBrackets:
   Description: Checks for receiver with a space before the opening brackets.
   StyleGuide: "#space-in-brackets-access"
-  Enabled: false
+  Enabled: true
   VersionAdded: '1.7'
 Layout/SpaceBeforeComma:
   Description: No spaces before commas.
@@ -854,7 +854,7 @@ Layout/SpaceBeforeSemicolon:
   VersionAdded: '0.49'
 Layout/SpaceInLambdaLiteral:
   Description: Checks for spaces in lambda literals.
-  Enabled: false
+  Enabled: true
   VersionAdded: '0.49'
   EnforcedStyle: require_no_space
   SupportedStyles:
