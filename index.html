@@ -43,7 +43,7 @@ documentation</a>.</p>
 <h2 id="table-of-contents" tabindex="-1">Table of Contents</h2>
 <ul>
 <li><a href="#general">General</a></li>
-<li><a href="#formatting">Formatting</a></li>
+<li><a href="#layout">Layout</a></li>
 <li><a href="#syntax">Syntax</a></li>
 <li><a href="#naming">Naming</a></li>
 <li><a href="#classes-and-modules">Classes and Modules</a></li>
@@ -92,7 +92,7 @@ visibility.</p>
 <p>Avoid more than three levels of block nesting.</p>
 </li>
 </ul>
-<h2 id="formatting" tabindex="-1">Formatting</h2>
+<h2 id="layout" tabindex="-1">Layout</h2>
 <ul>
 <li>
 <p>Use <code>UTF-8</code> as the source file encoding.</p>
@@ -119,6 +119,14 @@ and before <code>}</code>.</p>
 </li>
 <li>
 <p>Avoid space inside range literals.</p>
+</li>
+<li>
+<p>Avoid space around method call operators.</p>
+<pre class="language-ruby"><code class="language-ruby"><span class="prism--token prism--comment"># bad</span><br>foo <span class="prism--token prism--punctuation">.</span> bar<br><br><span class="prism--token prism--comment"># good</span><br>foo<span class="prism--token prism--punctuation">.</span>bar</code></pre>
+</li>
+<li>
+<p>Avoid space in lambda literals.</p>
+<pre class="language-ruby"><code class="language-ruby"><span class="prism--token prism--comment"># bad</span><br>a <span class="prism--token prism--operator">=</span> <span class="prism--token prism--operator">-</span><span class="prism--token prism--operator">></span> <span class="prism--token prism--punctuation">(</span>x<span class="prism--token prism--punctuation">,</span> y<span class="prism--token prism--punctuation">)</span> <span class="prism--token prism--punctuation">{</span> x <span class="prism--token prism--operator">+</span> y <span class="prism--token prism--punctuation">}</span><br><br><span class="prism--token prism--comment"># good</span><br>a <span class="prism--token prism--operator">=</span> <span class="prism--token prism--operator">-</span><span class="prism--token prism--operator">></span><span class="prism--token prism--punctuation">(</span>x<span class="prism--token prism--punctuation">,</span> y<span class="prism--token prism--punctuation">)</span> <span class="prism--token prism--punctuation">{</span> x <span class="prism--token prism--operator">+</span> y <span class="prism--token prism--punctuation">}</span></code></pre>
 </li>
 <li>
 <p>Indent <code>when</code> as deep as the <code>case</code> line.</p>
@@ -177,6 +185,18 @@ of indentation.</p>
 <p>Place the closing method call brace on the line after the last argument when
 opening brace is on a separate line from the first argument.</p>
 <pre class="language-ruby"><code class="language-ruby"><span class="prism--token prism--comment"># bad</span><br>method<span class="prism--token prism--punctuation">(</span><br>  arg_1<span class="prism--token prism--punctuation">,</span><br>  arg_2<span class="prism--token prism--punctuation">)</span><br><br><span class="prism--token prism--comment"># good</span><br>method<span class="prism--token prism--punctuation">(</span><br>  arg_1<span class="prism--token prism--punctuation">,</span><br>  arg_2<span class="prism--token prism--punctuation">,</span><br><span class="prism--token prism--punctuation">)</span></code></pre>
+</li>
+<li>
+<p>Separate magic comments from code and documentation with a blank line.</p>
+<pre class="language-ruby"><code class="language-ruby"><span class="prism--token prism--comment"># good</span><br><span class="prism--token prism--comment"># frozen_string_literal: true</span><br><br><span class="prism--token prism--comment"># Some documentation for Person</span><br><span class="prism--token prism--keyword">class</span> <span class="prism--token prism--class-name">Person</span><br>  <span class="prism--token prism--comment"># Some code</span><br><span class="prism--token prism--keyword">end</span><br><br><span class="prism--token prism--comment"># bad</span><br><span class="prism--token prism--comment"># frozen_string_literal: true</span><br><span class="prism--token prism--comment"># Some documentation for Person</span><br><span class="prism--token prism--keyword">class</span> <span class="prism--token prism--class-name">Person</span><br>  <span class="prism--token prism--comment"># Some code</span><br><span class="prism--token prism--keyword">end</span></code></pre>
+</li>
+<li>
+<p>Use empty lines around attribute accessor.</p>
+<pre class="language-ruby"><code class="language-ruby"><span class="prism--token prism--comment"># bad</span><br><span class="prism--token prism--keyword">class</span> <span class="prism--token prism--class-name">Foo</span><br>  attr_reader <span class="prism--token prism--symbol">:foo</span><br>  <span class="prism--token prism--keyword">def</span> <span class="prism--token prism--method-definition"><span class="prism--token prism--function">foo</span></span><br>    <span class="prism--token prism--comment"># do something...</span><br>  <span class="prism--token prism--keyword">end</span><br><span class="prism--token prism--keyword">end</span><br><br><span class="prism--token prism--comment"># good</span><br><span class="prism--token prism--keyword">class</span> <span class="prism--token prism--class-name">Foo</span><br>  attr_reader <span class="prism--token prism--symbol">:foo</span><br><br>  <span class="prism--token prism--keyword">def</span> <span class="prism--token prism--method-definition"><span class="prism--token prism--function">foo</span></span><br>    <span class="prism--token prism--comment"># do something...</span><br>  <span class="prism--token prism--keyword">end</span><br><span class="prism--token prism--keyword">end</span></code></pre>
+</li>
+<li>
+<p>Avoid empty lines around method, class, module, and block bodies.</p>
+<pre class="language-ruby"><code class="language-ruby"><span class="prism--token prism--comment"># bad</span><br><span class="prism--token prism--keyword">class</span> <span class="prism--token prism--class-name">Foo</span><br><br>  <span class="prism--token prism--keyword">def</span> <span class="prism--token prism--method-definition"><span class="prism--token prism--function">foo</span></span><br><br>    <span class="prism--token prism--keyword">begin</span><br><br>      do_something <span class="prism--token prism--keyword">do</span><br><br>        something<br><br>      <span class="prism--token prism--keyword">end</span><br><br>    <span class="prism--token prism--keyword">rescue</span><br><br>      something<br><br>    <span class="prism--token prism--keyword">end</span><br><br>    <span class="prism--token prism--boolean">true</span><br><br>  <span class="prism--token prism--keyword">end</span><br><br><span class="prism--token prism--keyword">end</span><br><br><span class="prism--token prism--comment"># good</span><br><span class="prism--token prism--keyword">class</span> <span class="prism--token prism--class-name">Foo</span><br>  <span class="prism--token prism--keyword">def</span> <span class="prism--token prism--method-definition"><span class="prism--token prism--function">foo</span></span><br>    <span class="prism--token prism--keyword">begin</span><br>      do_something <span class="prism--token prism--keyword">do</span><br>        something<br>      <span class="prism--token prism--keyword">end</span><br>    <span class="prism--token prism--keyword">rescue</span><br>      something<br>    <span class="prism--token prism--keyword">end</span><br>  <span class="prism--token prism--keyword">end</span><br><span class="prism--token prism--keyword">end</span></code></pre>
 </li>
 </ul>
 <h2 id="syntax" tabindex="-1">Syntax</h2>
@@ -570,6 +590,10 @@ on which to trim the excessive whitespace.</p>
 heredoc&quot;</a> syntax, which has the same
 semantics as <code>strip_heredoc</code> from Rails:</p>
 <pre class="language-ruby"><code class="language-ruby">code <span class="prism--token prism--operator">=</span> <span class="prism--token prism--string prism--heredoc-string"><span class="prism--token prism--delimiter prism--symbol"><span class="prism--token prism--punctuation">&lt;&lt;~</span>END</span><br>  def test<br>    some_method<br>    other_method<br>  <span class="prism--token prism--delimiter prism--symbol">end</span></span><br><span class="prism--token prism--keyword">END</span><br><span class="prism--token prism--comment"># => "def test\n  some_method\n  other_method\nend\n"</span></code></pre>
+</li>
+<li>
+<p>Indent heredoc contents and closing according to its opening.</p>
+<pre class="language-ruby"><code class="language-ruby"><span class="prism--token prism--comment"># bad</span><br><span class="prism--token prism--keyword">class</span> <span class="prism--token prism--class-name">Foo</span><br>  <span class="prism--token prism--keyword">def</span> <span class="prism--token prism--method-definition"><span class="prism--token prism--function">bar</span></span><br>    <span class="prism--token prism--string prism--heredoc-string"><span class="prism--token prism--delimiter prism--symbol"><span class="prism--token prism--punctuation">&lt;&lt;~</span>SQL</span><br>      'Hi'<br>  <span class="prism--token prism--delimiter prism--symbol">SQL</span></span><br>  <span class="prism--token prism--keyword">end</span><br><span class="prism--token prism--keyword">end</span><br><br><span class="prism--token prism--comment"># good</span><br><span class="prism--token prism--keyword">class</span> <span class="prism--token prism--class-name">Foo</span><br>  <span class="prism--token prism--keyword">def</span> <span class="prism--token prism--method-definition"><span class="prism--token prism--function">bar</span></span><br>    <span class="prism--token prism--string prism--heredoc-string"><span class="prism--token prism--delimiter prism--symbol"><span class="prism--token prism--punctuation">&lt;&lt;~</span>SQL</span><br>      'Hi'<br>    <span class="prism--token prism--delimiter prism--symbol">SQL</span></span><br>  <span class="prism--token prism--keyword">end</span><br><span class="prism--token prism--keyword">end</span><br><br><span class="prism--token prism--comment"># bad</span><br><br><span class="prism--token prism--comment"># heredoc contents is before closing heredoc.</span><br>foo arg<span class="prism--token prism--punctuation">,</span><br>    <span class="prism--token prism--string prism--heredoc-string"><span class="prism--token prism--delimiter prism--symbol"><span class="prism--token prism--punctuation">&lt;&lt;~</span>EOS</span><br>  Hi<br>    <span class="prism--token prism--delimiter prism--symbol">EOS</span></span><br><br><span class="prism--token prism--comment"># good</span><br>foo arg<span class="prism--token prism--punctuation">,</span><br>    <span class="prism--token prism--string prism--heredoc-string"><span class="prism--token prism--delimiter prism--symbol"><span class="prism--token prism--punctuation">&lt;&lt;~</span>EOS</span><br>  Hi<br><span class="prism--token prism--delimiter prism--symbol">EOS</span></span><br><br><span class="prism--token prism--comment"># good</span><br>foo arg<span class="prism--token prism--punctuation">,</span><br>  <span class="prism--token prism--string prism--heredoc-string"><span class="prism--token prism--delimiter prism--symbol"><span class="prism--token prism--punctuation">&lt;&lt;~</span>EOS</span><br>    Hi<br>  <span class="prism--token prism--delimiter prism--symbol">EOS</span></span></code></pre>
 </li>
 </ul>
 <h2 id="regular-expressions" tabindex="-1">Regular Expressions</h2>
