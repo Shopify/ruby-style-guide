@@ -193,6 +193,9 @@ Lint/RedundantWithObject:
 Lint/RegexpAsCondition:
   Enabled: false
 
+Lint/RequireRelativeSelfPath:
+  Enabled: true
+
 Lint/RescueType:
   Enabled: false
 
@@ -335,6 +338,9 @@ Naming/VariableNumber:
 
 Security/MarshalLoad:
   Enabled: false
+
+Security/IoMethods:
+  Enabled: true
 
 Security/YAMLLoad:
   Enabled: false
@@ -537,6 +543,12 @@ Style/NegatedUnless:
 Style/NilLambda:
   Enabled: false
 
+Style/NumberedParameters:
+  Enabled: false
+
+Style/NumberedParametersLimit:
+  Enabled: false
+
 Style/NumericLiteralPrefix:
   EnforcedOctalStyle: zero_only
 
@@ -598,6 +610,9 @@ Style/RegexpLiteral:
   EnforcedStyle: mixed
 
 Style/RescueStandardError:
+  Enabled: false
+
+Style/SelectByRegexp:
   Enabled: false
 
 Style/SingleArgumentDig:

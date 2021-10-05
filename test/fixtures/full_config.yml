@@ -140,6 +140,7 @@ Bundler/InsecureProtocolSource:
     if possible, or 'http://rubygems.org' if not.
   Enabled: true
   VersionAdded: '0.50'
+  AllowHttpProtocol: true
   Include:
   - "**/*.gemfile"
   - "**/Gemfile"
@@ -911,10 +912,11 @@ Layout/SpaceInsideParens:
   StyleGuide: "#spaces-braces"
   Enabled: true
   VersionAdded: '0.49'
-  VersionChanged: '0.55'
+  VersionChanged: '1.22'
   EnforcedStyle: no_space
   SupportedStyles:
   - space
+  - compact
   - no_space
 Layout/SpaceInsidePercentLiteralDelimiters:
   Description: No unnecessary spaces inside delimiters of %i/%w/%x literals.
@@ -1019,9 +1021,9 @@ Lint/BinaryOperatorWithIdenticalOperands:
 Lint/BooleanSymbol:
   Description: Check for `:true` and `:false` symbols.
   Enabled: false
-  Safe: false
+  SafeAutoCorrect: false
   VersionAdded: '0.50'
-  VersionChanged: '0.83'
+  VersionChanged: '1.22'
 Lint/CircularArgumentReference:
   Description: Default values in optional keyword arguments and optional ordinal arguments
     should not refer back to the name of the argument.
@@ -1461,6 +1463,10 @@ Lint/RequireParentheses:
   Description: Use parentheses in the method call to avoid confusion about precedence.
   Enabled: true
   VersionAdded: '0.18'
+Lint/RequireRelativeSelfPath:
+  Description: Checks for uses a file requiring itself with `require_relative`.
+  Enabled: true
+  VersionAdded: '1.22'
 Lint/RescueException:
   Description: Avoid rescuing the Exception class.
   StyleGuide: "#no-blind-rescues"
@@ -2028,6 +2034,12 @@ Security/Eval:
   Description: The use of eval represents a serious security risk.
   Enabled: true
   VersionAdded: '0.47'
+Security/IoMethods:
+  Description: Checks for the first argument to `IO.read`, `IO.binread`, `IO.write`,
+    `IO.binwrite`, `IO.foreach`, and `IO.readlines`.
+  Enabled: true
+  Safe: false
+  VersionAdded: '1.22'
 Security/JSONLoad:
   Description: Prefer usage of `JSON.parse` over `JSON.load` due to potential security
     issues. See reference for more information.
@@ -2719,7 +2731,7 @@ Style/InPatternThen:
   Enabled: true
   VersionAdded: '1.16'
 Style/InfiniteLoop:
-  Description: Use Kernel#loop for infinite loops. This cop is unsafe in the body
+  Description: Use Kernel#loop for infinite loops. This cop is unsafe if the body
     may raise a `StopIteration` exception.
   Safe: false
   StyleGuide: "#infinite-loop"
@@ -3060,6 +3072,19 @@ Style/Not:
   Enabled: true
   VersionAdded: '0.9'
   VersionChanged: '0.20'
+Style/NumberedParameters:
+  Description: Restrict the usage of numbered parameters.
+  Enabled: false
+  VersionAdded: '1.22'
+  EnforcedStyle: allow_single_line
+  SupportedStyles:
+  - allow_single_line
+  - disallow
+Style/NumberedParametersLimit:
+  Description: Avoid excessive numbered params in a single block.
+  Enabled: false
+  VersionAdded: '1.22'
+  Max: 1
 Style/NumericLiteralPrefix:
   Description: Use smallcase prefixes for numeric literals.
   StyleGuide: "#numeric-literal-prefixes"
@@ -3325,6 +3350,8 @@ Style/RedundantSort:
     etc.
   Enabled: false
   VersionAdded: '0.76'
+  VersionChanged: '1.22'
+  Safe: false
 Style/RedundantSortBy:
   Description: Use `sort` instead of `sort_by { |x| x }`.
   Enabled: true
@@ -3383,6 +3410,11 @@ Style/Sample:
   Reference: https://github.com/JuanitoFatas/fast-ruby#arrayshufflefirst-vs-arraysample-code
   Enabled: true
   VersionAdded: '0.30'
+Style/SelectByRegexp:
+  Description: Prefer grep/grep_v to select/reject with a regexp match.
+  Enabled: false
+  SafeAutoCorrect: false
+  VersionAdded: '1.22'
 Style/SelfAssignment:
   Description: Checks for places where self-assignment shorthand should have been
     used.
