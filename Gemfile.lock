@@ -1,8 +1,8 @@
 PATH
   remote: .
   specs:
-    rubocop-shopify (2.2.0)
-      rubocop (~> 1.20)
+    rubocop-shopify (2.3.0)
+      rubocop (~> 1.22)
 
 GEM
   remote: https://rubygems.org/
@@ -51,4 +51,4 @@ DEPENDENCIES
   rubocop-shopify!
 
 BUNDLED WITH
-   2.2.22
+   2.2.28
