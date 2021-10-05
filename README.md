@@ -51,7 +51,7 @@ documentation](https://docs.rubocop.org/rubocop/configuration.html#inheriting-co
 ## Table of Contents
 
 * [General](#general)
-* [Formatting](#formatting)
+* [Layout](#layout)
 * [Syntax](#syntax)
 * [Naming](#naming)
 * [Classes and Modules](#classes-and-modules)
@@ -88,7 +88,7 @@ documentation](https://docs.rubocop.org/rubocop/configuration.html#inheriting-co
 
 * Avoid more than three levels of block nesting.
 
-## Formatting
+## Layout
 
 * Use `UTF-8` as the source file encoding.
 
@@ -107,6 +107,26 @@ documentation](https://docs.rubocop.org/rubocop/configuration.html#inheriting-co
 * Avoid space after the `!` operator.
 
 * Avoid space inside range literals.
+
+* Avoid space around method call operators.
+
+  ~~~ruby
+  # bad
+  foo . bar
+
+  # good
+  foo.bar
+  ~~~
+
+* Avoid space in lambda literals.
+
+  ~~~ruby
+  # bad
+  a = -> (x, y) { x + y }
+
+  # good
+  a = ->(x, y) { x + y }
+  ~~~
 
 * Indent `when` as deep as the `case` line.
 
@@ -244,6 +264,88 @@ documentation](https://docs.rubocop.org/rubocop/configuration.html#inheriting-co
     arg_1,
     arg_2,
   )
+  ~~~
+
+* Separate magic comments from code and documentation with a blank line.
+
+  ~~~ruby
+  # good
+  # frozen_string_literal: true
+
+  # Some documentation for Person
+  class Person
+    # Some code
+  end
+
+  # bad
+  # frozen_string_literal: true
+  # Some documentation for Person
+  class Person
+    # Some code
+  end
+  ~~~
+
+* Use empty lines around attribute accessor.
+
+  ~~~ruby
+  # bad
+  class Foo
+    attr_reader :foo
+    def foo
+      # do something...
+    end
+  end
+
+  # good
+  class Foo
+    attr_reader :foo
+
+    def foo
+      # do something...
+    end
+  end
+  ~~~
+
+* Avoid empty lines around method, class, module, and block bodies.
+
+  ~~~ruby
+  # bad
+  class Foo
+
+    def foo
+
+      begin
+
+        do_something do
+
+          something
+
+        end
+
+      rescue
+
+        something
+
+      end
+
+      true
+
+    end
+
+  end
+
+  # good
+  class Foo
+    def foo
+      begin
+        do_something do
+          something
+        end
+      rescue
+        something
+      end
+    end
+  end
   ~~~
 
 ## Syntax
@@ -1045,6 +1147,48 @@ documentation](https://docs.rubocop.org/rubocop/configuration.html#inheriting-co
     end
   END
   # => "def test\n  some_method\n  other_method\nend\n"
+  ~~~
+
+* Indent heredoc contents and closing according to its opening.
+
+  ~~~ruby
+  # bad
+  class Foo
+    def bar
+      <<~SQL
+        'Hi'
+    SQL
+    end
+  end
+
+  # good
+  class Foo
+    def bar
+      <<~SQL
+        'Hi'
+      SQL
+    end
+  end
+
+  # bad
+
+  # heredoc contents is before closing heredoc.
+  foo arg,
+      <<~EOS
+    Hi
+      EOS
+
+  # good
+  foo arg,
+      <<~EOS
+    Hi
+  EOS
+
+  # good
+  foo arg,
+    <<~EOS
+      Hi
+    EOS
   ~~~
 
 ## Regular Expressions
