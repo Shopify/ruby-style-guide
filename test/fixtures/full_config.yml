@@ -183,7 +183,7 @@ Gemspec/RequiredRubyVersion:
     to `TargetRubyVersion` of .rubocop.yml.
   Enabled: false
   VersionAdded: '0.52'
-  VersionChanged: '0.89'
+  VersionChanged: '1.22'
   Include:
   - "**/*.gemspec"
 Gemspec/RubyVersionGlobalsUsage:
@@ -2046,8 +2046,7 @@ Security/JSONLoad:
   Reference: https://ruby-doc.org/stdlib-2.7.0/libdoc/json/rdoc/JSON.html#method-i-load
   Enabled: true
   VersionAdded: '0.43'
-  VersionChanged: '0.44'
-  AutoCorrect: false
+  VersionChanged: '1.22'
   SafeAutoCorrect: false
 Security/MarshalLoad:
   Description: Avoid using of `Marshal.load` or `Marshal.restore` due to potential
