@@ -1085,6 +1085,7 @@ Lint/DeprecatedConstants:
   Description: Checks for deprecated constants.
   Enabled: false
   VersionAdded: '1.8'
+  VersionChanged: '1.22'
   DeprecatedConstants:
     NIL:
       Alternative: nil
@@ -1095,6 +1096,9 @@ Lint/DeprecatedConstants:
     'FALSE':
       Alternative: 'false'
       DeprecatedVersion: '2.4'
+    Net::HTTPServerException:
+      Alternative: Net::HTTPClientException
+      DeprecatedVersion: '2.6'
     Random::DEFAULT:
       Alternative: Random.new
       DeprecatedVersion: '3.0'
