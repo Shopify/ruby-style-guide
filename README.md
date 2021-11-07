@@ -1199,7 +1199,8 @@ documentation](https://docs.rubocop.org/rubocop/configuration.html#inheriting-co
   string["text"]
   ~~~
 
-* Use non-capturing groups when you don't use the captured result.
+* Use non-capturing groups when you don't use the captured result inside the
+  regular expression.
 
   ~~~ ruby
   # bad
@@ -1207,6 +1208,16 @@ documentation](https://docs.rubocop.org/rubocop/configuration.html#inheriting-co
 
   # good
   /(?:first|second)/
+  ~~~
+
+* Use `Regexp#match?` when you don't use the captured result in Ruby.
+
+  ~~~ ruby
+  # bad
+  /(first|second)/.match(string)
+
+  # good
+  /(?:first|second)/.match?(string)
   ~~~
 
 * Prefer `Regexp#match` over Perl-legacy variables to capture group matches.
