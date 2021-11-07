@@ -1235,6 +1235,10 @@ documentation](https://docs.rubocop.org/rubocop/configuration.html#inheriting-co
   ~~~
 
 * Prefer `\A` and `\z` over `^` and `$` when matching strings from start to end.
+  Incomplete matching of strings is a commonly made mistake when validating
+  strings and can lead to security vulnerabilities. For more details see the
+  [Rails security guide](https://guides.rubyonrails.org/security.html#regular-expressions)
+  and [CWE-625: Permissive Regular Expression](https://cwe.mitre.org/data/definitions/625.html).
 
   ~~~ ruby
   string = "some injection\nusername"
