@@ -15,6 +15,9 @@ Gemspec/DateAssignment:
 Gemspec/RequiredRubyVersion:
   Enabled: false
 
+Gemspec/RequireMFA:
+  Enabled: false
+
 Layout/ArgumentAlignment:
   EnforcedStyle: with_fixed_indentation
 
@@ -264,6 +267,9 @@ Lint/UriRegexp:
 
 Lint/UselessMethodDefinition:
   Enabled: false
+
+Lint/UselessRuby2Keywords:
+  Enabled: true
 
 Lint/UselessTimes:
   Enabled: false
@@ -557,6 +563,9 @@ Style/NumericLiterals:
 
 Style/NumericPredicate:
   Enabled: false
+
+Style/OpenStructUse:
+  Enabled: true
 
 Style/OptionalBooleanParameter:
   Enabled: false
