@@ -301,6 +301,9 @@ Metrics/PerceivedComplexity:
 Migration/DepartmentName:
   Enabled: false
 
+Naming/BlockForwarding:
+  Enabled: false
+
 Naming/BlockParameterName:
   Enabled: false
 
@@ -441,6 +444,12 @@ Style/ExplicitBlockArgument:
 Style/ExponentialNotation:
   Enabled: false
 
+Style/FileRead:
+  Enabled: false
+
+Style/FileWrite:
+  Enabled: false
+
 Style/FloatDivision:
   Enabled: false
 
@@ -496,6 +505,9 @@ Style/KeywordParametersOrder:
   Enabled: false
 
 Style/Lambda:
+  Enabled: false
+
+Style/MapToHash:
   Enabled: false
 
 Style/MethodCallWithArgsParentheses:

@@ -67,6 +67,7 @@ AllCops:
   DisplayCopNames: true
   DisplayStyleGuide: false
   StyleGuideBaseURL: https://shopify.github.io/ruby-style-guide/
+  DocumentationBaseURL: https://docs.rubocop.org/rubocop
   ExtraDetails: false
   StyleGuideCopsOnly: false
   EnabledByDefault: false
@@ -305,7 +306,9 @@ Layout/ClosingParenthesisIndentation:
 Layout/CommentIndentation:
   Description: Indentation of comments.
   Enabled: true
+  AllowForAlignment: false
   VersionAdded: '0.49'
+  VersionChanged: '1.24'
 Layout/ConditionPosition:
   Description: Checks for condition placed in a confusing position relative to the
     keyword.
@@ -1270,7 +1273,9 @@ Lint/ImplicitStringConcatenation:
 Lint/IncompatibleIoSelectWithFiberScheduler:
   Description: Checks for `IO.select` that is incompatible with Fiber Scheduler.
   Enabled: false
+  SafeAutoCorrect: false
   VersionAdded: '1.21'
+  VersionChanged: '1.24'
 Lint/IneffectiveAccessModifier:
   Description: Checks for attempts to use `private` or `protected` to set the visibility
     of a class method, which does not work.
@@ -1821,6 +1826,15 @@ Naming/BinaryOperatorParameterName:
   Enabled: true
   VersionAdded: '0.50'
   VersionChanged: '1.2'
+Naming/BlockForwarding:
+  Description: Use anonymous block forwarding.
+  StyleGuide: "#block-forwarding"
+  Enabled: false
+  VersionAdded: '1.24'
+  EnforcedStyle: anonymous
+  SupportedStyles:
+  - anonymous
+  - explicit
 Naming/BlockParameterName:
   Description: Checks for block parameter names that contain capital letters, end
     in numbers, or do not meet a minimal length.
@@ -2561,6 +2575,16 @@ Style/ExponentialNotation:
   - scientific
   - engineering
   - integral
+Style/FileRead:
+  Description: Favor `File.(bin)read` convenience methods.
+  StyleGuide: "#file-read"
+  Enabled: false
+  VersionAdded: '1.24'
+Style/FileWrite:
+  Description: Favor `File.(bin)write` convenience methods.
+  StyleGuide: "#file-write"
+  Enabled: false
+  VersionAdded: '1.24'
 Style/FloatDivision:
   Description: For performing float division, coerce one side only.
   StyleGuide: "#float-division"
@@ -2685,13 +2709,17 @@ Style/HashSyntax:
   StyleGuide: "#hash-literals"
   Enabled: true
   VersionAdded: '0.9'
-  VersionChanged: '0.43'
+  VersionChanged: '1.24'
   EnforcedStyle: ruby19
   SupportedStyles:
   - ruby19
   - hash_rockets
   - no_mixed_keys
   - ruby19_no_mixed_keys
+  EnforcedShorthandSyntax: always
+  SupportedShorthandSyntax:
+  - always
+  - never
   UseHashRocketsWithSymbolValues: false
   PreferHashRocketsForNonAlnumEndingSymbols: false
 Style/HashTransformKeys:
@@ -2828,6 +2856,11 @@ Style/LineEndConcatenation:
   SafeAutoCorrect: false
   VersionAdded: '0.18'
   VersionChanged: '0.64'
+Style/MapToHash:
+  Description: Prefer `to_h` with a block over `map.to_h`.
+  Enabled: false
+  VersionAdded: '1.24'
+  Safe: false
 Style/MethodCallWithArgsParentheses:
   Description: Use parentheses for method calls with arguments.
   StyleGuide: "#method-invocation-parens"
@@ -3125,6 +3158,7 @@ Style/NumericLiterals:
   VersionChanged: '0.48'
   MinDigits: 5
   Strict: false
+  AllowedNumbers: []
 Style/NumericPredicate:
   Description: Checks for the use of predicate- or comparison methods for numeric
     comparisons.
