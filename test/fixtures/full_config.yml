@@ -3190,6 +3190,9 @@ Style/OpenStructUse:
   - https://docs.ruby-lang.org/en/3.0.0/OpenStruct.html#class-OpenStruct-label-Caveats
   Enabled: true
   VersionAdded: '1.23'
+  Exclude:
+  - "/test/**/*_test.rb"
+  - "/spec/**/*_spec.rb"
 Style/OptionHash:
   Description: Don't use option hashes when you can use keyword arguments.
   Enabled: false

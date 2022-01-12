@@ -578,6 +578,10 @@ Style/NumericPredicate:
 
 Style/OpenStructUse:
   Enabled: true
+  Exclude:
+    - test/**/*_test.rb
+    - spec/**/*_spec.rb
+
 
 Style/OptionalBooleanParameter:
   Enabled: false
