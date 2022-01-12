@@ -346,7 +346,7 @@ Layout/EmptyComment:
   AllowMarginComment: true
 Layout/EmptyLineAfterGuardClause:
   Description: Add empty line after guard clause.
-  Enabled: false
+  Enabled: true
   VersionAdded: '0.56'
   VersionChanged: '0.59'
 Layout/EmptyLineAfterMagicComment:
