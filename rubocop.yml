@@ -549,9 +549,6 @@ Style/MultilineWhenThen:
 Style/MultipleComparison:
   Enabled: false
 
-Style/MutableConstant:
-  Enabled: false
-
 Style/NegatedIfElseCondition:
   Enabled: false
 
