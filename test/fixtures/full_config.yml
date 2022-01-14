@@ -3014,7 +3014,7 @@ Style/MultipleComparison:
   AllowMethodComparison: true
 Style/MutableConstant:
   Description: Do not assign mutable objects to constants.
-  Enabled: false
+  Enabled: true
   VersionAdded: '0.34'
   VersionChanged: '1.8'
   SafeAutoCorrect: false
