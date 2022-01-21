@@ -463,7 +463,7 @@ Style/FrozenStringLiteralComment:
     sure we''re ready.'
 
 Style/GlobalStdStream:
-  Enabled: false
+  Enabled: true
 
 Style/GuardClause:
   Enabled: false
