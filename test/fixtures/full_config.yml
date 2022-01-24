@@ -1971,6 +1971,7 @@ Naming/InclusiveLanguage:
       - blob/master/
       - origin/master
       - mastercard
+      - webmaster
 Naming/MemoizedInstanceVariableName:
   Description: Memoized method name should match memo instance variable name.
   Enabled: false
