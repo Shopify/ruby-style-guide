@@ -2650,7 +2650,7 @@ Style/FrozenStringLiteralComment:
 Style/GlobalStdStream:
   Description: Enforces the use of `$stdout/$stderr/$stdin` instead of `STDOUT/STDERR/STDIN`.
   StyleGuide: "#global-stdout"
-  Enabled: false
+  Enabled: true
   VersionAdded: '0.89'
   SafeAutoCorrect: false
 Style/GlobalVars:
