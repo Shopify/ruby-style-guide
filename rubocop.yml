@@ -326,6 +326,7 @@ Naming/InclusiveLanguage:
         - 'blob/master/'
         - 'origin/master'
         - 'mastercard'
+        - 'webmaster'
 
 Naming/MemoizedInstanceVariableName:
   Enabled: false
