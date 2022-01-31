@@ -1835,6 +1835,7 @@ Naming/BlockForwarding:
   SupportedStyles:
   - anonymous
   - explicit
+  BlockForwardingName: block
 Naming/BlockParameterName:
   Description: Checks for block parameter names that contain capital letters, end
     in numbers, or do not meet a minimal length.
@@ -2721,6 +2722,7 @@ Style/HashSyntax:
   SupportedShorthandSyntax:
   - always
   - never
+  - either
   UseHashRocketsWithSymbolValues: false
   PreferHashRocketsForNonAlnumEndingSymbols: false
 Style/HashTransformKeys:
