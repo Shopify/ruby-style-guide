@@ -10,7 +10,7 @@
     "serve": "rm -rf css && eslint . && sass scss:css --watch & eleventy --serve"
   },
   "devDependencies": {
-    "@11ty/eleventy": "^0.12.1",
+    "@11ty/eleventy": "^1.0.0",
     "@11ty/eleventy-plugin-syntaxhighlight": "^4.0.0",
     "@fortawesome/fontawesome-free": "^5.15.4",
     "bulma": "^0.9.3",
