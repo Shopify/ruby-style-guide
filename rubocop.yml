@@ -484,6 +484,9 @@ Style/HashExcept:
 Style/HashLikeCase:
   Enabled: false
 
+Style/HashSyntax:
+  EnforcedShorthandSyntax: either
+
 Style/HashTransformKeys:
   Enabled: false
 
