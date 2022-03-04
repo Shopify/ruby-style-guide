@@ -3,7 +3,7 @@
 Gem::Specification.new do |s|
   s.platform    = Gem::Platform::RUBY
   s.name        = "rubocop-shopify"
-  s.version     = "2.4.0"
+  s.version     = "2.5.0"
   s.summary     = "Shopify's style guide for Ruby."
   s.description = "Gem containing the rubocop.yml config that corresponds to "\
     "the implementation of the Shopify's style guide for Ruby."
@@ -21,5 +21,5 @@ Gem::Specification.new do |s|
     "allowed_push_host" => "https://rubygems.org",
   }
 
-  s.add_dependency("rubocop", "~> 1.24")
+  s.add_dependency("rubocop", "~> 1.25")
 end
