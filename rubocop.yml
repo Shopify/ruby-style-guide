@@ -562,6 +562,9 @@ Style/NegatedIfElseCondition:
 Style/NegatedUnless:
   Enabled: false
 
+Style/NestedFileDirname:
+  Enabled: true
+
 Style/NilLambda:
   Enabled: false
 

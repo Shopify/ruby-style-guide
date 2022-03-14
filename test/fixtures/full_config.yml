@@ -182,7 +182,8 @@ Gemspec/OrderedDependencies:
   Include:
   - "**/*.gemspec"
 Gemspec/RequireMFA:
-  Description: Checks that the gemspec has metadata to require MFA from RubyGems.
+  Description: Checks that the gemspec has metadata to require Multi-Factor Authentication
+    from RubyGems.
   Enabled: false
   VersionAdded: '1.23'
   Reference:
@@ -1284,11 +1285,13 @@ Lint/IneffectiveAccessModifier:
 Lint/InheritException:
   Description: Avoid inheriting from the `Exception` class.
   Enabled: true
+  SafeAutoCorrect: false
   VersionAdded: '0.41'
-  EnforcedStyle: runtime_error
+  VersionChanged: '1.26'
+  EnforcedStyle: standard_error
   SupportedStyles:
-  - runtime_error
   - standard_error
+  - runtime_error
 Lint/InterpolationCheck:
   Description: Raise warning for interpolation in single q strs.
   Enabled: false
@@ -1436,6 +1439,8 @@ Lint/RedundantDirGlobSort:
   Description: Checks for redundant `sort` method to `Dir.glob` and `Dir[]`.
   Enabled: false
   VersionAdded: '1.8'
+  VersionChanged: '1.26'
+  SafeAutoCorrect: false
 Lint/RedundantRequireStatement:
   Description: Checks for unnecessary `require` statement.
   Enabled: false
@@ -2605,8 +2610,9 @@ Style/For:
   Description: Checks use of for or each in multiline loops.
   StyleGuide: "#no-for-loops"
   Enabled: true
+  SafeAutoCorrect: false
   VersionAdded: '0.13'
-  VersionChanged: '0.59'
+  VersionChanged: '1.26'
   EnforcedStyle: each
   SupportedStyles:
   - each
@@ -3057,6 +3063,10 @@ Style/NegatedWhile:
   StyleGuide: "#until-for-negatives"
   Enabled: true
   VersionAdded: '0.20'
+Style/NestedFileDirname:
+  Description: Checks for nested `File.dirname`.
+  Enabled: true
+  VersionAdded: '1.26'
 Style/NestedModifier:
   Description: Avoid using nested modifiers.
   StyleGuide: "#no-nested-modifiers"
