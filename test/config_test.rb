@@ -30,4 +30,29 @@ class ConfigTest < Minitest::Test
       assert(diff.empty?, error_message)
     end
   end
+
+  def test_config_has_no_redundant_entries
+    config = RuboCop::ConfigLoader.load_file("rubocop.yml")
+    default_config = RuboCop::ConfigLoader.default_configuration
+
+    # This entry is not a cop.
+    config.delete("inherit_mode")
+
+    config.each do |cop_name, cop_config|
+      default_cop_config = default_config.fetch(cop_name)
+      cop_config.each do |key, value|
+        error_message = <<~ERROR
+          Error: #{cop_name} was configured with the same value as the default
+          RuboCop configuration.
+
+          #{cop_name}:
+            #{key}: #{value}
+
+          Please remove the configuration as it is unnecessary.
+        ERROR
+
+        refute_equal(default_cop_config[key], value, error_message)
+      end
+    end
+  end
 end
