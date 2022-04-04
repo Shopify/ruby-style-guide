@@ -24,9 +24,6 @@ Layout/ArgumentAlignment:
 Layout/CaseIndentation:
   EnforcedStyle: end
 
-Layout/EmptyLineAfterGuardClause:
-  Enabled: true
-
 Layout/EndAlignment:
   EnforcedStyleAlignWith: variable
 
@@ -370,9 +367,6 @@ Style/AndOr:
 Style/ArgumentsForwarding:
   Enabled: false
 
-Style/AsciiComments:
-  Enabled: false
-
 Style/BisectedAttrAccessor:
   Enabled: false
 
@@ -439,9 +433,6 @@ Style/EvalWithLocation:
 Style/ExpandPathArguments:
   Enabled: false
 
-Style/ExplicitBlockArgument:
-  Enabled: true
-
 Style/ExponentialNotation:
   Enabled: false
 
@@ -462,9 +453,6 @@ Style/FrozenStringLiteralComment:
   Details: 'Add `# frozen_string_literal: true` to the top of the file. Frozen string
     literals will become the default in a future Ruby version, and we want to make
     sure we''re ready.'
-
-Style/GlobalStdStream:
-  Enabled: true
 
 Style/GuardClause:
   Enabled: false
