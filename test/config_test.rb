@@ -34,6 +34,7 @@ class ConfigTest < Minitest::Test
   def test_config_has_no_redundant_entries
     config = RuboCop::ConfigLoader.load_file("rubocop.yml")
     default_config = RuboCop::ConfigLoader.default_configuration
+    redundant_config = Hash.new { |hash, key| hash[key] = {} }
 
     # This entry is not a cop.
     config.delete("inherit_mode")
@@ -41,18 +42,19 @@ class ConfigTest < Minitest::Test
     config.each do |cop_name, cop_config|
       default_cop_config = default_config.fetch(cop_name)
       cop_config.each do |key, value|
-        error_message = <<~ERROR
-          Error: #{cop_name} was configured with the same value as the default
-          RuboCop configuration.
-
-          #{cop_name}:
-            #{key}: #{value}
-
-          Please remove the configuration as it is unnecessary.
-        ERROR
-
-        refute_equal(default_cop_config[key], value, error_message)
+        default_value = default_cop_config[key]
+        redundant_config[cop_name][key] = value if value == default_value
       end
     end
+
+    error_message = <<~ERROR
+      Error: The following config values are the same as the default Rubocop configuration:
+
+      #{redundant_config.to_yaml.delete_prefix("---\n")}
+
+      Please remove these entries from the configuration, as they are unnecessary.
+    ERROR
+
+    assert(redundant_config.empty?, error_message)
   end
 end
