@@ -604,6 +604,7 @@ Layout/IndentationWidth:
   Enabled: true
   VersionAdded: '0.49'
   Width: 2
+  AllowedPatterns: []
   IgnoredPatterns: []
 Layout/InitialIndentation:
   Description: Checks the indentation of the first non-blank non-comment line in a
@@ -646,8 +647,9 @@ Layout/LineLength:
   - http
   - https
   IgnoreCopDirectives: false
-  IgnoredPatterns:
+  AllowedPatterns:
   - "\\A\\s*(remote_)?test(_\\w+)?\\s.*(do|->)(\\s|\\Z)"
+  IgnoredPatterns: []
 Layout/MultilineArrayBraceLayout:
   Description: Checks that the closing brace in an array literal is either on the
     same line as the last array element, or a new line.
@@ -1158,7 +1160,9 @@ Lint/DuplicateRegexpCharacterClassElement:
 Lint/DuplicateRequire:
   Description: Check for duplicate `require`s and `require_relative`s.
   Enabled: false
+  SafeAutoCorrect: false
   VersionAdded: '0.90'
+  VersionChanged: '1.28'
 Lint/DuplicateRescueException:
   Description: Checks that there are no repeated exceptions used in `rescue` expressions.
   Enabled: false
@@ -1477,6 +1481,12 @@ Lint/RedundantWithObject:
   Description: Checks for redundant `with_object`.
   Enabled: false
   VersionAdded: '0.51'
+Lint/RefinementImportMethods:
+  Description: Use `Refinement#import_methods` when using `include` or `prepend` in
+    `refine` block.
+  Enabled: pending
+  SafeAutoCorrect: false
+  VersionAdded: '1.27'
 Lint/RegexpAsCondition:
   Description: Do not use regexp literal as a condition. The regexp literal matches
     `$_` implicitly.
@@ -1649,8 +1659,9 @@ Lint/UnreachableLoop:
   Enabled: false
   VersionAdded: '0.89'
   VersionChanged: '1.7'
-  IgnoredPatterns:
+  AllowedPatterns:
   - !ruby/regexp /(exactly|at_least|at_most)\(\d+\)\.times/
+  IgnoredPatterns: []
 Lint/UnusedBlockArgument:
   Description: Checks for unused block arguments.
   StyleGuide: "#underscore-unused-vars"
@@ -1700,8 +1711,8 @@ Lint/UselessMethodDefinition:
   Description: Checks for useless method definitions.
   Enabled: false
   VersionAdded: '0.90'
+  VersionChanged: '0.91'
   Safe: false
-  AllowComments: true
 Lint/UselessRuby2Keywords:
   Description: Finds unnecessary uses of `ruby2_keywords`.
   Enabled: true
@@ -1998,6 +2009,7 @@ Naming/MethodName:
   SupportedStyles:
   - snake_case
   - camelCase
+  AllowedPatterns: []
   IgnoredPatterns: []
 Naming/MethodParameterName:
   Description: Checks for method parameter names that contain capital letters, end
@@ -2075,6 +2087,11 @@ Naming/VariableNumber:
   - rfc822
   - rfc2822
   - rfc3339
+Security/CompoundHash:
+  Description: When overwriting Object#hash to combine values, prefer delegating to
+    Array#hash over writing a custom implementation.
+  Enabled: pending
+  VersionAdded: '1.28'
 Security/Eval:
   Description: The use of eval represents a serious security risk.
   Enabled: true
@@ -2582,6 +2599,13 @@ Style/ExponentialNotation:
   - scientific
   - engineering
   - integral
+Style/FetchEnvVar:
+  Description: This cop suggests `ENV.fetch` for the replacement of `ENV[]`.
+  Reference:
+  - https://rubystyle.guide/#hash-fetch-defaults
+  Enabled: pending
+  VersionAdded: '1.28'
+  AllowedVars: []
 Style/FileRead:
   Description: Favor `File.(bin)read` convenience methods.
   StyleGuide: "#file-read"
@@ -2673,8 +2697,9 @@ Style/GuardClause:
   StyleGuide: "#no-nested-conditionals"
   Enabled: false
   VersionAdded: '0.20'
-  VersionChanged: '0.22'
+  VersionChanged: '1.28'
   MinBodyLength: 1
+  AllowConsecutiveConditionals: false
 Style/HashAsLastArrayItem:
   Description: Checks for presence or absence of braces around hash literal as a last
     array item depending on configuration.
@@ -2884,6 +2909,7 @@ Style/MethodCallWithArgsParentheses:
   - yield
   - raise
   - puts
+  AllowedPatterns: []
   IgnoredPatterns: []
   IncludedMacros: []
   AllowParenthesesInMultilineCall: false
@@ -3188,6 +3214,16 @@ Style/NumericPredicate:
   IgnoredMethods: []
   Exclude:
   - "/spec/**/*"
+Style/ObjectThen:
+  Description: Enforces the use of consistent method names `Object#yield_self` or
+    `Object#then`.
+  StyleGuide: "#object-yield-self-vs-object-then"
+  Enabled: pending
+  VersionAdded: '1.28'
+  EnforcedStyle: then
+  SupportedStyles:
+  - then
+  - yield_self
 Style/OneLineConditional:
   Description: Favor the ternary operator (?:) or multi-line constructs over single-line
     if/then/else/end constructs.
@@ -3378,6 +3414,13 @@ Style/RedundantFreeze:
   Enabled: true
   VersionAdded: '0.34'
   VersionChanged: '0.66'
+Style/RedundantInitialize:
+  Description: Checks for redundant `initialize` methods.
+  Enabled: pending
+  Safe: false
+  AllowComments: true
+  VersionAdded: '1.27'
+  VersionChanged: '1.28'
 Style/RedundantInterpolation:
   Description: Checks for strings that are just an interpolated expression.
   Enabled: true
@@ -3473,7 +3516,7 @@ Style/SafeNavigation:
     unsafe as it assumes the object will be `nil` or truthy, but never `false`.
   Enabled: true
   VersionAdded: '0.43'
-  VersionChanged: '0.77'
+  VersionChanged: '1.27'
   ConvertCodeThatCanStartToReturnNil: false
   AllowedMethods:
   - present?
@@ -3482,6 +3525,7 @@ Style/SafeNavigation:
   - try
   - try!
   SafeAutoCorrect: false
+  MaxChainLength: 2
 Style/Sample:
   Description: Use `sample` instead of `shuffle.first`, `shuffle.last`, and `shuffle[Integer]`.
   Reference: https://github.com/JuanitoFatas/fast-ruby#arrayshufflefirst-vs-arraysample-code
@@ -3571,6 +3615,7 @@ Style/SpecialGlobalVars:
   SupportedStyles:
   - use_perl_names
   - use_english_names
+  - use_builtin_english_names
 Style/StabbyLambdaParentheses:
   Description: Check for the usage of parentheses around stabby lambda arguments.
   StyleGuide: "#stabby-lambda-with-args"
@@ -3678,11 +3723,12 @@ Style/SymbolProc:
   Enabled: true
   Safe: false
   VersionAdded: '0.26'
-  VersionChanged: '1.5'
+  VersionChanged: '1.28'
   AllowMethodsWithArguments: false
   IgnoredMethods:
   - respond_to
   - define_method
+  AllowComments: false
 Style/TernaryParentheses:
   Description: Checks for use of parentheses around ternary conditions.
   Enabled: true
