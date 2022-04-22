@@ -646,7 +646,7 @@ Layout/LineLength:
   - http
   - https
   IgnoreCopDirectives: false
-  IgnoredPatterns:
+  AllowedPatterns:
   - "\\A\\s*(remote_)?test(_\\w+)?\\s.*(do|->)(\\s|\\Z)"
 Layout/MultilineArrayBraceLayout:
   Description: Checks that the closing brace in an array literal is either on the
