@@ -45,7 +45,7 @@ Layout/LineEndStringConcatenationIndentation:
 
 Layout/LineLength:
   IgnoreCopDirectives: false
-  IgnoredPatterns:
+  <%= Gem.loaded_specs['rubocop'].version >= Gem::Version.new('1.28') ? 'AllowedPatterns' : 'IgnoredPatterns' %>:
   - "\\A\\s*(remote_)?test(_\\w+)?\\s.*(do|->)(\\s|\\Z)"
 
 Layout/MultilineMethodCallIndentation:
