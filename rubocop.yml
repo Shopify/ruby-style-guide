@@ -45,7 +45,7 @@ Layout/LineEndStringConcatenationIndentation:
 
 Layout/LineLength:
   IgnoreCopDirectives: false
-  IgnoredPatterns:
+  AllowedPatterns:
   - "\\A\\s*(remote_)?test(_\\w+)?\\s.*(do|->)(\\s|\\Z)"
 
 Layout/MultilineMethodCallIndentation:
