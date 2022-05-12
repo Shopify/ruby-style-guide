@@ -190,6 +190,9 @@ Lint/RedundantWithIndex:
 Lint/RedundantWithObject:
   Enabled: false
 
+Lint/RefinementImportMethods:
+  Enabled: false
+
 Lint/RegexpAsCondition:
   Enabled: false
 
@@ -343,6 +346,9 @@ Naming/RescuedExceptionsVariableName:
 Naming/VariableNumber:
   Enabled: false
 
+Security/CompoundHash:
+  Enabled: false
+
 Security/MarshalLoad:
   Enabled: false
 
@@ -427,6 +433,9 @@ Style/Encoding:
 Style/EndlessMethod:
   Enabled: false
 
+Style/EnvHome:
+  Enabled: false
+
 Style/EvalWithLocation:
   Enabled: false
 
@@ -434,6 +443,9 @@ Style/ExpandPathArguments:
   Enabled: false
 
 Style/ExponentialNotation:
+  Enabled: false
+
+Style/FetchEnvVar:
   Enabled: false
 
 Style/FileRead:
@@ -571,6 +583,9 @@ Style/NumericLiterals:
 Style/NumericPredicate:
   Enabled: false
 
+Style/ObjectThen:
+  Enabled: false
+
 Style/OpenStructUse:
   Enabled: true
 
@@ -605,6 +620,9 @@ Style/RedundantFetchBlock:
   Enabled: false
 
 Style/RedundantFileExtensionInRequire:
+  Enabled: false
+
+Style/RedundantInitialize:
   Enabled: false
 
 Style/RedundantRegexpCharacterClass:
