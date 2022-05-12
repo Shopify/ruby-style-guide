@@ -4,11 +4,12 @@ on: [push, pull_request]
 
 jobs:
   build:
-    name: Ruby ${{matrix.gemfile}}
+    name: Ruby ${{matrix.ruby}} / ${{matrix.gemfile}}
 
     strategy:
       matrix:
         gemfile: [Gemfile, gemfiles/minimum_rubocop.gemfile]
+        ruby: ["2.7", "3.0", "3.1"]
 
     env:
       BUNDLE_GEMFILE: ${{ matrix.gemfile }}
@@ -20,6 +21,7 @@ jobs:
     - name: Set up Ruby
       uses: ruby/setup-ruby@v1
       with:
+        ruby-version: ${{ matrix.ruby }}
         bundler-cache: true
     - name: Rubocop Version
       if: ${{ matrix.gemfile == 'gemfiles/minimum_rubocop.gemfile' }}
