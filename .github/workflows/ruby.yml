@@ -4,6 +4,14 @@ on: [push, pull_request]
 
 jobs:
   build:
+    name: Ruby ${{matrix.gemfile}}
+
+    strategy:
+      matrix:
+        gemfile: [Gemfile, gemfiles/minimum_rubocop.gemfile]
+
+    env:
+      BUNDLE_GEMFILE: ${{ matrix.gemfile }}
 
     runs-on: ubuntu-latest
 
@@ -13,5 +21,8 @@ jobs:
       uses: ruby/setup-ruby@v1
       with:
         bundler-cache: true
+    - name: Rubocop Version
+      if: ${{ matrix.gemfile == 'gemfiles/minimum_rubocop.gemfile' }}
+      run: bundle info rubocop | head -1
     - name: RuboCop and Tests
       run: bundle exec rake
