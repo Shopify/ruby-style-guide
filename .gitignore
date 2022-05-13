@@ -3,3 +3,5 @@ _site
 node_modules
 css/
 pkg/
+
+gemfiles/*.gemfile.lock

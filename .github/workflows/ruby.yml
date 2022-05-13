@@ -4,6 +4,15 @@ on: [push, pull_request]
 
 jobs:
   build:
+    name: Ruby ${{matrix.ruby}} / ${{matrix.gemfile}}
+
+    strategy:
+      matrix:
+        gemfile: [Gemfile, gemfiles/minimum_rubocop.gemfile]
+        ruby: ["2.7", "3.0", "3.1"]
+
+    env:
+      BUNDLE_GEMFILE: ${{ matrix.gemfile }}
 
     runs-on: ubuntu-latest
 
@@ -12,6 +21,10 @@ jobs:
     - name: Set up Ruby
       uses: ruby/setup-ruby@v1
       with:
+        ruby-version: ${{ matrix.ruby }}
         bundler-cache: true
+    - name: Rubocop Version
+      if: ${{ matrix.gemfile == 'gemfiles/minimum_rubocop.gemfile' }}
+      run: bundle info rubocop | head -1
     - name: RuboCop and Tests
       run: bundle exec rake

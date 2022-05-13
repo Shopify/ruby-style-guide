@@ -1,0 +1,10 @@
+# frozen_string_literal: true
+
+eval_gemfile "../Gemfile"
+
+# This naively extracts the minimum rubocop version from our gemspec,
+# allowing us to ensure that it remains compatible.
+minimum_rubocop_version = File.read("rubocop-shopify.gemspec")[/(?<=add_dependency\("rubocop", "~> ).*(?="\)$)/]
+raise "Failed to extract minimum rubocop version from gemspec" if minimum_rubocop_version.nil?
+
+gem "rubocop", minimum_rubocop_version
