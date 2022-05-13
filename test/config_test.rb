@@ -7,6 +7,8 @@ require "rake"
 
 class ConfigTest < Minitest::Test
   def test_config_is_unchanged
+    skip if checking_rubocop_version_compatibility?
+
     Rake.application.load_rakefile
 
     original_config = "test/fixtures/full_config.yml"
@@ -32,6 +34,8 @@ class ConfigTest < Minitest::Test
   end
 
   def test_config_has_no_redundant_entries
+    skip if checking_rubocop_version_compatibility?
+
     config = RuboCop::ConfigLoader.load_file("rubocop.yml")
     default_config = RuboCop::ConfigLoader.default_configuration
     redundant_config = Hash.new { |hash, key| hash[key] = {} }
@@ -56,5 +60,11 @@ class ConfigTest < Minitest::Test
     ERROR
 
     assert(redundant_config.empty?, error_message)
+  end
+
+  private
+
+  def checking_rubocop_version_compatibility?
+    ENV.fetch("CHECKING_RUBOCOP_VERSION_COMPATIBILITY", "") == "true"
   end
 end
