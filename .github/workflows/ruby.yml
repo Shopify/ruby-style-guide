@@ -28,3 +28,5 @@ jobs:
       run: bundle info rubocop | head -1
     - name: RuboCop and Tests
       run: bundle exec rake
+      env:
+        CHECKING_RUBOCOP_VERSION_COMPATIBILITY: ${{ matrix.gemfile == 'gemfiles/minimum_rubocop.gemfile' }}
