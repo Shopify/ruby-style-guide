@@ -531,7 +531,7 @@ Layout/FirstArrayElementIndentation:
   IndentationWidth:
 Layout/FirstArrayElementLineBreak:
   Description: Checks for a line break before the first element in a multi-line array.
-  Enabled: false
+  Enabled: true
   VersionAdded: '0.49'
   AllowMultilineFinalElement: false
 Layout/FirstHashElementIndentation:
@@ -547,13 +547,13 @@ Layout/FirstHashElementIndentation:
   IndentationWidth:
 Layout/FirstHashElementLineBreak:
   Description: Checks for a line break before the first element in a multi-line hash.
-  Enabled: false
+  Enabled: true
   VersionAdded: '0.49'
   AllowMultilineFinalElement: false
 Layout/FirstMethodArgumentLineBreak:
   Description: Checks for a line break before the first argument in a multi-line method
     call.
-  Enabled: false
+  Enabled: true
   VersionAdded: '0.49'
   AllowMultilineFinalElement: false
 Layout/FirstMethodParameterLineBreak:
