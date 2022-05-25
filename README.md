@@ -267,6 +267,47 @@ documentation](https://docs.rubocop.org/rubocop/configuration.html#inheriting-co
   )
   ~~~
 
+* Place each element/argument on a new line when wrapping a method call, hash, or array
+  on multiple lines.
+
+  ~~~ ruby
+  # bad
+  
+  method(arg_1, arg_2,
+    arg_3
+  )
+  
+  [
+    value_1, value_2,
+    value_3,
+  ]
+  
+  {
+    key1: value_1,
+    key2: value_2, key3: value_3,
+  }
+
+  # good
+  
+  method(
+    arg_1,
+    arg_2,
+    arg_3,
+  )
+  
+  [
+    value_1,
+    value_2,
+    value_3,
+  ]
+  
+  {
+    key1: value_1,
+    key2: value_2,
+    key3: value_3,
+  }
+  ~~~
+
 * Separate magic comments from code and documentation with a blank line.
 
   ~~~ruby
