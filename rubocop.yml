@@ -28,7 +28,7 @@ Layout/EndAlignment:
   EnforcedStyleAlignWith: variable
 
 Layout/FirstArgumentIndentation:
-  Enabled: false
+  EnforcedStyle: consistent
 
 Layout/FirstArrayElementIndentation:
   EnforcedStyle: consistent

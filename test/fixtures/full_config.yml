@@ -508,10 +508,10 @@ Layout/ExtraSpacing:
   ForceEqualSignAlignment: false
 Layout/FirstArgumentIndentation:
   Description: Checks the indentation of the first argument in a method call.
-  Enabled: false
+  Enabled: true
   VersionAdded: '0.68'
   VersionChanged: '0.77'
-  EnforcedStyle: special_for_inner_method_call_in_parentheses
+  EnforcedStyle: consistent
   SupportedStyles:
   - consistent
   - consistent_relative_to_receiver
