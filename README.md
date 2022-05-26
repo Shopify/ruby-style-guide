@@ -69,7 +69,7 @@ documentation](https://docs.rubocop.org/rubocop/configuration.html#inheriting-co
 
 * Code in a functional way. Avoid mutation (side effects) when you can.
 
-* Avoid defensive programming
+* [Avoid defensive programming](https://web.archive.org/web/20211013164839/http://www.erlang.se/doc/programming_rules.shtml#HDR11)
   > Overly defensive programming may safeguard against errors that will never be encountered, thus incurring run-time and maintenance costs.
 
 * Avoid mutating arguments.
