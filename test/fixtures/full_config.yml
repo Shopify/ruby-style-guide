@@ -180,7 +180,7 @@ Gemspec/DependencyVersion:
 Gemspec/DeprecatedAttributeAssignment:
   Description: Checks that deprecated attribute assignments are not set in a gemspec
     file.
-  Enabled: false
+  Enabled: true
   VersionAdded: '1.30'
   Include:
   - "**/*.gemspec"

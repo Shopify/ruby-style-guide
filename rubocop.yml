@@ -13,7 +13,7 @@ Gemspec/DateAssignment:
   Enabled: true
 
 Gemspec/DeprecatedAttributeAssignment:
-  Enabled: false
+  Enabled: true
 
 Gemspec/RequiredRubyVersion:
   Enabled: false
