@@ -177,6 +177,13 @@ Gemspec/DependencyVersion:
   Include:
   - "**/*.gemspec"
   AllowedGems: []
+Gemspec/DeprecatedAttributeAssignment:
+  Description: Checks that deprecated attribute assignments are not set in a gemspec
+    file.
+  Enabled: true
+  VersionAdded: '1.30'
+  Include:
+  - "**/*.gemspec"
 Gemspec/DuplicatedAssignment:
   Description: An attribute assignment method calls should be listed only once in
     a gemspec.
@@ -2904,6 +2911,10 @@ Style/LineEndConcatenation:
   SafeAutoCorrect: false
   VersionAdded: '0.18'
   VersionChanged: '0.64'
+Style/MapCompactWithConditionalBlock:
+  Description: Prefer `select` or `reject` over `map { ... }.compact`.
+  Enabled: false
+  VersionAdded: '1.30'
 Style/MapToHash:
   Description: Prefer `to_h` with a block over `map.to_h`.
   Enabled: false
@@ -3437,7 +3448,9 @@ Style/RedundantInitialize:
 Style/RedundantInterpolation:
   Description: Checks for strings that are just an interpolated expression.
   Enabled: true
+  SafeAutoCorrect: false
   VersionAdded: '0.76'
+  VersionChanged: '1.30'
 Style/RedundantParentheses:
   Description: Checks for parentheses that seem not to serve any purpose.
   Enabled: true
@@ -3525,7 +3538,7 @@ Style/ReturnNil:
   VersionAdded: '0.50'
 Style/SafeNavigation:
   Description: Transforms usages of a method call safeguarded by a check for the existence
-    of the object to safe navigation (`&.`). Auto-correction is unsafe as it assumes
+    of the object to safe navigation (`&.`). Autocorrection is unsafe as it assumes
     the object will be `nil` or truthy, but never `false`.
   Enabled: true
   VersionAdded: '0.43'

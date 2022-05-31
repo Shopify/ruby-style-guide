@@ -12,6 +12,9 @@ Bundler/OrderedGems:
 Gemspec/DateAssignment:
   Enabled: true
 
+Gemspec/DeprecatedAttributeAssignment:
+  Enabled: true
+
 Gemspec/RequiredRubyVersion:
   Enabled: false
 
@@ -509,6 +512,9 @@ Style/KeywordParametersOrder:
   Enabled: false
 
 Style/Lambda:
+  Enabled: false
+
+Style/MapCompactWithConditionalBlock:
   Enabled: false
 
 Style/MapToHash:
