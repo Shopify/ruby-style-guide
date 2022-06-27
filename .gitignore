@@ -5,3 +5,7 @@ css/
 pkg/
 
 gemfiles/*.gemfile.lock
+
+# GitHub Actions
+.bundle/config
+vendor

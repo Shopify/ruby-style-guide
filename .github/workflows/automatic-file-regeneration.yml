@@ -1,0 +1,32 @@
+name: Automatic File Regeneration
+
+on: [push]
+
+jobs:
+  build:
+    name: Ruby ${{matrix.ruby}} / ${{matrix.gemfile}}
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+    - name: Set up Ruby
+      uses: ruby/setup-ruby@v1
+      with:
+        ruby-version: ${{ matrix.ruby }}
+        bundler-cache: true
+
+    - name: Regenerate `test/fixures/full_config.yml`
+      run: bundle exec rake config:dump
+
+    - uses: EndBug/add-and-commit@v9
+      with:
+        default_author: github_actions
+        message: |
+          Regenerate `test/fixtures/full_config.yml`
+
+          Using
+
+              bundle exec rake config:dump
+
+          [dependabot-skip]
