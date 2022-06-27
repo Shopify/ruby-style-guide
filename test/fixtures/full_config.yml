@@ -162,7 +162,7 @@ Bundler/OrderedGems:
 Gemspec/DateAssignment:
   Description: Checks that `date =` is not used in gemspec file, it is set automatically
     when the gem is packaged.
-  Enabled: true
+  Enabled: pending
   VersionAdded: '1.10'
   Include:
   - "**/*.gemspec"
