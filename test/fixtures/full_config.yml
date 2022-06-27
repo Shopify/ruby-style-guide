@@ -1,7 +1,4 @@
 ---
-
-# This comment should be removed during regeneration
-
 AllCops:
   RubyInterpreters:
   - ruby
