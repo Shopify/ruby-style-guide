@@ -3,7 +3,7 @@
 Gem::Specification.new do |s|
   s.platform    = Gem::Platform::RUBY
   s.name        = "rubocop-shopify"
-  s.version     = "2.7.0"
+  s.version     = "2.7.1"
   s.summary     = "Shopify's style guide for Ruby."
   s.description = "Gem containing the rubocop.yml config that corresponds to "\
     "the implementation of the Shopify's style guide for Ruby."
