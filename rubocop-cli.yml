@@ -1,5 +1,5 @@
 inherit_gem:
-  rubocop-shopify:
+  ps-core-ruby-styles:
     - rubocop.yml
 
 AllCops:

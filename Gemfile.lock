@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    rubocop-shopify (2.7.0)
+    ps-core-ruby-styles (0.0.1)
       rubocop (~> 1.30)
 
 GEM

@@ -1,25 +1,10 @@
----
-layout: base
-title: Ruby Style Guide
-permalink: '/'
----
-
 # Ruby Style Guide
 
-Ruby is the main language at Shopify. We are primarily a Ruby shop and we are
-probably one of the largest out there. Ruby is the go-to language for new web
-projects and scripting.
+This style guide is based on Shopify's [Ruby Style
+Guide](https://github.com/Shopify/ruby-style-guide), which itself is based on
+Bozhidar Batsov's [Ruby Style
+Guide](https://github.com/rubocop-hq/ruby-style-guide)
 
-We expect all developers at Shopify to have at least a passing understanding of
-Ruby. It's a great language. It will make you a better developer no matter what
-you work in day to day. What follows is a loose coding style to follow while
-developing in Ruby.
-
-This Style Guide is the result of over a decade of Ruby development at Shopify.
-Much of its content is based on Bozhidar Batsov's [Ruby Style
-Guide](https://github.com/rubocop-hq/ruby-style-guide), adapted to Shopify by
-[many
-contributors](https://github.com/Shopify/ruby-style-guide/graphs/contributors).
 
 ### Adoption with RuboCop
 
@@ -32,14 +17,14 @@ We offer a default RuboCop configuration you can inherit from and be in sync
 with this Style Guide. To use it, you can add this to your `Gemfile`:
 
   ~~~ruby
-  gem "rubocop-shopify", require: false
+  gem "ps-core-ruby-styles", require: false
   ~~~
 
 And add to the top of your project's RuboCop configuration file:
 
   ~~~yml
   inherit_gem:
-    rubocop-shopify: rubocop.yml
+    ps-core-ruby-styles: rubocop.yml
   ~~~
 
 Any `Include` or `Exclude` configuration provided will be merged with RuboCop's defaults.

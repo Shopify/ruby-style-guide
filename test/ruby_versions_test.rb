@@ -21,7 +21,7 @@ class RubyVersionsTest < Minitest::Test
   def extract_minimum_ruby_version_from_gemspec
     # This naively extracts the minimum Ruby version compatible with out gemspec
     # allowing us to ensure that it is included in the CI matrix.
-    minimum_ruby_version = File.read("rubocop-shopify.gemspec")[/(?<=required_ruby_version = ">= ).*(?="$)/]
+    minimum_ruby_version = File.read("ps-core-ruby-styles.gemspec")[/(?<=required_ruby_version = ">= ).*(?="$)/]
 
     return minimum_ruby_version unless minimum_ruby_version.nil?
 
