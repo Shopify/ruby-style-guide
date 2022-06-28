@@ -86,7 +86,7 @@ Lint/ConstantDefinitionInBlock:
   Enabled: false
 
 Lint/ConstantOverwrittenInRescue:
-  Enabled: false
+  Enabled: true
 
 Lint/DeprecatedConstants:
   Enabled: false
