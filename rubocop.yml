@@ -4,7 +4,10 @@ inherit_mode:
   - Include
 
 AllCops:
-  StyleGuideBaseURL: https://shopify.github.io/ruby-style-guide/
+  StyleGuideBaseURL: https://github.com/technekes/ps-core-ruby-styles/
+
+Bundler/GemFilename:
+  Enabled: false
 
 Bundler/OrderedGems:
   Enabled: false

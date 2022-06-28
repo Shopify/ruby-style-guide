@@ -66,7 +66,6 @@ AllCops:
   DefaultFormatter: progress
   DisplayCopNames: true
   DisplayStyleGuide: false
-  StyleGuideBaseURL: https://shopify.github.io/ruby-style-guide/
   DocumentationBaseURL: https://docs.rubocop.org/rubocop
   ExtraDetails: false
   StyleGuideCopsOnly: false

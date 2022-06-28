@@ -5,3 +5,6 @@ css/
 pkg/
 
 gemfiles/*.gemfile.lock
+
+.idea
+.DS_Store
