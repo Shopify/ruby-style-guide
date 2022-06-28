@@ -39,6 +39,12 @@ Layout/FirstHashElementIndentation:
 Layout/HashAlignment:
   EnforcedLastArgumentHashStyle: ignore_implicit
 
+Layout/LineContinuationLeadingSpace:
+  Enabled: false
+
+Layout/LineContinuationSpacing:
+  Enabled: false
+
 Layout/LineEndStringConcatenationIndentation:
   Enabled: true
   EnforcedStyle: indented
@@ -78,6 +84,9 @@ Lint/BooleanSymbol:
 
 Lint/ConstantDefinitionInBlock:
   Enabled: false
+
+Lint/ConstantOverwrittenInRescue:
+  Enabled: true
 
 Lint/DeprecatedConstants:
   Enabled: false
@@ -158,6 +167,9 @@ Lint/NestedPercentLiteral:
   Enabled: false
 
 Lint/NoReturnInBeginEndBlocks:
+  Enabled: false
+
+Lint/NonAtomicFileOperation:
   Enabled: false
 
 Lint/NonDeterministicRequireOrder:
