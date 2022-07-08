@@ -14,7 +14,7 @@ Gem::Specification.new do |s|
   s.email    = "gems@shopify.com"
   s.homepage = "https://shopify.github.io/ruby-style-guide/"
 
-  s.files = ["rubocop.yml", "rubocop-cli.yml"]
+  s.files = ["rubocop.yml", "rubocop-cli.yml", "LICENSE.md"]
 
   s.metadata = {
     "source_code_uri" => "https://github.com/Shopify/ruby-style-guide/tree/v#{s.version}",
