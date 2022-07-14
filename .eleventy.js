@@ -4,7 +4,9 @@ const markdownIt = require('markdown-it')
 const markdownItAnchor = require('markdown-it-anchor')
 
 module.exports = function (eleventyConfig) {
-  const markdownLibrary = markdownIt().use(markdownItAnchor)
+  const markdownLibrary = markdownIt().use(markdownItAnchor, {
+    permalink: markdownItAnchor.permalink.headerLink()
+  })
   eleventyConfig.setLibrary('md', markdownLibrary)
 
   eleventyConfig.addPlugin(syntaxHighlight, {
