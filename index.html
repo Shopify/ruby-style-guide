@@ -13,7 +13,7 @@
     <section class="section">
       <div class="container">
         <div class="content">
-          <h1 id="ruby-style-guide" tabindex="-1">Ruby Style Guide</h1>
+          <h1 id="ruby-style-guide" tabindex="-1"><a class="header-anchor" href="#ruby-style-guide">Ruby Style Guide</a></h1>
 <p>Ruby is the main language at Shopify. We are primarily a Ruby shop and we are
 probably one of the largest out there. Ruby is the go-to language for new web
 projects and scripting.</p>
@@ -26,7 +26,7 @@ Much of its content is based on Bozhidar Batsov's <a href="https://github.com/ru
 Guide</a>, adapted to Shopify by
 <a href="https://github.com/Shopify/ruby-style-guide/graphs/contributors">many
 contributors</a>.</p>
-<h3 id="adoption-with-rubocop" tabindex="-1">Adoption with RuboCop</h3>
+<h3 id="adoption-with-rubocop" tabindex="-1"><a class="header-anchor" href="#adoption-with-rubocop">Adoption with RuboCop</a></h3>
 <p>We recommend using <a href="https://github.com/rubocop-hq/rubocop">RuboCop</a> in your Ruby
 projects to help you adopt this Style Guide. To know how to install and use
 RuboCop please refer to <a href="https://docs.rubocop.org/rubocop/">RuboCop's official
@@ -40,7 +40,7 @@ with this Style Guide. To use it, you can add this to your <code>Gemfile</code>:
 <p>For more information about inheriting configuration from a gem please check
 <a href="https://docs.rubocop.org/rubocop/configuration.html#inheriting-configuration-from-a-dependency-gem">RuboCop's
 documentation</a>.</p>
-<h2 id="table-of-contents" tabindex="-1">Table of Contents</h2>
+<h2 id="table-of-contents" tabindex="-1"><a class="header-anchor" href="#table-of-contents">Table of Contents</a></h2>
 <ul>
 <li><a href="#general">General</a></li>
 <li><a href="#layout">Layout</a></li>
@@ -54,7 +54,7 @@ documentation</a>.</p>
 <li><a href="#percent-literals">Percent Literals</a></li>
 <li><a href="#testing">Testing</a></li>
 </ul>
-<h2 id="general" tabindex="-1">General</h2>
+<h2 id="general" tabindex="-1"><a class="header-anchor" href="#general">General</a></h2>
 <ul>
 <li>
 <p>Make all lines of your methods operate on the same level of abstraction.
@@ -95,7 +95,7 @@ visibility.</p>
 <p>Avoid more than three levels of block nesting.</p>
 </li>
 </ul>
-<h2 id="layout" tabindex="-1">Layout</h2>
+<h2 id="layout" tabindex="-1"><a class="header-anchor" href="#layout">Layout</a></h2>
 <ul>
 <li>
 <p>Use <code>UTF-8</code> as the source file encoding.</p>
@@ -202,7 +202,7 @@ opening brace is on a separate line from the first argument.</p>
 <pre class="language-ruby"><code class="language-ruby"><span class="prism--token prism--comment"># bad</span><br><span class="prism--token prism--keyword">class</span> <span class="prism--token prism--class-name">Foo</span><br><br>  <span class="prism--token prism--keyword">def</span> <span class="prism--token prism--method-definition"><span class="prism--token prism--function">foo</span></span><br><br>    <span class="prism--token prism--keyword">begin</span><br><br>      do_something <span class="prism--token prism--keyword">do</span><br><br>        something<br><br>      <span class="prism--token prism--keyword">end</span><br><br>    <span class="prism--token prism--keyword">rescue</span><br><br>      something<br><br>    <span class="prism--token prism--keyword">end</span><br><br>    <span class="prism--token prism--boolean">true</span><br><br>  <span class="prism--token prism--keyword">end</span><br><br><span class="prism--token prism--keyword">end</span><br><br><span class="prism--token prism--comment"># good</span><br><span class="prism--token prism--keyword">class</span> <span class="prism--token prism--class-name">Foo</span><br>  <span class="prism--token prism--keyword">def</span> <span class="prism--token prism--method-definition"><span class="prism--token prism--function">foo</span></span><br>    <span class="prism--token prism--keyword">begin</span><br>      do_something <span class="prism--token prism--keyword">do</span><br>        something<br>      <span class="prism--token prism--keyword">end</span><br>    <span class="prism--token prism--keyword">rescue</span><br>      something<br>    <span class="prism--token prism--keyword">end</span><br>  <span class="prism--token prism--keyword">end</span><br><span class="prism--token prism--keyword">end</span></code></pre>
 </li>
 </ul>
-<h2 id="syntax" tabindex="-1">Syntax</h2>
+<h2 id="syntax" tabindex="-1"><a class="header-anchor" href="#syntax">Syntax</a></h2>
 <ul>
 <li>
 <p>Use <code>::</code> only to reference constants (this includes classes and modules) and
@@ -341,7 +341,7 @@ can.</p>
 formatted time strings like <code>&quot;2018-03-20T11:16:39-04:00&quot;</code>.</p>
 </li>
 </ul>
-<h2 id="naming" tabindex="-1">Naming</h2>
+<h2 id="naming" tabindex="-1"><a class="header-anchor" href="#naming">Naming</a></h2>
 <ul>
 <li>
 <p>Use <code>snake_case</code> for symbols, methods, and variables.</p>
@@ -396,7 +396,7 @@ failure.</p>
 origins.</p>
 </li>
 </ul>
-<h2 id="comments" tabindex="-1">Comments</h2>
+<h2 id="comments" tabindex="-1"><a class="header-anchor" href="#comments">Comments</a></h2>
 <ul>
 <li>
 <p>Include relevant context in comments, as readers might be missing it.</p>
@@ -412,7 +412,7 @@ origins.</p>
 this is not obvious, not <strong>how</strong> the code works.</p>
 </li>
 </ul>
-<h2 id="classes-and-modules" tabindex="-1">Classes and Modules</h2>
+<h2 id="classes-and-modules" tabindex="-1"><a class="header-anchor" href="#classes-and-modules">Classes and Modules</a></h2>
 <ul>
 <li>
 <p>Prefer modules to classes with only class methods. Classes should be used only
@@ -452,7 +452,7 @@ and one blank line below it.</p>
 <p>Prefer <code>alias_method</code> over <code>alias</code>.</p>
 </li>
 </ul>
-<h2 id="exceptions" tabindex="-1">Exceptions</h2>
+<h2 id="exceptions" tabindex="-1"><a class="header-anchor" href="#exceptions">Exceptions</a></h2>
 <ul>
 <li>
 <p>Signal exceptions using the <code>raise</code> method.</p>
@@ -498,7 +498,7 @@ classes.</p>
 <pre class="language-ruby"><code class="language-ruby"><span class="prism--token prism--comment"># bad</span><br><span class="prism--token prism--keyword">begin</span><br>  <span class="prism--token prism--comment"># an exception occurs here</span><br><span class="prism--token prism--keyword">rescue</span> <span class="prism--token prism--operator">=></span> e<br>  <span class="prism--token prism--comment"># exception handling</span><br><span class="prism--token prism--keyword">end</span><br><br><span class="prism--token prism--comment"># good</span><br><span class="prism--token prism--keyword">begin</span><br>  <span class="prism--token prism--comment"># an exception occurs here</span><br><span class="prism--token prism--keyword">rescue</span> <span class="prism--token prism--operator">=></span> error<br>  <span class="prism--token prism--comment"># exception handling</span><br><span class="prism--token prism--keyword">end</span></code></pre>
 </li>
 </ul>
-<h2 id="collections" tabindex="-1">Collections</h2>
+<h2 id="collections" tabindex="-1"><a class="header-anchor" href="#collections">Collections</a></h2>
 <ul>
 <li>
 <p>Use literal array and hash creation notation unless you need to pass
@@ -550,7 +550,7 @@ brace is on a separate line from the first element.</p>
 <pre class="language-ruby"><code class="language-ruby"><span class="prism--token prism--comment"># bad</span><br><span class="prism--token prism--punctuation">[</span><br>  <span class="prism--token prism--number">1</span><span class="prism--token prism--punctuation">,</span><br>  <span class="prism--token prism--number">2</span><span class="prism--token prism--punctuation">]</span><br><br><span class="prism--token prism--punctuation">{</span><br>  <span class="prism--token prism--symbol">a</span><span class="prism--token prism--operator">:</span> <span class="prism--token prism--number">1</span><span class="prism--token prism--punctuation">,</span><br>  <span class="prism--token prism--symbol">b</span><span class="prism--token prism--operator">:</span> <span class="prism--token prism--number">2</span><span class="prism--token prism--punctuation">}</span><br><br><span class="prism--token prism--comment"># good</span><br><span class="prism--token prism--punctuation">[</span><br>  <span class="prism--token prism--number">1</span><span class="prism--token prism--punctuation">,</span><br>  <span class="prism--token prism--number">2</span><span class="prism--token prism--punctuation">,</span><br><span class="prism--token prism--punctuation">]</span><br><br><span class="prism--token prism--punctuation">{</span><br>  <span class="prism--token prism--symbol">a</span><span class="prism--token prism--operator">:</span> <span class="prism--token prism--number">1</span><span class="prism--token prism--punctuation">,</span><br>  <span class="prism--token prism--symbol">b</span><span class="prism--token prism--operator">:</span> <span class="prism--token prism--number">2</span><span class="prism--token prism--punctuation">,</span><br><span class="prism--token prism--punctuation">}</span></code></pre>
 </li>
 </ul>
-<h2 id="strings" tabindex="-1">Strings</h2>
+<h2 id="strings" tabindex="-1"><a class="header-anchor" href="#strings">Strings</a></h2>
 <ul>
 <li>
 <p>Prefer string interpolation and string formatting instead of string
@@ -599,7 +599,7 @@ semantics as <code>strip_heredoc</code> from Rails:</p>
 <pre class="language-ruby"><code class="language-ruby"><span class="prism--token prism--comment"># bad</span><br><span class="prism--token prism--keyword">class</span> <span class="prism--token prism--class-name">Foo</span><br>  <span class="prism--token prism--keyword">def</span> <span class="prism--token prism--method-definition"><span class="prism--token prism--function">bar</span></span><br>    <span class="prism--token prism--string-literal prism--heredoc-string"><span class="prism--token prism--delimiter"><span class="prism--token prism--punctuation">&lt;&lt;~</span><span class="prism--token prism--symbol">SQL</span></span><span class="prism--token prism--string"><br>      'Hi'<br>  </span><span class="prism--token prism--delimiter"><span class="prism--token prism--symbol">SQL</span></span></span><br>  <span class="prism--token prism--keyword">end</span><br><span class="prism--token prism--keyword">end</span><br><br><span class="prism--token prism--comment"># good</span><br><span class="prism--token prism--keyword">class</span> <span class="prism--token prism--class-name">Foo</span><br>  <span class="prism--token prism--keyword">def</span> <span class="prism--token prism--method-definition"><span class="prism--token prism--function">bar</span></span><br>    <span class="prism--token prism--string-literal prism--heredoc-string"><span class="prism--token prism--delimiter"><span class="prism--token prism--punctuation">&lt;&lt;~</span><span class="prism--token prism--symbol">SQL</span></span><span class="prism--token prism--string"><br>      'Hi'<br>    </span><span class="prism--token prism--delimiter"><span class="prism--token prism--symbol">SQL</span></span></span><br>  <span class="prism--token prism--keyword">end</span><br><span class="prism--token prism--keyword">end</span><br><br><span class="prism--token prism--comment"># bad</span><br><br><span class="prism--token prism--comment"># heredoc contents is before closing heredoc.</span><br>foo arg<span class="prism--token prism--punctuation">,</span><br>    <span class="prism--token prism--string-literal prism--heredoc-string"><span class="prism--token prism--delimiter"><span class="prism--token prism--punctuation">&lt;&lt;~</span><span class="prism--token prism--symbol">EOS</span></span><span class="prism--token prism--string"><br>  Hi<br>    </span><span class="prism--token prism--delimiter"><span class="prism--token prism--symbol">EOS</span></span></span><br><br><span class="prism--token prism--comment"># good</span><br>foo arg<span class="prism--token prism--punctuation">,</span><br>    <span class="prism--token prism--string-literal prism--heredoc-string"><span class="prism--token prism--delimiter"><span class="prism--token prism--punctuation">&lt;&lt;~</span><span class="prism--token prism--symbol">EOS</span></span><span class="prism--token prism--string"><br>  Hi<br></span><span class="prism--token prism--delimiter"><span class="prism--token prism--symbol">EOS</span></span></span><br><br><span class="prism--token prism--comment"># good</span><br>foo arg<span class="prism--token prism--punctuation">,</span><br>  <span class="prism--token prism--string-literal prism--heredoc-string"><span class="prism--token prism--delimiter"><span class="prism--token prism--punctuation">&lt;&lt;~</span><span class="prism--token prism--symbol">EOS</span></span><span class="prism--token prism--string"><br>    Hi<br>  </span><span class="prism--token prism--delimiter"><span class="prism--token prism--symbol">EOS</span></span></span></code></pre>
 </li>
 </ul>
-<h2 id="regular-expressions" tabindex="-1">Regular Expressions</h2>
+<h2 id="regular-expressions" tabindex="-1"><a class="header-anchor" href="#regular-expressions">Regular Expressions</a></h2>
 <ul>
 <li>
 <p>Prefer plain text search over regular expressions in strings.</p>
@@ -622,7 +622,7 @@ semantics as <code>strip_heredoc</code> from Rails:</p>
 <pre class="language-ruby"><code class="language-ruby">string <span class="prism--token prism--operator">=</span> <span class="prism--token prism--string-literal"><span class="prism--token prism--string">"some injection\nusername"</span></span><br>string<span class="prism--token prism--punctuation">[</span><span class="prism--token prism--operator">/</span><span class="prism--token prism--operator">^</span>username$<span class="prism--token prism--operator">/</span><span class="prism--token prism--punctuation">]</span> <span class="prism--token prism--comment"># `^` and `$` matches start and end of lines.</span><br>string<span class="prism--token prism--punctuation">[</span><span class="prism--token prism--operator">/</span>\Ausername\z<span class="prism--token prism--operator">/</span><span class="prism--token prism--punctuation">]</span> <span class="prism--token prism--comment"># `\A` and `\z` matches start and end of strings.</span></code></pre>
 </li>
 </ul>
-<h2 id="percent-literals" tabindex="-1">Percent Literals</h2>
+<h2 id="percent-literals" tabindex="-1"><a class="header-anchor" href="#percent-literals">Percent Literals</a></h2>
 <ul>
 <li>
 <p>Use <code>%()</code> for single-line strings which require both interpolation and
@@ -647,7 +647,7 @@ regular expressions, when parentheses appear inside the literal. Use the first
 of <code>()</code>, <code>{}</code>, <code>[]</code>, <code>&lt;&gt;</code> which does not appear inside the literal.</p>
 </li>
 </ul>
-<h2 id="testing" tabindex="-1">Testing</h2>
+<h2 id="testing" tabindex="-1"><a class="header-anchor" href="#testing">Testing</a></h2>
 <ul>
 <li>
 <p>Treat test code like any other code you write. This means: keep readability,
