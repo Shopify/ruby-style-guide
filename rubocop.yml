@@ -723,3 +723,7 @@ Style/WordArray:
 
 Style/YodaCondition:
   Enabled: false
+
+Style/ClassMethodsDefinitions:
+  EnforcedStyle: self_class
+

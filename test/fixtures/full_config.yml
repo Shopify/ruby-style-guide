@@ -2370,7 +2370,7 @@ Style/ClassMethodsDefinitions:
   StyleGuide: "#def-self-class-methods"
   Enabled: false
   VersionAdded: '0.89'
-  EnforcedStyle: def_self
+  EnforcedStyle: self_class
   SupportedStyles:
   - def_self
   - self_class
