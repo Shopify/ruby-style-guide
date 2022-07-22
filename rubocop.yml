@@ -726,4 +726,5 @@ Style/YodaCondition:
 
 Style/ClassMethodsDefinitions:
   EnforcedStyle: self_class
+  Enabled: true
 

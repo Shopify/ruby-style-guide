@@ -2368,7 +2368,7 @@ Style/ClassMethodsDefinitions:
   Description: Enforces using `def self.method_name` or `class << self` to define
     class methods.
   StyleGuide: "#def-self-class-methods"
-  Enabled: false
+  Enabled: true
   VersionAdded: '0.89'
   EnforcedStyle: self_class
   SupportedStyles:
