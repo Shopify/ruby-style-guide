@@ -1032,6 +1032,8 @@ Lint/AmbiguousBlockAssociation:
   Enabled: false
   VersionAdded: '0.48'
   VersionChanged: '1.13'
+  AllowedMethods: []
+  AllowedPatterns: []
   IgnoredMethods: []
 Lint/AmbiguousOperator:
   Description: Checks for ambiguous operators in the first argument of a method invocation
@@ -1238,6 +1240,7 @@ Lint/EmptyConditionalBody:
   Enabled: false
   AllowComments: true
   VersionAdded: '0.89'
+  VersionChanged: '1.33'
 Lint/EmptyEnsure:
   Description: Checks for empty ensure block.
   Enabled: true
@@ -1407,6 +1410,7 @@ Lint/NoReturnInBeginEndBlocks:
   VersionAdded: '1.2'
 Lint/NonAtomicFileOperation:
   Description: Checks for non-atomic file operations.
+  StyleGuide: "#atomic-file-operations"
   Enabled: false
   VersionAdded: '1.31'
   SafeAutoCorrect: false
@@ -1425,6 +1429,8 @@ Lint/NumberConversion:
   VersionAdded: '0.53'
   VersionChanged: '1.1'
   SafeAutoCorrect: false
+  AllowedMethods: []
+  AllowedPatterns: []
   IgnoredMethods: []
   IgnoredClasses:
   - Time
@@ -1798,6 +1804,8 @@ Metrics/AbcSize:
   Enabled: false
   VersionAdded: '0.27'
   VersionChanged: '1.5'
+  AllowedMethods: []
+  AllowedPatterns: []
   IgnoredMethods: []
   CountRepeatedAttributes: true
   Max: 17
@@ -1810,8 +1818,10 @@ Metrics/BlockLength:
   Max: 25
   CountAsOne: []
   ExcludedMethods: []
-  IgnoredMethods:
+  AllowedMethods:
   - refine
+  AllowedPatterns: []
+  IgnoredMethods: []
   Exclude:
   - "/**/*.gemspec"
 Metrics/BlockNesting:
@@ -1836,6 +1846,8 @@ Metrics/CyclomaticComplexity:
   Enabled: false
   VersionAdded: '0.25'
   VersionChanged: '0.81'
+  AllowedMethods: []
+  AllowedPatterns: []
   IgnoredMethods: []
   Max: 7
 Metrics/MethodLength:
@@ -1848,6 +1860,8 @@ Metrics/MethodLength:
   Max: 10
   CountAsOne: []
   ExcludedMethods: []
+  AllowedMethods: []
+  AllowedPatterns: []
   IgnoredMethods: []
 Metrics/ModuleLength:
   Description: Avoid modules longer than 100 lines of code.
@@ -1872,6 +1886,8 @@ Metrics/PerceivedComplexity:
   Enabled: false
   VersionAdded: '0.25'
   VersionChanged: '0.81'
+  AllowedMethods: []
+  AllowedPatterns: []
   IgnoredMethods: []
   Max: 8
 Migration/DepartmentName:
@@ -2319,10 +2335,12 @@ Style/BlockDelimiters:
   - let!
   - subject
   - watch
-  IgnoredMethods:
+  AllowedMethods:
   - lambda
   - proc
   - it
+  AllowedPatterns: []
+  IgnoredMethods: []
   AllowBracesOnProceduralOneLiners: false
   BracesRequiredMethods: []
 Style/CaseEquality:
@@ -2369,10 +2387,12 @@ Style/ClassEqualityComparison:
   StyleGuide: "#instance-of-vs-class-comparison"
   Enabled: false
   VersionAdded: '0.93'
-  IgnoredMethods:
+  AllowedMethods:
   - "=="
   - equal?
   - eql?
+  AllowedPatterns: []
+  IgnoredMethods: []
 Style/ClassMethods:
   Description: Use self when defining module/class methods.
   StyleGuide: "#def-self-class-methods"
@@ -2730,6 +2750,8 @@ Style/FormatStringToken:
   MaxUnannotatedPlaceholdersAllowed: 1
   VersionAdded: '0.49'
   VersionChanged: '1.0'
+  AllowedMethods: []
+  AllowedPatterns: []
   IgnoredMethods: []
 Style/FrozenStringLiteralComment:
   Description: Add the frozen_string_literal comment to the top of files to help transition
@@ -2974,13 +2996,14 @@ Style/MethodCallWithArgsParentheses:
   VersionAdded: '0.47'
   VersionChanged: '1.7'
   IgnoreMacros: true
-  IgnoredMethods:
+  AllowedMethods:
   - require
   - require_relative
   - require_dependency
   - yield
   - raise
   - puts
+  IgnoredMethods: []
   AllowedPatterns: []
   IgnoredPatterns: []
   IncludedMacros: []
@@ -2998,6 +3021,8 @@ Style/MethodCallWithoutArgsParentheses:
   Description: Do not use parentheses for method calls with no arguments.
   StyleGuide: "#method-invocation-parens"
   Enabled: true
+  AllowedMethods: []
+  AllowedPatterns: []
   IgnoredMethods: []
   VersionAdded: '0.47'
   VersionChanged: '0.55'
@@ -3282,6 +3307,8 @@ Style/NumericPredicate:
   SupportedStyles:
   - predicate
   - comparison
+  AllowedMethods: []
+  AllowedPatterns: []
   IgnoredMethods: []
   Exclude:
   - "/spec/**/*"
@@ -3798,9 +3825,11 @@ Style/SymbolProc:
   VersionAdded: '0.26'
   VersionChanged: '1.28'
   AllowMethodsWithArguments: false
-  IgnoredMethods:
+  AllowedMethods:
   - respond_to
   - define_method
+  AllowedPatterns: []
+  IgnoredMethods: []
   AllowComments: false
 Style/TernaryParentheses:
   Description: Checks for use of parentheses around ternary conditions.

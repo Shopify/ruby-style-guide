@@ -531,7 +531,7 @@ Style/MapToHash:
 
 Style/MethodCallWithArgsParentheses:
   Enabled: true
-  IgnoredMethods:
+  AllowedMethods:
   - require
   - require_relative
   - require_dependency
