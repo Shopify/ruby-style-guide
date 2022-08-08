@@ -154,9 +154,6 @@ Lint/InterpolationCheck:
 Lint/LambdaWithoutLiteralBlock:
   Enabled: false
 
-Lint/MissingCopEnableDirective:
-  Enabled: false
-
 Lint/MixedRegexpCaptureTypes:
   Enabled: false
 

@@ -1372,7 +1372,7 @@ Lint/Loop:
   Safe: false
 Lint/MissingCopEnableDirective:
   Description: Checks for a `# rubocop:enable` after `# rubocop:disable`.
-  Enabled: false
+  Enabled: true
   VersionAdded: '0.52'
   MaximumRangeSize: .inf
 Lint/MissingSuper:
