@@ -520,6 +520,10 @@ Style/KeywordParametersOrder:
 Style/Lambda:
   Enabled: false
 
+Style/MagicCommentFormat:
+  Enabled: true
+  ValueCapitalization: lowercase
+
 Style/MapCompactWithConditionalBlock:
   Enabled: false
 
@@ -724,4 +728,3 @@ Style/YodaCondition:
 Style/ClassMethodsDefinitions:
   EnforcedStyle: self_class
   Enabled: true
-

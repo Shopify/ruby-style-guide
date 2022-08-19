@@ -2988,14 +2988,14 @@ Style/LineEndConcatenation:
   VersionChanged: '0.64'
 Style/MagicCommentFormat:
   Description: Use a consistent style for magic comments.
-  Enabled: pending
+  Enabled: true
   VersionAdded: '1.35'
   EnforcedStyle: snake_case
   SupportedStyles:
   - snake_case
   - kebab_case
   DirectiveCapitalization: lowercase
-  ValueCapitalization:
+  ValueCapitalization: lowercase
   SupportedCapitalizations:
   - lowercase
   - uppercase
