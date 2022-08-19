@@ -433,6 +433,9 @@ Style/DoubleNegation:
 Style/EmptyBlockParameter:
   Enabled: false
 
+Style/EmptyHeredoc:
+  Enabled: true
+
 Style/EmptyLambdaParameter:
   Enabled: false
 

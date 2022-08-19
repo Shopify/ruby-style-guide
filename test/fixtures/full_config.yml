@@ -2610,7 +2610,7 @@ Style/EmptyElse:
   AllowComments: false
 Style/EmptyHeredoc:
   Description: Checks for using empty heredoc to reduce redundancy.
-  Enabled: pending
+  Enabled: true
   VersionAdded: '1.32'
 Style/EmptyLambdaParameter:
   Description: Omit parens for empty lambda parameters.
