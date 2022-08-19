@@ -205,6 +205,9 @@ Lint/RefinementImportMethods:
 Lint/RegexpAsCondition:
   Enabled: false
 
+Lint/RequireRangeParentheses:
+  Enabled: true
+
 Lint/RequireRelativeSelfPath:
   Enabled: true
 
