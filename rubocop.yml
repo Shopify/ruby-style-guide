@@ -205,6 +205,9 @@ Lint/RefinementImportMethods:
 Lint/RegexpAsCondition:
   Enabled: false
 
+Lint/RequireRangeParentheses:
+  Enabled: true
+
 Lint/RequireRelativeSelfPath:
   Enabled: true
 
@@ -430,6 +433,9 @@ Style/DoubleNegation:
 Style/EmptyBlockParameter:
   Enabled: false
 
+Style/EmptyHeredoc:
+  Enabled: true
+
 Style/EmptyLambdaParameter:
   Enabled: false
 
@@ -519,6 +525,10 @@ Style/KeywordParametersOrder:
 
 Style/Lambda:
   Enabled: false
+
+Style/MagicCommentFormat:
+  Enabled: true
+  ValueCapitalization: lowercase
 
 Style/MapCompactWithConditionalBlock:
   Enabled: false
@@ -724,4 +734,3 @@ Style/YodaCondition:
 Style/ClassMethodsDefinitions:
   EnforcedStyle: self_class
   Enabled: true
-
