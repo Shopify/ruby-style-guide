@@ -13,7 +13,7 @@ GEM
     diffy (3.4.2)
     json (2.6.2)
     method_source (1.0.0)
-    minitest (5.16.2)
+    minitest (5.16.3)
     parallel (1.22.1)
     parser (3.1.2.0)
       ast (~> 2.4.1)
