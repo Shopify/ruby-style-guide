@@ -3882,9 +3882,9 @@ Style/TrailingBodyOnModule:
 Style/TrailingCommaInArguments:
   Description: Checks for trailing comma in argument lists.
   StyleGuide: "#no-trailing-params-comma"
-  Enabled: false
+  Enabled: true
   VersionAdded: '0.36'
-  EnforcedStyleForMultiline: no_comma
+  EnforcedStyleForMultiline: consistent_comma
   SupportedStylesForMultiline:
   - comma
   - consistent_comma

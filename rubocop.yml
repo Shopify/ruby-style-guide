@@ -708,7 +708,7 @@ Style/TrailingBodyOnMethodDefinition:
   Enabled: false
 
 Style/TrailingCommaInArguments:
-  Enabled: false
+  EnforcedStyleForMultiline: consistent_comma
 
 Style/TrailingCommaInArrayLiteral:
   EnforcedStyleForMultiline: consistent_comma
