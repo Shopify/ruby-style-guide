@@ -2357,7 +2357,7 @@ Style/CaseEquality:
   VersionAdded: '0.9'
   VersionChanged: '0.89'
   AllowOnConstant: true
-  AllowOnSelfClass: false
+  AllowOnSelfClass: true
 Style/CaseLikeIf:
   Description: Identifies places where `if-elsif` constructions can be replaced with
     `case-when`.

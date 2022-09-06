@@ -390,6 +390,7 @@ Style/BisectedAttrAccessor:
 
 Style/CaseEquality:
   AllowOnConstant: true
+  AllowOnSelfClass: true
 
 Style/CaseLikeIf:
   Enabled: false
