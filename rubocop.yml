@@ -597,9 +597,6 @@ Style/NumberedParameters:
 Style/NumberedParametersLimit:
   Enabled: false
 
-Style/NumericLiteralPrefix:
-  EnforcedOctalStyle: zero_only
-
 Style/NumericLiterals:
   Enabled: false
 
