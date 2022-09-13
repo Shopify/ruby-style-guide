@@ -709,7 +709,7 @@ Style/TrailingBodyOnMethodDefinition:
   Enabled: false
 
 Style/TrailingCommaInArguments:
-  EnforcedStyleForMultiline: consistent_comma
+  EnforcedStyleForMultiline: comma
 
 Style/TrailingCommaInArrayLiteral:
   EnforcedStyleForMultiline: consistent_comma
