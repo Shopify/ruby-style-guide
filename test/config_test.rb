@@ -17,7 +17,7 @@ class ConfigTest < Minitest::Test
       Rake::Task["config:dump"].invoke(tempfile.path)
 
       diff = Diffy::Diff.new(
-        original_config, tempfile.path, source: "files", context: 5,
+        original_config, tempfile.path, source: "files", context: 5
       ).to_s
 
       error_message = <<~ERROR
