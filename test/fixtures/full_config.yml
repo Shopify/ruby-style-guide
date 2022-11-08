@@ -3311,7 +3311,7 @@ Style/NumericLiteralPrefix:
   StyleGuide: "#numeric-literal-prefixes"
   Enabled: true
   VersionAdded: '0.41'
-  EnforcedOctalStyle: zero_only
+  EnforcedOctalStyle: zero_with_o
   SupportedOctalStyles:
   - zero_with_o
   - zero_only
