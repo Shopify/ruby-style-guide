@@ -62,9 +62,24 @@ class ConfigTest < Minitest::Test
     assert(redundant_config.empty?, error_message)
   end
 
+  def test_config_is_sorted_alphabetically
+    config_keys = RuboCop::ConfigLoader.load_file("rubocop.yml").to_hash.keys
+    all_cops_index = config_keys.index("AllCops")
+    following_keys = config_keys[(all_cops_index + 1)..-1]
+
+    assert_sorted(following_keys, "Keys after AllCops in rubocop.yml must be sorted")
+  end
+
   private
 
   def checking_rubocop_version_compatibility?
     ENV.fetch("CHECKING_RUBOCOP_VERSION_COMPATIBILITY", "") == "true"
+  end
+
+  def assert_sorted(actual, message)
+    expected_string = actual.sort.join("\n")
+    actual_string = actual.join("\n")
+
+    assert_equal(expected_string, actual_string, message)
   end
 end

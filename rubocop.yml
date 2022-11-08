@@ -12,10 +12,10 @@ Bundler/OrderedGems:
 Gemspec/DeprecatedAttributeAssignment:
   Enabled: true
 
-Gemspec/RequiredRubyVersion:
+Gemspec/RequireMFA:
   Enabled: false
 
-Gemspec/RequireMFA:
+Gemspec/RequiredRubyVersion:
   Enabled: false
 
 Layout/ArgumentAlignment:
@@ -364,11 +364,11 @@ Naming/VariableNumber:
 Security/CompoundHash:
   Enabled: false
 
-Security/MarshalLoad:
-  Enabled: false
-
 Security/IoMethods:
   Enabled: true
+
+Security/MarshalLoad:
+  Enabled: false
 
 Security/YAMLLoad:
   Enabled: false
@@ -400,6 +400,10 @@ Style/CaseLikeIf:
 
 Style/ClassEqualityComparison:
   Enabled: false
+
+Style/ClassMethodsDefinitions:
+  EnforcedStyle: self_class
+  Enabled: true
 
 Style/CollectionCompact:
   Enabled: false
@@ -737,7 +741,3 @@ Style/WordArray:
 
 Style/YodaCondition:
   Enabled: false
-
-Style/ClassMethodsDefinitions:
-  EnforcedStyle: self_class
-  Enabled: true
