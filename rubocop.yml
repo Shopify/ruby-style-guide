@@ -103,6 +103,9 @@ Lint/DuplicateCaseCondition:
 Lint/DuplicateElsifCondition:
   Enabled: false
 
+Lint/DuplicateMagicComment:
+  Enabled: true
+
 Lint/DuplicateRegexpCharacterClassElement:
   Enabled: false
 
@@ -612,6 +615,9 @@ Style/ObjectThen:
 Style/OpenStructUse:
   Enabled: true
 
+Style/OperatorMethodCall:
+  Enabled: true
+
 Style/OptionalBooleanParameter:
   Enabled: false
 
@@ -662,6 +668,9 @@ Style/RedundantSelfAssignmentBranch:
 
 Style/RedundantSort:
   Enabled: false
+
+Style/RedundantStringEscape:
+  Enabled: true
 
 Style/RegexpLiteral:
   EnforcedStyle: mixed
