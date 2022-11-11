@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
-require "minitest/autorun"
-require "pry-byebug"
+require 'minitest/autorun'
+require 'pry-byebug'
 
 module Warning
   class << self

@@ -700,12 +700,6 @@ Style/StringChars:
 Style/StringConcatenation:
   Enabled: false
 
-Style/StringLiterals:
-  EnforcedStyle: single_quotes
-
-Style/StringLiteralsInInterpolation:
-  EnforcedStyle: single_quotes
-
 Style/StructInheritance:
   Enabled: false
 

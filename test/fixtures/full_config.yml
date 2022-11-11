@@ -3805,7 +3805,7 @@ Style/StringLiterals:
   Enabled: true
   VersionAdded: '0.9'
   VersionChanged: '0.36'
-  EnforcedStyle: double_quotes
+  EnforcedStyle: single_quotes
   SupportedStyles:
   - single_quotes
   - double_quotes
@@ -3815,7 +3815,7 @@ Style/StringLiteralsInInterpolation:
     match the configured preference.
   Enabled: true
   VersionAdded: '0.27'
-  EnforcedStyle: double_quotes
+  EnforcedStyle: single_quotes
   SupportedStyles:
   - single_quotes
   - double_quotes
