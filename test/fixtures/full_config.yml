@@ -2109,6 +2109,7 @@ Naming/MethodParameterName:
   - by
   - db
   - id
+  - if
   - in
   - io
   - ip
@@ -2529,7 +2530,7 @@ Style/Copyright:
   AutocorrectNotice: ''
 Style/DateTime:
   Description: Use Time over DateTime.
-  StyleGuide: "#date--time"
+  StyleGuide: "#date-time"
   Enabled: true
   VersionAdded: '0.51'
   VersionChanged: '0.92'
@@ -2834,8 +2835,9 @@ Style/HashExcept:
   Description: Checks for usages of `Hash#reject`, `Hash#select`, and `Hash#filter`
     methods that can be replaced with `Hash#except` method.
   Enabled: false
+  Safe: false
   VersionAdded: '1.7'
-  VersionChanged: '1.31'
+  VersionChanged: '1.39'
 Style/HashLikeCase:
   Description: Checks for places where `case-when` represents a simple 1:1 mapping
     and can be replaced with a hash lookup.
@@ -3522,6 +3524,11 @@ Style/RedundantConditional:
   Description: Don't return true/false from a conditional.
   Enabled: false
   VersionAdded: '0.50'
+Style/RedundantEach:
+  Description: Checks for redundant `each`.
+  Enabled: pending
+  Safe: false
+  VersionAdded: '1.38'
 Style/RedundantException:
   Description: Checks for an obsolete RuntimeException argument in raise/fail.
   StyleGuide: "#no-explicit-runtimeerror"
