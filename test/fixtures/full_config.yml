@@ -533,7 +533,7 @@ Layout/FirstArrayElementLineBreak:
   Description: Checks for a line break before the first element in a multi-line array.
   Enabled: true
   VersionAdded: '0.49'
-  AllowMultilineFinalElement: false
+  AllowMultilineFinalElement: true
 Layout/FirstHashElementIndentation:
   Description: Checks the indentation of the first key in a hash literal.
   Enabled: true
@@ -555,7 +555,7 @@ Layout/FirstMethodArgumentLineBreak:
     call.
   Enabled: true
   VersionAdded: '0.49'
-  AllowMultilineFinalElement: false
+  AllowMultilineFinalElement: true
 Layout/FirstMethodParameterLineBreak:
   Description: Checks for a line break before the first parameter in a multi-line
     method parameter definition.
@@ -717,7 +717,7 @@ Layout/MultilineArrayLineBreaks:
     line.
   Enabled: true
   VersionAdded: '0.67'
-  AllowMultilineFinalElement: false
+  AllowMultilineFinalElement: true
 Layout/MultilineAssignmentLayout:
   Description: Check for a newline after the assignment operator in multi-line assignments.
   StyleGuide: "#indent-conditional-assignment"
@@ -759,7 +759,7 @@ Layout/MultilineMethodArgumentLineBreaks:
     line.
   Enabled: true
   VersionAdded: '0.67'
-  AllowMultilineFinalElement: false
+  AllowMultilineFinalElement: true
 Layout/MultilineMethodCallBraceLayout:
   Description: Checks that the closing brace in a method call is either on the same
     line as the last method argument, or a new line.

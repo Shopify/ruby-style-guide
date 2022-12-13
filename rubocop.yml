@@ -35,6 +35,7 @@ Layout/FirstArrayElementIndentation:
 
 Layout/FirstArrayElementLineBreak:
   Enabled: true
+  AllowMultilineFinalElement: true
 
 Layout/FirstHashElementIndentation:
   EnforcedStyle: consistent
@@ -44,6 +45,7 @@ Layout/FirstHashElementLineBreak:
 
 Layout/FirstMethodArgumentLineBreak:
   Enabled: true
+  AllowMultilineFinalElement: true
 
 Layout/HashAlignment:
   EnforcedLastArgumentHashStyle: ignore_implicit
@@ -65,12 +67,14 @@ Layout/LineLength:
 
 Layout/MultilineArrayLineBreaks:
   Enabled: true
+  AllowMultilineFinalElement: true
 
 Layout/MultilineHashKeyLineBreaks:
   Enabled: true
 
 Layout/MultilineMethodArgumentLineBreaks:
   Enabled: true
+  AllowMultilineFinalElement: true
 
 Layout/MultilineMethodCallIndentation:
   EnforcedStyle: indented

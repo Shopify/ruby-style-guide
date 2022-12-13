@@ -272,40 +272,61 @@ documentation](https://docs.rubocop.org/rubocop/configuration.html#inheriting-co
 
   ~~~ ruby
   # bad
-  
+
   method(arg_1, arg_2,
     arg_3
   )
-  
+
   [
     value_1, value_2,
     value_3,
   ]
-  
+
   {
     key1: value_1,
     key2: value_2, key3: value_3,
   }
 
   # good
-  
+
   method(
     arg_1,
     arg_2,
     arg_3,
   )
-  
+
   [
     value_1,
     value_2,
     value_3,
   ]
-  
+
   {
     key1: value_1,
     key2: value_2,
     key3: value_3,
   }
+
+  # good (special cases)
+
+  # Single argument method call
+  method({
+    foo: bar,
+  })
+
+  # Last argument, itself is multiline
+  class User
+    after_save :method, if: -> {
+      do_some_checks
+    }
+  end
+
+  # Single value array
+  errors = [{
+    error_code: 1234,
+    error_message: "This is an error",
+  }]
+
   ~~~
 
 * Separate magic comments from code and documentation with a blank line.
