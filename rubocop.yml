@@ -420,6 +420,9 @@ Style/CommandLiteral:
 Style/CommentedKeyword:
   Enabled: false
 
+Style/ConcatArrayLiterals:
+  Enabled: true
+
 Style/DateTime:
   Enabled: true
 
@@ -645,6 +648,12 @@ Style/RedundantCondition:
 
 Style/RedundantConditional:
   Enabled: false
+
+Style/RedundantConstantBase:
+  Enabled: true
+
+Style/RedundantDoubleSplatHashBraces:
+  Enabled: true
 
 Style/RedundantEach:
   Enabled: true
