@@ -3526,7 +3526,7 @@ Style/RedundantConditional:
   VersionAdded: '0.50'
 Style/RedundantEach:
   Description: Checks for redundant `each`.
-  Enabled: pending
+  Enabled: true
   Safe: false
   VersionAdded: '1.38'
 Style/RedundantException:

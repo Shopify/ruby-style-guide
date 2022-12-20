@@ -646,6 +646,9 @@ Style/RedundantCondition:
 Style/RedundantConditional:
   Enabled: false
 
+Style/RedundantEach:
+  Enabled: true
+
 Style/RedundantFetchBlock:
   Enabled: false
 
