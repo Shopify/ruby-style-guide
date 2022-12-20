@@ -96,7 +96,9 @@ AllCops:
 Bundler/DuplicatedGem:
   Description: Checks for duplicate gem entries in Gemfile.
   Enabled: true
+  Severity: warning
   VersionAdded: '0.46'
+  VersionChanged: '1.40'
   Include:
   - "**/*.gemfile"
   - "**/Gemfile"
@@ -143,7 +145,9 @@ Bundler/InsecureProtocolSource:
     because HTTP requests are insecure. Please change your source to 'https://rubygems.org'
     if possible, or 'http://rubygems.org' if not.
   Enabled: true
+  Severity: warning
   VersionAdded: '0.50'
+  VersionChanged: '1.40'
   AllowHttpProtocol: true
   Include:
   - "**/*.gemfile"
@@ -175,14 +179,18 @@ Gemspec/DeprecatedAttributeAssignment:
   Description: Checks that deprecated attribute assignments are not set in a gemspec
     file.
   Enabled: true
+  Severity: warning
   VersionAdded: '1.30'
+  VersionChanged: '1.40'
   Include:
   - "**/*.gemspec"
 Gemspec/DuplicatedAssignment:
   Description: An attribute assignment method calls should be listed only once in
     a gemspec.
   Enabled: true
+  Severity: warning
   VersionAdded: '0.52'
+  VersionChanged: '1.40'
   Include:
   - "**/*.gemspec"
 Gemspec/OrderedDependencies:
@@ -197,7 +205,9 @@ Gemspec/RequireMFA:
   Description: Checks that the gemspec has metadata to require Multi-Factor Authentication
     from RubyGems.
   Enabled: false
+  Severity: warning
   VersionAdded: '1.23'
+  VersionChanged: '1.40'
   Reference:
   - https://guides.rubygems.org/mfa-requirement-opt-in/
   Include:
@@ -206,15 +216,18 @@ Gemspec/RequiredRubyVersion:
   Description: Checks that `required_ruby_version` of gemspec is specified and equal
     to `TargetRubyVersion` of .rubocop.yml.
   Enabled: false
+  Severity: warning
   VersionAdded: '0.52'
-  VersionChanged: '1.22'
+  VersionChanged: '1.40'
   Include:
   - "**/*.gemspec"
 Gemspec/RubyVersionGlobalsUsage:
   Description: Checks usage of RUBY_VERSION in gemspec.
   StyleGuide: "#no-ruby-version-in-the-gemspec"
   Enabled: true
+  Severity: warning
   VersionAdded: '0.72'
+  VersionChanged: '1.40'
   Include:
   - "**/*.gemspec"
 Layout/AccessModifierIndentation:
@@ -253,8 +266,9 @@ Layout/AssignmentIndentation:
   Description: Checks the indentation of the first line of the right-hand-side of
     a multi-line assignment.
   Enabled: true
+  SafeAutoCorrect: false
   VersionAdded: '0.49'
-  VersionChanged: '0.77'
+  VersionChanged: '1.40'
   IndentationWidth:
 Layout/BeginEndAlignment:
   Description: Align ends corresponding to begins correctly.
@@ -519,6 +533,7 @@ Layout/FirstArrayElementLineBreak:
   Description: Checks for a line break before the first element in a multi-line array.
   Enabled: false
   VersionAdded: '0.49'
+  AllowMultilineFinalElement: false
 Layout/FirstHashElementIndentation:
   Description: Checks the indentation of the first key in a hash literal.
   Enabled: true
@@ -534,16 +549,19 @@ Layout/FirstHashElementLineBreak:
   Description: Checks for a line break before the first element in a multi-line hash.
   Enabled: false
   VersionAdded: '0.49'
+  AllowMultilineFinalElement: false
 Layout/FirstMethodArgumentLineBreak:
   Description: Checks for a line break before the first argument in a multi-line method
     call.
   Enabled: false
   VersionAdded: '0.49'
+  AllowMultilineFinalElement: false
 Layout/FirstMethodParameterLineBreak:
   Description: Checks for a line break before the first parameter in a multi-line
     method parameter definition.
   Enabled: false
   VersionAdded: '0.49'
+  AllowMultilineFinalElement: false
 Layout/FirstParameterIndentation:
   Description: Checks the indentation of the first parameter in a method definition.
   Enabled: true
@@ -699,6 +717,7 @@ Layout/MultilineArrayLineBreaks:
     line.
   Enabled: false
   VersionAdded: '0.67'
+  AllowMultilineFinalElement: false
 Layout/MultilineAssignmentLayout:
   Description: Check for a newline after the assignment operator in multi-line assignments.
   StyleGuide: "#indent-conditional-assignment"
@@ -734,11 +753,13 @@ Layout/MultilineHashKeyLineBreaks:
     line.
   Enabled: false
   VersionAdded: '0.67'
+  AllowMultilineFinalElement: false
 Layout/MultilineMethodArgumentLineBreaks:
   Description: Checks that each argument in a multi-line method call starts on a separate
     line.
   Enabled: false
   VersionAdded: '0.67'
+  AllowMultilineFinalElement: false
 Layout/MultilineMethodCallBraceLayout:
   Description: Checks that the closing brace in a method call is either on the same
     line as the last method argument, or a new line.
@@ -775,6 +796,7 @@ Layout/MultilineMethodParameterLineBreaks:
     on a separate line.
   Enabled: false
   VersionAdded: '1.32'
+  AllowMultilineFinalElement: false
 Layout/MultilineOperationIndentation:
   Description: Checks indentation of binary operations that span more than one line.
   Enabled: true
@@ -1151,7 +1173,7 @@ Lint/DeprecatedConstants:
   Description: Checks for deprecated constants.
   Enabled: false
   VersionAdded: '1.8'
-  VersionChanged: '1.22'
+  VersionChanged: '1.40'
   DeprecatedConstants:
     NIL:
       Alternative: nil
@@ -1167,6 +1189,12 @@ Lint/DeprecatedConstants:
       DeprecatedVersion: '2.6'
     Random::DEFAULT:
       Alternative: Random.new
+      DeprecatedVersion: '3.0'
+    Struct::Group:
+      Alternative: Etc::Group
+      DeprecatedVersion: '3.0'
+    Struct::Passwd:
+      Alternative: Etc::Passwd
       DeprecatedVersion: '3.0'
 Lint/DeprecatedOpenSSLConstant:
   Description: Don't use algorithm constants for `OpenSSL::Cipher` and `OpenSSL::Digest`.
@@ -1353,11 +1381,11 @@ Lint/InheritException:
   - standard_error
   - runtime_error
 Lint/InterpolationCheck:
-  Description: Raise warning for interpolation in single q strs.
+  Description: Checks for interpolation in a single quoted string.
   Enabled: false
-  Safe: false
+  SafeAutoCorrect: false
   VersionAdded: '0.50'
-  VersionChanged: '0.87'
+  VersionChanged: '1.40'
 Lint/LambdaWithoutLiteralBlock:
   Description: Checks uses of lambda without a literal block.
   Enabled: false
@@ -2107,6 +2135,7 @@ Naming/MethodParameterName:
   - as
   - at
   - by
+  - cc
   - db
   - id
   - if
@@ -2272,6 +2301,10 @@ Style/ArrayCoercion:
   Safe: false
   Enabled: false
   VersionAdded: '0.88'
+Style/ArrayIntersect:
+  Description: Use `array1.intersect?(array2)` instead of `(array1 & array2).any?`.
+  Enabled: pending
+  VersionAdded: '1.40'
 Style/ArrayJoin:
   Description: Use Array#join instead of Array#*.
   StyleGuide: "#array-join"
@@ -2503,6 +2536,11 @@ Style/CommentedKeyword:
   SafeAutoCorrect: false
   VersionAdded: '0.51'
   VersionChanged: '1.19'
+Style/ConcatArrayLiterals:
+  Description: Enforces the use of `Array#push(item)` instead of `Array#concat([item])`
+    to avoid redundant array literals.
+  Enabled: true
+  VersionAdded: '1.41'
 Style/ConditionalAssignment:
   Description: Use the return value of `if` and `case` statements for assignment to
     a variable and variable comparison instead of assigning that variable inside of
@@ -3496,9 +3534,10 @@ Style/RedundantArgument:
   Enabled: false
   Safe: false
   VersionAdded: '1.4'
-  VersionChanged: '1.7'
+  VersionChanged: '1.40'
   Methods:
     join: ''
+    sum: 0
     split: " "
     chomp: "\n"
     chomp!: "\n"
@@ -3524,6 +3563,14 @@ Style/RedundantConditional:
   Description: Don't return true/false from a conditional.
   Enabled: false
   VersionAdded: '0.50'
+Style/RedundantConstantBase:
+  Description: Avoid redundant `::` prefix on constant.
+  Enabled: true
+  VersionAdded: '1.40'
+Style/RedundantDoubleSplatHashBraces:
+  Description: Checks for redundant uses of double splat hash braces.
+  Enabled: true
+  VersionAdded: '1.41'
 Style/RedundantEach:
   Description: Checks for redundant `each`.
   Enabled: true
@@ -3635,6 +3682,11 @@ Style/RegexpLiteral:
   - percent_r
   - mixed
   AllowInnerSlashes: false
+Style/RequireOrder:
+  Description: Sort `require` and `require_relative` in alphabetical order.
+  Enabled: false
+  SafeAutoCorrect: false
+  VersionAdded: '1.40'
 Style/RescueModifier:
   Description: Avoid using rescue in its modifier form.
   StyleGuide: "#no-rescue-modifiers"
@@ -3870,10 +3922,9 @@ Style/SymbolProc:
   Enabled: true
   Safe: false
   VersionAdded: '0.26'
-  VersionChanged: '1.28'
+  VersionChanged: '1.40'
   AllowMethodsWithArguments: false
   AllowedMethods:
-  - respond_to
   - define_method
   AllowedPatterns: []
   IgnoredMethods: []
