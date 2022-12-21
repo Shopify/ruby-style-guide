@@ -28,13 +28,24 @@ Layout/EndAlignment:
   EnforcedStyleAlignWith: variable
 
 Layout/FirstArgumentIndentation:
-  Enabled: false
+  EnforcedStyle: consistent
 
 Layout/FirstArrayElementIndentation:
   EnforcedStyle: consistent
 
+Layout/FirstArrayElementLineBreak:
+  Enabled: true
+  AllowMultilineFinalElement: true
+
 Layout/FirstHashElementIndentation:
   EnforcedStyle: consistent
+
+Layout/FirstHashElementLineBreak:
+  Enabled: true
+
+Layout/FirstMethodArgumentLineBreak:
+  Enabled: true
+  AllowMultilineFinalElement: true
 
 Layout/HashAlignment:
   EnforcedLastArgumentHashStyle: ignore_implicit
@@ -53,6 +64,17 @@ Layout/LineLength:
   IgnoreCopDirectives: false
   AllowedPatterns:
   - "\\A\\s*(remote_)?test(_\\w+)?\\s.*(do|->)(\\s|\\Z)"
+
+Layout/MultilineArrayLineBreaks:
+  Enabled: true
+  AllowMultilineFinalElement: true
+
+Layout/MultilineHashKeyLineBreaks:
+  Enabled: true
+
+Layout/MultilineMethodArgumentLineBreaks:
+  Enabled: true
+  AllowMultilineFinalElement: true
 
 Layout/MultilineMethodCallIndentation:
   EnforcedStyle: indented
