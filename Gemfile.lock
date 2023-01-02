@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    rubocop-shopify (2.11.0)
+    rubocop-shopify (2.11.1)
       rubocop (~> 1.42)
 
 GEM
