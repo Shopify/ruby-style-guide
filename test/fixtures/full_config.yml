@@ -3062,7 +3062,7 @@ Style/MapToHash:
   Safe: false
 Style/MapToSet:
   Description: Prefer `to_set` with a block over `map.to_set`.
-  Enabled: pending
+  Enabled: false
   Safe: false
   VersionAdded: '1.42'
 Style/MethodCallWithArgsParentheses:
@@ -3126,7 +3126,7 @@ Style/MinMax:
 Style/MinMaxComparison:
   Description: Enforces the use of `max` or `min` instead of comparison for greater
     or less.
-  Enabled: pending
+  Enabled: true
   Safe: false
   VersionAdded: '1.42'
 Style/MissingElse:
@@ -4110,7 +4110,7 @@ Style/YodaCondition:
   VersionChanged: '0.75'
 Style/YodaExpression:
   Description: Forbid the use of yoda expressions.
-  Enabled: pending
+  Enabled: false
   Safe: false
   VersionAdded: '1.42'
   SupportedOperators:
