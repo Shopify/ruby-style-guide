@@ -648,7 +648,7 @@ Style/OpenStructUse:
   Enabled: true
 
 Style/OperatorMethodCall:
-  Enabled: true
+  Enabled: false
 
 Style/OptionalBooleanParameter:
   Enabled: false
