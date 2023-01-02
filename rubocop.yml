@@ -569,6 +569,9 @@ Style/MapCompactWithConditionalBlock:
 Style/MapToHash:
   Enabled: false
 
+Style/MapToSet:
+  Enabled: false
+
 Style/MethodCallWithArgsParentheses:
   Enabled: true
   AllowedMethods:
@@ -583,6 +586,9 @@ Style/MethodCallWithArgsParentheses:
 
 Style/MinMax:
   Enabled: false
+
+Style/MinMaxComparison:
+  Enabled: true
 
 Style/MixinGrouping:
   Enabled: false
@@ -774,4 +780,7 @@ Style/WordArray:
   EnforcedStyle: brackets
 
 Style/YodaCondition:
+  Enabled: false
+
+Style/YodaExpression:
   Enabled: false

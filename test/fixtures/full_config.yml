@@ -2540,6 +2540,7 @@ Style/ConcatArrayLiterals:
   Description: Enforces the use of `Array#push(item)` instead of `Array#concat([item])`
     to avoid redundant array literals.
   Enabled: true
+  Safe: false
   VersionAdded: '1.41'
 Style/ConditionalAssignment:
   Description: Use the return value of `if` and `case` statements for assignment to
@@ -3059,6 +3060,11 @@ Style/MapToHash:
   Enabled: false
   VersionAdded: '1.24'
   Safe: false
+Style/MapToSet:
+  Description: Prefer `to_set` with a block over `map.to_set`.
+  Enabled: false
+  Safe: false
+  VersionAdded: '1.42'
 Style/MethodCallWithArgsParentheses:
   Description: Use parentheses for method calls with arguments.
   StyleGuide: "#method-invocation-parens"
@@ -3117,6 +3123,12 @@ Style/MinMax:
     in conjunction.
   Enabled: false
   VersionAdded: '0.50'
+Style/MinMaxComparison:
+  Description: Enforces the use of `max` or `min` instead of comparison for greater
+    or less.
+  Enabled: true
+  Safe: false
+  VersionAdded: '1.42'
 Style/MissingElse:
   Description: Require if/case expressions to have an else branches. If enabled, it
     is recommended that Style/UnlessElse and Style/EmptyElse be enabled. This will
@@ -4096,6 +4108,17 @@ Style/YodaCondition:
   Safe: false
   VersionAdded: '0.49'
   VersionChanged: '0.75'
+Style/YodaExpression:
+  Description: Forbid the use of yoda expressions.
+  Enabled: false
+  Safe: false
+  VersionAdded: '1.42'
+  SupportedOperators:
+  - "*"
+  - "+"
+  - "&"
+  - "|"
+  - "^"
 Style/ZeroLengthPredicate:
   Description: 'Use #empty? when testing for objects of length 0.'
   Enabled: true
