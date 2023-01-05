@@ -410,6 +410,9 @@ Style/AndOr:
 Style/ArgumentsForwarding:
   Enabled: false
 
+Style/ArrayIntersect:
+  Enabled: false
+
 Style/BisectedAttrAccessor:
   Enabled: false
 
