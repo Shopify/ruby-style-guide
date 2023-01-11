@@ -1,0 +1,5 @@
+inherit_from:
+  - ../../rubocop.yml
+
+AllCops:
+  SuggestExtensions: false # Reduce noise in test output
