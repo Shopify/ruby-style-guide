@@ -3,3 +3,6 @@ inherit_from:
 
 AllCops:
   SuggestExtensions: false # Reduce noise in test output
+
+Style/FrozenStringLiteralComment:
+  Enabled: false # We know this cop works, and having it enabled adds noise to test snippets

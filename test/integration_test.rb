@@ -7,9 +7,6 @@ require "tempfile"
 class IntegrationTest < Minitest::Test
   def test_indentation
     assert_autocorrects(<<~'DIFF')
-       # typed: true
-       # frozen_string_literal: true
-
        sig { params(a: Something, b: SomethingElse).void }
        def some_method(a, b)
          unless b.something
@@ -27,9 +24,6 @@ class IntegrationTest < Minitest::Test
 
   def test_indentation2
     assert_autocorrects(<<~'DIFF')
-       # typed: true
-       # frozen_string_literal: true
-
        class ExampleController < ApplicationController
          sig { void }
          def create
@@ -54,6 +48,128 @@ class IntegrationTest < Minitest::Test
     DIFF
   end
 
+  def test_indentation3
+    assert_autocorrects(<<~'DIFF')
+       def collection
+         Service.not_deleted.includes(
+      -    { vault_teams:
+      -        [:github_team_vault_teams, :teams] },
+      -    { app:
+      -        [{ runtimes:
+      -             [:runtime_instances, :app] },
+      -         :runtimes,
+      -         :repo,] },
+      +    {
+      +      vault_teams:
+      +        [:github_team_vault_teams, :teams],
+      +    },
+      +    {
+      +      app:
+      +        [
+      +          {
+      +            runtimes:
+      +              [:runtime_instances, :app],
+      +          },
+      +          :runtimes,
+      +          :repo,
+      +        ]
+      +    },
+           :repo,
+           :app,
+           :monorepo_mobile_app,
+           :bugsnag_project,
+           :slack_channels,
+           :vault_teams,
+           :vault_users,
+         ).joins(:app)
+       end
+    DIFF
+  end
+
+  def test_indentation4
+    skip
+    assert_autocorrects(<<~'DIFF')
+       def collection
+         Service.not_deleted.includes(
+           { vault_teams: [:github_team_vault_teams, :teams] },
+      -    { app:[
+      -      { runtimes: [:runtime_instances, :app] },
+      -         :runtimes,
+      -         :repo,] },
+      +    {
+      +      app: [
+      +        { runtimes: [:runtime_instances, :app] },
+      +        :runtimes,
+      +        :repo,
+      +      ],
+      +    },
+           :repo,
+           :app,
+           :monorepo_mobile_app,
+           :bugsnag_project,
+           :slack_channels,
+           :vault_teams,
+           :vault_users,
+         ).joins(:app)
+       end
+    DIFF
+  end
+
+  def test_indentation5
+    assert_autocorrects(<<~'DIFF')
+       # rubocop:disable Layout/LineLength
+       def pending_merge_response
+      -  { data:
+      -    { repository:
+      -      { issueOrPullRequest:
+      -        { commits:
+      -          { nodes:
+      -            [{ commit:
+      -              { statusCheckRollup:
+      -                {
+      -                  state: "PENDING",
+      -                  contexts:
+      -                  { nodes:
+      -                    [{ name: "Shopify/merge-queue",
+      -                       status: "QUEUED", }] },
+      -                } } }] } } } } }
+      +  {
+      +    data:
+      +      {
+      +        repository:
+      +          {
+      +            issueOrPullRequest:
+      +              {
+      +                commits:
+      +                  {
+      +                    nodes:
+      +                      [{
+      +                        commit:
+      +                          {
+      +                            statusCheckRollup:
+      +                              {
+      +                                state: "PENDING",
+      +                                contexts:
+      +                                  {
+      +                                    nodes:
+      +                                      [{
+      +                                        name: "Shopify/merge-queue",
+      +                                        status: "QUEUED",
+      +                                      }],
+      +                                  },
+      +                              },
+      +                          },
+      +                      }],
+      +                  },
+      +              },
+      +          },
+      +      },
+      +  }
+       end
+       # rubocop:enable Layout/LineLength
+    DIFF
+  end
+
   private
 
   def assert_autocorrects(diff)
@@ -64,8 +180,8 @@ class IntegrationTest < Minitest::Test
       output, status = run_rubocop_on(file.path, normalized_path:)
       actual = File.read(file.path)
 
-      assert(status.success?, "Rubocop test did not exit cleanly!\n#{output}")
-      assert_equal(expected, actual, "Autocorrection did not produce the expected output!\n#{output}")
+      assert(status.success?, "Rubocop test did not exit cleanly!\n#{indent(output)}")
+      assert_equal(expected, actual, "Autocorrection did not produce the expected output!")
     end
   end
 
@@ -86,5 +202,9 @@ class IntegrationTest < Minitest::Test
     before = diff.each_line.reject { |line| line.start_with?("+") }.map { |line| line.sub(/^[ -]/,  '') }.join
     after  = diff.each_line.reject { |line| line.start_with?("-") }.map { |line| line.sub(/^[ \+]/, '') }.join
     [before, after]
+  end
+
+  def indent(string, by: " " * 4 )
+    string.gsub(/^/, by)
   end
 end
