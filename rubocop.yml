@@ -308,6 +308,9 @@ Lint/UriRegexp:
 Lint/UselessMethodDefinition:
   Enabled: false
 
+Lint/UselessRescue:
+  Enabled: true
+
 Lint/UselessRuby2Keywords:
   Enabled: true
 

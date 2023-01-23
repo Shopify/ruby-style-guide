@@ -1833,7 +1833,7 @@ Lint/UselessMethodDefinition:
   Safe: false
 Lint/UselessRescue:
   Description: Checks for useless `rescue`s.
-  Enabled: pending
+  Enabled: true
   VersionAdded: '1.43'
 Lint/UselessRuby2Keywords:
   Description: Finds unnecessary uses of `ruby2_keywords`.
