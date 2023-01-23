@@ -12,6 +12,9 @@ Bundler/OrderedGems:
 Gemspec/DeprecatedAttributeAssignment:
   Enabled: true
 
+Gemspec/DevelopmentDependencies:
+  Enabled: false
+
 Gemspec/RequireMFA:
   Enabled: false
 

@@ -187,7 +187,7 @@ Gemspec/DeprecatedAttributeAssignment:
 Gemspec/DevelopmentDependencies:
   Description: Checks that development dependencies are specified in Gemfile rather
     than gemspec.
-  Enabled: pending
+  Enabled: false
   VersionAdded: '1.44'
   EnforcedStyle: Gemfile
   SupportedStyles:
