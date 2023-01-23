@@ -2559,7 +2559,7 @@ Style/CommentedKeyword:
 Style/ComparableClamp:
   Description: Enforces the use of `Comparable#clamp` instead of comparison by minimum
     and maximum.
-  Enabled: pending
+  Enabled: true
   VersionAdded: '1.44'
 Style/ConcatArrayLiterals:
   Description: Enforces the use of `Array#push(item)` instead of `Array#concat([item])`

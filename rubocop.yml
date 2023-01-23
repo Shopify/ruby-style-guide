@@ -451,6 +451,9 @@ Style/CommandLiteral:
 Style/CommentedKeyword:
   Enabled: false
 
+Style/ComparableClamp:
+  Enabled: true
+
 Style/ConcatArrayLiterals:
   Enabled: true
 
