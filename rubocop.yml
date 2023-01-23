@@ -784,6 +784,3 @@ Style/WordArray:
 
 Style/YodaCondition:
   Enabled: false
-
-Style/YodaExpression:
-  Enabled: false
