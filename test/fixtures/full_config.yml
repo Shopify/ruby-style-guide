@@ -184,6 +184,22 @@ Gemspec/DeprecatedAttributeAssignment:
   VersionChanged: '1.40'
   Include:
   - "**/*.gemspec"
+Gemspec/DevelopmentDependencies:
+  Description: Checks that development dependencies are specified in Gemfile rather
+    than gemspec.
+  Enabled: pending
+  VersionAdded: '1.44'
+  EnforcedStyle: Gemfile
+  SupportedStyles:
+  - Gemfile
+  - gems.rb
+  - gemspec
+  AllowedGems:
+  - bundler
+  Include:
+  - "**/*.gemspec"
+  - "**/Gemfile"
+  - "**/gems.rb"
 Gemspec/DuplicatedAssignment:
   Description: An attribute assignment method calls should be listed only once in
     a gemspec.
@@ -1815,6 +1831,10 @@ Lint/UselessMethodDefinition:
   VersionAdded: '0.90'
   VersionChanged: '0.91'
   Safe: false
+Lint/UselessRescue:
+  Description: Checks for useless `rescue`s.
+  Enabled: pending
+  VersionAdded: '1.43'
 Lint/UselessRuby2Keywords:
   Description: Finds unnecessary uses of `ruby2_keywords`.
   Enabled: true
@@ -2536,6 +2556,11 @@ Style/CommentedKeyword:
   SafeAutoCorrect: false
   VersionAdded: '0.51'
   VersionChanged: '1.19'
+Style/ComparableClamp:
+  Description: Enforces the use of `Comparable#clamp` instead of comparison by minimum
+    and maximum.
+  Enabled: pending
+  VersionAdded: '1.44'
 Style/ConcatArrayLiterals:
   Description: Enforces the use of `Array#push(item)` instead of `Array#concat([item])`
     to avoid redundant array literals.
@@ -2869,7 +2894,8 @@ Style/HashEachMethods:
   Safe: false
   VersionAdded: '0.80'
   VersionChanged: '1.16'
-  AllowedReceivers: []
+  AllowedReceivers:
+  - Thread.current
 Style/HashExcept:
   Description: Checks for usages of `Hash#reject`, `Hash#select`, and `Hash#filter`
     methods that can be replaced with `Hash#except` method.
@@ -2991,6 +3017,23 @@ Style/InverseMethods:
   InverseBlocks:
     :select: :reject
     :select!: :reject!
+Style/InvertibleUnlessCondition:
+  Description: Favor `if` with inverted condition over `unless`.
+  Enabled: false
+  VersionAdded: '1.44'
+  InverseMethods:
+    :!=: :==
+    :>: :<=
+    :<=: :>
+    :<: :>=
+    :>=: :<
+    :!~: :=~
+    :zero?: :nonzero?
+    :nonzero?: :zero?
+    :any?: :none?
+    :none?: :any?
+    :even?: :odd?
+    :odd?: :even?
 Style/IpAddresses:
   Description: Don't include literal IP addresses in code.
   Enabled: false
@@ -4113,6 +4156,7 @@ Style/YodaExpression:
   Enabled: false
   Safe: false
   VersionAdded: '1.42'
+  VersionChanged: '1.43'
   SupportedOperators:
   - "*"
   - "+"
