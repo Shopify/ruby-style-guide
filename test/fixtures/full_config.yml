@@ -3019,7 +3019,7 @@ Style/InverseMethods:
     :select!: :reject!
 Style/InvertibleUnlessCondition:
   Description: Favor `if` with inverted condition over `unless`.
-  Enabled: false
+  Enabled: true
   VersionAdded: '1.44'
   InverseMethods:
     :!=: :==

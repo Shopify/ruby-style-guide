@@ -565,6 +565,9 @@ Style/InPatternThen:
 Style/InverseMethods:
   Enabled: false
 
+Style/InvertibleUnlessCondition:
+  Enabled: true
+
 Style/KeywordParametersOrder:
   Enabled: false
 
