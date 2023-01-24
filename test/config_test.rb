@@ -6,12 +6,14 @@ require "rubocop"
 require "rake"
 
 class ConfigTest < Minitest::Test
+  FULL_CONFIG_PATH = "test/fixtures/full_config.yml"
+
   def test_config_is_unchanged
     skip if checking_rubocop_version_compatibility?
 
     Rake.application.load_rakefile
 
-    original_config = "test/fixtures/full_config.yml"
+    original_config = FULL_CONFIG_PATH
 
     Tempfile.create do |tempfile|
       Rake::Task["config:dump"].invoke(tempfile.path)
@@ -68,6 +70,25 @@ class ConfigTest < Minitest::Test
     following_keys = config_keys[(all_cops_index + 1)..-1]
 
     assert_sorted(following_keys, "Keys after AllCops in rubocop.yml must be sorted")
+  end
+
+  def test_no_cops_are_configured_as_pending
+    pending_cops = []
+
+    load_method = YAML.respond_to?(:unsafe_load_file) ? :unsafe_load_file : :load_file
+    YAML.public_send(load_method, FULL_CONFIG_PATH).each do |cop_name, cop_config|
+      pending_cops << cop_name if Hash === cop_config && cop_config["Enabled"] == "pending"
+    end
+
+    assert(pending_cops.empty?, <<~ERROR_MESSAGE.chomp)
+      Error: The style guide should take a stance on all cops, but following cops are marked as pending:
+
+      #{pending_cops.map { "    #{_1}:\n      Enabled: pending" }.join("\n\n")}
+
+      Please update the config to mark all of the these cops as either `Enabled: true` or `Enabled: false`
+
+      If this is a bad time to triage, please open an issue, and mark them as `Enabled: false` for now.
+    ERROR_MESSAGE
   end
 
   private
