@@ -2323,7 +2323,7 @@ Style/ArrayCoercion:
   VersionAdded: '0.88'
 Style/ArrayIntersect:
   Description: Use `array1.intersect?(array2)` instead of `(array1 & array2).any?`.
-  Enabled: false
+  Enabled: true
   VersionAdded: '1.40'
 Style/ArrayJoin:
   Description: Use Array#join instead of Array#*.
