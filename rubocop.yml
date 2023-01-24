@@ -12,6 +12,9 @@ Bundler/OrderedGems:
 Gemspec/DeprecatedAttributeAssignment:
   Enabled: true
 
+Gemspec/DevelopmentDependencies:
+  Enabled: false
+
 Gemspec/RequireMFA:
   Enabled: false
 
@@ -305,6 +308,9 @@ Lint/UriRegexp:
 Lint/UselessMethodDefinition:
   Enabled: false
 
+Lint/UselessRescue:
+  Enabled: true
+
 Lint/UselessRuby2Keywords:
   Enabled: true
 
@@ -445,6 +451,9 @@ Style/CommandLiteral:
 Style/CommentedKeyword:
   Enabled: false
 
+Style/ComparableClamp:
+  Enabled: true
+
 Style/ConcatArrayLiterals:
   Enabled: true
 
@@ -555,6 +564,9 @@ Style/InPatternThen:
 
 Style/InverseMethods:
   Enabled: false
+
+Style/InvertibleUnlessCondition:
+  Enabled: true
 
 Style/KeywordParametersOrder:
   Enabled: false
@@ -783,7 +795,4 @@ Style/WordArray:
   EnforcedStyle: brackets
 
 Style/YodaCondition:
-  Enabled: false
-
-Style/YodaExpression:
   Enabled: false
