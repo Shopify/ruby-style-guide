@@ -417,7 +417,7 @@ Style/ArgumentsForwarding:
   Enabled: false
 
 Style/ArrayIntersect:
-  Enabled: false
+  Enabled: true
 
 Style/BisectedAttrAccessor:
   Enabled: false
