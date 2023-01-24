@@ -663,7 +663,7 @@ Style/OpenStructUse:
   Enabled: true
 
 Style/OperatorMethodCall:
-  Enabled: false
+  Enabled: true
 
 Style/OptionalBooleanParameter:
   Enabled: false
