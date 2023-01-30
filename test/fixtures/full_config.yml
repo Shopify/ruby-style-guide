@@ -714,7 +714,7 @@ Layout/LineLength:
   URISchemes:
   - http
   - https
-  IgnoreCopDirectives: false
+  IgnoreCopDirectives: true
   AllowedPatterns:
   - "\\A\\s*(remote_)?test(_\\w+)?\\s.*(do|->)(\\s|\\Z)"
   IgnoredPatterns: []
