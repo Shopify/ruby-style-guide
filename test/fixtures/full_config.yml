@@ -717,6 +717,7 @@ Layout/LineLength:
   IgnoreCopDirectives: true
   AllowedPatterns:
   - "\\A\\s*(remote_)?test(_\\w+)?\\s.*(do|->)(\\s|\\Z)"
+  - "\\A\\s*def test_\\w+\\s*\\Z"
   IgnoredPatterns: []
 Layout/MultilineArrayBraceLayout:
   Description: Checks that the closing brace in an array literal is either on the
