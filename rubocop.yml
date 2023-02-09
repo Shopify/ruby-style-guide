@@ -66,6 +66,7 @@ Layout/LineEndStringConcatenationIndentation:
 Layout/LineLength:
   AllowedPatterns:
   - "\\A\\s*(remote_)?test(_\\w+)?\\s.*(do|->)(\\s|\\Z)"
+  - "\\A\\s*def test_\\w+\\s*\\Z"
 
 Layout/MultilineArrayLineBreaks:
   Enabled: true
