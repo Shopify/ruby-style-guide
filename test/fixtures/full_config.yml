@@ -3641,7 +3641,7 @@ Style/RedundantFreeze:
   VersionChanged: '0.66'
 Style/RedundantHeredocDelimiterQuotes:
   Description: Checks for redundant heredoc delimiter quotes.
-  Enabled: pending
+  Enabled: true
   VersionAdded: '1.45'
 Style/RedundantInitialize:
   Description: Checks for redundant `initialize` methods.
