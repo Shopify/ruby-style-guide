@@ -1,1 +1,8 @@
-"config change": rubocop.yml
+"config change": rubocop*.yml
+"hq": rubocop.yml
+"graphql": rubocop.graphql.yml
+"minitest": rubocop.minitest.yml
+"performance": rubocop.performance.yml
+"rails": rubocop.rails.yml
+"rake": rubocop.rake.yml
+"rspec": rubocop.rspec.yml
