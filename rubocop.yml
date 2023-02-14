@@ -3,6 +3,22 @@ inherit_mode:
   - Exclude
   - Include
 
+<%
+  # Identify installed RuboCop plugins to configure
+  plugin_configs = {
+    "rubocop-graphql" => "rubocop.graphql.yml",
+    "rubocop-minitest" => "rubocop.minitest.yml",
+    "rubocop-performance" => "rubocop.performance.yml",
+    "rubocop-rails" => "rubocop.rails.yml",
+    "rubocop-rake" => "rubocop.graphql.yml",
+    "rubocop-rspec" => "rubocop.rspec.yml",
+  }.select { |plugin_name, _| Gem.loaded_specs.include?(plugin_name) }
+%>
+
+require: <%= plugin_configs.keys.to_json %>
+
+inherit_from: <%= plugin_configs.values.to_json %>
+
 AllCops:
   StyleGuideBaseURL: https://shopify.github.io/ruby-style-guide/
 
