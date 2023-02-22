@@ -194,8 +194,7 @@ Gemspec/DevelopmentDependencies:
   - Gemfile
   - gems.rb
   - gemspec
-  AllowedGems:
-  - bundler
+  AllowedGems: []
   Include:
   - "**/*.gemspec"
   - "**/Gemfile"
@@ -282,9 +281,8 @@ Layout/AssignmentIndentation:
   Description: Checks the indentation of the first line of the right-hand-side of
     a multi-line assignment.
   Enabled: true
-  SafeAutoCorrect: false
   VersionAdded: '0.49'
-  VersionChanged: '1.40'
+  VersionChanged: '1.45'
   IndentationWidth:
 Layout/BeginEndAlignment:
   Description: Align ends corresponding to begins correctly.
@@ -651,7 +649,6 @@ Layout/IndentationWidth:
   VersionAdded: '0.49'
   Width: 2
   AllowedPatterns: []
-  IgnoredPatterns: []
 Layout/InitialIndentation:
   Description: Checks the indentation of the first non-blank non-comment line in a
     file.
@@ -674,10 +671,8 @@ Layout/LineContinuationLeadingSpace:
   Description: Use trailing spaces instead of leading spaces in strings broken over
     multiple lines (by a backslash).
   Enabled: false
-  AutoCorrect: false
-  SafeAutoCorrect: false
   VersionAdded: '1.31'
-  VersionChanged: '1.32'
+  VersionChanged: '1.45'
   EnforcedStyle: trailing
   SupportedStyles:
   - leading
@@ -718,7 +713,6 @@ Layout/LineLength:
   AllowedPatterns:
   - "\\A\\s*(remote_)?test(_\\w+)?\\s.*(do|->)(\\s|\\Z)"
   - "\\A\\s*def test_\\w+\\s*\\Z"
-  IgnoredPatterns: []
 Layout/MultilineArrayBraceLayout:
   Description: Checks that the closing brace in an array literal is either on the
     same line as the last array element, or a new line.
@@ -1073,7 +1067,6 @@ Lint/AmbiguousBlockAssociation:
   VersionChanged: '1.13'
   AllowedMethods: []
   AllowedPatterns: []
-  IgnoredMethods: []
 Lint/AmbiguousOperator:
   Description: Checks for ambiguous operators in the first argument of a method invocation
     without parentheses.
@@ -1102,7 +1095,9 @@ Lint/AssignmentInCondition:
   Description: Don't use assignment in conditions.
   StyleGuide: "#safe-assignment-in-condition"
   Enabled: true
+  SafeAutoCorrect: false
   VersionAdded: '0.9'
+  VersionChanged: '1.45'
   AllowSafeAssignment: true
 Lint/BigDecimalNew:
   Description: "`BigDecimal.new()` is deprecated. Use `BigDecimal()` instead."
@@ -1149,10 +1144,10 @@ Lint/Debugger:
   Enabled: true
   VersionAdded: '0.14'
   VersionChanged: '1.10'
-  DebuggerReceivers: []
   DebuggerMethods:
     Kernel:
     - binding.irb
+    - p
     - Kernel.binding.irb
     Byebug:
     - byebug
@@ -1162,6 +1157,9 @@ Lint/Debugger:
     Capybara:
     - save_and_open_page
     - save_and_open_screenshot
+    PP:
+    - PP.pp
+    - pp
     debug.rb:
     - binding.b
     - binding.break
@@ -1487,7 +1485,6 @@ Lint/NumberConversion:
   SafeAutoCorrect: false
   AllowedMethods: []
   AllowedPatterns: []
-  IgnoredMethods: []
   IgnoredClasses:
   - Time
   - DateTime
@@ -1779,7 +1776,6 @@ Lint/UnreachableLoop:
   VersionChanged: '1.7'
   AllowedPatterns:
   - !ruby/regexp /(exactly|at_least|at_most)\(\d+\)\.times/
-  IgnoredPatterns: []
 Lint/UnusedBlockArgument:
   Description: Checks for unused block arguments.
   StyleGuide: "#underscore-unused-vars"
@@ -1868,7 +1864,6 @@ Metrics/AbcSize:
   VersionChanged: '1.5'
   AllowedMethods: []
   AllowedPatterns: []
-  IgnoredMethods: []
   CountRepeatedAttributes: true
   Max: 17
 Metrics/BlockLength:
@@ -1879,11 +1874,9 @@ Metrics/BlockLength:
   CountComments: false
   Max: 25
   CountAsOne: []
-  ExcludedMethods: []
   AllowedMethods:
   - refine
   AllowedPatterns: []
-  IgnoredMethods: []
   Exclude:
   - "/**/*.gemspec"
 Metrics/BlockNesting:
@@ -1910,7 +1903,6 @@ Metrics/CyclomaticComplexity:
   VersionChanged: '0.81'
   AllowedMethods: []
   AllowedPatterns: []
-  IgnoredMethods: []
   Max: 7
 Metrics/MethodLength:
   Description: Avoid methods longer than 10 lines of code.
@@ -1921,10 +1913,8 @@ Metrics/MethodLength:
   CountComments: false
   Max: 10
   CountAsOne: []
-  ExcludedMethods: []
   AllowedMethods: []
   AllowedPatterns: []
-  IgnoredMethods: []
 Metrics/ModuleLength:
   Description: Avoid modules longer than 100 lines of code.
   Enabled: false
@@ -1950,7 +1940,6 @@ Metrics/PerceivedComplexity:
   VersionChanged: '0.81'
   AllowedMethods: []
   AllowedPatterns: []
-  IgnoredMethods: []
   Max: 8
 Migration/DepartmentName:
   Description: Check that cop names in rubocop:disable (etc) comments are given with
@@ -2081,7 +2070,7 @@ Naming/HeredocDelimiterNaming:
   Enabled: false
   VersionAdded: '0.50'
   ForbiddenDelimiters:
-  - !ruby/regexp /(^|\s)(EO[A-Z]{1}|END)(\s|$)/
+  - !ruby/regexp /(^|\s)(EO[A-Z]{1}|END)(\s|$)/i
 Naming/InclusiveLanguage:
   Description: Recommend the use of inclusive language instead of problematic terms.
   Enabled: true
@@ -2143,7 +2132,6 @@ Naming/MethodName:
   - snake_case
   - camelCase
   AllowedPatterns: []
-  IgnoredPatterns: []
 Naming/MethodParameterName:
   Description: Checks for method parameter names that contain capital letters, end
     in numbers, or do not meet a minimal length.
@@ -2410,7 +2398,6 @@ Style/BlockDelimiters:
   - proc
   - it
   AllowedPatterns: []
-  IgnoredMethods: []
   AllowBracesOnProceduralOneLiners: false
   BracesRequiredMethods: []
 Style/CaseEquality:
@@ -2463,7 +2450,6 @@ Style/ClassEqualityComparison:
   - equal?
   - eql?
   AllowedPatterns: []
-  IgnoredMethods: []
 Style/ClassMethods:
   Description: Use self when defining module/class methods.
   StyleGuide: "#def-self-class-methods"
@@ -2834,7 +2820,6 @@ Style/FormatStringToken:
   VersionChanged: '1.0'
   AllowedMethods: []
   AllowedPatterns: []
-  IgnoredMethods: []
 Style/FrozenStringLiteralComment:
   Description: Add the frozen_string_literal comment to the top of files to help transition
     to frozen string literals by default.
@@ -3123,9 +3108,7 @@ Style/MethodCallWithArgsParentheses:
   - yield
   - raise
   - puts
-  IgnoredMethods: []
   AllowedPatterns: []
-  IgnoredPatterns: []
   IncludedMacros: []
   AllowParenthesesInMultilineCall: false
   AllowParenthesesInChaining: false
@@ -3143,7 +3126,6 @@ Style/MethodCallWithoutArgsParentheses:
   Enabled: true
   AllowedMethods: []
   AllowedPatterns: []
-  IgnoredMethods: []
   VersionAdded: '0.47'
   VersionChanged: '0.55'
 Style/MethodCalledOnDoEndBlock:
@@ -3436,7 +3418,6 @@ Style/NumericPredicate:
   - comparison
   AllowedMethods: []
   AllowedPatterns: []
-  IgnoredMethods: []
   Exclude:
   - "/spec/**/*"
 Style/ObjectThen:
@@ -3658,6 +3639,10 @@ Style/RedundantFreeze:
   Enabled: true
   VersionAdded: '0.34'
   VersionChanged: '0.66'
+Style/RedundantHeredocDelimiterQuotes:
+  Description: Checks for redundant heredoc delimiter quotes.
+  Enabled: true
+  VersionAdded: '1.45'
 Style/RedundantInitialize:
   Description: Checks for redundant `initialize` methods.
   Enabled: false
@@ -3983,7 +3968,6 @@ Style/SymbolProc:
   AllowedMethods:
   - define_method
   AllowedPatterns: []
-  IgnoredMethods: []
   AllowComments: false
 Style/TernaryParentheses:
   Description: Checks for use of parentheses around ternary conditions.

@@ -707,6 +707,9 @@ Style/RedundantFetchBlock:
 Style/RedundantFileExtensionInRequire:
   Enabled: false
 
+Style/RedundantHeredocDelimiterQuotes:
+  Enabled: true
+
 Style/RedundantInitialize:
   Enabled: false
 
