@@ -2608,7 +2608,7 @@ Style/Dir:
 Style/DirEmpty:
   Description: Prefer to use `Dir.empty?('path/to/dir')` when checking if a directory
     is empty.
-  Enabled: pending
+  Enabled: true
   VersionAdded: '1.48'
 Style/DisableCopsWithinSourceCodeDirective:
   Description: Forbids disabling/enabling cops within source code.
@@ -2776,7 +2776,7 @@ Style/FetchEnvVar:
 Style/FileEmpty:
   Description: Prefer to use `File.empty?('path/to/file')` when checking if a file
     is empty.
-  Enabled: pending
+  Enabled: true
   Safe: false
   SafeAutoCorrect: false
   VersionAdded: '1.48'

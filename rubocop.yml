@@ -466,6 +466,9 @@ Style/DateTime:
 Style/Dir:
   Enabled: false
 
+Style/DirEmpty:
+  Enabled: true
+
 Style/DocumentDynamicEvalDefinition:
   Enabled: false
 
@@ -510,6 +513,9 @@ Style/ExponentialNotation:
 
 Style/FetchEnvVar:
   Enabled: false
+
+Style/FileEmpty:
+  Enabled: true
 
 Style/FileRead:
   Enabled: false
