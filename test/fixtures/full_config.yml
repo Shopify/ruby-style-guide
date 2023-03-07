@@ -92,6 +92,8 @@ AllCops:
     - rake
     rubocop-graphql:
     - graphql
+    rubocop-capybara:
+    - capybara
   ActiveSupportExtensionsEnabled: false
 Bundler/DuplicatedGem:
   Description: Checks for duplicate gem entries in Gemfile.
@@ -1143,11 +1145,10 @@ Lint/Debugger:
   Description: Check for debugger calls.
   Enabled: true
   VersionAdded: '0.14'
-  VersionChanged: '1.10'
+  VersionChanged: '1.46'
   DebuggerMethods:
     Kernel:
     - binding.irb
-    - p
     - Kernel.binding.irb
     Byebug:
     - byebug
@@ -1157,9 +1158,6 @@ Lint/Debugger:
     Capybara:
     - save_and_open_page
     - save_and_open_screenshot
-    PP:
-    - PP.pp
-    - pp
     debug.rb:
     - binding.b
     - binding.break
@@ -1895,6 +1893,11 @@ Metrics/ClassLength:
   CountComments: false
   Max: 100
   CountAsOne: []
+Metrics/CollectionLiteralLength:
+  Description: Checks for `Array` or `Hash` literals with many entries.
+  Enabled: pending
+  VersionAdded: '1.47'
+  LengthThreshold: 250
 Metrics/CyclomaticComplexity:
   Description: A complexity metric that is strongly correlated to the number of test
     cases needed to validate a method.
@@ -2212,6 +2215,7 @@ Naming/VariableNumber:
   - rfc822
   - rfc2822
   - rfc3339
+  - x86_64
   AllowedPatterns: []
 Security/CompoundHash:
   Description: When overwriting Object#hash to combine values, prefer delegating to
@@ -2313,6 +2317,7 @@ Style/ArrayCoercion:
 Style/ArrayIntersect:
   Description: Use `array1.intersect?(array2)` instead of `(array1 & array2).any?`.
   Enabled: true
+  Safe: false
   VersionAdded: '1.40'
 Style/ArrayJoin:
   Description: Use Array#join instead of Array#*.
@@ -2415,6 +2420,8 @@ Style/CaseLikeIf:
   Enabled: false
   Safe: false
   VersionAdded: '0.88'
+  VersionChanged: '1.48'
+  MinBranchesCount: 3
 Style/CharacterLiteral:
   Description: Checks for uses of character literals.
   StyleGuide: "#no-character-literals"
@@ -2598,6 +2605,11 @@ Style/Dir:
     to the current file.
   Enabled: false
   VersionAdded: '0.50'
+Style/DirEmpty:
+  Description: Prefer to use `Dir.empty?('path/to/dir')` when checking if a directory
+    is empty.
+  Enabled: pending
+  VersionAdded: '1.48'
 Style/DisableCopsWithinSourceCodeDirective:
   Description: Forbids disabling/enabling cops within source code.
   Enabled: false
@@ -2761,6 +2773,13 @@ Style/FetchEnvVar:
   Enabled: false
   VersionAdded: '1.28'
   AllowedVars: []
+Style/FileEmpty:
+  Description: Prefer to use `File.empty?('path/to/file')` when checking if a file
+    is empty.
+  Enabled: pending
+  Safe: false
+  SafeAutoCorrect: false
+  VersionAdded: '1.48'
 Style/FileRead:
   Description: Favor `File.(bin)read` convenience methods.
   StyleGuide: "#file-read"
