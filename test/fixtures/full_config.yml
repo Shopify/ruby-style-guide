@@ -1895,7 +1895,7 @@ Metrics/ClassLength:
   CountAsOne: []
 Metrics/CollectionLiteralLength:
   Description: Checks for `Array` or `Hash` literals with many entries.
-  Enabled: pending
+  Enabled: true
   VersionAdded: '1.47'
   LengthThreshold: 250
 Metrics/CyclomaticComplexity:
