@@ -377,6 +377,10 @@ Naming/InclusiveLanguage:
 Naming/MemoizedInstanceVariableName:
   Enabled: false
 
+Naming/MethodName:
+  AllowedPatterns:
+    - '\Atest_'
+
 Naming/MethodParameterName:
   Enabled: false
 
