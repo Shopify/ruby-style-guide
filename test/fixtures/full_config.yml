@@ -2134,7 +2134,8 @@ Naming/MethodName:
   SupportedStyles:
   - snake_case
   - camelCase
-  AllowedPatterns: []
+  AllowedPatterns:
+  - "\\Atest_"
 Naming/MethodParameterName:
   Description: Checks for method parameter names that contain capital letters, end
     in numbers, or do not meet a minimal length.
