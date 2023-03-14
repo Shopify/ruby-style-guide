@@ -1,0 +1,36 @@
+name: Dump config
+
+on: [push, pull_request]
+
+jobs:
+  dump-config:
+    name: Dump config
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+          ref: ${{ github.head_ref }}
+          token: ${{ secrets.SHOPIFY_GH_ACCESS_TOKEN }}
+
+      - name: Setup Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '3.2.0'
+          bundler-cache: true
+
+      - name: Dump config
+        run: bundle exec rake config:dump
+
+      - name: Commit & push
+        uses: EndBug/add-and-commit@v9
+        id: push
+        with:
+          add: 'test/fixtures/full_config.yml'
+          default_author: github_actions
+          message: >
+            Dump full RuboCop config
+
+            This automated commit dumps the contents of the full RuboCop config.
+
+            [dependabot skip]
