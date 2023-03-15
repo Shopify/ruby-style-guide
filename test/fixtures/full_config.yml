@@ -1171,6 +1171,7 @@ Lint/Debugger:
     - Kernel.binding.remote_pry
     - Kernel.binding.pry_remote
     - Pry.rescue
+    - pry
     Rails:
     - debugger
     - Kernel.debugger
