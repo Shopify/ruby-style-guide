@@ -417,9 +417,6 @@ Style/AccessorGrouping:
 Style/Alias:
   EnforcedStyle: prefer_alias_method
 
-Style/AndOr:
-  EnforcedStyle: conditionals
-
 Style/ArgumentsForwarding:
   Enabled: false
 
