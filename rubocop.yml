@@ -418,7 +418,7 @@ Style/Alias:
   EnforcedStyle: prefer_alias_method
 
 Style/AndOr:
-  EnforcedStyle: always
+  EnforcedStyle: conditionals
 
 Style/ArgumentsForwarding:
   Enabled: false
