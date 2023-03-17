@@ -2298,7 +2298,7 @@ Style/AndOr:
   SafeAutoCorrect: false
   VersionAdded: '0.9'
   VersionChanged: '1.21'
-  EnforcedStyle: always
+  EnforcedStyle: conditionals
   SupportedStyles:
   - always
   - conditionals
