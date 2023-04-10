@@ -461,6 +461,9 @@ Style/ComparableClamp:
 Style/ConcatArrayLiterals:
   Enabled: true
 
+Style/DataInheritance:
+  Enabled: true
+
 Style/DateTime:
   Enabled: true
 
@@ -722,6 +725,9 @@ Style/RedundantHeredocDelimiterQuotes:
 
 Style/RedundantInitialize:
   Enabled: false
+
+Style/RedundantLineContinuation:
+  Enabled: true
 
 Style/RedundantRegexpCharacterClass:
   Enabled: false
