@@ -131,6 +131,9 @@ Lint/DuplicateElsifCondition:
 Lint/DuplicateMagicComment:
   Enabled: true
 
+Lint/DuplicateMatchPattern:
+  Enabled: true
+
 Lint/DuplicateRegexpCharacterClassElement:
   Enabled: false
 
