@@ -1245,7 +1245,7 @@ Lint/DuplicateMagicComment:
   VersionAdded: '1.37'
 Lint/DuplicateMatchPattern:
   Description: Do not repeat patterns in `in` keywords.
-  Enabled: pending
+  Enabled: true
   VersionAdded: '1.50'
 Lint/DuplicateMethods:
   Description: Check for duplicate method definitions.
