@@ -682,8 +682,6 @@ Layout/LineContinuationLeadingSpace:
 Layout/LineContinuationSpacing:
   Description: Checks the spacing in front of backslash in line continuations.
   Enabled: false
-  AutoCorrect: true
-  SafeAutoCorrect: true
   VersionAdded: '1.31'
   EnforcedStyle: space
   SupportedStyles:
@@ -1245,6 +1243,10 @@ Lint/DuplicateMagicComment:
   Description: Check for duplicated magic comments.
   Enabled: true
   VersionAdded: '1.37'
+Lint/DuplicateMatchPattern:
+  Description: Do not repeat patterns in `in` keywords.
+  Enabled: pending
+  VersionAdded: '1.50'
 Lint/DuplicateMethods:
   Description: Check for duplicate method definitions.
   Enabled: true
@@ -2785,7 +2787,6 @@ Style/FileEmpty:
     is empty.
   Enabled: true
   Safe: false
-  SafeAutoCorrect: false
   VersionAdded: '1.48'
 Style/FileRead:
   Description: Favor `File.(bin)read` convenience methods.
@@ -3434,7 +3435,6 @@ Style/NumericPredicate:
     comparisons.
   StyleGuide: "#predicate-methods"
   Safe: false
-  SafeAutoCorrect: false
   Enabled: false
   VersionAdded: '0.42'
   VersionChanged: '0.59'
