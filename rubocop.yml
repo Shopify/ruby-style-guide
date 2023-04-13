@@ -756,6 +756,9 @@ Style/RegexpLiteral:
 Style/RescueStandardError:
   Enabled: false
 
+Style/ReturnNil:
+  Enabled: true
+
 Style/SelectByRegexp:
   Enabled: false
 
