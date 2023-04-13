@@ -3774,7 +3774,7 @@ Style/RescueStandardError:
   - explicit
 Style/ReturnNil:
   Description: Use return instead of return nil.
-  Enabled: false
+  Enabled: true
   EnforcedStyle: return
   SupportedStyles:
   - return
