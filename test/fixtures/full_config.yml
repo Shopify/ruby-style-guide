@@ -3033,7 +3033,9 @@ Style/InverseMethods:
 Style/InvertibleUnlessCondition:
   Description: Favor `if` with inverted condition over `unless`.
   Enabled: true
+  Safe: false
   VersionAdded: '1.44'
+  VersionChanged: '1.50'
   InverseMethods:
     :!=: :==
     :>: :<=
