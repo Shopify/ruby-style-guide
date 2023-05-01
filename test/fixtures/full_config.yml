@@ -2113,8 +2113,9 @@ Naming/InclusiveLanguage:
       - leader
       AllowedRegex:
       - !ruby/regexp /master[_\s\.]key/
-      - blob/master/
-      - origin/master
+      - !ruby/regexp /\w*:\/\/\S+/
+      - !ruby/regexp /(?:blob|tree)\/master/
+      - !ruby/regexp /origin[ \/]master/
       - mastercard
       - webmaster
 Naming/MemoizedInstanceVariableName:

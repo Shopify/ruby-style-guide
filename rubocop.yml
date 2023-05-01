@@ -372,8 +372,9 @@ Naming/InclusiveLanguage:
         - leader
       AllowedRegex:
         - !ruby/regexp '/master[_\s\.]key/' # Rails master key
-        - 'blob/master/'
-        - 'origin/master'
+        - !ruby/regexp /\w*:\/\/\S+/ # URLs (e.g. https://github.com/org/repo/blob/master/README.md)
+        - !ruby/regexp '/(?:blob|tree)/master/' # e.g. github.com/org/repo/blob/master/README.md, without https://
+        - !ruby/regexp '/origin[ \/]master/' # Legacy default git branch name
         - 'mastercard'
         - 'webmaster'
 
