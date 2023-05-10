@@ -1398,7 +1398,7 @@ documentation](https://docs.rubocop.org/rubocop/configuration.html#inheriting-co
 * Prefer `return @x if defined?(@x)` over a simple `||=`
 
 ~~~ ruby
-# bad - if the method is called N times, the query will also run N times
+# bad - if @merchant is assigned a falsy value (`nil`, `false`, `0`, etc) and is called N times, the query will also run N times
 def merchant
   @merchant ||= Merchant.find_by(id: merchant_id)
 end
