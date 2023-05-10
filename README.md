@@ -1407,6 +1407,6 @@ end
 def merchant
   return @merchant if defined?(@merchant)
   
-  @merchant ||= Merchant.find_by(id: merchant_id)
+  @merchant = Merchant.find_by(id: merchant_id)
 end
 ~~~
