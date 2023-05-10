@@ -61,6 +61,7 @@ documentation](https://docs.rubocop.org/rubocop/configuration.html#inheriting-co
 * [Regular Expressions](#regular-expressions)
 * [Percent Literals](#percent-literals)
 * [Testing](#testing)
+* [Memoization](#memoization)
 
 ## General
 
@@ -1391,3 +1392,21 @@ documentation](https://docs.rubocop.org/rubocop/configuration.html#inheriting-co
     do_something
   end
   ~~~
+  
+## Memoization
+
+* Prefer `return @x if defined?(@x)` over a simple `||=`
+
+~~~ ruby
+# bad - if the method is called N times, the query will also run N times
+def merchant
+  @merchant ||= Merchant.find_by(id: merchant_id)
+end
+
+# good - A single query, even when @merchant is nil
+def merchant
+  return @merchant if defined?(@merchant)
+  
+  @merchant ||= Merchant.find_by(id: merchant_id)
+end
+~~~
