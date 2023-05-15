@@ -513,6 +513,9 @@ Style/EnvHome:
 Style/EvalWithLocation:
   Enabled: false
 
+Style/ExactRegexpMatch:
+  Enabled: true
+
 Style/ExpandPathArguments:
   Enabled: false
 
