@@ -1847,10 +1847,9 @@ Lint/UselessRuby2Keywords:
 Lint/UselessSetterCall:
   Description: Checks for useless setter call to a local variable.
   Enabled: true
-  SafeAutoCorrect: false
+  Safe: false
   VersionAdded: '0.13'
   VersionChanged: '1.2'
-  Safe: false
 Lint/UselessTimes:
   Description: Checks for useless `Integer#times` calls.
   Enabled: false
@@ -2499,6 +2498,7 @@ Style/CollectionCompact:
   Safe: false
   VersionAdded: '1.2'
   VersionChanged: '1.3'
+  AllowedReceivers: []
 Style/CollectionMethods:
   Description: Preferred collection methods.
   StyleGuide: "#map-find-select-reduce-include-size"
@@ -3297,6 +3297,7 @@ Style/MultipleComparison:
   VersionAdded: '0.49'
   VersionChanged: '1.1'
   AllowMethodComparison: true
+  ComparisonsThreshold: 2
 Style/MutableConstant:
   Description: Do not assign mutable objects to constants.
   Enabled: false
@@ -3624,6 +3625,10 @@ Style/RedundantArgument:
     split: " "
     chomp: "\n"
     chomp!: "\n"
+Style/RedundantArrayConstructor:
+  Description: Checks for the instantiation of array using redundant `Array` constructor.
+  Enabled: pending
+  VersionAdded: '1.52'
 Style/RedundantAssignment:
   Description: Checks for redundant assignment before returning.
   Enabled: false
@@ -3680,6 +3685,12 @@ Style/RedundantFileExtensionInRequire:
   StyleGuide: "#no-explicit-rb-to-require"
   Enabled: false
   VersionAdded: '0.88'
+Style/RedundantFilterChain:
+  Description: Identifies usages of `any?`, `empty?`, `none?` or `one?` predicate
+    methods chained to `select`/`filter`/`find_all` and change them to use predicate
+    method instead.
+  Enabled: pending
+  VersionAdded: '1.52'
 Style/RedundantFreeze:
   Description: Checks usages of Object#freeze on immutable objects.
   Enabled: true
@@ -3719,6 +3730,11 @@ Style/RedundantRegexpCharacterClass:
   Description: Checks for unnecessary single-element Regexp character classes.
   Enabled: false
   VersionAdded: '0.85'
+Style/RedundantRegexpConstructor:
+  Description: Checks for the instantiation of regexp using redundant `Regexp.new`
+    or `Regexp.compile`.
+  Enabled: pending
+  VersionAdded: '1.52'
 Style/RedundantRegexpEscape:
   Description: Checks for redundant escapes in Regexps.
   Enabled: false
