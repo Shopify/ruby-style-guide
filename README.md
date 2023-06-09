@@ -625,6 +625,31 @@ documentation](https://docs.rubocop.org/rubocop/configuration.html#inheriting-co
 * Prefer `Time.iso8601(foo)` instead of `Time.parse(foo)` when expecting ISO8601
   formatted time strings like `"2018-03-20T11:16:39-04:00"`.
 
+* Avoid returning from a `begin` block in assignment contexts. If you return
+  from a method inside a `begin` block, the return will prevent the assignment
+  from taking place, potentially causing confusing memoization bugs.
+
+  ~~~ ruby
+  # bad
+  def foo
+    @foo ||= begin
+      return 1 if flag?
+      2
+    end
+  end
+
+  # good
+  def foo
+    @foo ||= begin
+      if flag?
+        1
+      else
+        2
+      end
+    end
+  end
+  ~~~
+
 ## Naming
 
 * Use `snake_case` for symbols, methods, and variables.
