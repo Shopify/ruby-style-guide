@@ -637,6 +637,29 @@ can.</p>
 <p>Prefer <code>Time.iso8601(foo)</code> instead of <code>Time.parse(foo)</code> when expecting ISO8601
 formatted time strings like <code>&quot;2018-03-20T11:16:39-04:00&quot;</code>.</p>
 </li>
+<li>
+<p>Avoid returning from a <code>begin</code> block in assignment contexts. If you return
+from a method inside a <code>begin</code> block, the return will prevent the assignment
+from taking place, potentially causing confusing memoization bugs.</p>
+<pre class="language-ruby"><code class="language-ruby"><span class="prism--token prism--comment"># bad</span>
+<span class="prism--token prism--keyword">def</span> <span class="prism--token prism--method-definition"><span class="prism--token prism--function">foo</span></span>
+  <span class="prism--token prism--variable">@foo</span> <span class="prism--token prism--operator">||=</span> <span class="prism--token prism--keyword">begin</span>
+    <span class="prism--token prism--keyword">return</span> <span class="prism--token prism--number">1</span> <span class="prism--token prism--keyword">if</span> flag<span class="prism--token prism--operator">?</span>
+    <span class="prism--token prism--number">2</span>
+  <span class="prism--token prism--keyword">end</span>
+<span class="prism--token prism--keyword">end</span>
+
+<span class="prism--token prism--comment"># good</span>
+<span class="prism--token prism--keyword">def</span> <span class="prism--token prism--method-definition"><span class="prism--token prism--function">foo</span></span>
+  <span class="prism--token prism--variable">@foo</span> <span class="prism--token prism--operator">||=</span> <span class="prism--token prism--keyword">begin</span>
+    <span class="prism--token prism--keyword">if</span> flag<span class="prism--token prism--operator">?</span>
+      <span class="prism--token prism--number">1</span>
+    <span class="prism--token prism--keyword">else</span>
+      <span class="prism--token prism--number">2</span>
+    <span class="prism--token prism--keyword">end</span>
+  <span class="prism--token prism--keyword">end</span>
+<span class="prism--token prism--keyword">end</span></code></pre>
+</li>
 </ul>
 <h2 id="naming" tabindex="-1"><a class="header-anchor" href="#naming">Naming</a></h2>
 <ul>
