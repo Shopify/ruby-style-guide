@@ -195,7 +195,7 @@ Lint/NestedPercentLiteral:
   Enabled: false
 
 Lint/NoReturnInBeginEndBlocks:
-  Enabled: false
+  Enabled: true
 
 Lint/NonAtomicFileOperation:
   Enabled: false
