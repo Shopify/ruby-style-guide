@@ -847,5 +847,8 @@ Style/UnpackFirst:
 Style/WordArray:
   EnforcedStyle: brackets
 
+Style/YAMLFileRead:
+  Enabled: true
+
 Style/YodaCondition:
   Enabled: false

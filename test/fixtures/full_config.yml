@@ -4221,7 +4221,7 @@ Style/WordArray:
 Style/YAMLFileRead:
   Description: Checks for the use of `YAML.load`, `YAML.safe_load`, and `YAML.parse`
     with `File.read` argument.
-  Enabled: pending
+  Enabled: true
   VersionAdded: '1.53'
 Style/YodaCondition:
   Description: Forbid or enforce yoda conditions.
