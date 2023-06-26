@@ -3840,7 +3840,7 @@ Style/ReturnNil:
 Style/ReturnNilInPredicateMethodDefinition:
   Description: Checks if uses of `return` or `return nil` in predicate method definition.
   StyleGuide: "#bool-methods-qmark"
-  Enabled: pending
+  Enabled: true
   SafeAutoCorrect: false
   AllowedMethods: []
   AllowedPatterns: []

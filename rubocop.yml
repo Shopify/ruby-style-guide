@@ -784,6 +784,9 @@ Style/RescueStandardError:
 Style/ReturnNil:
   Enabled: true
 
+Style/ReturnNilInPredicateMethodDefinition:
+  Enabled: true
+
 Style/SelectByRegexp:
   Enabled: false
 
