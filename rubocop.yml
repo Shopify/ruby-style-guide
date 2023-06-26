@@ -751,6 +751,9 @@ Style/RedundantInitialize:
 Style/RedundantLineContinuation:
   Enabled: true
 
+Style/RedundantRegexpArgument:
+  Enabled: true
+
 Style/RedundantRegexpCharacterClass:
   Enabled: false
 
