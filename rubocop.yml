@@ -221,6 +221,9 @@ Lint/RaiseException:
 Lint/RedundantDirGlobSort:
   Enabled: false
 
+Lint/RedundantRegexpQuantifiers:
+  Enabled: true
+
 Lint/RedundantRequireStatement:
   Enabled: false
 

@@ -1569,7 +1569,7 @@ Lint/RedundantDirGlobSort:
   SafeAutoCorrect: false
 Lint/RedundantRegexpQuantifiers:
   Description: Checks for redundant quantifiers in Regexps.
-  Enabled: pending
+  Enabled: true
   VersionAdded: '1.53'
 Lint/RedundantRequireStatement:
   Description: Checks for unnecessary `require` statement.
