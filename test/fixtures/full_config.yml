@@ -3669,7 +3669,7 @@ Style/RedundantConstantBase:
   VersionAdded: '1.40'
 Style/RedundantCurrentDirectoryInPath:
   Description: Checks for uses a redundant current directory in path.
-  Enabled: pending
+  Enabled: true
   VersionAdded: '1.53'
 Style/RedundantDoubleSplatHashBraces:
   Description: Checks for redundant uses of double splat hash braces.

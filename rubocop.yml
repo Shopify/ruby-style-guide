@@ -724,6 +724,9 @@ Style/RedundantConditional:
 Style/RedundantConstantBase:
   Enabled: true
 
+Style/RedundantCurrentDirectoryInPath:
+  Enabled: true
+
 Style/RedundantDoubleSplatHashBraces:
   Enabled: true
 
