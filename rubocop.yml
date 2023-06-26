@@ -185,6 +185,9 @@ Lint/InterpolationCheck:
 Lint/LambdaWithoutLiteralBlock:
   Enabled: false
 
+Lint/MixedCaseRange:
+  Enabled: true
+
 Lint/MixedRegexpCaptureTypes:
   Enabled: false
 
