@@ -185,6 +185,9 @@ Lint/InterpolationCheck:
 Lint/LambdaWithoutLiteralBlock:
   Enabled: false
 
+Lint/MixedCaseRange:
+  Enabled: true
+
 Lint/MixedRegexpCaptureTypes:
   Enabled: false
 
@@ -217,6 +220,9 @@ Lint/RaiseException:
 
 Lint/RedundantDirGlobSort:
   Enabled: false
+
+Lint/RedundantRegexpQuantifiers:
+  Enabled: true
 
 Lint/RedundantRequireStatement:
   Enabled: false
@@ -718,6 +724,9 @@ Style/RedundantConditional:
 Style/RedundantConstantBase:
   Enabled: true
 
+Style/RedundantCurrentDirectoryInPath:
+  Enabled: true
+
 Style/RedundantDoubleSplatHashBraces:
   Enabled: true
 
@@ -740,6 +749,9 @@ Style/RedundantInitialize:
   Enabled: false
 
 Style/RedundantLineContinuation:
+  Enabled: true
+
+Style/RedundantRegexpArgument:
   Enabled: true
 
 Style/RedundantRegexpCharacterClass:
@@ -770,6 +782,9 @@ Style/RescueStandardError:
   Enabled: false
 
 Style/ReturnNil:
+  Enabled: true
+
+Style/ReturnNilInPredicateMethodDefinition:
   Enabled: true
 
 Style/SelectByRegexp:
@@ -831,6 +846,9 @@ Style/UnpackFirst:
 
 Style/WordArray:
   EnforcedStyle: brackets
+
+Style/YAMLFileRead:
+  Enabled: true
 
 Style/YodaCondition:
   Enabled: false

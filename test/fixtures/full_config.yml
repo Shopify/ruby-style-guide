@@ -327,7 +327,9 @@ Layout/ClassStructure:
   Description: Enforces a configured order of definitions within a class body.
   StyleGuide: "#consistent-classes"
   Enabled: false
+  SafeAutoCorrect: false
   VersionAdded: '0.52'
+  VersionChanged: '1.53'
   Categories:
     module_inclusion:
     - include
@@ -1064,7 +1066,6 @@ Lint/AmbiguousAssignment:
 Lint/AmbiguousBlockAssociation:
   Description: Checks for ambiguous block association with method when param passed
     without parentheses.
-  StyleGuide: "#syntax"
   Enabled: false
   VersionAdded: '0.48'
   VersionChanged: '1.13'
@@ -1435,8 +1436,15 @@ Lint/MissingSuper:
   Description: Checks for the presence of constructors and lifecycle callbacks without
     calls to `super`.
   Enabled: true
+  AllowedParentClasses: []
   VersionAdded: '0.89'
   VersionChanged: '1.4'
+Lint/MixedCaseRange:
+  Description: Checks for mixed-case character ranges since they include likely unintended
+    characters.
+  Enabled: true
+  SafeAutoCorrect: false
+  VersionAdded: '1.53'
 Lint/MixedRegexpCaptureTypes:
   Description: Do not mix named captures and numbered captures in a Regexp literal.
   Enabled: false
@@ -1559,6 +1567,10 @@ Lint/RedundantDirGlobSort:
   VersionAdded: '1.8'
   VersionChanged: '1.26'
   SafeAutoCorrect: false
+Lint/RedundantRegexpQuantifiers:
+  Description: Checks for redundant quantifiers in Regexps.
+  Enabled: true
+  VersionAdded: '1.53'
 Lint/RedundantRequireStatement:
   Description: Checks for unnecessary `require` statement.
   Enabled: false
@@ -3655,6 +3667,10 @@ Style/RedundantConstantBase:
   Description: Avoid redundant `::` prefix on constant.
   Enabled: true
   VersionAdded: '1.40'
+Style/RedundantCurrentDirectoryInPath:
+  Description: Checks for uses a redundant current directory in path.
+  Enabled: true
+  VersionAdded: '1.53'
 Style/RedundantDoubleSplatHashBraces:
   Description: Checks for redundant uses of double splat hash braces.
   Enabled: true
@@ -3726,6 +3742,11 @@ Style/RedundantPercentQ:
   StyleGuide: "#percent-q"
   Enabled: true
   VersionAdded: '0.76'
+Style/RedundantRegexpArgument:
+  Description: Identifies places where argument can be replaced from a deterministic
+    regexp to a string.
+  Enabled: true
+  VersionAdded: '1.53'
 Style/RedundantRegexpCharacterClass:
   Description: Checks for unnecessary single-element Regexp character classes.
   Enabled: false
@@ -3816,6 +3837,14 @@ Style/ReturnNil:
   - return
   - return_nil
   VersionAdded: '0.50'
+Style/ReturnNilInPredicateMethodDefinition:
+  Description: Checks if uses of `return` or `return nil` in predicate method definition.
+  StyleGuide: "#bool-methods-qmark"
+  Enabled: true
+  SafeAutoCorrect: false
+  AllowedMethods: []
+  AllowedPatterns: []
+  VersionAdded: '1.53'
 Style/SafeNavigation:
   Description: Transforms usages of a method call safeguarded by a check for the existence
     of the object to safe navigation (`&.`). Autocorrection is unsafe as it assumes
@@ -4189,6 +4218,11 @@ Style/WordArray:
   - brackets
   MinSize: 2
   WordRegex: !ruby/regexp /\A(?:\p{Word}|\p{Word}-\p{Word}|\n|\t)+\z/
+Style/YAMLFileRead:
+  Description: Checks for the use of `YAML.load`, `YAML.safe_load`, and `YAML.parse`
+    with `File.read` argument.
+  Enabled: true
+  VersionAdded: '1.53'
 Style/YodaCondition:
   Description: Forbid or enforce yoda conditions.
   Reference: https://en.wikipedia.org/wiki/Yoda_conditions
