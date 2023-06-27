@@ -583,7 +583,7 @@ Style/IfUnlessModifier:
   Enabled: false
 
 Style/IfWithBooleanLiteralBranches:
-  Enabled: false
+  Enabled: true
 
 Style/InPatternThen:
   Enabled: true
