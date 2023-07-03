@@ -28,6 +28,7 @@ AllCops:
   - "**/*.rbx"
   - "**/*.ru"
   - "**/*.ruby"
+  - "**/*.schema"
   - "**/*.spec"
   - "**/*.thor"
   - "**/*.watchr"
@@ -53,6 +54,7 @@ AllCops:
   - "**/Puppetfile"
   - "**/Rakefile"
   - "**/rakefile"
+  - "**/Schemafile"
   - "**/Snapfile"
   - "**/Steepfile"
   - "**/Thorfile"
@@ -417,6 +419,7 @@ Layout/EmptyLineBetweenDefs:
   EmptyLineBetweenMethodDefs: true
   EmptyLineBetweenClassDefs: true
   EmptyLineBetweenModuleDefs: true
+  DefLikeMacros: []
   AllowAdjacentOneLineDefs: true
   NumberOfEmptyLines: 1
 Layout/EmptyLines:
