@@ -2333,6 +2333,7 @@ Style/ArgumentsForwarding:
   StyleGuide: "#arguments-forwarding"
   Enabled: false
   AllowOnlyRestArgument: true
+  UseAnonymousForwarding: true
   VersionAdded: '1.1'
 Style/ArrayCoercion:
   Description: Use Array() instead of explicit Array check or [*var], when dealing
@@ -2928,8 +2929,9 @@ Style/HashConversion:
   Description: Avoid Hash[] in favor of ary.to_h or literal hashes.
   StyleGuide: "#avoid-hash-constructor"
   Enabled: false
+  SafeAutoCorrect: false
   VersionAdded: '1.10'
-  VersionChanged: '1.11'
+  VersionChanged: '1.55'
   AllowSplatArgument: true
 Style/HashEachMethods:
   Description: Use Hash#each_key and Hash#each_value.
@@ -3633,10 +3635,12 @@ Style/RedundantArgument:
   Enabled: false
   Safe: false
   VersionAdded: '1.4'
-  VersionChanged: '1.40'
+  VersionChanged: '1.55'
   Methods:
     join: ''
     sum: 0
+    exit: true
+    exit!: false
     split: " "
     chomp: "\n"
     chomp!: "\n"
