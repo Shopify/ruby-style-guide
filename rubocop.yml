@@ -383,6 +383,7 @@ Naming/InclusiveLanguage:
         - !ruby/regexp '/origin[ \/]master/' # Legacy default git branch name
         - 'mastercard'
         - 'webmaster'
+        - 'remaster'
 
 Naming/MemoizedInstanceVariableName:
   Enabled: false

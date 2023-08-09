@@ -2139,6 +2139,7 @@ Naming/InclusiveLanguage:
       - !ruby/regexp /origin[ \/]master/
       - mastercard
       - webmaster
+      - remaster
 Naming/MemoizedInstanceVariableName:
   Description: Memoized method name should match memo instance variable name.
   Enabled: false
