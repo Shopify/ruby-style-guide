@@ -110,6 +110,15 @@ Bundler/DuplicatedGem:
   - "**/*.gemfile"
   - "**/Gemfile"
   - "**/gems.rb"
+Bundler/DuplicatedGroup:
+  Description: Checks for duplicate group entries in Gemfile.
+  Enabled: true
+  Severity: warning
+  VersionAdded: '1.56'
+  Include:
+  - "**/*.gemfile"
+  - "**/Gemfile"
+  - "**/gems.rb"
 Bundler/GemComment:
   Description: Add a comment describing each gem.
   Enabled: false
