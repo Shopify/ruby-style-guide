@@ -2146,8 +2146,7 @@ Naming/InclusiveLanguage:
       - !ruby/regexp /\w*:\/\/\S+/
       - !ruby/regexp /(?:blob|tree)\/master/
       - !ruby/regexp /origin[ \/]master/
-      - mastercard
-      - webmaster
+      - !ruby/regexp /(?<=[a-z])master|master(?=[a-z])/
 Naming/MemoizedInstanceVariableName:
   Description: Memoized method name should match memo instance variable name.
   Enabled: false
