@@ -510,7 +510,7 @@ Style/Encoding:
   Enabled: false
 
 Style/EndlessMethod:
-  Enabled: false
+  Enabled: true
 
 Style/EnvHome:
   Enabled: false
