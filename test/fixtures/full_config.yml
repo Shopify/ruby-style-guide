@@ -2766,7 +2766,7 @@ Style/EndBlock:
 Style/EndlessMethod:
   Description: Avoid the use of multi-lined endless method definitions.
   StyleGuide: "#endless-methods"
-  Enabled: false
+  Enabled: true
   VersionAdded: '1.8'
   EnforcedStyle: allow_single_line
   SupportedStyles:
