@@ -91,6 +91,17 @@ class ConfigTest < Minitest::Test
     ERROR_MESSAGE
   end
 
+  def test_libyaml_version_is_recent
+    require "psych"
+
+    assert_operator(
+      Gem::Version.new("0.2.5"),
+      :<=,
+      Gem::Version.new(Psych::LIBYAML_VERSION),
+      "libyaml version must be >= 0.2.5",
+    )
+  end
+
   private
 
   def checking_rubocop_version_compatibility?
