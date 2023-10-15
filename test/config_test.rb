@@ -1,16 +1,30 @@
 # frozen_string_literal: true
 
 require "test_helper"
+
 require "diffy"
-require "rubocop"
-require "rake"
 require "erb"
+require "rake"
+require "rubocop"
 require "yaml"
 
 class ConfigTest < Minitest::Test
-  Dir.glob("rubocop*.yml") do |config_path|
-    full_config_path = "test/fixtures/full_configs/#{config_path}"
+  PLUGIN_CONFIGS = [
+    "rubocop.yml",
+    # Auto-discover all RuboCop plugin configs
+    *Dir.glob("rubocop{,.*}.yml"),
+  ].map do |config_filename|
+    gem_name = File.basename(config_filename, ".yml").sub("rubocop.", "rubocop-")
 
+    [gem_name, config_filename]
+  end.sort.to_h.freeze
+
+  CONFIG_FIXTURES = Dir.glob("rubocop*.yml").map do |config_path|
+    full_config_path = "test/fixtures/full_configs/#{config_path}"
+    [config_path, full_config_path]
+  end.sort.to_h.freeze
+
+  CONFIG_FIXTURES.each do |config_path, full_config_path|
     unless ENV.fetch("CHECKING_RUBOCOP_VERSION_COMPATIBILITY", "") == "true"
       define_method("test_#{config_path}_config_dump_is_unchanged") do
         unless File.exist?(full_config_path)
@@ -24,7 +38,9 @@ class ConfigTest < Minitest::Test
           system(
             "bin/dump-config",
             "--defaults",
-            "merge",
+            # For plugin configs, we want to exclude any unchanged RuboCop core defaults
+            # For other configs, we want to merge them with all RuboCop defaults (core, and plugin defaults)
+            config_path.start_with?("rubocop.") ? "diff" : "merge",
             "--config",
             config_path,
             "--output",
@@ -95,10 +111,7 @@ class ConfigTest < Minitest::Test
     end
 
     define_method("test_#{config_path}_is_sorted_alphabetically") do
-      # We bypass the RuboCop::ConfigLoader, because we want to examine this file only, not any configs it requires.
-      # We need to handle ERB ourselves, though, before loading YAML.
-      yaml = ERB.new(File.read(config_path)).result
-      config_keys = (YAML.respond_to?(:unsafe_load) ? YAML.unsafe_load(yaml) : YAML.load(yaml)).keys
+      config_keys = load_raw_config(config_path).keys # We want to examine this file only, not any configs it requires.
 
       # Expected order is:
       #   - Keys starting with lowercase, in any order (these are not cop/department config, and order may matter)
@@ -136,18 +149,14 @@ class ConfigTest < Minitest::Test
         flunk "Full config has not been dumped yet. Please run `bundle exec rake config:dump`"
       end
 
-      if YAML.respond_to?(:unsafe_load_file)
-        YAML.unsafe_load_file(full_config_path)
-      else
-        YAML.load_file(full_config_path)
-      end.each do |cop_name, cop_config|
+      unsafe_load_yaml_file(full_config_path).each do |cop_name, cop_config|
         pending_cops << cop_name if Hash === cop_config && cop_config["Enabled"] == "pending"
       end
 
       assert(pending_cops.empty?, <<~ERROR_MESSAGE.chomp)
         Error: The style guide should take a stance on all cops, but following cops are marked as pending:
 
-        #{pending_cops.map { "    #{_1}:\n      Enabled: pending" }.join("\n\n")}
+        #{pending_cops.map { |cop| "    #{cop}:\n      Enabled: pending" }.join("\n\n")}
 
         Please update #{config_path} to mark all of the these cops as either `Enabled: true` or `Enabled: false`
 
@@ -163,6 +172,41 @@ class ConfigTest < Minitest::Test
     end
   end
 
+  PLUGIN_CONFIGS.each do |gem_name, config_path|
+    define_method("test_#{config_path}_requires_#{gem_name}") do
+      config = load_raw_config(config_path)
+      assert(config.key?("require"), "#{config_path} must require its plugin gem")
+      assert_includes(config.fetch("require"), gem_name, "#{config_path} must require its plugin gem")
+    end unless gem_name == "rubocop"
+  end
+
+  def test_dynamic_config_is_correct
+    assert_contents_match(dynamic_config_for(PLUGIN_CONFIGS), "rubocop-dynamic.yml")
+  end
+
+  def test_labeler_config_includes_labels_for_each_plugin
+    assert_contents_match(labeler_config_for(PLUGIN_CONFIGS), ".github/labeler.yml")
+  end
+
+  def test_all_plugins_appear_in_Gemfile
+    expected_gems = PLUGIN_CONFIGS.keys - ["rubocop"]
+    return pass if expected_gems.empty?
+
+    assert_includes(
+      File.read("Gemfile"),
+      gemfile_plugin_group_for(expected_gems),
+      "Gemfile must contain a group with all RuboCop plugins",
+    )
+  end
+
+  def test_full_configs_contains_expected_fixtures
+    assert_equal(
+      CONFIG_FIXTURES.values,
+      Dir.glob("test/fixtures/full_configs/*"),
+      "test/fixtures/full_configs must contain dumps of each config",
+    )
+  end
+
   if ENV.key?("GITHUB_ACTIONS")
     require "psych"
 
@@ -176,10 +220,73 @@ class ConfigTest < Minitest::Test
 
   private
 
+  def dynamic_config_for(plugin_configs)
+    <<~YAML
+      <%
+        require "json"
+
+        # Identify installed RuboCop plugins to configure
+        plugin_configs = {
+          #{plugin_configs.map do |gem_name, config_filename|
+            "#{gem_name.inspect} => #{config_filename.inspect},"
+          end.join("\n    ")}
+        }.select { |gem_name, _| Gem.loaded_specs.include?(gem_name) }
+      %>
+
+      require: <%= plugin_configs.keys.to_json %>
+
+      inherit_from: <%= plugin_configs.values.to_json %>
+    YAML
+  end
+
+  def labeler_config_for(plugin_configs)
+    <<~YAML
+      config change: rubocop*.yml
+
+      # Labels for special configs
+      cli: rubocop-cli.yml
+      dynamic: rubocop-dynamic.yml
+
+      # Labels for each RuboCop plugin we dynamically configure
+      #{plugin_configs.to_yaml.sub(/\A---\n/, "").chomp}
+    YAML
+  end
+
+  def gemfile_plugin_group_for(gem_names)
+    <<~RUBY
+      group :plugins do
+        #{gem_names.map { |name| "gem #{name.inspect}" }.join("\n  ")}
+      end
+    RUBY
+  end
+
+  def load_raw_config(config_path)
+    # Bypass RuboCop::ConfigLoader, not resolving any requires or inheritance.
+    # We need to handle ERB ourselves though, before loading YAML.
+    config = unsafe_load_yaml(ERB.new(File.read(config_path)).tap { |erb| erb.filename = config_path }.result)
+    assert_instance_of(Hash, config, "#{config_path} must contain YAML+ERB describing Hash")
+
+    config
+  end
+
   def assert_sorted(actual, message)
     expected_string = actual.sort.join("\n")
     actual_string = actual.join("\n")
 
     assert_equal(expected_string, actual_string, message)
+  end
+
+  def assert_contents_match(expected_contents, path_relative_to_root)
+    absolute_path = File.join(path_relative_to_root)
+    assert(File.exist?(absolute_path), "#{path_relative_to_root} must exist")
+    assert_equal(expected_contents, File.read(absolute_path), "#{path_relative_to_root} must match expected contents")
+  end
+
+  def unsafe_load_yaml(string)
+    YAML.respond_to?(:unsafe_load) ? YAML.unsafe_load(string) : YAML.load(string)
+  end
+
+  def unsafe_load_yaml_file(path)
+    YAML.respond_to?(:unsafe_load_file) ? YAML.unsafe_load_file(path) : YAML.load_file(path)
   end
 end

@@ -45,6 +45,8 @@ GEM
       unicode-display_width (>= 2.4.0, < 3.0)
     rubocop-ast (1.29.0)
       parser (>= 3.2.1.0)
+    rubocop-minitest (0.32.2)
+      rubocop (>= 1.39, < 2.0)
     ruby-progressbar (1.13.0)
     unicode-display_width (2.5.0)
 
@@ -56,6 +58,7 @@ DEPENDENCIES
   minitest
   pry-byebug
   rake
+  rubocop-minitest
   rubocop-shopify!
 
 BUNDLED WITH

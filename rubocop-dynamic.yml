@@ -1,0 +1,13 @@
+<%
+  require "json"
+
+  # Identify installed RuboCop plugins to configure
+  plugin_configs = {
+    "rubocop" => "rubocop.yml",
+    "rubocop-minitest" => "rubocop.minitest.yml",
+  }.select { |gem_name, _| Gem.loaded_specs.include?(gem_name) }
+%>
+
+require: <%= plugin_configs.keys.to_json %>
+
+inherit_from: <%= plugin_configs.values.to_json %>

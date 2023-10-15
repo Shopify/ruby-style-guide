@@ -1,0 +1,98 @@
+require:
+  - rubocop-minitest
+
+Minitest/AssertInDelta:
+  Enabled: false # TODO: Triage
+
+Minitest/AssertKindOf:
+  Enabled: true
+
+Minitest/AssertOperator:
+  Enabled: false # TODO: Triage
+
+Minitest/AssertOutput:
+  Enabled: true
+
+Minitest/AssertPathExists:
+  Enabled: true
+
+Minitest/AssertPredicate:
+  Enabled: true
+
+Minitest/AssertRaisesCompoundBody:
+  Enabled: false # TODO: Triage
+
+Minitest/AssertRaisesWithRegexpArgument:
+  Enabled: false # TODO: Triage
+
+Minitest/AssertSame:
+  Enabled: true
+
+Minitest/AssertSilent:
+  Enabled: false # TODO: Triage
+
+Minitest/AssertWithExpectedArgument:
+  Enabled: true
+
+Minitest/AssertionInLifecycleHook:
+  Enabled: false # TODO: Triage
+
+Minitest/DuplicateTestRun:
+  Enabled: true
+
+Minitest/EmptyLineBeforeAssertionMethods:
+  Enabled: false # TODO: Triage
+
+Minitest/LifecycleHooksOrder:
+  Enabled: false # TODO: Triage
+
+Minitest/LiteralAsActualArgument:
+  Enabled: true
+
+Minitest/MultipleAssertions:
+  Enabled: false # TODO: Triage
+
+Minitest/NonPublicTestMethod:
+  Enabled: true
+
+Minitest/RefuteInDelta:
+  Enabled: false # TODO: Triage
+
+Minitest/RefuteKindOf:
+  Enabled: true
+
+Minitest/RefuteOperator:
+  Enabled: false # TODO: Triage
+
+Minitest/RefutePathExists:
+  Enabled: true
+
+Minitest/RefutePredicate:
+  Enabled: true
+
+Minitest/RefuteSame:
+  Enabled: true
+
+Minitest/ReturnInTestMethod:
+  Enabled: true
+
+Minitest/SkipEnsure:
+  Enabled: true
+
+Minitest/SkipWithoutReason:
+  Enabled: true
+
+Minitest/TestFileName:
+  Enabled: true
+
+Minitest/TestMethodName:
+  Enabled: false # TODO: Triage
+
+Minitest/UnreachableAssertion:
+  Enabled: true
+
+Minitest/UnspecifiedException:
+  Enabled: true
+
+Minitest/UselessAssertion:
+  Enabled: true

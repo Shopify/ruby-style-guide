@@ -16,6 +16,7 @@
 require "fileutils"
 require "rubocop"
 require "optparse"
+require "yaml"
 
 output_file = nil
 config_file = ".rubocop.yml"
@@ -34,9 +35,10 @@ opts = OptionParser.new do |o|
     abort("File not found: #{config_file}") unless File.exist?(config_file)
   end
 
-  default_behaviors = [:only, :merge, :ignore]
+  default_behaviors = [:diff, :ignore, :merge, :only]
   o.on("-d", "--defaults BEHAVIOR", default_behaviors, *<<~INFO.lines(chomp: true)) { |v| defaults = v }
     Choose the handling behavior for the default configuration:
+      • diff     Outputs the provided config, merged with defaults, excluding entries identical to RuboCop core defaults
       • ignore   Outputs the provided config without merging in the defaults (default)
       • merge    Outputs the provided config, merged with the defaults
       • only     Outputs only the default configuration applicable for the provided config
@@ -46,20 +48,51 @@ end
 opts.parse!
 abort("Unexpected arguments: #{ARGV.join(", ")}\n\n#{opts}") unless ARGV.empty?
 
+def unsafe_load_yaml(string)
+  YAML.respond_to?(:unsafe_load) ? YAML.unsafe_load(string) : YAML.load(string)
+end
+
+# We want the default configuration before it's had any extra config injected into it.
+# Round tripping it is a simple way to ensure we have a deep copy.
+original_default_configuration = unsafe_load_yaml(RuboCop::ConfigLoader.default_configuration.to_h.to_yaml)
+
 # This has the side-effect of triggering any required plugins to load and updates the default configuration.
 file_config = RuboCop::ConfigLoader.load_file(config_file)
 
+# Deeply drops values from the first Hash if they are identical to the corresponding value in the second Hash.
+# Deeply mutates the first Hash!
+def deep_exclude_if_identical!(hash, other)
+  hash.reject! do |key, value|
+    other_value = other[key]
+    next true if value == other_value
+
+    deep_exclude_if_identical!(value, other_value) if Hash === value && Hash === other_value
+
+    false
+  end
+
+  hash
+end
+
 config_to_output = case defaults
-when :only   then RuboCop::ConfigLoader.default_configuration
-when :merge  then RuboCop::ConfigLoader.merge_with_default(file_config, config_file)
+when :diff
+  RuboCop::Config.create(
+    deep_exclude_if_identical!(
+      RuboCop::ConfigLoader.merge_with_default(file_config, config_file).to_h,
+      original_default_configuration,
+    ),
+    config_file,
+  )
 when :ignore then file_config
+when :merge  then RuboCop::ConfigLoader.merge_with_default(file_config, config_file)
+when :only   then RuboCop::ConfigLoader.default_configuration # May have changed since loading the given config
 else              raise "BUG: unknown mode: #{defaults}"
 end
 
 content = config_to_output.to_h.to_yaml
 
-# TODO: Add an explanation for this
-content.gsub!(config_to_output.base_dir_for_path_parameters, "")
+# Strip out machine specific absolute paths, leaving the paths relative to .rubocop.yml
+content.gsub!("#{config_to_output.base_dir_for_path_parameters}/", "")
 
 # Removing trailing whitespaces from each line due to older libyaml versions
 # converting nil hash values into whitespaces. GitHub actions is still stuck

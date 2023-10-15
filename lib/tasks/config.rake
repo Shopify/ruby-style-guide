@@ -11,11 +11,13 @@ namespace :config do
 
   dump_configs.each do |dump_file, config_file|
     desc "Dump the full RuboCop config merging defaults and #{config_file}"
-    file dump_file => [full_configs_directory, config_file] do
+    task dump_file => [full_configs_directory, *dump_configs.values] do
       system(
         "bin/dump-config",
         "--defaults",
-        "merge",
+        # For plugin configs, we want to exclude any unchanged RuboCop core defaults
+        # For other configs, we want to merge them with all RuboCop defaults (core, and plugin defaults)
+        config_file.start_with?("rubocop.") ? "diff" : "merge",
         "--config",
         config_file,
         "--output",

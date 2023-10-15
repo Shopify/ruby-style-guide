@@ -1,1 +1,9 @@
-"config change": rubocop.yml
+config change: rubocop*.yml
+
+# Labels for special configs
+cli: rubocop-cli.yml
+dynamic: rubocop-dynamic.yml
+
+# Labels for each RuboCop plugin we dynamically configure
+rubocop: rubocop.yml
+rubocop-minitest: rubocop.minitest.yml
