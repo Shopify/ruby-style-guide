@@ -8,7 +8,7 @@ require "erb"
 require "yaml"
 
 class ConfigTest < Minitest::Test
-  Dir.glob("rubocop.yml") do |config_path|
+  Dir.glob("rubocop*.yml") do |config_path|
     full_config_path = "test/fixtures/full_configs/#{config_path}"
 
     unless ENV.fetch("CHECKING_RUBOCOP_VERSION_COMPATIBILITY", "") == "true"

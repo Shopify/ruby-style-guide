@@ -13,12 +13,6 @@ AllCops:
   # Mac OS Catalina ships with 2.6.3
   TargetRubyVersion: 2.6
 
-# We disable this at entrypoint.
-# Due to CLI apps being invoked via an entry point,
-# we can exclude this from all files
-Style/FrozenStringLiteralComment:
-  Enabled: false
-
 # This doesn't take into account retrying from an exception. E.g.:
 #   begin
 #     retries ||= 0
@@ -28,6 +22,12 @@ Style/FrozenStringLiteralComment:
 #     handle_error(e)
 #   end
 Lint/SuppressedException:
+  Enabled: false
+
+# We disable this at entrypoint.
+# Due to CLI apps being invoked via an entry point,
+# we can exclude this from all files
+Style/FrozenStringLiteralComment:
   Enabled: false
 
 # Allow the use of globals which occasionally makes sense in a CLI app
