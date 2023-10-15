@@ -12,7 +12,7 @@ namespace :config do
       "--config",
       "rubocop.yml",
       "--output",
-      "test/fixtures/full_config.yml",
+      "test/fixtures/full_configs/rubocop.yml",
       exception: true,
     )
   end
