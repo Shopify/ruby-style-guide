@@ -11,12 +11,19 @@ class ConfigTest < Minitest::Test
   def test_config_is_unchanged
     skip if checking_rubocop_version_compatibility?
 
-    Rake.application.load_rakefile
-
     original_config = FULL_CONFIG_PATH
 
     Tempfile.create do |tempfile|
-      Rake::Task["config:dump"].invoke(tempfile.path)
+      system(
+        "bin/dump-config",
+        "--defaults",
+        "merge",
+        "--config",
+        "rubocop.yml",
+        "--output",
+        tempfile.path,
+        exception: true,
+      )
 
       diff = Diffy::Diff.new(
         original_config, tempfile.path, source: "files", context: 5

@@ -1,0 +1,81 @@
+#! /usr/bin/env ruby
+# frozen_string_literal: true
+
+# RuboCop plugins inject their config into the global default configuration when loaded.
+# Therefore, to be able to dump full configs in isolation, we need a clean Ruby process in which we can load only the
+# plugins for which we want to dump the configuration, hence this executable.
+
+# Usage:
+#   bin/dump-config [-o OUTPUT_FILE] [-c CONFIG_FILE] [--defaults MODE]
+#
+# This will dump the configuration for all plugins listed in the given CONFIG_FILE into
+# stdout by default, or into the file specified by `-o` or `--output`.
+# The CONFIG_FILE defaults to .rubocop.yml. It can be overridden by `-c` or `--config`.
+# The MODE defaults to ignore. It can be overridden by `--defaults` to be either only, merge, or ignore.
+
+require "fileutils"
+require "rubocop"
+require "optparse"
+
+output_file = nil
+config_file = ".rubocop.yml"
+defaults = :ignore
+
+opts = OptionParser.new do |o|
+  o.banner = "Usage: bin/dump-config [-c FILE] [-d BEHAVIOUR] [-o FILE]"
+
+  o.on("-o", "--output FILE", "Write output to FILE instead of stdout.") do |v|
+    output_file = v
+    FileUtils.mkdir_p(File.dirname(output_file))
+  end
+
+  o.on("-c", "--config FILE", "Specify configuration file.") do |v|
+    config_file = v
+    abort("File not found: #{config_file}") unless File.exist?(config_file)
+  end
+
+  default_behaviors = [:only, :merge, :ignore]
+  o.on("-d", "--defaults BEHAVIOR", default_behaviors, *<<~INFO.lines(chomp: true)) { |v| defaults = v }
+    Choose the handling behavior for the default configuration:
+      • ignore   Outputs the provided config without merging in the defaults (default)
+      • merge    Outputs the provided config, merged with the defaults
+      • only     Outputs only the default configuration applicable for the provided config
+  INFO
+end
+
+opts.parse!
+abort("Unexpected arguments: #{ARGV.join(", ")}\n\n#{opts}") unless ARGV.empty?
+
+# This has the side-effect of triggering any required plugins to load and updates the default configuration.
+file_config = RuboCop::ConfigLoader.load_file(config_file)
+
+config_to_output = case defaults
+when :only   then RuboCop::ConfigLoader.default_configuration
+when :merge  then RuboCop::ConfigLoader.merge_with_default(file_config, config_file)
+when :ignore then file_config
+else              raise "BUG: unknown mode: #{defaults}"
+end
+
+content = config_to_output.to_h.to_yaml
+
+# TODO: Add an explanation for this
+content.gsub!(config_to_output.base_dir_for_path_parameters, "")
+
+# Removing trailing whitespaces from each line due to older libyaml versions
+# converting nil hash values into whitespaces. GitHub actions is still stuck
+# with libyaml < 0.2.5. This line can be removed once it is upgraded. Psych
+# can be used to check for the running libyaml version:
+#
+# ```ruby
+# require "psych"
+# puts Psych::LIBYAML_VERSION
+# ```
+#
+# For more info, see: https://github.com/yaml/libyaml/pull/186
+content.gsub!(/\s\n/, "\n")
+
+if output_file
+  File.write(output_file, content)
+else
+  puts content
+end
