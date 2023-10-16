@@ -1586,7 +1586,9 @@ Lint/RedundantRegexpQuantifiers:
 Lint/RedundantRequireStatement:
   Description: Checks for unnecessary `require` statement.
   Enabled: false
+  SafeAutoCorrect: false
   VersionAdded: '0.76'
+  VersionChanged: '1.57'
 Lint/RedundantSafeNavigation:
   Description: Checks for redundant safe navigation calls.
   Enabled: false
@@ -2488,7 +2490,9 @@ Style/ClassEqualityComparison:
     for equality.
   StyleGuide: "#instance-of-vs-class-comparison"
   Enabled: false
+  SafeAutoCorrect: false
   VersionAdded: '0.93'
+  VersionChanged: '1.57'
   AllowedMethods:
   - "=="
   - equal?
@@ -3722,7 +3726,9 @@ Style/RedundantFilterChain:
     methods chained to `select`/`filter`/`find_all` and change them to use predicate
     method instead.
   Enabled: true
+  SafeAutoCorrect: false
   VersionAdded: '1.52'
+  VersionChanged: '1.57'
 Style/RedundantFreeze:
   Description: Checks usages of Object#freeze on immutable objects.
   Enabled: true
@@ -3935,6 +3941,10 @@ Style/SingleLineBlockParams:
   - inject:
     - acc
     - elem
+Style/SingleLineDoEndBlock:
+  Description: Checks for single-line `do`...`end` blocks.
+  Enabled: pending
+  VersionAdded: '1.57'
 Style/SingleLineMethods:
   Description: Avoid single-line methods.
   StyleGuide: "#no-single-line-methods"
