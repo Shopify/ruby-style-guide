@@ -202,7 +202,7 @@ class ConfigTest < Minitest::Test
   def test_full_configs_contains_expected_fixtures
     assert_equal(
       CONFIG_FIXTURES.values,
-      Dir.glob("test/fixtures/full_configs/*"),
+      Dir.glob("test/fixtures/full_configs/*").sort,
       "test/fixtures/full_configs must contain dumps of each config",
     )
   end
