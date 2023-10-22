@@ -3943,7 +3943,7 @@ Style/SingleLineBlockParams:
     - elem
 Style/SingleLineDoEndBlock:
   Description: Checks for single-line `do`...`end` blocks.
-  Enabled: pending
+  Enabled: true
   VersionAdded: '1.57'
 Style/SingleLineMethods:
   Description: Avoid single-line methods.

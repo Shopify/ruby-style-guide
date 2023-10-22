@@ -1,3 +1,5 @@
+<% rubocop_version = Gem.loaded_specs.fetch("rubocop").version %>
+
 inherit_mode:
   merge:
   - Exclude
@@ -793,6 +795,11 @@ Style/SelectByRegexp:
 
 Style/SingleArgumentDig:
   Enabled: false
+
+<% if rubocop_version >= Gem::Version.new('1.57') %>
+Style/SingleLineDoEndBlock:
+  Enabled: true
+<% end %>
 
 Style/SlicingWithRange:
   Enabled: false
