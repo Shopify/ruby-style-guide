@@ -54,10 +54,10 @@ Layout/HashAlignment:
   EnforcedLastArgumentHashStyle: ignore_implicit
 
 Layout/LineContinuationLeadingSpace:
-  Enabled: false
+  Enabled: true
 
 Layout/LineContinuationSpacing:
-  Enabled: false
+  Enabled: true
 
 Layout/LineEndStringConcatenationIndentation:
   Enabled: true

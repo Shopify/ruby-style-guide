@@ -689,7 +689,7 @@ Layout/LeadingEmptyLines:
 Layout/LineContinuationLeadingSpace:
   Description: Use trailing spaces instead of leading spaces in strings broken over
     multiple lines (by a backslash).
-  Enabled: false
+  Enabled: true
   VersionAdded: '1.31'
   VersionChanged: '1.45'
   EnforcedStyle: trailing
@@ -698,7 +698,7 @@ Layout/LineContinuationLeadingSpace:
   - trailing
 Layout/LineContinuationSpacing:
   Description: Checks the spacing in front of backslash in line continuations.
-  Enabled: false
+  Enabled: true
   VersionAdded: '1.31'
   EnforcedStyle: space
   SupportedStyles:

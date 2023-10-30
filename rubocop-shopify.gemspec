@@ -5,7 +5,7 @@ Gem::Specification.new do |s|
   s.name        = "rubocop-shopify"
   s.version     = "2.14.0"
   s.summary     = "Shopify's style guide for Ruby."
-  s.description = "Gem containing the rubocop.yml config that corresponds to "\
+  s.description = "Gem containing the rubocop.yml config that corresponds to " \
     "the implementation of the Shopify's style guide for Ruby."
 
   s.license = "MIT"
