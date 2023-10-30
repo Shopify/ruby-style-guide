@@ -74,7 +74,7 @@ AllCops:
   StyleGuideCopsOnly: false
   EnabledByDefault: false
   DisabledByDefault: false
-  NewCops: pending
+  NewCops: disable
   UseCache: true
   MaxFilesInCache: 20000
   CacheRootDirectory:
