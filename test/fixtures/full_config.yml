@@ -2894,7 +2894,7 @@ Style/FrozenStringLiteralComment:
   Enabled: true
   VersionAdded: '0.36'
   VersionChanged: '0.79'
-  EnforcedStyle: always
+  EnforcedStyle: always_true
   SupportedStyles:
   - always
   - always_true
