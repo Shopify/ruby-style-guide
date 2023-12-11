@@ -4093,7 +4093,7 @@ Style/StructInheritance:
 Style/SuperWithArgsParentheses:
   Description: Use parentheses for `super` with arguments.
   StyleGuide: "#super-with-args"
-  Enabled: pending
+  Enabled: true
   VersionAdded: '1.58'
 Style/SwapValues:
   Description: Enforces the use of shorthand-style swapping of 2 variables.

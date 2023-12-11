@@ -834,6 +834,11 @@ Style/StringLiteralsInInterpolation:
 Style/StructInheritance:
   Enabled: false
 
+<% if rubocop_version >= v1_58 %>
+Style/SuperWithArgsParentheses:
+  Enabled: true
+<% end %>
+
 Style/SwapValues:
   Enabled: false
 
