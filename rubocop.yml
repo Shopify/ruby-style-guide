@@ -1,4 +1,7 @@
-<% rubocop_version = Gem.loaded_specs.fetch("rubocop").version %>
+<%
+  rubocop_version = Gem.loaded_specs.fetch("rubocop").version
+  v1_57 = Gem::Version.new("1.57")
+%>
 
 inherit_mode:
   merge:
@@ -796,7 +799,7 @@ Style/SelectByRegexp:
 Style/SingleArgumentDig:
   Enabled: false
 
-<% if rubocop_version >= Gem::Version.new('1.57') %>
+<% if rubocop_version >= v1_57 %>
 Style/SingleLineDoEndBlock:
   Enabled: true
 <% end %>
