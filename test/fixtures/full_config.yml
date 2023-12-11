@@ -1437,7 +1437,7 @@ Lint/LiteralAsCondition:
   VersionAdded: '0.51'
 Lint/LiteralAssignmentInCondition:
   Description: Checks for literal assignments in the conditions.
-  Enabled: pending
+  Enabled: true
   VersionAdded: '1.58'
 Lint/LiteralInInterpolation:
   Description: Checks for literals used in interpolation.

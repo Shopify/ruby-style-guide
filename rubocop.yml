@@ -1,6 +1,7 @@
 <%
   rubocop_version = Gem.loaded_specs.fetch("rubocop").version
   v1_57 = Gem::Version.new("1.57")
+  v1_58 = Gem::Version.new("1.58")
 %>
 
 inherit_mode:
@@ -190,6 +191,11 @@ Lint/InterpolationCheck:
 
 Lint/LambdaWithoutLiteralBlock:
   Enabled: false
+
+<% if rubocop_version >= v1_58 %>
+Lint/LiteralAssignmentInCondition:
+  Enabled: true
+<% end %>
 
 Lint/MixedCaseRange:
   Enabled: true
