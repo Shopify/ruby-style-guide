@@ -1,4 +1,9 @@
-<% rubocop_version = Gem.loaded_specs.fetch("rubocop").version %>
+<%
+  rubocop_version = Gem.loaded_specs.fetch("rubocop").version
+  v1_57 = Gem::Version.new("1.57")
+  v1_58 = Gem::Version.new("1.58")
+  v1_59 = Gem::Version.new("1.59")
+%>
 
 inherit_mode:
   merge:
@@ -185,8 +190,18 @@ Lint/IncompatibleIoSelectWithFiberScheduler:
 Lint/InterpolationCheck:
   Enabled: false
 
+<% if rubocop_version >= v1_59 %>
+Lint/ItWithoutArgumentsInBlock:
+  Enabled: true
+<% end %>
+
 Lint/LambdaWithoutLiteralBlock:
   Enabled: false
+
+<% if rubocop_version >= v1_58 %>
+Lint/LiteralAssignmentInCondition:
+  Enabled: true
+<% end %>
 
 Lint/MixedCaseRange:
   Enabled: true
@@ -796,7 +811,7 @@ Style/SelectByRegexp:
 Style/SingleArgumentDig:
   Enabled: false
 
-<% if rubocop_version >= Gem::Version.new('1.57') %>
+<% if rubocop_version >= v1_57 %>
 Style/SingleLineDoEndBlock:
   Enabled: true
 <% end %>
@@ -824,6 +839,11 @@ Style/StringLiteralsInInterpolation:
 
 Style/StructInheritance:
   Enabled: false
+
+<% if rubocop_version >= v1_58 %>
+Style/SuperWithArgsParentheses:
+  Enabled: true
+<% end %>
 
 Style/SwapValues:
   Enabled: false

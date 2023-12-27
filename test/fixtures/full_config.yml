@@ -922,6 +922,10 @@ Layout/SpaceAroundOperators:
   SupportedStylesForExponentOperator:
   - space
   - no_space
+  EnforcedStyleForRationalLiterals: no_space
+  SupportedStylesForRationalLiterals:
+  - space
+  - no_space
 Layout/SpaceBeforeBlockBraces:
   Description: Checks that the left block brace has or doesn't have space before it.
   Enabled: true
@@ -1418,6 +1422,11 @@ Lint/InterpolationCheck:
   SafeAutoCorrect: false
   VersionAdded: '0.50'
   VersionChanged: '1.40'
+Lint/ItWithoutArgumentsInBlock:
+  Description: Checks uses of `it` calls without arguments in block.
+  Reference: https://bugs.ruby-lang.org/issues/18980
+  Enabled: true
+  VersionAdded: '1.59'
 Lint/LambdaWithoutLiteralBlock:
   Description: Checks uses of lambda without a literal block.
   Enabled: false
@@ -1426,6 +1435,10 @@ Lint/LiteralAsCondition:
   Description: Checks of literals used in conditions.
   Enabled: true
   VersionAdded: '0.51'
+Lint/LiteralAssignmentInCondition:
+  Description: Checks for literal assignments in the conditions.
+  Enabled: true
+  VersionAdded: '1.58'
 Lint/LiteralInInterpolation:
   Description: Checks for literals used in interpolation.
   Enabled: true
@@ -2344,7 +2357,19 @@ Style/ArgumentsForwarding:
   Enabled: false
   AllowOnlyRestArgument: true
   UseAnonymousForwarding: true
+  RedundantRestArgumentNames:
+  - args
+  - arguments
+  RedundantKeywordRestArgumentNames:
+  - kwargs
+  - options
+  - opts
+  RedundantBlockArgumentNames:
+  - blk
+  - block
+  - proc
   VersionAdded: '1.1'
+  VersionChanged: '1.58'
 Style/ArrayCoercion:
   Description: Use Array() instead of explicit Array check or [*var], when dealing
     with a variable you want to treat as an Array, but you're not certain it's an
@@ -2353,6 +2378,12 @@ Style/ArrayCoercion:
   Safe: false
   Enabled: false
   VersionAdded: '0.88'
+Style/ArrayFirstLast:
+  Description: Use `arr.first` and `arr.last` instead of `arr[0]` and `arr[-1]`.
+  Reference: "#first-and-last"
+  Enabled: false
+  VersionAdded: '1.58'
+  Safe: false
 Style/ArrayIntersect:
   Description: Use `array1.intersect?(array2)` instead of `(array1 & array2).any?`.
   Enabled: true
@@ -3710,7 +3741,7 @@ Style/RedundantFetchBlock:
   Description: Use `fetch(key, value)` instead of `fetch(key) { value }` when value
     has Numeric, Rational, Complex, Symbol or String type, `false`, `true`, `nil`
     or is a constant.
-  Reference: https://github.com/JuanitoFatas/fast-ruby#hashfetch-with-argument-vs-hashfetch--block-code
+  Reference: https://github.com/fastruby/fast-ruby#hashfetch-with-argument-vs-hashfetch--block-code
   Enabled: false
   Safe: false
   SafeForConstants: false
@@ -3885,7 +3916,7 @@ Style/SafeNavigation:
   MaxChainLength: 2
 Style/Sample:
   Description: Use `sample` instead of `shuffle.first`, `shuffle.last`, and `shuffle[Integer]`.
-  Reference: https://github.com/JuanitoFatas/fast-ruby#arrayshufflefirst-vs-arraysample-code
+  Reference: https://github.com/fastruby/fast-ruby#arrayshufflefirst-vs-arraysample-code
   Enabled: true
   VersionAdded: '0.30'
 Style/SelectByRegexp:
@@ -3943,6 +3974,7 @@ Style/SingleLineBlockParams:
     - elem
 Style/SingleLineDoEndBlock:
   Description: Checks for single-line `do`...`end` blocks.
+  StyleGuide: "#single-line-do-end-block"
   Enabled: true
   VersionAdded: '1.57'
 Style/SingleLineMethods:
@@ -4058,6 +4090,11 @@ Style/StructInheritance:
   SafeAutoCorrect: false
   VersionAdded: '0.29'
   VersionChanged: '1.20'
+Style/SuperWithArgsParentheses:
+  Description: Use parentheses for `super` with arguments.
+  StyleGuide: "#super-with-args"
+  Enabled: true
+  VersionAdded: '1.58'
 Style/SwapValues:
   Description: Enforces the use of shorthand-style swapping of 2 variables.
   StyleGuide: "#values-swapping"
