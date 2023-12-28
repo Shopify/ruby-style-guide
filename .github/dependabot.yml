@@ -13,15 +13,15 @@ updates:
     schedule:
       interval: daily
     groups:
-      all:
+      actions:
         patterns:
-          - "*" # Update all GitHub Actions
+          - "*" # Update all GitHub Actions together
 
   - package-ecosystem: npm
     directory: '/'
     schedule:
       interval: monthly
     groups:
-      all:
+      npm:
         patterns:
-          - "*" # Update all npm dependencies
+          - "*" # Update all npm dependencies together
