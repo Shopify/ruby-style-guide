@@ -23,5 +23,6 @@ Gem::Specification.new do |s|
 
   s.required_ruby_version = ">= 2.7.0"
 
-  s.add_dependency("rubocop", "~> 1.51")
+  s.add_dependency("prism")
+  s.add_dependency("rubocop", "~> 1.62")
 end
