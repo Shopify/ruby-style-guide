@@ -80,6 +80,7 @@ AllCops:
   CacheRootDirectory:
   AllowSymlinksInCacheRootDirectory: false
   TargetRubyVersion:
+  ParserEngine: parser_prism
   SuggestExtensions:
     rubocop-rails:
     - rails
