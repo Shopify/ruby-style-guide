@@ -20,7 +20,7 @@ GEM
     parser (3.3.0.5)
       ast (~> 2.4.1)
       racc
-    pry (0.14.1)
+    pry (0.14.2)
       coderay (~> 1.1)
       method_source (~> 1.0)
     pry-byebug (3.10.1)
@@ -59,4 +59,4 @@ DEPENDENCIES
   rubocop-shopify!
 
 BUNDLED WITH
-   2.3.25
+   2.5.3
