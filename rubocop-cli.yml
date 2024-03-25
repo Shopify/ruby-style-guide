@@ -10,9 +10,6 @@ AllCops:
   Exclude:
     - 'vendor/**/*'
 
-  # Mac OS Catalina ships with 2.6.3
-  TargetRubyVersion: 2.6
-
 # We disable this at entrypoint.
 # Due to CLI apps being invoked via an entry point,
 # we can exclude this from all files
