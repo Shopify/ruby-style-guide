@@ -3229,7 +3229,7 @@ Style/MapIntoArray:
   Description: Checks for usages of `each` with `<<`, `push`, or `append` which can
     be replaced by `map`.
   StyleGuide: "#functional-code"
-  Enabled: pending
+  Enabled: false
   VersionAdded: '1.63'
   Safe: false
 Style/MapToHash:

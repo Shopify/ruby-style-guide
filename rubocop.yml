@@ -628,6 +628,11 @@ Style/MagicCommentFormat:
 Style/MapCompactWithConditionalBlock:
   Enabled: false
 
+<% if rubocop_version >= "1.63" %>
+Style/MapIntoArray:
+  Enabled: false
+<% end %>
+
 Style/MapToHash:
   Enabled: false
 
