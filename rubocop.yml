@@ -389,21 +389,6 @@ Naming/HeredocDelimiterCase:
 Naming/HeredocDelimiterNaming:
   Enabled: false
 
-Naming/InclusiveLanguage:
-  Enabled: true
-  FlaggedTerms:
-    master:
-      Suggestions:
-        - main
-        - primary
-        - leader
-      AllowedRegex:
-        - !ruby/regexp '/master[_\s\.]key/' # Rails master key
-        - !ruby/regexp /\w*:\/\/\S+/ # URLs (e.g. https://github.com/org/repo/blob/master/README.md)
-        - !ruby/regexp '/(?:blob|tree)/master/' # e.g. github.com/org/repo/blob/master/README.md, without https://
-        - !ruby/regexp '/origin[ \/]master/' # Legacy default git branch name
-        - !ruby/regexp '/(?<=[a-z])master|master(?=[a-z])/' # "master" substring within a longer word
-
 Naming/MemoizedInstanceVariableName:
   Enabled: false
 
