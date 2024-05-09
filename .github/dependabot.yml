@@ -7,6 +7,10 @@ updates:
     versioning-strategy: increase
     schedule:
       interval: daily
+    ignore:
+      - dependency-name: "rubocop"
+        # We only care about versions that might change config
+        update-types: ["version-update:semver-patch"]
 
   - package-ecosystem: github-actions
     directory: '/'
