@@ -645,9 +645,6 @@ Style/MinMaxComparison:
 Style/MixinGrouping:
   Enabled: false
 
-Style/MixinUsage:
-  Enabled: false
-
 Style/ModuleFunction:
   EnforcedStyle: extend_self
 

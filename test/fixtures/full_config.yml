@@ -3320,7 +3320,7 @@ Style/MixinGrouping:
   - grouped
 Style/MixinUsage:
   Description: Checks that `include`, `extend` and `prepend` exists at the top level.
-  Enabled: false
+  Enabled: true
   VersionAdded: '0.51'
 Style/ModuleFunction:
   Description: Checks for usage of `extend self` in modules.
