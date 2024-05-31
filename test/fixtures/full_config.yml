@@ -86,6 +86,7 @@ AllCops:
     - rails
     rubocop-rspec:
     - rspec
+    - rspec-rails
     rubocop-minitest:
     - minitest
     rubocop-sequel:
@@ -2339,6 +2340,7 @@ Style/AccessModifierDeclarations:
   - inline
   - group
   AllowModifiersOnSymbols: true
+  AllowModifiersOnAttrs: true
   SafeAutoCorrect: false
 Style/AccessorGrouping:
   Description: Checks for grouping of accessors in `class` and `module` bodies.
@@ -2734,6 +2736,7 @@ Style/DocumentationMethod:
   Description: Checks for missing documentation comment for public methods.
   Enabled: false
   VersionAdded: '0.43'
+  AllowedMethods: []
   Exclude:
   - "/spec/**/*"
   - "/test/**/*"
@@ -3041,6 +3044,7 @@ Style/HashSyntax:
   - never
   - either
   - consistent
+  - either_consistent
   UseHashRocketsWithSymbolValues: false
   PreferHashRocketsForNonAlnumEndingSymbols: false
 Style/HashTransformKeys:
@@ -3977,6 +3981,13 @@ Style/Send:
   StyleGuide: "#prefer-public-send"
   Enabled: false
   VersionAdded: '0.33'
+Style/SendWithLiteralMethodName:
+  Description: Detects the use of the `public_send` method with a static method name
+    argument.
+  Enabled: pending
+  Safe: false
+  AllowSend: true
+  VersionAdded: '1.64'
 Style/SignalException:
   Description: Checks for proper usage of fail and raise.
   StyleGuide: "#prefer-raise-over-fail"
@@ -4125,6 +4136,11 @@ Style/StructInheritance:
   SafeAutoCorrect: false
   VersionAdded: '0.29'
   VersionChanged: '1.20'
+Style/SuperArguments:
+  Description: Call `super` without arguments and parentheses when the signature is
+    identical.
+  Enabled: pending
+  VersionAdded: '1.64'
 Style/SuperWithArgsParentheses:
   Description: Use parentheses for `super` with arguments.
   StyleGuide: "#super-with-args"
@@ -4156,7 +4172,7 @@ Style/SymbolProc:
   Enabled: true
   Safe: false
   VersionAdded: '0.26'
-  VersionChanged: '1.40'
+  VersionChanged: '1.64'
   AllowMethodsWithArguments: false
   AllowedMethods:
   - define_method
