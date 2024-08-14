@@ -16,6 +16,11 @@ AllCops:
 Bundler/OrderedGems:
   Enabled: false
 
+<% if rubocop_version >= "1.65" %>
+Gemspec/AddRuntimeDependency:
+  Enabled: true
+<% end %>
+
 Gemspec/DeprecatedAttributeAssignment:
   Enabled: true
 
