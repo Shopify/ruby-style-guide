@@ -3993,7 +3993,7 @@ Style/Send:
 Style/SendWithLiteralMethodName:
   Description: Detects the use of the `public_send` method with a static method name
     argument.
-  Enabled: pending
+  Enabled: true
   Safe: false
   AllowSend: true
   VersionAdded: '1.64'

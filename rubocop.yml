@@ -815,6 +815,11 @@ Style/ReturnNilInPredicateMethodDefinition:
 Style/SelectByRegexp:
   Enabled: false
 
+<% if rubocop_version >= "1.64" %>
+Style/SendWithLiteralMethodName:
+  Enabled: true
+<% end %>
+
 Style/SingleArgumentDig:
   Enabled: false
 
