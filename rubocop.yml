@@ -852,6 +852,11 @@ Style/StringLiteralsInInterpolation:
 Style/StructInheritance:
   Enabled: false
 
+<% if rubocop_version >= "1.64" %>
+Style/SuperArguments:
+  Enabled: true
+<% end %>
+
 <% if rubocop_version >= "1.58" %>
 Style/SuperWithArgsParentheses:
   Enabled: true

@@ -4148,7 +4148,7 @@ Style/StructInheritance:
 Style/SuperArguments:
   Description: Call `super` without arguments and parentheses when the signature is
     identical.
-  Enabled: pending
+  Enabled: true
   VersionAdded: '1.64'
 Style/SuperWithArgsParentheses:
   Description: Use parentheses for `super` with arguments.
