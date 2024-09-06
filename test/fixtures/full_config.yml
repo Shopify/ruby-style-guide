@@ -70,6 +70,7 @@ AllCops:
   DisplayStyleGuide: false
   StyleGuideBaseURL: https://shopify.github.io/ruby-style-guide/
   DocumentationBaseURL: https://docs.rubocop.org/rubocop
+  DocumentationExtension: ".html"
   ExtraDetails: false
   StyleGuideCopsOnly: false
   EnabledByDefault: false
@@ -86,6 +87,7 @@ AllCops:
     - rails
     rubocop-rspec:
     - rspec
+    - rspec-rails
     rubocop-minitest:
     - minitest
     rubocop-sequel:
@@ -102,6 +104,7 @@ AllCops:
     rubocop-rspec_rails:
     - rspec-rails
   ActiveSupportExtensionsEnabled: false
+  StringLiteralsFrozenByDefault:
 Bundler/DuplicatedGem:
   Description: Checks for duplicate gem entries in Gemfile.
   Enabled: true
@@ -182,6 +185,14 @@ Bundler/OrderedGems:
   - "**/*.gemfile"
   - "**/Gemfile"
   - "**/gems.rb"
+Gemspec/AddRuntimeDependency:
+  Description: Prefer `add_dependency` over `add_runtime_dependency`.
+  StyleGuide: "#add_dependency_vs_add_runtime_dependency"
+  Reference: https://github.com/rubygems/rubygems/issues/7799#issuecomment-2192720316
+  Enabled: pending
+  VersionAdded: '1.65'
+  Include:
+  - "**/*.gemspec"
 Gemspec/DependencyVersion:
   Description: Requires or forbids specifying gem dependency versions.
   Enabled: false
@@ -1885,8 +1896,7 @@ Lint/UselessAssignment:
   Enabled: true
   AutoCorrect: contextual
   VersionAdded: '0.11'
-  VersionChanged: '1.61'
-  SafeAutoCorrect: false
+  VersionChanged: '1.66'
 Lint/UselessElseWithoutRescue:
   Description: Checks for useless `else` in `begin..end` without `rescue`.
   Enabled: true
@@ -1899,6 +1909,10 @@ Lint/UselessMethodDefinition:
   VersionAdded: '0.90'
   VersionChanged: '1.61'
   Safe: false
+Lint/UselessNumericOperation:
+  Description: Checks for useless numeric operations.
+  Enabled: pending
+  VersionAdded: '1.66'
 Lint/UselessRescue:
   Description: Checks for useless `rescue`s.
   Enabled: true
@@ -1958,8 +1972,9 @@ Metrics/BlockNesting:
   StyleGuide: "#three-is-the-number-thou-shalt-count"
   Enabled: true
   VersionAdded: '0.25'
-  VersionChanged: '0.47'
+  VersionChanged: '1.65'
   CountBlocks: false
+  CountModifierForms: false
   Max: 3
 Metrics/ClassLength:
   Description: Avoid classes longer than 100 lines of code.
@@ -2339,6 +2354,7 @@ Style/AccessModifierDeclarations:
   - inline
   - group
   AllowModifiersOnSymbols: true
+  AllowModifiersOnAttrs: true
   SafeAutoCorrect: false
 Style/AccessorGrouping:
   Description: Checks for grouping of accessors in `class` and `module` bodies.
@@ -2734,6 +2750,7 @@ Style/DocumentationMethod:
   Description: Checks for missing documentation comment for public methods.
   Enabled: false
   VersionAdded: '0.43'
+  AllowedMethods: []
   Exclude:
   - "/spec/**/*"
   - "/test/**/*"
@@ -3041,6 +3058,7 @@ Style/HashSyntax:
   - never
   - either
   - consistent
+  - either_consistent
   UseHashRocketsWithSymbolValues: false
   PreferHashRocketsForNonAlnumEndingSymbols: false
 Style/HashTransformKeys:
@@ -3815,6 +3833,10 @@ Style/RedundantInterpolation:
   SafeAutoCorrect: false
   VersionAdded: '0.76'
   VersionChanged: '1.30'
+Style/RedundantInterpolationUnfreeze:
+  Description: Checks for redundant unfreezing of interpolated strings.
+  Enabled: pending
+  VersionAdded: '1.66'
 Style/RedundantLineContinuation:
   Description: Check for redundant line continuation.
   Enabled: true
@@ -3977,6 +3999,13 @@ Style/Send:
   StyleGuide: "#prefer-public-send"
   Enabled: false
   VersionAdded: '0.33'
+Style/SendWithLiteralMethodName:
+  Description: Detects the use of the `public_send` method with a static method name
+    argument.
+  Enabled: pending
+  Safe: false
+  AllowSend: true
+  VersionAdded: '1.64'
 Style/SignalException:
   Description: Checks for proper usage of fail and raise.
   StyleGuide: "#prefer-raise-over-fail"
@@ -4125,6 +4154,11 @@ Style/StructInheritance:
   SafeAutoCorrect: false
   VersionAdded: '0.29'
   VersionChanged: '1.20'
+Style/SuperArguments:
+  Description: Call `super` without arguments and parentheses when the signature is
+    identical.
+  Enabled: pending
+  VersionAdded: '1.64'
 Style/SuperWithArgsParentheses:
   Description: Use parentheses for `super` with arguments.
   StyleGuide: "#super-with-args"
@@ -4156,7 +4190,7 @@ Style/SymbolProc:
   Enabled: true
   Safe: false
   VersionAdded: '0.26'
-  VersionChanged: '1.40'
+  VersionChanged: '1.64'
   AllowMethodsWithArguments: false
   AllowedMethods:
   - define_method
