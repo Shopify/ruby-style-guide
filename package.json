@@ -12,15 +12,15 @@
   "devDependencies": {
     "@11ty/eleventy": "^2.0.1",
     "@11ty/eleventy-plugin-syntaxhighlight": "^5.0.0",
-    "@fortawesome/fontawesome-free": "^6.5.1",
-    "bulma": "^0.9.4",
-    "eslint": "^8.57.0",
+    "@fortawesome/fontawesome-free": "^6.6.0",
+    "bulma": "^1.0.2",
+    "eslint": "^9.11.1",
     "eslint-config-standard": "^17.1.0",
-    "eslint-plugin-import": "^2.29.1",
+    "eslint-plugin-import": "^2.30.0",
     "eslint-plugin-node": "^11.1.0",
-    "eslint-plugin-promise": "^6.1.1",
+    "eslint-plugin-promise": "^7.1.0",
     "eslint-plugin-standard": "^5.0.0",
-    "markdown-it-anchor": "^8.6.7",
-    "sass": "^1.71.1"
+    "markdown-it-anchor": "^9.2.0",
+    "sass": "^1.79.4"
   }
 }
