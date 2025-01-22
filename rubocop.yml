@@ -635,6 +635,7 @@ Style/MethodCallWithArgsParentheses:
   - puts
   Exclude:
   - "/**/Gemfile"
+  - "/**/db/migrate/*"
 
 Style/MinMax:
   Enabled: false
