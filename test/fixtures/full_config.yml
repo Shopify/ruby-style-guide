@@ -3256,6 +3256,7 @@ Style/MethodCallWithArgsParentheses:
   - omit_parentheses
   Exclude:
   - "/**/Gemfile"
+  - "/**/db/migrate/*"
 Style/MethodCallWithoutArgsParentheses:
   Description: Do not use parentheses for method calls with no arguments.
   StyleGuide: "#method-invocation-parens"
