@@ -70,6 +70,7 @@ AllCops:
   DisplayStyleGuide: false
   StyleGuideBaseURL: https://shopify.github.io/ruby-style-guide/
   DocumentationBaseURL: https://docs.rubocop.org/rubocop
+  DocumentationExtension: ".html"
   ExtraDetails: false
   StyleGuideCopsOnly: false
   EnabledByDefault: false
@@ -86,6 +87,7 @@ AllCops:
     - rails
     rubocop-rspec:
     - rspec
+    - rspec-rails
     rubocop-minitest:
     - minitest
     rubocop-sequel:
@@ -102,6 +104,7 @@ AllCops:
     rubocop-rspec_rails:
     - rspec-rails
   ActiveSupportExtensionsEnabled: false
+  StringLiteralsFrozenByDefault:
 Bundler/DuplicatedGem:
   Description: Checks for duplicate gem entries in Gemfile.
   Enabled: true
@@ -182,6 +185,14 @@ Bundler/OrderedGems:
   - "**/*.gemfile"
   - "**/Gemfile"
   - "**/gems.rb"
+Gemspec/AddRuntimeDependency:
+  Description: Prefer `add_dependency` over `add_runtime_dependency`.
+  StyleGuide: "#add_dependency_vs_add_runtime_dependency"
+  Reference: https://github.com/rubygems/rubygems/issues/7799#issuecomment-2192720316
+  Enabled: pending
+  VersionAdded: '1.65'
+  Include:
+  - "**/*.gemspec"
 Gemspec/DependencyVersion:
   Description: Requires or forbids specifying gem dependency versions.
   Enabled: false
@@ -593,6 +604,7 @@ Layout/FirstMethodArgumentLineBreak:
   Enabled: true
   VersionAdded: '0.49'
   AllowMultilineFinalElement: true
+  AllowedMethods: []
 Layout/FirstMethodParameterLineBreak:
   Description: Checks for a line break before the first parameter in a multi-line
     method parameter definition.
@@ -685,6 +697,8 @@ Layout/LeadingCommentSpace:
   VersionChanged: '0.73'
   AllowDoxygenCommentStyle: false
   AllowGemfileRubyComment: false
+  AllowRBSInlineAnnotation: false
+  AllowSteepAnnotation: false
 Layout/LeadingEmptyLines:
   Description: Check for unnecessary blank lines at the beginning of a file.
   Enabled: true
@@ -723,7 +737,7 @@ Layout/LineLength:
   StyleGuide: "#max-line-length"
   Enabled: true
   VersionAdded: '0.25'
-  VersionChanged: '1.4'
+  VersionChanged: '1.69'
   Max: 120
   AllowHeredoc: true
   AllowURI: true
@@ -734,6 +748,7 @@ Layout/LineLength:
   AllowedPatterns:
   - "\\A\\s*(remote_)?test(_\\w+)?\\s.*(do|->)(\\s|\\Z)"
   - "\\A\\s*def test_\\w+\\s*\\Z"
+  SplitStrings: false
 Layout/MultilineArrayBraceLayout:
   Description: Checks that the closing brace in an array literal is either on the
     same line as the last array element, or a new line.
@@ -1115,6 +1130,11 @@ Lint/AmbiguousRegexpLiteral:
   Enabled: true
   VersionAdded: '0.17'
   VersionChanged: '0.83'
+Lint/ArrayLiteralInRegexp:
+  Description: Checks for an array literal interpolated inside a regexp.
+  Enabled: pending
+  VersionAdded: '1.71'
+  SafeAutoCorrect: false
 Lint/AssignmentInCondition:
   Description: Don't use assignment in conditions.
   StyleGuide: "#safe-assignment-in-condition"
@@ -1132,7 +1152,7 @@ Lint/BinaryOperatorWithIdenticalOperands:
   Enabled: true
   Safe: false
   VersionAdded: '0.89'
-  VersionChanged: '1.7'
+  VersionChanged: '1.69'
 Lint/BooleanSymbol:
   Description: Check for `:true` and `:false` symbols.
   Enabled: false
@@ -1157,6 +1177,10 @@ Lint/ConstantOverwrittenInRescue:
     `rescue =>`.
   Enabled: true
   VersionAdded: '1.31'
+Lint/ConstantReassignment:
+  Description: Checks for constant reassignments.
+  Enabled: pending
+  VersionAdded: '1.70'
 Lint/ConstantResolution:
   Description: Check that constants are fully qualified with `::`.
   Enabled: false
@@ -1260,6 +1284,7 @@ Lint/DuplicateBranch:
   VersionChanged: '1.7'
   IgnoreLiteralBranches: false
   IgnoreConstantBranches: false
+  IgnoreDuplicateElseBranch: false
 Lint/DuplicateCaseCondition:
   Description: Do not repeat values in case conditionals.
   Enabled: false
@@ -1299,6 +1324,10 @@ Lint/DuplicateRescueException:
   Description: Checks that there are no repeated exceptions used in `rescue` expressions.
   Enabled: false
   VersionAdded: '0.89'
+Lint/DuplicateSetElement:
+  Description: Checks for duplicate elements in Set.
+  Enabled: pending
+  VersionAdded: '1.67'
 Lint/EachWithObjectArgument:
   Description: Check for immutable argument given to each_with_object.
   Enabled: true
@@ -1396,6 +1425,11 @@ Lint/HashCompareByIdentity:
   Enabled: false
   Safe: false
   VersionAdded: '0.93'
+Lint/HashNewWithKeywordArgumentsAsDefault:
+  Description: Checks for the deprecated use of keyword arguments for hash default
+    in `Hash.new`.
+  Enabled: pending
+  VersionAdded: '1.69'
 Lint/HeredocMethodCallPosition:
   Description: Checks for the ordering of a method call where the receiver of the
     call is a HEREDOC.
@@ -1546,6 +1580,10 @@ Lint/NumberedParameterAssignment:
   Description: Checks for uses of numbered parameter assignment.
   Enabled: false
   VersionAdded: '1.9'
+Lint/NumericOperationWithConstantResult:
+  Description: Checks for numeric operations with constant results.
+  Enabled: pending
+  VersionAdded: '1.69'
 Lint/OrAssignmentToConstant:
   Description: Checks unintended or-assignment to constant.
   Enabled: false
@@ -1703,9 +1741,9 @@ Lint/SafeNavigationChain:
   - try!
   - in?
 Lint/SafeNavigationConsistency:
-  Description: Check to make sure that if safe navigation is used for a method call
-    in an `&&` or `||` condition that safe navigation is used for all method calls
-    on that same object.
+  Description: Check to make sure that if safe navigation is used in an `&&` or `||`
+    condition, consistent and appropriate safe navigation, without excess or deficiency,
+    is used for all method calls on the same object.
   Enabled: false
   VersionAdded: '0.55'
   VersionChanged: '0.77'
@@ -1747,6 +1785,11 @@ Lint/ShadowingOuterLocalVariable:
     or block local variables.
   Enabled: false
   VersionAdded: '0.9'
+Lint/SharedMutableDefault:
+  Description: Checks for mutable literals used as default arguments during Hash initialization.
+  StyleGuide: "#no-mutable-defaults"
+  Enabled: pending
+  VersionAdded: '1.70'
 Lint/StructNewOverride:
   Description: Disallow overriding the `Struct` built-in methods via `Struct.new`.
   Enabled: false
@@ -1802,6 +1845,10 @@ Lint/UnderscorePrefixedVariableName:
   Enabled: true
   VersionAdded: '0.21'
   AllowKeywordBlockArguments: false
+Lint/UnescapedBracketInRegexp:
+  Description: Checks for unescaped literal `]` in Regexp.
+  Enabled: pending
+  VersionAdded: '1.68'
 Lint/UnexpectedBlockArity:
   Description: Looks for blocks that have fewer arguments that the calling method
     expects.
@@ -1855,10 +1902,12 @@ Lint/UnusedMethodArgument:
   Enabled: false
   AutoCorrect: contextual
   VersionAdded: '0.21'
-  VersionChanged: '1.61'
+  VersionChanged: '1.69'
   AllowUnusedKeywordArguments: false
   IgnoreEmptyMethods: true
   IgnoreNotImplementedMethods: true
+  NotImplementedExceptions:
+  - NotImplementedError
 Lint/UriEscapeUnescape:
   Description: "`URI.escape` method is obsolete and should not be used. Instead, use
     `CGI.escape`, `URI.encode_www_form` or `URI.encode_www_form_component` depending
@@ -1885,8 +1934,12 @@ Lint/UselessAssignment:
   Enabled: true
   AutoCorrect: contextual
   VersionAdded: '0.11'
-  VersionChanged: '1.61'
-  SafeAutoCorrect: false
+  VersionChanged: '1.66'
+Lint/UselessDefined:
+  Description: Checks for calls to `defined?` with strings and symbols. The result
+    of such a call will always be truthy.
+  Enabled: pending
+  VersionAdded: '1.69'
 Lint/UselessElseWithoutRescue:
   Description: Checks for useless `else` in `begin..end` without `rescue`.
   Enabled: true
@@ -1899,6 +1952,10 @@ Lint/UselessMethodDefinition:
   VersionAdded: '0.90'
   VersionChanged: '1.61'
   Safe: false
+Lint/UselessNumericOperation:
+  Description: Checks for useless numeric operations.
+  Enabled: pending
+  VersionAdded: '1.66'
 Lint/UselessRescue:
   Description: Checks for useless `rescue`s.
   Enabled: true
@@ -1958,8 +2015,9 @@ Metrics/BlockNesting:
   StyleGuide: "#three-is-the-number-thou-shalt-count"
   Enabled: true
   VersionAdded: '0.25'
-  VersionChanged: '0.47'
+  VersionChanged: '1.65'
   CountBlocks: false
+  CountModifierForms: false
   Max: 3
 Metrics/ClassLength:
   Description: Avoid classes longer than 100 lines of code.
@@ -2333,12 +2391,14 @@ Style/AccessModifierDeclarations:
   Description: Checks style of how access modifiers are used.
   Enabled: false
   VersionAdded: '0.57'
-  VersionChanged: '0.81'
+  VersionChanged: '1.70'
   EnforcedStyle: group
   SupportedStyles:
   - inline
   - group
   AllowModifiersOnSymbols: true
+  AllowModifiersOnAttrs: true
+  AllowModifiersOnAliasMethod: true
   SafeAutoCorrect: false
 Style/AccessorGrouping:
   Description: Checks for grouping of accessors in `class` and `module` bodies.
@@ -2358,6 +2418,11 @@ Style/Alias:
   SupportedStyles:
   - prefer_alias
   - prefer_alias_method
+Style/AmbiguousEndlessMethodDefinition:
+  Description: Checks for endless methods inside operators of lower precedence.
+  StyleGuide: "#ambiguous-endless-method-defintions"
+  Enabled: pending
+  VersionAdded: '1.68'
 Style/AndOr:
   Description: Use &&/|| instead of and/or.
   StyleGuide: "#no-and-or-or"
@@ -2451,6 +2516,12 @@ Style/BisectedAttrAccessor:
     method can be combined into single `attr_accessor`.
   Enabled: false
   VersionAdded: '0.87'
+Style/BitwisePredicate:
+  Description: Prefer bitwise predicate methods over direct comparison operations.
+  StyleGuide: "#bitwise-predicate-methods"
+  Enabled: pending
+  Safe: false
+  VersionAdded: '1.68'
 Style/BlockComments:
   Description: Do not use block comments.
   StyleGuide: "#no-block-comments"
@@ -2604,6 +2675,11 @@ Style/ColonMethodDefinition:
   StyleGuide: "#colon-method-definition"
   Enabled: false
   VersionAdded: '0.52'
+Style/CombinableDefined:
+  Description: Checks successive `defined?` calls that can be combined into a single
+    call.
+  Enabled: pending
+  VersionAdded: '1.68'
 Style/CombinableLoops:
   Description: Checks for places where multiple consecutive loops over the same data
     can be combined into a single loop.
@@ -2699,6 +2775,11 @@ Style/DefWithParentheses:
   Enabled: true
   VersionAdded: '0.9'
   VersionChanged: '0.12'
+Style/DigChain:
+  Description: Use `dig` with multiple parameters instead of chaining multiple calls.
+  Enabled: pending
+  Safe: false
+  VersionAdded: '1.69'
 Style/Dir:
   Description: Use the `__dir__` method to retrieve the canonicalized absolute path
     to the current file.
@@ -2734,6 +2815,7 @@ Style/DocumentationMethod:
   Description: Checks for missing documentation comment for public methods.
   Enabled: false
   VersionAdded: '0.43'
+  AllowedMethods: []
   Exclude:
   - "/spec/**/*"
   - "/test/**/*"
@@ -2887,11 +2969,21 @@ Style/FileEmpty:
   Enabled: true
   Safe: false
   VersionAdded: '1.48'
+Style/FileNull:
+  Description: Use `File::NULL` instead of hardcoding "dev/null".
+  Enabled: pending
+  SafeAutoCorrect: false
+  VersionAdded: '1.69'
 Style/FileRead:
   Description: Favor `File.(bin)read` convenience methods.
   StyleGuide: "#file-read"
   Enabled: false
   VersionAdded: '1.24'
+Style/FileTouch:
+  Description: Favor `FileUtils.touch` for touching files.
+  Enabled: pending
+  VersionAdded: '1.69'
+  SafeAutoCorrect: false
 Style/FileWrite:
   Description: Favor `File.(bin)write` convenience methods.
   StyleGuide: "#file-write"
@@ -2958,6 +3050,8 @@ Style/FrozenStringLiteralComment:
   - always_true
   - never
   SafeAutoCorrect: true
+  Exclude:
+  - "/**/*.arb"
   Details: 'Add `# frozen_string_literal: true` to the top of the file. Frozen string
     literals will become the default in a future Ruby version, and we want to make
     sure we''re ready.'
@@ -3022,13 +3116,19 @@ Style/HashLikeCase:
   Enabled: false
   VersionAdded: '0.88'
   MinBranchesCount: 3
+Style/HashSlice:
+  Description: Checks for usages of `Hash#reject`, `Hash#select`, and `Hash#filter`
+    methods that can be replaced with `Hash#slice` method.
+  Enabled: pending
+  Safe: false
+  VersionAdded: '1.71'
 Style/HashSyntax:
   Description: 'Prefer Ruby 1.9 hash syntax { a: 1, b: 2 } over 1.8 syntax { :a =>
     1, :b => 2 }.'
   StyleGuide: "#hash-literals"
   Enabled: true
   VersionAdded: '0.9'
-  VersionChanged: '1.24'
+  VersionChanged: '1.67'
   EnforcedStyle: ruby19
   SupportedStyles:
   - ruby19
@@ -3041,6 +3141,7 @@ Style/HashSyntax:
   - never
   - either
   - consistent
+  - either_consistent
   UseHashRocketsWithSymbolValues: false
   PreferHashRocketsForNonAlnumEndingSymbols: false
 Style/HashTransformKeys:
@@ -3161,6 +3262,16 @@ Style/IpAddresses:
   - "/**/Gemfile"
   - "/**/gems.rb"
   - "/**/*.gemspec"
+Style/ItAssignment:
+  Description: Checks for assignment to `it` inside a block.
+  Enabled: pending
+  VersionAdded: '1.70'
+Style/KeywordArgumentsMerging:
+  Description: When passing an existing hash as keyword arguments, provide additional
+    arguments directly rather than using `merge`.
+  StyleGuide: "#merging-keyword-arguments"
+  Enabled: pending
+  VersionAdded: '1.68'
 Style/KeywordParametersOrder:
   Description: Enforces that optional keyword parameters are placed at the end of
     the parameters list.
@@ -3219,6 +3330,7 @@ Style/MapIntoArray:
   StyleGuide: "#functional-code"
   Enabled: false
   VersionAdded: '1.63'
+  VersionChanged: '1.67'
   Safe: false
 Style/MapToHash:
   Description: Prefer `to_h` with a block over `map.to_h`.
@@ -3751,7 +3863,7 @@ Style/RedundantConstantBase:
   Enabled: true
   VersionAdded: '1.40'
 Style/RedundantCurrentDirectoryInPath:
-  Description: Checks for uses a redundant current directory in path.
+  Description: Checks for a redundant current directory in a path given to `require_relative`.
   Enabled: true
   VersionAdded: '1.53'
 Style/RedundantDoubleSplatHashBraces:
@@ -3815,6 +3927,10 @@ Style/RedundantInterpolation:
   SafeAutoCorrect: false
   VersionAdded: '0.76'
   VersionChanged: '1.30'
+Style/RedundantInterpolationUnfreeze:
+  Description: Checks for redundant unfreezing of interpolated strings.
+  Enabled: pending
+  VersionAdded: '1.66'
 Style/RedundantLineContinuation:
   Description: Check for redundant line continuation.
   Enabled: true
@@ -3931,13 +4047,14 @@ Style/ReturnNilInPredicateMethodDefinition:
   AllowedMethods: []
   AllowedPatterns: []
   VersionAdded: '1.53'
+  VersionChanged: '1.67'
 Style/SafeNavigation:
   Description: Transforms usages of a method call safeguarded by a check for the existence
     of the object to safe navigation (`&.`). Autocorrection is unsafe as it assumes
     the object will be `nil` or truthy, but never `false`.
   Enabled: true
   VersionAdded: '0.43'
-  VersionChanged: '1.27'
+  VersionChanged: '1.67'
   ConvertCodeThatCanStartToReturnNil: false
   AllowedMethods:
   - present?
@@ -3947,6 +4064,13 @@ Style/SafeNavigation:
   - try!
   SafeAutoCorrect: false
   MaxChainLength: 2
+Style/SafeNavigationChainLength:
+  Description: Enforces safe navigation chains length to not exceed the configured
+    maximum.
+  StyleGuide: "#safe-navigation"
+  Enabled: pending
+  VersionAdded: '1.68'
+  Max: 2
 Style/Sample:
   Description: Use `sample` instead of `shuffle.first`, `shuffle.last`, and `shuffle[Integer]`.
   Reference: https://github.com/fastruby/fast-ruby#arrayshufflefirst-vs-arraysample-code
@@ -3977,6 +4101,13 @@ Style/Send:
   StyleGuide: "#prefer-public-send"
   Enabled: false
   VersionAdded: '0.33'
+Style/SendWithLiteralMethodName:
+  Description: Detects the use of the `public_send` method with a static method name
+    argument.
+  Enabled: pending
+  Safe: false
+  AllowSend: true
+  VersionAdded: '1.64'
 Style/SignalException:
   Description: Checks for proper usage of fail and raise.
   StyleGuide: "#prefer-raise-over-fail"
@@ -4125,6 +4256,11 @@ Style/StructInheritance:
   SafeAutoCorrect: false
   VersionAdded: '0.29'
   VersionChanged: '1.20'
+Style/SuperArguments:
+  Description: Call `super` without arguments and parentheses when the signature is
+    identical.
+  Enabled: pending
+  VersionAdded: '1.64'
 Style/SuperWithArgsParentheses:
   Description: Use parentheses for `super` with arguments.
   StyleGuide: "#super-with-args"
@@ -4156,7 +4292,7 @@ Style/SymbolProc:
   Enabled: true
   Safe: false
   VersionAdded: '0.26'
-  VersionChanged: '1.40'
+  VersionChanged: '1.64'
   AllowMethodsWithArguments: false
   AllowedMethods:
   - define_method
