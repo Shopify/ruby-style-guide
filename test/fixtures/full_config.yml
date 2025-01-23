@@ -2782,7 +2782,7 @@ Style/EmptyElse:
   - empty
   - nil
   - both
-  AllowComments: false
+  AllowComments: true
 Style/EmptyHeredoc:
   Description: Checks for using empty heredoc to reduce redundancy.
   Enabled: true
