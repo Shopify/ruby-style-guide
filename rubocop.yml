@@ -129,9 +129,6 @@ Lint/DisjunctiveAssignmentInConstructor:
 Lint/DuplicateBranch:
   Enabled: false
 
-Lint/DuplicateCaseCondition:
-  Enabled: false
-
 Lint/DuplicateElsifCondition:
   Enabled: false
 

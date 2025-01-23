@@ -1262,7 +1262,7 @@ Lint/DuplicateBranch:
   IgnoreConstantBranches: false
 Lint/DuplicateCaseCondition:
   Description: Do not repeat values in case conditionals.
-  Enabled: false
+  Enabled: true
   VersionAdded: '0.45'
 Lint/DuplicateElsifCondition:
   Description: Do not repeat conditions used in if `elsif`.
