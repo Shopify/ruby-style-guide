@@ -500,6 +500,9 @@ Style/DoubleNegation:
 Style/EmptyBlockParameter:
   Enabled: false
 
+Style/EmptyElse:
+  AllowComments: true
+
 Style/EmptyHeredoc:
   Enabled: true
 
