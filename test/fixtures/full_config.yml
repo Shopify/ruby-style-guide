@@ -3782,7 +3782,7 @@ Style/RedundantFileExtensionInRequire:
   Description: Checks for the presence of superfluous `.rb` extension in the filename
     provided to `require` and `require_relative`.
   StyleGuide: "#no-explicit-rb-to-require"
-  Enabled: false
+  Enabled: true
   VersionAdded: '0.88'
 Style/RedundantFilterChain:
   Description: Identifies usages of `any?`, `empty?`, `none?` or `one?` predicate

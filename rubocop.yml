@@ -748,9 +748,6 @@ Style/RedundantEach:
 Style/RedundantFetchBlock:
   Enabled: false
 
-Style/RedundantFileExtensionInRequire:
-  Enabled: false
-
 <% if rubocop_version >= "1.52" %>
 Style/RedundantFilterChain:
   Enabled: true
