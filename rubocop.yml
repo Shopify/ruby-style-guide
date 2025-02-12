@@ -20,13 +20,10 @@ Bundler/OrderedGems:
 
 # Gemspec Department
 Gemspec/DeprecatedAttributeAssignment:
-  Enabled: false
+  Enabled: true
 
 Gemspec/DevelopmentDependencies:
-  Enabled: false
-
-Gemspec/DuplicatedAssignment:
-  Enabled: false
+  Enabled: true
 
 Gemspec/OrderedDependencies:
   Enabled: false
@@ -35,9 +32,6 @@ Gemspec/RequireMFA:
   Enabled: false
 
 Gemspec/RequiredRubyVersion:
-  Enabled: false
-
-Gemspec/RubyVersionGlobalsUsage:
   Enabled: false
 
 
