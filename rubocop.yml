@@ -1071,7 +1071,6 @@ Style/FormatStringToken:
   Enabled: false
 
 Style/FrozenStringLiteralComment:
-  Enabled: false
   SafeAutoCorrect: true
   EnforcedStyle: always_true
   Details: 'Add `# frozen_string_literal: true` to the top of the file. Frozen string

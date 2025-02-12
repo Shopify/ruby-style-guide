@@ -2949,7 +2949,7 @@ Style/FormatStringToken:
 Style/FrozenStringLiteralComment:
   Description: Add the frozen_string_literal comment to the top of files to help transition
     to frozen string literals by default.
-  Enabled: false
+  Enabled: true
   VersionAdded: '0.36'
   VersionChanged: '0.79'
   EnforcedStyle: always_true
