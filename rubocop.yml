@@ -14,18 +14,6 @@ AllCops:
   NewCops: disable # New cops will be triaged by style guide maintainers instead.
 
 # Bundler Department
-Bundler/DuplicatedGem:
-  Enabled: false
-
-Bundler/DuplicatedGroup:
-  Enabled: false
-
-Bundler/GemFilename:
-  Enabled: false
-
-Bundler/InsecureProtocolSource:
-  Enabled: false
-
 Bundler/OrderedGems:
   Enabled: false
 
