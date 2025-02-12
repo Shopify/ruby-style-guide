@@ -473,10 +473,8 @@ Lint/InheritException:
 Lint/InterpolationCheck:
   Enabled: false
 
-<% if rubocop_version >= '1.59' %>
 Lint/ItWithoutArgumentsInBlock:
   Enabled: false
-<% end %>
 
 Lint/LambdaWithoutLiteralBlock:
   Enabled: false
@@ -484,10 +482,8 @@ Lint/LambdaWithoutLiteralBlock:
 Lint/LiteralAsCondition:
   Enabled: false
 
-<% if rubocop_version >= '1.58' %>
 Lint/LiteralAssignmentInCondition:
   Enabled: false
-<% end %>
 
 Lint/LiteralInInterpolation:
   Enabled: false
@@ -501,10 +497,8 @@ Lint/MissingCopEnableDirective:
 Lint/MissingSuper:
   Enabled: false
 
-<% if rubocop_version >= '1.53' %>
 Lint/MixedCaseRange:
   Enabled: false
-<% end %>
 
 Lint/MixedRegexpCaptureTypes:
   Enabled: false
@@ -569,10 +563,8 @@ Lint/RedundantCopEnableDirective:
 Lint/RedundantDirGlobSort:
   Enabled: false
 
-<% if rubocop_version >= '1.53' %>
 Lint/RedundantRegexpQuantifiers:
   Enabled: false
-<% end %>
 
 Lint/RedundantRequireStatement:
   Enabled: false
@@ -1320,10 +1312,8 @@ Style/RandomWithOffset:
 Style/RedundantArgument:
   Enabled: false
 
-<% if rubocop_version >= "1.52" %>
 Style/RedundantArrayConstructor:
   Enabled: false
-<% end %>
 
 Style/RedundantAssignment:
   Enabled: false
@@ -1343,10 +1333,8 @@ Style/RedundantConditional:
 Style/RedundantConstantBase:
   Enabled: false
 
-<% if rubocop_version >= "1.53" %>
 Style/RedundantCurrentDirectoryInPath:
   Enabled: false
-<% end %>
 
 Style/RedundantDoubleSplatHashBraces:
   Enabled: false
@@ -1363,10 +1351,8 @@ Style/RedundantFetchBlock:
 Style/RedundantFileExtensionInRequire:
   Enabled: false
 
-<% if rubocop_version >= "1.52" %>
 Style/RedundantFilterChain:
   Enabled: false
-<% end %>
 
 Style/RedundantFreeze:
   Enabled: false
@@ -1383,7 +1369,6 @@ Style/RedundantInterpolation:
 Style/RedundantLineContinuation:
   Enabled: false
 
-<% if rubocop_version >= "1.53" %>
 Style/RedundantParentheses:
   Enabled: false
 
@@ -1392,15 +1377,12 @@ Style/RedundantPercentQ:
 
 Style/RedundantRegexpArgument:
   Enabled: false
-<% end %>
 
 Style/RedundantRegexpCharacterClass:
   Enabled: false
 
-<% if rubocop_version >= "1.52" %>
 Style/RedundantRegexpConstructor:
   Enabled: false
-<% end %>
 
 Style/RedundantRegexpEscape:
   Enabled: false
@@ -1436,10 +1418,8 @@ Style/RescueModifier:
 Style/RescueStandardError:
   Enabled: false
 
-<% if rubocop_version >= "1.53" %>
 Style/ReturnNilInPredicateMethodDefinition:
   Enabled: false
-<% end %>
 
 Style/SafeNavigation:
   Enabled: false
@@ -1462,10 +1442,8 @@ Style/SignalException:
 Style/SingleArgumentDig:
   Enabled: false
 
-<% if rubocop_version >= "1.57" %>
 Style/SingleLineDoEndBlock:
   Enabled: false
-<% end %>
 
 Style/SingleLineMethods:
   Enabled: false
@@ -1505,10 +1483,8 @@ Style/Strip:
 Style/StructInheritance:
   Enabled: false
 
-<% if rubocop_version >= "1.58" %>
 Style/SuperWithArgsParentheses:
   Enabled: false
-<% end %>
 
 Style/SwapValues:
   Enabled: false
@@ -1578,10 +1554,8 @@ Style/WordArray:
   Enabled: false
   EnforcedStyle: brackets
 
-<% if rubocop_version >= "1.53" %>
 Style/YAMLFileRead:
   Enabled: false
-<% end %>
 
 Style/YodaCondition:
   Enabled: false
