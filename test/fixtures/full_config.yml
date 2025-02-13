@@ -277,7 +277,7 @@ Gemspec/RubyVersionGlobalsUsage:
 Layout/AccessModifierIndentation:
   Description: Check indentation of private/protected visibility modifiers.
   StyleGuide: "#indent-public-private-protected"
-  Enabled: false
+  Enabled: true
   VersionAdded: '0.49'
   EnforcedStyle: indent
   SupportedStyles:
@@ -287,7 +287,7 @@ Layout/AccessModifierIndentation:
 Layout/ArgumentAlignment:
   Description: Align the arguments of a method call if they span more than one line.
   StyleGuide: "#no-double-indent"
-  Enabled: false
+  Enabled: true
   VersionAdded: '0.68'
   VersionChanged: '0.77'
   EnforcedStyle: with_fixed_indentation
@@ -373,11 +373,11 @@ Layout/ClosingHeredocIndentation:
   VersionAdded: '0.57'
 Layout/ClosingParenthesisIndentation:
   Description: Checks the indentation of hanging closing parentheses.
-  Enabled: false
+  Enabled: true
   VersionAdded: '0.49'
 Layout/CommentIndentation:
   Description: Indentation of comments.
-  Enabled: false
+  Enabled: true
   AllowForAlignment: false
   VersionAdded: '0.49'
   VersionChanged: '1.24'
@@ -385,12 +385,12 @@ Layout/ConditionPosition:
   Description: Checks for condition placed in a confusing position relative to the
     keyword.
   StyleGuide: "#same-line-condition"
-  Enabled: false
+  Enabled: true
   VersionAdded: '0.53'
   VersionChanged: '0.83'
 Layout/DefEndAlignment:
   Description: Align ends corresponding to defs correctly.
-  Enabled: false
+  Enabled: true
   VersionAdded: '0.53'
   EnforcedStyleAlignWith: start_of_line
   SupportedStylesAlignWith:
@@ -400,7 +400,7 @@ Layout/DefEndAlignment:
 Layout/DotPosition:
   Description: Checks the position of the dot in multi-line method calls.
   StyleGuide: "#consistent-multi-line-chains"
-  Enabled: false
+  Enabled: true
   VersionAdded: '0.49'
   EnforcedStyle: leading
   SupportedStyles:
@@ -408,7 +408,7 @@ Layout/DotPosition:
   - trailing
 Layout/ElseAlignment:
   Description: Align elses and elsifs correctly.
-  Enabled: false
+  Enabled: true
   VersionAdded: '0.49'
 Layout/EmptyComment:
   Description: Checks empty comment.
@@ -426,7 +426,7 @@ Layout/EmptyLineAfterGuardClause:
 Layout/EmptyLineAfterMagicComment:
   Description: Add an empty line after magic comments to separate them from code.
   StyleGuide: "#separate-magic-comments-from-code"
-  Enabled: false
+  Enabled: true
   VersionAdded: '0.49'
 Layout/EmptyLineAfterMultilineCondition:
   Description: Enforces empty line after multiline condition.
@@ -437,7 +437,7 @@ Layout/EmptyLineAfterMultilineCondition:
 Layout/EmptyLineBetweenDefs:
   Description: Use empty lines between class/module/method defs.
   StyleGuide: "#empty-lines-between-methods"
-  Enabled: false
+  Enabled: true
   VersionAdded: '0.49'
   VersionChanged: '1.23'
   EmptyLineBetweenMethodDefs: true
@@ -454,7 +454,7 @@ Layout/EmptyLines:
 Layout/EmptyLinesAroundAccessModifier:
   Description: Keep blank lines around access modifiers.
   StyleGuide: "#empty-lines-around-access-modifier"
-  Enabled: false
+  Enabled: true
   VersionAdded: '0.49'
   EnforcedStyle: around
   SupportedStyles:
@@ -464,12 +464,12 @@ Layout/EmptyLinesAroundAccessModifier:
   - https://edgeguides.rubyonrails.org/contributing_to_ruby_on_rails.html#follow-the-coding-conventions
 Layout/EmptyLinesAroundArguments:
   Description: Keeps track of empty lines around method arguments.
-  Enabled: false
+  Enabled: true
   VersionAdded: '0.52'
 Layout/EmptyLinesAroundAttributeAccessor:
   Description: Keep blank lines around attribute accessors.
   StyleGuide: "#empty-lines-around-attribute-accessor"
-  Enabled: false
+  Enabled: true
   VersionAdded: '0.83'
   VersionChanged: '0.84'
   AllowAliasSyntax: true
@@ -481,12 +481,12 @@ Layout/EmptyLinesAroundAttributeAccessor:
 Layout/EmptyLinesAroundBeginBody:
   Description: Keeps track of empty lines around begin-end bodies.
   StyleGuide: "#empty-lines-around-bodies"
-  Enabled: false
+  Enabled: true
   VersionAdded: '0.49'
 Layout/EmptyLinesAroundBlockBody:
   Description: Keeps track of empty lines around block bodies.
   StyleGuide: "#empty-lines-around-bodies"
-  Enabled: false
+  Enabled: true
   VersionAdded: '0.49'
   EnforcedStyle: no_empty_lines
   SupportedStyles:
@@ -495,7 +495,7 @@ Layout/EmptyLinesAroundBlockBody:
 Layout/EmptyLinesAroundClassBody:
   Description: Keeps track of empty lines around class bodies.
   StyleGuide: "#empty-lines-around-bodies"
-  Enabled: false
+  Enabled: true
   VersionAdded: '0.49'
   VersionChanged: '0.53'
   EnforcedStyle: no_empty_lines
@@ -509,17 +509,17 @@ Layout/EmptyLinesAroundClassBody:
 Layout/EmptyLinesAroundExceptionHandlingKeywords:
   Description: Keeps track of empty lines around exception handling keywords.
   StyleGuide: "#empty-lines-around-bodies"
-  Enabled: false
+  Enabled: true
   VersionAdded: '0.49'
 Layout/EmptyLinesAroundMethodBody:
   Description: Keeps track of empty lines around method bodies.
   StyleGuide: "#empty-lines-around-bodies"
-  Enabled: false
+  Enabled: true
   VersionAdded: '0.49'
 Layout/EmptyLinesAroundModuleBody:
   Description: Keeps track of empty lines around module bodies.
   StyleGuide: "#empty-lines-around-bodies"
-  Enabled: false
+  Enabled: true
   VersionAdded: '0.49'
   EnforcedStyle: no_empty_lines
   SupportedStyles:
@@ -540,7 +540,7 @@ Layout/EndAlignment:
 Layout/EndOfLine:
   Description: Use Unix-style line endings.
   StyleGuide: "#crlf"
-  Enabled: false
+  Enabled: true
   VersionAdded: '0.49'
   EnforcedStyle: native
   SupportedStyles:
@@ -658,7 +658,7 @@ Layout/HeredocIndentation:
 Layout/IndentationConsistency:
   Description: Keep indentation straight.
   StyleGuide: "#spaces-indentation"
-  Enabled: false
+  Enabled: true
   VersionAdded: '0.49'
   EnforcedStyle: normal
   SupportedStyles:
@@ -669,7 +669,7 @@ Layout/IndentationConsistency:
 Layout/IndentationStyle:
   Description: Consistent indentation either with tabs only or spaces only.
   StyleGuide: "#spaces-indentation"
-  Enabled: false
+  Enabled: true
   VersionAdded: '0.49'
   VersionChanged: '0.82'
   IndentationWidth:
@@ -680,19 +680,19 @@ Layout/IndentationStyle:
 Layout/IndentationWidth:
   Description: Use 2 spaces for indentation.
   StyleGuide: "#spaces-indentation"
-  Enabled: false
+  Enabled: true
   VersionAdded: '0.49'
   Width: 2
   AllowedPatterns: []
 Layout/InitialIndentation:
   Description: Checks the indentation of the first non-blank non-comment line in a
     file.
-  Enabled: false
+  Enabled: true
   VersionAdded: '0.49'
 Layout/LeadingCommentSpace:
   Description: Comments should start with a space.
   StyleGuide: "#hash-space"
-  Enabled: false
+  Enabled: true
   VersionAdded: '0.49'
   VersionChanged: '0.73'
   AllowDoxygenCommentStyle: false
@@ -701,13 +701,13 @@ Layout/LeadingCommentSpace:
   AllowSteepAnnotation: false
 Layout/LeadingEmptyLines:
   Description: Check for unnecessary blank lines at the beginning of a file.
-  Enabled: false
+  Enabled: true
   VersionAdded: '0.57'
   VersionChanged: '0.77'
 Layout/LineContinuationLeadingSpace:
   Description: Use trailing spaces instead of leading spaces in strings broken over
     multiple lines (by a backslash).
-  Enabled: false
+  Enabled: true
   VersionAdded: '1.31'
   VersionChanged: '1.45'
   EnforcedStyle: trailing
@@ -716,7 +716,7 @@ Layout/LineContinuationLeadingSpace:
   - trailing
 Layout/LineContinuationSpacing:
   Description: Checks the spacing in front of backslash in line continuations.
-  Enabled: false
+  Enabled: true
   VersionAdded: '1.31'
   EnforcedStyle: space
   SupportedStyles:
@@ -783,7 +783,7 @@ Layout/MultilineAssignmentLayout:
   - new_line
 Layout/MultilineBlockLayout:
   Description: Ensures newlines after multiline block do statements.
-  Enabled: false
+  Enabled: true
   VersionAdded: '0.49'
 Layout/MultilineHashBraceLayout:
   Description: Checks that the closing brace in a hash literal is either on the same
@@ -882,32 +882,32 @@ Layout/SingleLineBlockChain:
 Layout/SpaceAfterColon:
   Description: Use spaces after colons.
   StyleGuide: "#spaces-operators"
-  Enabled: false
+  Enabled: true
   VersionAdded: '0.49'
 Layout/SpaceAfterComma:
   Description: Use spaces after commas.
   StyleGuide: "#spaces-operators"
-  Enabled: false
+  Enabled: true
   VersionAdded: '0.49'
 Layout/SpaceAfterMethodName:
   Description: Do not put a space between a method name and the opening parenthesis
     in a method definition.
   StyleGuide: "#parens-no-spaces"
-  Enabled: false
+  Enabled: true
   VersionAdded: '0.49'
 Layout/SpaceAfterNot:
   Description: Tracks redundant space after the ! operator.
   StyleGuide: "#no-space-bang"
-  Enabled: false
+  Enabled: true
   VersionAdded: '0.49'
 Layout/SpaceAfterSemicolon:
   Description: Use spaces after semicolons.
   StyleGuide: "#spaces-operators"
-  Enabled: false
+  Enabled: true
   VersionAdded: '0.49'
 Layout/SpaceAroundBlockParameters:
   Description: Checks the spacing inside and after block parameters pipes.
-  Enabled: false
+  Enabled: true
   VersionAdded: '0.49'
   EnforcedStyleInsidePipes: no_space
   SupportedStylesInsidePipes:
@@ -917,7 +917,7 @@ Layout/SpaceAroundEqualsInParameterDefault:
   Description: Checks that the equals signs in parameter default assignments have
     or don't have surrounding space depending on configuration.
   StyleGuide: "#spaces-around-equals"
-  Enabled: false
+  Enabled: true
   VersionAdded: '0.49'
   EnforcedStyle: space
   SupportedStyles:
@@ -925,16 +925,16 @@ Layout/SpaceAroundEqualsInParameterDefault:
   - no_space
 Layout/SpaceAroundKeyword:
   Description: Use a space around keywords if appropriate.
-  Enabled: false
+  Enabled: true
   VersionAdded: '0.49'
 Layout/SpaceAroundMethodCallOperator:
   Description: Checks method call operators to not have spaces around them.
-  Enabled: false
+  Enabled: true
   VersionAdded: '0.82'
 Layout/SpaceAroundOperators:
   Description: Use a single space around operators.
   StyleGuide: "#spaces-operators"
-  Enabled: false
+  Enabled: true
   VersionAdded: '0.49'
   AllowForAlignment: true
   EnforcedStyleForExponentOperator: no_space
@@ -947,7 +947,7 @@ Layout/SpaceAroundOperators:
   - no_space
 Layout/SpaceBeforeBlockBraces:
   Description: Checks that the left block brace has or doesn't have space before it.
-  Enabled: false
+  Enabled: true
   VersionAdded: '0.49'
   EnforcedStyle: space
   SupportedStyles:
@@ -961,29 +961,29 @@ Layout/SpaceBeforeBlockBraces:
 Layout/SpaceBeforeBrackets:
   Description: Checks for receiver with a space before the opening brackets.
   StyleGuide: "#space-in-brackets-access"
-  Enabled: false
+  Enabled: true
   VersionAdded: '1.7'
 Layout/SpaceBeforeComma:
   Description: No spaces before commas.
-  Enabled: false
+  Enabled: true
   VersionAdded: '0.49'
 Layout/SpaceBeforeComment:
   Description: Checks for missing space between code and a comment on the same line.
-  Enabled: false
+  Enabled: true
   VersionAdded: '0.49'
 Layout/SpaceBeforeFirstArg:
   Description: Checks that exactly one space is used between a method name and the
     first argument for method calls without parentheses.
-  Enabled: false
+  Enabled: true
   VersionAdded: '0.49'
   AllowForAlignment: true
 Layout/SpaceBeforeSemicolon:
   Description: No spaces before semicolons.
-  Enabled: false
+  Enabled: true
   VersionAdded: '0.49'
 Layout/SpaceInLambdaLiteral:
   Description: Checks for spaces in lambda literals.
-  Enabled: false
+  Enabled: true
   VersionAdded: '0.49'
   EnforcedStyle: require_no_space
   SupportedStyles:
@@ -991,7 +991,7 @@ Layout/SpaceInLambdaLiteral:
   - require_space
 Layout/SpaceInsideArrayLiteralBrackets:
   Description: Checks the spacing inside array literal brackets.
-  Enabled: false
+  Enabled: true
   VersionAdded: '0.52'
   EnforcedStyle: no_space
   SupportedStyles:
@@ -1004,13 +1004,13 @@ Layout/SpaceInsideArrayLiteralBrackets:
   - no_space
 Layout/SpaceInsideArrayPercentLiteral:
   Description: No unnecessary additional spaces between elements in %i/%w literals.
-  Enabled: false
+  Enabled: true
   VersionAdded: '0.49'
 Layout/SpaceInsideBlockBraces:
   Description: Checks that block braces have or don't have surrounding space. For
     blocks taking parameters, checks that the left brace has or doesn't have trailing
     space.
-  Enabled: false
+  Enabled: true
   VersionAdded: '0.49'
   EnforcedStyle: space
   SupportedStyles:
@@ -1024,7 +1024,7 @@ Layout/SpaceInsideBlockBraces:
 Layout/SpaceInsideHashLiteralBraces:
   Description: Use spaces inside hash literal braces - or don't.
   StyleGuide: "#spaces-braces"
-  Enabled: false
+  Enabled: true
   VersionAdded: '0.49'
   EnforcedStyle: space
   SupportedStyles:
@@ -1038,7 +1038,7 @@ Layout/SpaceInsideHashLiteralBraces:
 Layout/SpaceInsideParens:
   Description: No spaces after ( or before ).
   StyleGuide: "#spaces-braces"
-  Enabled: false
+  Enabled: true
   VersionAdded: '0.49'
   VersionChanged: '1.22'
   EnforcedStyle: no_space
@@ -1048,16 +1048,16 @@ Layout/SpaceInsideParens:
   - no_space
 Layout/SpaceInsidePercentLiteralDelimiters:
   Description: No unnecessary spaces inside delimiters of %i/%w/%x literals.
-  Enabled: false
+  Enabled: true
   VersionAdded: '0.49'
 Layout/SpaceInsideRangeLiteral:
   Description: No spaces inside range literals.
   StyleGuide: "#no-space-inside-range-literals"
-  Enabled: false
+  Enabled: true
   VersionAdded: '0.49'
 Layout/SpaceInsideReferenceBrackets:
   Description: Checks the spacing inside referential brackets.
-  Enabled: false
+  Enabled: true
   VersionAdded: '0.52'
   VersionChanged: '0.53'
   EnforcedStyle: no_space
@@ -1071,7 +1071,7 @@ Layout/SpaceInsideReferenceBrackets:
 Layout/SpaceInsideStringInterpolation:
   Description: Checks for padding/surrounding spaces inside string interpolation.
   StyleGuide: "#string-interpolation"
-  Enabled: false
+  Enabled: true
   VersionAdded: '0.49'
   EnforcedStyle: no_space
   SupportedStyles:
@@ -1080,7 +1080,7 @@ Layout/SpaceInsideStringInterpolation:
 Layout/TrailingEmptyLines:
   Description: Checks trailing blank lines and final newline.
   StyleGuide: "#newline-eof"
-  Enabled: false
+  Enabled: true
   VersionAdded: '0.49'
   VersionChanged: '0.77'
   EnforcedStyle: final_newline
@@ -1090,7 +1090,7 @@ Layout/TrailingEmptyLines:
 Layout/TrailingWhitespace:
   Description: Avoid trailing whitespace.
   StyleGuide: "#no-trailing-whitespace"
-  Enabled: false
+  Enabled: true
   VersionAdded: '0.49'
   VersionChanged: '1.0'
   AllowInHeredoc: false
