@@ -1,0 +1,66 @@
+#!/usr/bin/env ruby
+# frozen_string_literal: true
+
+require 'yaml'
+
+def extract_cop_entries(content)
+  # Extract all cop configurations (entries that start with a department name)
+  cop_pattern = /^[A-Z][A-Za-z]+\/[A-Za-z]+:/
+  cops = {}
+
+  current_cop = nil
+  current_config = []
+
+  content.each_line do |line|
+    if line.match?(cop_pattern)
+      # Save previous cop if exists
+      if current_cop
+        cops[current_cop] = current_config.join
+      end
+
+      # Start new cop
+      current_cop = line.split(':').first
+      current_config = [line]
+    elsif current_cop
+      current_config << line
+    end
+  end
+
+  # Save last cop
+  if current_cop
+    cops[current_cop] = current_config.join
+  end
+
+  cops
+end
+
+def sort_cops(file_path)
+  content = File.read(file_path)
+
+  # Extract header (content before first cop)
+  first_cop_pattern = /^[A-Z][A-Za-z]+\/[A-Za-z]+:/
+  header_end = content.index(content.lines.find { |line| line.match?(first_cop_pattern) })
+  header = content[0...header_end]
+
+  # Extract and sort cops
+  cops = extract_cop_entries(content)
+  sorted_cops = cops.sort_by { |name, _| name }
+
+  # Generate new content
+  new_content = header
+
+  sorted_cops.each do |_, config|
+    new_content << config
+  end
+
+  # Write sorted content back to file
+  File.write(file_path, new_content)
+end
+
+if ARGV.empty?
+  puts "Usage: ruby sort_cops.rb path/to/rubocop.yml"
+  exit 1
+end
+
+sort_cops(ARGV[0])
+puts "Successfully sorted cops in #{ARGV[0]}"
