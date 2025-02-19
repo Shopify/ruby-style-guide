@@ -1187,6 +1187,10 @@ Lint/ConstantResolution:
   VersionAdded: '0.86'
   Only: []
   Ignore: []
+Lint/CopDirectiveSyntax:
+  Description: Checks that `# rubocop:` directives are strictly formatted.
+  Enabled: false
+  VersionAdded: '1.72'
 Lint/Debugger:
   Description: Check for debugger calls.
   Enabled: false
@@ -1681,6 +1685,10 @@ Lint/RedundantStringCoercion:
   Enabled: false
   VersionAdded: '0.19'
   VersionChanged: '0.77'
+Lint/RedundantTypeConversion:
+  Description: Checks for redundantly converting a literal to the same type.
+  Enabled: false
+  VersionAdded: '1.72'
 Lint/RedundantWithIndex:
   Description: Checks for redundant `with_index`.
   Enabled: false
@@ -1802,6 +1810,12 @@ Lint/SuppressedException:
   AllowNil: true
   VersionAdded: '0.9'
   VersionChanged: '1.12'
+Lint/SuppressedExceptionInNumberConversion:
+  Description: Checks for cases where exceptions unrelated to the numeric constructors
+    may be unintentionally swallowed.
+  Enabled: false
+  SafeAutoCorrect: false
+  VersionAdded: '1.72'
 Lint/SymbolConversion:
   Description: Checks for unnecessary symbol conversions.
   Enabled: false
@@ -1935,6 +1949,10 @@ Lint/UselessAssignment:
   AutoCorrect: contextual
   VersionAdded: '0.11'
   VersionChanged: '1.66'
+Lint/UselessConstantScoping:
+  Description: Checks for useless constant scoping.
+  Enabled: false
+  VersionAdded: '1.72'
 Lint/UselessDefined:
   Description: Checks for calls to `defined?` with strings and symbols. The result
     of such a call will always be truthy.
@@ -2300,6 +2318,7 @@ Naming/PredicateName:
   MethodDefinitionMacros:
   - define_method
   - define_singleton_method
+  UseSorbetSigs: false
   Exclude:
   - "/spec/**/*"
 Naming/RescuedExceptionsVariableName:
@@ -3904,6 +3923,13 @@ Style/RedundantFilterChain:
   SafeAutoCorrect: false
   VersionAdded: '1.52'
   VersionChanged: '1.57'
+Style/RedundantFormat:
+  Description: Checks for usages of `Kernel#format` or `Kernel#sprintf` with only
+    a single argument.
+  Enabled: false
+  SafeAutoCorrect: false
+  VersionAdded: '1.72'
+  VersionChanged: '1.72'
 Style/RedundantFreeze:
   Description: Checks usages of Object#freeze on immutable objects.
   Enabled: false

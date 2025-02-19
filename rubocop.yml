@@ -371,6 +371,11 @@ Lint/ConstantReassignment:
   Enabled: false
 <% end %>
 
+<% if rubocop_version >= "1.72" %>
+Lint/CopDirectiveSyntax:
+  Enabled: false
+<% end %>
+
 Lint/Debugger:
   Enabled: false
 
@@ -608,6 +613,11 @@ Lint/RedundantSplatExpansion:
 Lint/RedundantStringCoercion:
   Enabled: false
 
+<% if rubocop_version >= "1.72" %>
+Lint/RedundantTypeConversion:
+  Enabled: false
+<% end %>
+
 Lint/RedundantWithIndex:
   Enabled: false
 
@@ -676,6 +686,11 @@ Lint/StructNewOverride:
 Lint/SuppressedException:
   Enabled: false
 
+<% if rubocop_version >= "1.72" %>
+Lint/SuppressedExceptionInNumberConversion:
+  Enabled: false
+<% end %>
+
 Lint/SymbolConversion:
   Enabled: false
 
@@ -734,6 +749,11 @@ Lint/UselessAccessModifier:
 
 Lint/UselessAssignment:
   Enabled: false
+
+<% if rubocop_version >= "1.72" %>
+Lint/UselessConstantScoping:
+  Enabled: false
+<% end %>
 
 <% if rubocop_version >= "1.69" %>
 Lint/UselessDefined:
@@ -1450,6 +1470,11 @@ Style/RedundantFileExtensionInRequire:
 
 Style/RedundantFilterChain:
   Enabled: false
+
+<% if rubocop_version >= "1.72" %>
+Style/RedundantFormat:
+  Enabled: false
+<% end %>
 
 Style/RedundantFreeze:
   Enabled: false
