@@ -697,7 +697,7 @@ Layout/LeadingCommentSpace:
   VersionChanged: '0.73'
   AllowDoxygenCommentStyle: false
   AllowGemfileRubyComment: false
-  AllowRBSInlineAnnotation: false
+  AllowRBSInlineAnnotation: true
   AllowSteepAnnotation: false
 Layout/LeadingEmptyLines:
   Description: Check for unnecessary blank lines at the beginning of a file.
