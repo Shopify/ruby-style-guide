@@ -65,6 +65,11 @@ Layout/FirstMethodArgumentLineBreak:
 Layout/HashAlignment:
   EnforcedLastArgumentHashStyle: ignore_implicit
 
+<% if rubocop_version >= "1.67" %>
+Layout/LeadingCommentSpace:
+  AllowRBSInlineAnnotation: true
+<% end %>
+
 Layout/LineContinuationLeadingSpace:
   Enabled: true
 
