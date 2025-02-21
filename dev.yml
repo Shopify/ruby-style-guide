@@ -1,3 +1,7 @@
 up:
   - ruby
   - bundler
+
+check:
+  rubocop: bundle exec rubocop
+  test: bundle exec rake test

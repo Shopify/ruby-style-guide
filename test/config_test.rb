@@ -90,6 +90,58 @@ class ConfigTest < Minitest::Test
     ERROR_MESSAGE
   end
 
+  def test_all_cops_in_our_config_have_a_reference
+    # We want to document the "why(s)" behind:
+    # - every enabled cop (regardless of if it was enabled by us, or by default), and
+    # - every cop where we diverge from the default configuration (including cops we disable).
+    # We can ignore cops that are disabled by default, although it is not an error to have references for why we left them disabled.
+
+    config_keys = RuboCop::ConfigLoader.load_file("rubocop.yml").to_hash.keys
+    explicitly_configured_cops = config_keys[(config_keys.index("AllCops") + 1)..-1]
+
+    not_cops = ["AllCops", "inherit_mode"]
+
+    # Update as we re-triage each department.
+    departments_requiring_triage = [
+      "Layout",
+      "Lint",
+      "Metrics",
+      "Migration",
+      "Naming",
+      "Rails",
+      "Security",
+      "Style",
+    ]
+
+    cops_missing_references_to_us = []
+
+    YAML.unsafe_load_file(FULL_CONFIG_PATH).each do |cop_name, cop_config|
+      next if not_cops.include?(cop_name)
+      next if references_our_style_guide?(cop_config)
+      next if cop_config["Enabled"] == "false" && !explicitly_configured_cops.include?(cop_name) # WE didn't disable it
+
+      # FIXME: Remove this once we've triaged all the departments.
+      dept_name = cop_name.split("/").first
+      next if departments_requiring_triage.include?(dept_name)
+
+      cops_missing_references_to_us << cop_name
+    end
+
+    return pass if cops_missing_references_to_us.empty?
+
+    flunk(<<~ERROR_MESSAGE.chomp)
+      The following cops are missing a `Reference` to our style guide:
+
+      #{cops_missing_references_to_us.map { "  - #{_1}" }.join("\n")}
+
+      Add a `Reference` to our style guide for each cop, explaining why it is enabled/disabled, or its configuration changed.
+
+        DepartmentName/CopName:
+          Reference:
+            - https://github.com/Shopify/ruby-style-guide/pull/12345
+    ERROR_MESSAGE
+  end
+
   private
 
   def checking_rubocop_version_compatibility?
@@ -101,5 +153,12 @@ class ConfigTest < Minitest::Test
     actual_string = actual.join("\n")
 
     assert_equal(expected_string, actual_string, message)
+  end
+
+  def references_our_style_guide?(cop_config)
+    Array(cop_config["Reference"]).any? do |reference|
+      # For now, references are the PRs that introduced the cop.
+      reference.match?(%r{^https://github\.com/Shopify/ruby-style-guide/pull/\d+(?:/|$)})
+    end
   end
 end
