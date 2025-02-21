@@ -165,6 +165,8 @@ Layout/HeredocIndentation:
 <% if rubocop_version >= "1.67" %>
 Layout/LeadingCommentSpace:
   AllowRBSInlineAnnotation: true
+  Reference:
+    - https://github.com/Shopify/ruby-style-guide/pull/693
 <% end %>
 
 Layout/LineContinuationLeadingSpace:

@@ -729,6 +729,8 @@ Layout/LeadingCommentSpace:
   AllowGemfileRubyComment: false
   AllowRBSInlineAnnotation: true
   AllowSteepAnnotation: false
+  Reference:
+  - https://github.com/Shopify/ruby-style-guide/pull/693
 Layout/LeadingEmptyLines:
   Description: Check for unnecessary blank lines at the beginning of a file.
   Enabled: true
