@@ -75,8 +75,7 @@ class ConfigTest < Minitest::Test
   def test_no_cops_are_configured_as_pending
     pending_cops = []
 
-    load_method = YAML.respond_to?(:unsafe_load_file) ? :unsafe_load_file : :load_file
-    YAML.public_send(load_method, FULL_CONFIG_PATH).each do |cop_name, cop_config|
+    YAML.unsafe_load_file(FULL_CONFIG_PATH).each do |cop_name, cop_config|
       pending_cops << cop_name if Hash === cop_config && cop_config["Enabled"] == "pending"
     end
 
