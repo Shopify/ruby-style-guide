@@ -115,6 +115,8 @@ Bundler/DuplicatedGem:
   - "**/*.gemfile"
   - "**/Gemfile"
   - "**/gems.rb"
+  Reference:
+  - https://github.com/Shopify/ruby-style-guide/pull/687
 Bundler/DuplicatedGroup:
   Description: Checks for duplicate group entries in Gemfile.
   Enabled: true
@@ -124,6 +126,8 @@ Bundler/DuplicatedGroup:
   - "**/*.gemfile"
   - "**/Gemfile"
   - "**/gems.rb"
+  Reference:
+  - https://github.com/Shopify/ruby-style-guide/pull/687
 Bundler/GemComment:
   Description: Add a comment describing each gem.
   Enabled: false
@@ -135,6 +139,8 @@ Bundler/GemComment:
   - "**/gems.rb"
   IgnoredGems: []
   OnlyFor: []
+  Reference:
+  - https://github.com/Shopify/ruby-style-guide/pull/687
 Bundler/GemFilename:
   Description: Enforces the filename for managing gems.
   Enabled: true
@@ -148,6 +154,8 @@ Bundler/GemFilename:
   - "**/gems.rb"
   - "**/Gemfile.lock"
   - "**/gems.locked"
+  Reference:
+  - https://github.com/Shopify/ruby-style-guide/pull/687
 Bundler/GemVersion:
   Description: Requires or forbids specifying gem versions.
   Enabled: false
@@ -161,6 +169,8 @@ Bundler/GemVersion:
   - "**/Gemfile"
   - "**/gems.rb"
   AllowedGems: []
+  Reference:
+  - https://github.com/Shopify/ruby-style-guide/pull/687
 Bundler/InsecureProtocolSource:
   Description: The source `:gemcutter`, `:rubygems` and `:rubyforge` are deprecated
     because HTTP requests are insecure. Please change your source to 'https://rubygems.org'
@@ -174,6 +184,8 @@ Bundler/InsecureProtocolSource:
   - "**/*.gemfile"
   - "**/Gemfile"
   - "**/gems.rb"
+  Reference:
+  - https://github.com/Shopify/ruby-style-guide/pull/687
 Bundler/OrderedGems:
   Description: Gems within groups in the Gemfile should be alphabetically sorted.
   Enabled: false
@@ -185,10 +197,13 @@ Bundler/OrderedGems:
   - "**/*.gemfile"
   - "**/Gemfile"
   - "**/gems.rb"
+  Reference:
+  - https://github.com/Shopify/ruby-style-guide/pull/687
 Gemspec/AddRuntimeDependency:
   Description: Prefer `add_dependency` over `add_runtime_dependency`.
   StyleGuide: "#add_dependency_vs_add_runtime_dependency"
-  Reference: https://github.com/rubygems/rubygems/issues/7799#issuecomment-2192720316
+  Reference:
+  - https://github.com/Shopify/ruby-style-guide/pull/687
   Enabled: false
   VersionAdded: '1.65'
   Include:
@@ -204,6 +219,8 @@ Gemspec/DependencyVersion:
   Include:
   - "**/*.gemspec"
   AllowedGems: []
+  Reference:
+  - https://github.com/Shopify/ruby-style-guide/pull/687
 Gemspec/DeprecatedAttributeAssignment:
   Description: Checks that deprecated attribute assignments are not set in a gemspec
     file.
@@ -213,6 +230,8 @@ Gemspec/DeprecatedAttributeAssignment:
   VersionChanged: '1.40'
   Include:
   - "**/*.gemspec"
+  Reference:
+  - https://github.com/Shopify/ruby-style-guide/pull/687
 Gemspec/DevelopmentDependencies:
   Description: Checks that development dependencies are specified in Gemfile rather
     than gemspec.
@@ -228,6 +247,8 @@ Gemspec/DevelopmentDependencies:
   - "**/*.gemspec"
   - "**/Gemfile"
   - "**/gems.rb"
+  Reference:
+  - https://github.com/Shopify/ruby-style-guide/pull/687
 Gemspec/DuplicatedAssignment:
   Description: An attribute assignment method calls should be listed only once in
     a gemspec.
@@ -237,6 +258,8 @@ Gemspec/DuplicatedAssignment:
   VersionChanged: '1.40'
   Include:
   - "**/*.gemspec"
+  Reference:
+  - https://github.com/Shopify/ruby-style-guide/pull/687
 Gemspec/OrderedDependencies:
   Description: Dependencies in the gemspec should be alphabetically sorted.
   Enabled: false
@@ -245,6 +268,8 @@ Gemspec/OrderedDependencies:
   ConsiderPunctuation: false
   Include:
   - "**/*.gemspec"
+  Reference:
+  - https://github.com/Shopify/ruby-style-guide/pull/687
 Gemspec/RequireMFA:
   Description: Checks that the gemspec has metadata to require Multi-Factor Authentication
     from RubyGems.
@@ -254,6 +279,7 @@ Gemspec/RequireMFA:
   VersionChanged: '1.40'
   Reference:
   - https://guides.rubygems.org/mfa-requirement-opt-in/
+  - https://github.com/Shopify/ruby-style-guide/pull/687
   Include:
   - "**/*.gemspec"
 Gemspec/RequiredRubyVersion:
@@ -265,6 +291,8 @@ Gemspec/RequiredRubyVersion:
   VersionChanged: '1.40'
   Include:
   - "**/*.gemspec"
+  Reference:
+  - https://github.com/Shopify/ruby-style-guide/pull/687
 Gemspec/RubyVersionGlobalsUsage:
   Description: Checks usage of RUBY_VERSION in gemspec.
   StyleGuide: "#no-ruby-version-in-the-gemspec"
@@ -274,6 +302,8 @@ Gemspec/RubyVersionGlobalsUsage:
   VersionChanged: '1.40'
   Include:
   - "**/*.gemspec"
+  Reference:
+  - https://github.com/Shopify/ruby-style-guide/pull/687
 Layout/AccessModifierIndentation:
   Description: Check indentation of private/protected visibility modifiers.
   StyleGuide: "#indent-public-private-protected"
@@ -3074,6 +3104,8 @@ Style/FrozenStringLiteralComment:
   Details: 'Add `# frozen_string_literal: true` to the top of the file. Frozen string
     literals will become the default in a future Ruby version, and we want to make
     sure we''re ready.'
+  Reference:
+  - https://github.com/Shopify/ruby-style-guide/pull/687
 Style/GlobalStdStream:
   Description: Enforces the use of `$stdout/$stderr/$stdin` instead of `STDOUT/STDERR/STDIN`.
   StyleGuide: "#global-stdout"

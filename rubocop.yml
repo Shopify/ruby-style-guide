@@ -16,30 +16,80 @@ AllCops:
   NewCops: disable # New cops will be triaged by style guide maintainers instead.
 
 # Bundler Department
+Bundler/DuplicatedGem:
+  Reference:
+    - https://github.com/Shopify/ruby-style-guide/pull/687
+
+Bundler/DuplicatedGroup:
+  Reference:
+    - https://github.com/Shopify/ruby-style-guide/pull/687
+
+Bundler/GemComment:
+  Reference:
+    - https://github.com/Shopify/ruby-style-guide/pull/687
+
+Bundler/GemFilename:
+  Reference:
+    - https://github.com/Shopify/ruby-style-guide/pull/687
+
+Bundler/GemVersion:
+  Reference:
+    - https://github.com/Shopify/ruby-style-guide/pull/687
+
+Bundler/InsecureProtocolSource:
+  Reference:
+    - https://github.com/Shopify/ruby-style-guide/pull/687
+
 Bundler/OrderedGems:
   Enabled: false
+  Reference:
+    - https://github.com/Shopify/ruby-style-guide/pull/687
 
 
 # Gemspec Department
 <% if rubocop_version >= "1.65" %>
 Gemspec/AddRuntimeDependency:
   Enabled: false
+  Reference:
+    - https://github.com/Shopify/ruby-style-guide/pull/687
 <% end %>
+
+Gemspec/DependencyVersion:
+  Reference:
+    - https://github.com/Shopify/ruby-style-guide/pull/687
 
 Gemspec/DeprecatedAttributeAssignment:
   Enabled: true
+  Reference:
+    - https://github.com/Shopify/ruby-style-guide/pull/687
 
 Gemspec/DevelopmentDependencies:
   Enabled: true
+  Reference:
+    - https://github.com/Shopify/ruby-style-guide/pull/687
+
+Gemspec/DuplicatedAssignment:
+  Reference:
+    - https://github.com/Shopify/ruby-style-guide/pull/687
 
 Gemspec/OrderedDependencies:
   Enabled: false
+  Reference:
+    - https://github.com/Shopify/ruby-style-guide/pull/687
 
 Gemspec/RequireMFA:
   Enabled: false
+  Reference:
+    - https://github.com/Shopify/ruby-style-guide/pull/687
 
 Gemspec/RequiredRubyVersion:
   Enabled: false
+  Reference:
+    - https://github.com/Shopify/ruby-style-guide/pull/687
+
+Gemspec/RubyVersionGlobalsUsage:
+  Reference:
+    - https://github.com/Shopify/ruby-style-guide/pull/687
 
 
 # Layout Department
@@ -997,6 +1047,8 @@ Style/FrozenStringLiteralComment:
   Details: 'Add `# frozen_string_literal: true` to the top of the file. Frozen string
     literals will become the default in a future Ruby version, and we want to make
     sure we''re ready.'
+  Reference:
+    - https://github.com/Shopify/ruby-style-guide/pull/687
 
 Style/GlobalStdStream:
   Enabled: false

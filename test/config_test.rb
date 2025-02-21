@@ -103,8 +103,6 @@ class ConfigTest < Minitest::Test
 
     # Update as we re-triage each department.
     departments_requiring_triage = [
-      "Bundler",
-      "Gemspec",
       "Layout",
       "Lint",
       "Metrics",
