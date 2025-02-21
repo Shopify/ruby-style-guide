@@ -1,5 +1,6 @@
 <%
   require "rubocop/shopify/gem_version_string_comparable_backport"
+  require "rubocop/shopify/rubocop_reference_common_param_forwardport" # Remove once rubocop#13833 is merged and we bump our minimum version..
 
   rubocop_version = Gem.loaded_specs.fetch("rubocop").version
 %>
