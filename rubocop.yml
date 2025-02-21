@@ -8,6 +8,7 @@ inherit_mode:
   merge:
   - Exclude
   - Include
+  - Reference
 
 AllCops:
   StyleGuideBaseURL: https://shopify.github.io/ruby-style-guide/
