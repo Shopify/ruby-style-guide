@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    rubocop-shopify (2.15.1)
+    rubocop-shopify (3.0.0)
       lint_roller
       rubocop (~> 1.72)
 
