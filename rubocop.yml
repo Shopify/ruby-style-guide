@@ -290,7 +290,7 @@ Lint/MixedRegexpCaptureTypes:
   Enabled: false
 
 Lint/NoReturnInBeginEndBlocks:
-  Enabled: true
+  Enabled: false
 
 Lint/NonAtomicFileOperation:
   Enabled: false

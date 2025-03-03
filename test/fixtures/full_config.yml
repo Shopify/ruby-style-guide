@@ -1553,7 +1553,7 @@ Lint/NextWithoutAccumulator:
   VersionAdded: '0.36'
 Lint/NoReturnInBeginEndBlocks:
   Description: Do not `return` inside `begin..end` blocks in assignment contexts.
-  Enabled: true
+  Enabled: false
   VersionAdded: '1.2'
 Lint/NonAtomicFileOperation:
   Description: Checks for non-atomic file operations.
