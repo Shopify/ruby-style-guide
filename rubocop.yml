@@ -4,6 +4,9 @@
   rubocop_version = Gem.loaded_specs.fetch("rubocop").version
 %>
 
+plugins:
+  - rubocop-shopify
+
 inherit_mode:
   merge:
   - Exclude
