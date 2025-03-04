@@ -168,12 +168,9 @@ Layout/SpaceBeforeBrackets:
 
 # Lint Department
 Lint/AmbiguousAssignment:
-  Enabled: false
+  Enabled: true
 
 Lint/AmbiguousBlockAssociation:
-  Enabled: false
-
-Lint/AmbiguousOperator:
   Enabled: false
 
 Lint/AmbiguousOperatorPrecedence:
@@ -193,89 +190,44 @@ Lint/ArrayLiteralInRegexp:
 Lint/AssignmentInCondition:
   Enabled: false
 
-Lint/BigDecimalNew:
-  Enabled: false
-
-Lint/BinaryOperatorWithIdenticalOperands:
-  Enabled: false
-
 Lint/BooleanSymbol:
-  Enabled: false
-
-Lint/CircularArgumentReference:
   Enabled: false
 
 Lint/ConstantDefinitionInBlock:
   Enabled: false
 
 Lint/ConstantOverwrittenInRescue:
-  Enabled: false
+  Enabled: true
 
 <% if rubocop_version >= "1.70" %>
 Lint/ConstantReassignment:
-  Enabled: false
+  Enabled: true
 <% end %>
 
 <% if rubocop_version >= "1.72" %>
 Lint/CopDirectiveSyntax:
-  Enabled: false
+  Enabled: true
 <% end %>
 
-Lint/Debugger:
-  Enabled: false
-
-Lint/DeprecatedClassMethods:
-  Enabled: false
-
 Lint/DeprecatedConstants:
-  Enabled: false
-
-Lint/DeprecatedOpenSSLConstant:
-  Enabled: false
-
-Lint/DisjunctiveAssignmentInConstructor:
   Enabled: false
 
 Lint/DuplicateBranch:
   Enabled: false
 
-Lint/DuplicateCaseCondition:
-  Enabled: false
-
-Lint/DuplicateElsifCondition:
-  Enabled: false
-
-Lint/DuplicateHashKey:
-  Enabled: false
-
 Lint/DuplicateMagicComment:
-  Enabled: false
+  Enabled: true
 
 Lint/DuplicateMatchPattern:
-  Enabled: false
-
-Lint/DuplicateMethods:
-  Enabled: false
+  Enabled: true
 
 Lint/DuplicateRegexpCharacterClassElement:
-  Enabled: false
-
-Lint/DuplicateRequire:
-  Enabled: false
-
-Lint/DuplicateRescueException:
-  Enabled: false
+  Enabled: true
 
 <% if rubocop_version >= "1.67" %>
 Lint/DuplicateSetElement:
-  Enabled: false
+  Enabled: true
 <% end %>
-
-Lint/EachWithObjectArgument:
-  Enabled: false
-
-Lint/ElseLayout:
-  Enabled: false
 
 Lint/EmptyBlock:
   Enabled: false
@@ -286,25 +238,13 @@ Lint/EmptyClass:
 Lint/EmptyConditionalBody:
   Enabled: false
 
-Lint/EmptyEnsure:
-  Enabled: false
-
-Lint/EmptyExpression:
-  Enabled: false
-
 Lint/EmptyFile:
   Enabled: false
 
 Lint/EmptyInPattern:
   Enabled: false
 
-Lint/EmptyInterpolation:
-  Enabled: false
-
 Lint/EmptyWhen:
-  Enabled: false
-
-Lint/EnsureReturn:
   Enabled: false
 
 Lint/ErbNewArguments:
@@ -333,19 +273,10 @@ Lint/HashNewWithKeywordArgumentsAsDefault:
 Lint/IdentityComparison:
   Enabled: false
 
-Lint/ImplicitStringConcatenation:
-  Enabled: false
-
 Lint/IncompatibleIoSelectWithFiberScheduler:
   Enabled: false
 
-Lint/IneffectiveAccessModifier:
-  Enabled: false
-
 Lint/InheritException:
-  Enabled: false
-
-Lint/InterpolationCheck:
   Enabled: false
 
 Lint/ItWithoutArgumentsInBlock:
@@ -354,44 +285,23 @@ Lint/ItWithoutArgumentsInBlock:
 Lint/LambdaWithoutLiteralBlock:
   Enabled: false
 
-Lint/LiteralAsCondition:
-  Enabled: false
-
 Lint/LiteralAssignmentInCondition:
   Enabled: false
 
-Lint/LiteralInInterpolation:
-  Enabled: false
-
 Lint/Loop:
-  Enabled: false
-
-Lint/MissingCopEnableDirective:
   Enabled: false
 
 Lint/MissingSuper:
   Enabled: false
 
 Lint/MixedCaseRange:
-  Enabled: false
+  Enabled: true
 
 Lint/MixedRegexpCaptureTypes:
   Enabled: false
 
-Lint/MultipleComparison:
-  Enabled: false
-
-Lint/NestedMethodDefinition:
-  Enabled: false
-
-Lint/NestedPercentLiteral:
-  Enabled: false
-
-Lint/NextWithoutAccumulator:
-  Enabled: false
-
 Lint/NoReturnInBeginEndBlocks:
-  Enabled: false
+  Enabled: true
 
 Lint/NonAtomicFileOperation:
   Enabled: false
@@ -407,19 +317,16 @@ Lint/NumberedParameterAssignment:
 
 <% if rubocop_version >= "1.69" %>
 Lint/NumericOperationWithConstantResult:
-  Enabled: false
+  Enabled: true
 <% end %>
 
 Lint/OrAssignmentToConstant:
-  Enabled: false
+  Enabled: true
 
 Lint/OrderedMagicComments:
   Enabled: false
 
 Lint/OutOfRangeRegexpRef:
-  Enabled: false
-
-Lint/ParenthesesAsGroupedExpression:
   Enabled: false
 
 Lint/PercentStringArray:
@@ -432,12 +339,6 @@ Lint/RaiseException:
   Enabled: false
 
 Lint/RandOne:
-  Enabled: false
-
-Lint/RedundantCopDisableDirective:
-  Enabled: false
-
-Lint/RedundantCopEnableDirective:
   Enabled: false
 
 Lint/RedundantDirGlobSort:
@@ -455,24 +356,12 @@ Lint/RedundantSafeNavigation:
 Lint/RedundantSplatExpansion:
   Enabled: false
 
-Lint/RedundantStringCoercion:
-  Enabled: false
-
 <% if rubocop_version >= "1.72" %>
 Lint/RedundantTypeConversion:
   Enabled: false
 <% end %>
 
-Lint/RedundantWithIndex:
-  Enabled: false
-
-Lint/RedundantWithObject:
-  Enabled: false
-
 Lint/RefinementImportMethods:
-  Enabled: false
-
-Lint/RegexpAsCondition:
   Enabled: false
 
 Lint/RequireParentheses:
@@ -490,9 +379,6 @@ Lint/RescueException:
 Lint/RescueType:
   Enabled: false
 
-Lint/ReturnInVoidContext:
-  Enabled: false
-
 Lint/SafeNavigationChain:
   Enabled: false
 
@@ -503,12 +389,6 @@ Lint/SafeNavigationWithEmpty:
   Enabled: false
 
 Lint/ScriptPermission:
-  Enabled: false
-
-Lint/SelfAssignment:
-  Enabled: false
-
-Lint/SendWithMixinArgument:
   Enabled: false
 
 Lint/ShadowedArgument:
@@ -548,11 +428,8 @@ Lint/ToJSON:
 Lint/TopLevelReturnWithArgument:
   Enabled: false
 
-Lint/TrailingCommaInAttributeDeclaration:
-  Enabled: false
-
 Lint/TripleQuotes:
-  Enabled: false
+  Enabled: true
 
 Lint/UnderscorePrefixedVariableName:
   Enabled: false
