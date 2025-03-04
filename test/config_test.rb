@@ -90,6 +90,32 @@ class ConfigTest < Minitest::Test
     ERROR_MESSAGE
   end
 
+  def test_config_does_not_check_for_rubocop_versions_below_minimum_version
+    rubocop_version_requirement = Gem
+      .loaded_specs.fetch('rubocop-shopify')
+      .dependencies.find { _1.name == 'rubocop' }
+      .requirement
+
+    # RuboCop version checks are done in ERB, so we need to read the raw file
+    redundant_rubocop_version_checks = File.read('rubocop.yml').each_line.with_index.filter_map do |line, index|
+      match = line.match(/<% if rubocop_version >= "(?<version>.*)" %>/)
+      next unless match
+
+      minimum_version_for_config = Gem::Version.new(match[1])
+      next if rubocop_version_requirement.satisfied_by?(minimum_version_for_config)
+
+      [index, line.chomp]
+    end
+
+    assert(redundant_rubocop_version_checks.empty?, <<~ERROR_MESSAGE.chomp)
+      The following RuboCop version check(s) are redundant given the gemspec's version requirement (#{rubocop_version_requirement}):
+
+      #{redundant_rubocop_version_checks.map { "    #{_1.to_s.rjust(4)}: #{_2}" }.join("\n")}
+
+      Please remove these check(s), or (if you intend to maintain compatibility) loosen the `rubocop` requirement in the gemspec.
+    ERROR_MESSAGE
+  end
+
   private
 
   def checking_rubocop_version_compatibility?
