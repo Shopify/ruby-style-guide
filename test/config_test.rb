@@ -46,6 +46,9 @@ class ConfigTest < Minitest::Test
     config.delete("inherit_mode")
 
     config.each do |cop_name, cop_config|
+      # ThreadSafety cops are not part of the default RuboCop
+      next if cop_name.match?("ThreadSafety/")
+
       default_cop_config = default_config.fetch(cop_name)
       cop_config.each do |key, value|
         default_value = default_cop_config[key]
