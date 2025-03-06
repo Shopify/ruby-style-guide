@@ -1165,7 +1165,7 @@ Style/MultipleComparison:
   Enabled: false
 
 Style/MutableConstant:
-  Enabled: false
+  EnforcedStyle: literals
 
 Style/NegatedIf:
   Enabled: false
