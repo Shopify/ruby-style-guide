@@ -9,6 +9,10 @@ inherit_mode:
   - Exclude
   - Include
 
+<% if rubocop_version >= "1.71" %>
+plugins: rubocop-thread_safety
+<% end %>
+
 AllCops:
   StyleGuideBaseURL: https://shopify.github.io/ruby-style-guide/
   NewCops: disable # New cops will be triaged by style guide maintainers instead.
@@ -1164,9 +1168,6 @@ Style/MultilineWhenThen:
 Style/MultipleComparison:
   Enabled: false
 
-Style/MutableConstant:
-  Enabled: false
-
 Style/NegatedIf:
   Enabled: false
 
@@ -1549,3 +1550,17 @@ Style/YodaCondition:
 
 Style/ZeroLengthPredicate:
   Enabled: false
+
+<% if rubocop_version >= "1.71" %>
+ThreadSafety/ClassInstanceVariable:
+  Enabled: false
+
+ThreadSafety/MutableClassInstanceVariable:
+  Enabled: false
+
+ThreadSafety/NewThread:
+  Enabled: false
+
+ThreadSafety/RackMiddlewareInstanceVariable:
+  Enabled: false
+<% end %>
