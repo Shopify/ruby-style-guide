@@ -46,9 +46,7 @@ class ConfigTest < Minitest::Test
     config.delete("inherit_mode")
 
     config.each do |cop_name, cop_config|
-      default_cop_config = default_config[cop_name]
-      next unless default_cop_config
-
+      default_cop_config = default_config.fetch(cop_name)
       cop_config.each do |key, value|
         default_value = default_cop_config[key]
         redundant_config[cop_name][key] = value if value == default_value
