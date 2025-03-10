@@ -1552,14 +1552,8 @@ Style/ZeroLengthPredicate:
   Enabled: false
 
 <% if rubocop_version >= "1.71" %>
-ThreadSafety/ClassAndModuleAttributes:
-  Enabled: true
-
 ThreadSafety/ClassInstanceVariable:
   Enabled: false
-
-ThreadSafety/DirChdir:
-  Enabled: true
 
 ThreadSafety/MutableClassInstanceVariable:
   Enabled: false
