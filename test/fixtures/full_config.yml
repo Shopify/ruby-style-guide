@@ -1553,7 +1553,7 @@ Lint/NextWithoutAccumulator:
   VersionAdded: '0.36'
 Lint/NoReturnInBeginEndBlocks:
   Description: Do not `return` inside `begin..end` blocks in assignment contexts.
-  Enabled: true
+  Enabled: false
   VersionAdded: '1.2'
 Lint/NonAtomicFileOperation:
   Description: Checks for non-atomic file operations.
@@ -4523,6 +4523,11 @@ Style/ZeroLengthPredicate:
   Safe: false
   VersionAdded: '0.37'
   VersionChanged: '0.39'
+Lint/NoReturnInMemoization:
+  Enabled: true
+  VersionAdded: 3.0.0
+  Description: Checks for the use of a `return` with a value in `begin..end` blocks
+    in the context of instance variable assignment such as memoization.
 inherit_mode:
   merge:
   - Exclude

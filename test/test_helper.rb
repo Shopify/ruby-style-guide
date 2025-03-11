@@ -3,6 +3,8 @@
 require "minitest/autorun"
 require "pry-byebug"
 
+require "rubocop-shopify"
+
 module Warning
   class << self
     def warn(message)
