@@ -1358,9 +1358,10 @@ Lint/EmptyConditionalBody:
     a body.
   Enabled: false
   AutoCorrect: contextual
+  SafeAutoCorrect: false
   AllowComments: true
   VersionAdded: '0.89'
-  VersionChanged: '1.73'
+  VersionChanged: '1.61'
 Lint/EmptyEnsure:
   Description: Checks for empty ensure block.
   Enabled: false
@@ -1488,7 +1489,6 @@ Lint/LambdaWithoutLiteralBlock:
 Lint/LiteralAsCondition:
   Description: Checks of literals used in conditions.
   Enabled: false
-  AutoCorrect: contextual
   VersionAdded: '0.51'
 Lint/LiteralAssignmentInCondition:
   Description: Checks for literal assignments in the conditions.
@@ -1658,8 +1658,9 @@ Lint/RedundantRegexpQuantifiers:
 Lint/RedundantRequireStatement:
   Description: Checks for unnecessary `require` statement.
   Enabled: false
+  SafeAutoCorrect: false
   VersionAdded: '0.76'
-  VersionChanged: '1.73'
+  VersionChanged: '1.57'
 Lint/RedundantSafeNavigation:
   Description: Checks for redundant safe navigation calls.
   Enabled: false
@@ -2331,15 +2332,13 @@ Naming/VariableName:
   StyleGuide: "#snake-case-symbols-methods-vars"
   Enabled: false
   VersionAdded: '0.50'
-  VersionChanged: '1.73'
+  VersionChanged: '1.8'
   EnforcedStyle: snake_case
   SupportedStyles:
   - snake_case
   - camelCase
   AllowedIdentifiers: []
   AllowedPatterns: []
-  ForbiddenIdentifiers: []
-  ForbiddenPatterns: []
 Naming/VariableNumber:
   Description: Use the configured style when numbering symbols, methods and variables.
   StyleGuide: "#snake-case-symbols-methods-vars-with-numbers"
@@ -2934,8 +2933,6 @@ Style/EndlessMethod:
   - allow_single_line
   - allow_always
   - disallow
-  - require_single_line
-  - require_always
 Style/EnvHome:
   Description: Checks for consistent usage of `ENV['HOME']`.
   Enabled: false
@@ -3876,9 +3873,6 @@ Style/RedundantCondition:
   Description: Checks for unnecessary conditional expressions.
   Enabled: false
   VersionAdded: '0.76'
-  VersionChanged: '1.73'
-  AllowedMethods:
-  - nonzero?
 Style/RedundantConditional:
   Description: Don't return true/false from a conditional.
   Enabled: false
@@ -4377,7 +4371,6 @@ Style/TrailingCommaInArrayLiteral:
   SupportedStylesForMultiline:
   - comma
   - consistent_comma
-  - diff_comma
   - no_comma
 Style/TrailingCommaInBlockArgs:
   Description: Checks for useless trailing commas in block arguments.
@@ -4391,7 +4384,6 @@ Style/TrailingCommaInHashLiteral:
   SupportedStylesForMultiline:
   - comma
   - consistent_comma
-  - diff_comma
   - no_comma
   VersionAdded: '0.53'
 Style/TrailingMethodEndStatement:
