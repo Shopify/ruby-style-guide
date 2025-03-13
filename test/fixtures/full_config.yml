@@ -1358,10 +1358,9 @@ Lint/EmptyConditionalBody:
     a body.
   Enabled: false
   AutoCorrect: contextual
-  SafeAutoCorrect: false
   AllowComments: true
   VersionAdded: '0.89'
-  VersionChanged: '1.61'
+  VersionChanged: '1.73'
 Lint/EmptyEnsure:
   Description: Checks for empty ensure block.
   Enabled: false
@@ -2355,6 +2354,8 @@ Naming/VariableNumber:
   CheckMethodNames: true
   CheckSymbols: true
   AllowedIdentifiers:
+  - TLS1_1
+  - TLS1_2
   - capture3
   - iso8601
   - rfc1123_date
@@ -2613,8 +2614,19 @@ Style/ClassAndModuleChildren:
   SafeAutoCorrect: false
   Enabled: false
   VersionAdded: '0.19'
+  VersionChanged: '1.74'
   EnforcedStyle: nested
   SupportedStyles:
+  - nested
+  - compact
+  EnforcedStyleForClasses:
+  SupportedStylesForClasses:
+  -
+  - nested
+  - compact
+  EnforcedStyleForModules:
+  SupportedStylesForModules:
+  -
   - nested
   - compact
 Style/ClassCheck:
@@ -2739,6 +2751,11 @@ Style/CommentedKeyword:
   SafeAutoCorrect: false
   VersionAdded: '0.51'
   VersionChanged: '1.19'
+Style/ComparableBetween:
+  Description: Enforces the use of `Comparable#between?` instead of logical comparison.
+  Enabled: pending
+  VersionAdded: '1.74'
+  StyleGuide: "#ranges-or-between"
 Style/ComparableClamp:
   Description: Enforces the use of `Comparable#clamp` instead of comparison by minimum
     and maximum.
@@ -3057,8 +3074,9 @@ Style/FormatStringToken:
   - template
   - unannotated
   MaxUnannotatedPlaceholdersAllowed: 1
+  Mode: aggressive
   VersionAdded: '0.49'
-  VersionChanged: '1.0'
+  VersionChanged: '1.74'
   AllowedMethods: []
   AllowedPatterns: []
 Style/FrozenStringLiteralComment:
