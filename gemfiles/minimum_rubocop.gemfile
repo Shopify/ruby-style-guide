@@ -2,9 +2,21 @@
 
 eval_gemfile "../Gemfile"
 
-# This naively extracts the minimum rubocop version from our gemspec,
+# This extracts the minimum rubocop version from our gemspec,
 # allowing us to ensure that it remains compatible.
-minimum_rubocop_version = File.read("rubocop-shopify.gemspec")[/(?<=add_dependency\("rubocop", "~> ).*(?="\)$)/]
-raise "Failed to extract minimum rubocop version from gemspec" if minimum_rubocop_version.nil?
 
-gem "rubocop", minimum_rubocop_version
+supported_requirement_types = ['>=', '~>']
+supported_requirements, unsupported_requirements = Gem::Specification
+  .load("rubocop-shopify.gemspec")
+  .dependencies.find { |d| d.name == "rubocop" }
+  .requirement.requirements
+  .partition { |type, _version| supported_requirement_types.include?(type) }
+
+raise <<~ERROR_MESSAGE unless unsupported_requirements.empty?
+  Unsupported requirement types: #{unsupported_requirements.inspect}.
+  Only #{supported_requirement_types.inspect} are supported.
+ERROR_MESSAGE
+
+minimum_version = supported_requirements.map { |_type, version| version }.max
+
+gem "rubocop", minimum_version
