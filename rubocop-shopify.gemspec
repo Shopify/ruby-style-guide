@@ -23,5 +23,6 @@ Gem::Specification.new do |s|
 
   s.required_ruby_version = ">= 3.1.0"
 
-  s.add_dependency("rubocop", "~> 1.62")
+  s.add_dependency("rubocop", "~> 1.72", ">= 1.72.1")
+  s.add_dependency("rubocop-thread_safety", ">= 0.7.1")
 end
