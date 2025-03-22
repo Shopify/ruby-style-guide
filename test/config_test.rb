@@ -116,6 +116,23 @@ class ConfigTest < Minitest::Test
     ERROR_MESSAGE
   end
 
+  def test_gem_version_backport_is_still_required
+    # See lib/rubocop/shopify/gem_version_string_comparable_backport.rb
+    last_ruby_version_requiring_gem_version_backport = Gem::Version.new("3.1.9001")
+
+    required_ruby_version = Gem::Specification.load('rubocop-shopify.gemspec').required_ruby_version
+    return if required_ruby_version.satisfied_by?(last_ruby_version_requiring_gem_version_backport)
+
+    flunk(<<~MESSAGE.chomp)
+      Our required Ruby version is not high enough that we can remove our backport of rubygems/rubygems#5275.
+
+      Please do the following:
+        - Delete `lib/rubocop/shopify/gem_version_string_comparable_backport.rb`
+        - Remove `require "rubocop/shopify/gem_version_string_comparable_backport"` from the ERB at the top of `rubocop.yml`
+        - Delete this test
+    MESSAGE
+  end
+
   private
 
   def checking_rubocop_version_compatibility?
