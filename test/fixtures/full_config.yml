@@ -2753,7 +2753,7 @@ Style/CommentedKeyword:
   VersionChanged: '1.19'
 Style/ComparableBetween:
   Description: Enforces the use of `Comparable#between?` instead of logical comparison.
-  Enabled: pending
+  Enabled: false
   VersionAdded: '1.74'
   StyleGuide: "#ranges-or-between"
 Style/ComparableClamp:

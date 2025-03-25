@@ -825,6 +825,11 @@ Style/CommentAnnotation:
 Style/CommentedKeyword:
   Enabled: false
 
+<% if rubocop_version >= "1.74" %>
+Style/ComparableBetween:
+  Enabled: false
+<% end %>
+
 Style/ComparableClamp:
   Enabled: false
 
