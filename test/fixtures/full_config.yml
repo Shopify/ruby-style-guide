@@ -81,7 +81,7 @@ AllCops:
   CacheRootDirectory:
   AllowSymlinksInCacheRootDirectory: false
   TargetRubyVersion:
-  ParserEngine: parser_whitequark
+  ParserEngine: default
   SuggestExtensions:
     rubocop-rails:
     - rails
@@ -2271,12 +2271,17 @@ Naming/MethodName:
   StyleGuide: "#snake-case-symbols-methods-vars"
   Enabled: false
   VersionAdded: '0.50'
+  VersionChanged: '1.75'
   EnforcedStyle: snake_case
   SupportedStyles:
   - snake_case
   - camelCase
   AllowedPatterns:
   - "\\Atest_"
+  ForbiddenIdentifiers:
+  - __id__
+  - __send__
+  ForbiddenPatterns: []
 Naming/MethodParameterName:
   Description: Checks for method parameter names that contain capital letters, end
     in numbers, or do not meet a minimal length.
@@ -2307,7 +2312,7 @@ Naming/PredicateName:
   StyleGuide: "#bool-methods-qmark"
   Enabled: false
   VersionAdded: '0.50'
-  VersionChanged: '0.77'
+  VersionChanged: '1.75'
   NamePrefix:
   - is_
   ForbiddenPrefixes:
@@ -3151,6 +3156,11 @@ Style/HashExcept:
   Safe: false
   VersionAdded: '1.7'
   VersionChanged: '1.39'
+Style/HashFetchChain:
+  Description: Use `Hash#dig` instead of chained `fetch` calls.
+  Enabled: false
+  Safe: false
+  VersionAdded: '1.75'
 Style/HashLikeCase:
   Description: Checks for places where `case-when` represents a simple 1:1 mapping
     and can be replaced with a hash lookup.
@@ -3307,6 +3317,16 @@ Style/ItAssignment:
   Description: Checks for assignment to `it` inside a block.
   Enabled: false
   VersionAdded: '1.70'
+Style/ItBlockParameter:
+  Description: Checks for blocks with one argument where `it` block parameter can
+    be used.
+  Enabled: false
+  EnforcedStyle: allow_named_parameter
+  SupportedStyles:
+  - allow_named_parameter
+  - always
+  - disallow
+  VersionAdded: '1.75'
 Style/KeywordArgumentsMerging:
   Description: When passing an existing hash as keyword arguments, provide additional
     arguments directly rather than using `merge`.
@@ -3627,9 +3647,10 @@ Style/Next:
   StyleGuide: "#no-nested-conditionals"
   Enabled: false
   VersionAdded: '0.22'
-  VersionChanged: '0.35'
+  VersionChanged: '1.75'
   EnforcedStyle: skip_modifier_ifs
   MinBodyLength: 3
+  AllowConsecutiveConditionals: false
   SupportedStyles:
   - skip_modifier_ifs
   - always

@@ -982,6 +982,11 @@ Style/HashEachMethods:
 Style/HashExcept:
   Enabled: false
 
+<% if rubocop_version >= "1.75" %>
+Style/HashFetchChain:
+  Enabled: false
+<% end %>
+
 Style/HashLikeCase:
   Enabled: false
 
@@ -1026,6 +1031,11 @@ Style/InverseMethods:
 
 Style/ItAssignment:
   Enabled: false
+
+<% if rubocop_version >= "1.75" %>
+Style/ItBlockParameter:
+  Enabled: false
+<% end %>
 
 Style/KeywordArgumentsMerging:
   Enabled: false
