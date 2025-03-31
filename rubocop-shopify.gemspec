@@ -21,7 +21,7 @@ Gem::Specification.new do |s|
     "allowed_push_host" => "https://rubygems.org",
   }
 
-  s.required_ruby_version = ">= 3.1.0"
+  s.required_ruby_version = ">= 3.2.0"
 
   s.add_dependency("rubocop", "~> 1.72", ">= 1.72.1")
   s.add_dependency("rubocop-thread_safety", ">= 0.7.1")
