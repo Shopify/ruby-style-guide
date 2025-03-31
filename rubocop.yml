@@ -1,6 +1,4 @@
 <%
-  require "rubocop/shopify/gem_version_string_comparable_backport"
-
   rubocop_version = Gem.loaded_specs.fetch("rubocop").version
 %>
 
