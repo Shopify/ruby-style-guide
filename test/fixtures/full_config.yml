@@ -1096,7 +1096,7 @@ Layout/TrailingWhitespace:
   AllowInHeredoc: false
 Lint/AmbiguousAssignment:
   Description: Checks for mistyped shorthand assignments.
-  Enabled: false
+  Enabled: true
   VersionAdded: '1.7'
 Lint/AmbiguousBlockAssociation:
   Description: Checks for ambiguous block association with method when param passed
@@ -1110,7 +1110,7 @@ Lint/AmbiguousOperator:
   Description: Checks for ambiguous operators in the first argument of a method invocation
     without parentheses.
   StyleGuide: "#method-invocation-parens"
-  Enabled: false
+  Enabled: true
   VersionAdded: '0.17'
   VersionChanged: '0.83'
 Lint/AmbiguousOperatorPrecedence:
@@ -1145,11 +1145,11 @@ Lint/AssignmentInCondition:
   AllowSafeAssignment: true
 Lint/BigDecimalNew:
   Description: "`BigDecimal.new()` is deprecated. Use `BigDecimal()` instead."
-  Enabled: false
+  Enabled: true
   VersionAdded: '0.53'
 Lint/BinaryOperatorWithIdenticalOperands:
   Description: Checks for places where binary operator has identical operands.
-  Enabled: false
+  Enabled: true
   Safe: false
   VersionAdded: '0.89'
   VersionChanged: '1.69'
@@ -1162,7 +1162,7 @@ Lint/BooleanSymbol:
 Lint/CircularArgumentReference:
   Description: Default values in optional keyword arguments and optional ordinal arguments
     should not refer back to the name of the argument.
-  Enabled: false
+  Enabled: true
   VersionAdded: '0.33'
 Lint/ConstantDefinitionInBlock:
   Description: Do not define constants within a block.
@@ -1175,11 +1175,11 @@ Lint/ConstantDefinitionInBlock:
 Lint/ConstantOverwrittenInRescue:
   Description: Checks for overwriting an exception with an exception result by use
     `rescue =>`.
-  Enabled: false
+  Enabled: true
   VersionAdded: '1.31'
 Lint/ConstantReassignment:
   Description: Checks for constant reassignments.
-  Enabled: false
+  Enabled: true
   VersionAdded: '1.70'
 Lint/ConstantResolution:
   Description: Check that constants are fully qualified with `::`.
@@ -1189,11 +1189,11 @@ Lint/ConstantResolution:
   Ignore: []
 Lint/CopDirectiveSyntax:
   Description: Checks that `# rubocop:` directives are strictly formatted.
-  Enabled: false
+  Enabled: true
   VersionAdded: '1.72'
 Lint/Debugger:
   Description: Check for debugger calls.
-  Enabled: false
+  Enabled: true
   VersionAdded: '0.14'
   VersionChanged: '1.63'
   DebuggerMethods:
@@ -1241,7 +1241,7 @@ Lint/Debugger:
     - debug/start
 Lint/DeprecatedClassMethods:
   Description: Check for deprecated class method calls.
-  Enabled: false
+  Enabled: true
   VersionAdded: '0.19'
 Lint/DeprecatedConstants:
   Description: Checks for deprecated constants.
@@ -1272,11 +1272,11 @@ Lint/DeprecatedConstants:
       DeprecatedVersion: '3.0'
 Lint/DeprecatedOpenSSLConstant:
   Description: Don't use algorithm constants for `OpenSSL::Cipher` and `OpenSSL::Digest`.
-  Enabled: false
+  Enabled: true
   VersionAdded: '0.84'
 Lint/DisjunctiveAssignmentInConstructor:
   Description: In constructor, plain assignment is preferred over disjunctive.
-  Enabled: false
+  Enabled: true
   Safe: false
   VersionAdded: '0.62'
   VersionChanged: '0.88'
@@ -1291,54 +1291,54 @@ Lint/DuplicateBranch:
   IgnoreDuplicateElseBranch: false
 Lint/DuplicateCaseCondition:
   Description: Do not repeat values in case conditionals.
-  Enabled: false
+  Enabled: true
   VersionAdded: '0.45'
 Lint/DuplicateElsifCondition:
   Description: Do not repeat conditions used in if `elsif`.
-  Enabled: false
+  Enabled: true
   VersionAdded: '0.88'
 Lint/DuplicateHashKey:
   Description: Check for duplicate keys in hash literals.
-  Enabled: false
+  Enabled: true
   VersionAdded: '0.34'
   VersionChanged: '0.77'
 Lint/DuplicateMagicComment:
   Description: Check for duplicated magic comments.
-  Enabled: false
+  Enabled: true
   VersionAdded: '1.37'
 Lint/DuplicateMatchPattern:
   Description: Do not repeat patterns in `in` keywords.
-  Enabled: false
+  Enabled: true
   VersionAdded: '1.50'
 Lint/DuplicateMethods:
   Description: Check for duplicate method definitions.
-  Enabled: false
+  Enabled: true
   VersionAdded: '0.29'
 Lint/DuplicateRegexpCharacterClassElement:
   Description: Checks for duplicate elements in Regexp character classes.
-  Enabled: false
+  Enabled: true
   VersionAdded: '1.1'
 Lint/DuplicateRequire:
   Description: Check for duplicate `require`s and `require_relative`s.
-  Enabled: false
+  Enabled: true
   SafeAutoCorrect: false
   VersionAdded: '0.90'
   VersionChanged: '1.28'
 Lint/DuplicateRescueException:
   Description: Checks that there are no repeated exceptions used in `rescue` expressions.
-  Enabled: false
+  Enabled: true
   VersionAdded: '0.89'
 Lint/DuplicateSetElement:
   Description: Checks for duplicate elements in Set.
-  Enabled: false
+  Enabled: true
   VersionAdded: '1.67'
 Lint/EachWithObjectArgument:
   Description: Check for immutable argument given to each_with_object.
-  Enabled: false
+  Enabled: true
   VersionAdded: '0.31'
 Lint/ElseLayout:
   Description: Check for odd code arrangement in an else block.
-  Enabled: false
+  Enabled: true
   VersionAdded: '0.17'
   VersionChanged: '1.2'
 Lint/EmptyBlock:
@@ -1363,13 +1363,13 @@ Lint/EmptyConditionalBody:
   VersionChanged: '1.73'
 Lint/EmptyEnsure:
   Description: Checks for empty ensure block.
-  Enabled: false
+  Enabled: true
   AutoCorrect: contextual
   VersionAdded: '0.10'
   VersionChanged: '1.61'
 Lint/EmptyExpression:
   Description: Checks for empty expressions.
-  Enabled: false
+  Enabled: true
   VersionAdded: '0.45'
 Lint/EmptyFile:
   Description: Enforces that Ruby source files are not empty.
@@ -1383,7 +1383,7 @@ Lint/EmptyInPattern:
   VersionAdded: '1.16'
 Lint/EmptyInterpolation:
   Description: Checks for empty string interpolation.
-  Enabled: false
+  Enabled: true
   AutoCorrect: contextual
   VersionAdded: '0.20'
   VersionChanged: '1.61'
@@ -1396,7 +1396,7 @@ Lint/EmptyWhen:
 Lint/EnsureReturn:
   Description: Do not use return in an ensure block.
   StyleGuide: "#no-return-ensure"
-  Enabled: false
+  Enabled: true
   VersionAdded: '0.9'
   VersionChanged: '0.83'
 Lint/ErbNewArguments:
@@ -1447,7 +1447,7 @@ Lint/IdentityComparison:
 Lint/ImplicitStringConcatenation:
   Description: Checks for adjacent string literals on the same line, which could better
     be represented as a single string literal.
-  Enabled: false
+  Enabled: true
   VersionAdded: '0.36'
 Lint/IncompatibleIoSelectWithFiberScheduler:
   Description: Checks for `IO.select` that is incompatible with Fiber Scheduler.
@@ -1458,7 +1458,7 @@ Lint/IncompatibleIoSelectWithFiberScheduler:
 Lint/IneffectiveAccessModifier:
   Description: Checks for attempts to use `private` or `protected` to set the visibility
     of a class method, which does not work.
-  Enabled: false
+  Enabled: true
   VersionAdded: '0.36'
 Lint/InheritException:
   Description: Avoid inheriting from the `Exception` class.
@@ -1472,7 +1472,7 @@ Lint/InheritException:
   - runtime_error
 Lint/InterpolationCheck:
   Description: Checks for interpolation in a single quoted string.
-  Enabled: false
+  Enabled: true
   SafeAutoCorrect: false
   VersionAdded: '0.50'
   VersionChanged: '1.40'
@@ -1487,7 +1487,7 @@ Lint/LambdaWithoutLiteralBlock:
   VersionAdded: '1.8'
 Lint/LiteralAsCondition:
   Description: Checks of literals used in conditions.
-  Enabled: false
+  Enabled: true
   AutoCorrect: contextual
   VersionAdded: '0.51'
 Lint/LiteralAssignmentInCondition:
@@ -1496,7 +1496,7 @@ Lint/LiteralAssignmentInCondition:
   VersionAdded: '1.58'
 Lint/LiteralInInterpolation:
   Description: Checks for literals used in interpolation.
-  Enabled: false
+  Enabled: true
   VersionAdded: '0.19'
   VersionChanged: '0.32'
 Lint/Loop:
@@ -1509,7 +1509,7 @@ Lint/Loop:
   Safe: false
 Lint/MissingCopEnableDirective:
   Description: Checks for a `# rubocop:enable` after `# rubocop:disable`.
-  Enabled: false
+  Enabled: true
   VersionAdded: '0.52'
   MaximumRangeSize: .inf
 Lint/MissingSuper:
@@ -1522,7 +1522,7 @@ Lint/MissingSuper:
 Lint/MixedCaseRange:
   Description: Checks for mixed-case character ranges since they include likely unintended
     characters.
-  Enabled: false
+  Enabled: true
   SafeAutoCorrect: false
   VersionAdded: '1.53'
 Lint/MixedRegexpCaptureTypes:
@@ -1531,24 +1531,24 @@ Lint/MixedRegexpCaptureTypes:
   VersionAdded: '0.85'
 Lint/MultipleComparison:
   Description: Use `&&` operator to compare multiple values.
-  Enabled: false
+  Enabled: true
   VersionAdded: '0.47'
   VersionChanged: '1.1'
 Lint/NestedMethodDefinition:
   Description: Do not use nested method definitions.
   StyleGuide: "#no-nested-methods"
-  Enabled: false
+  Enabled: true
   AllowedMethods: []
   AllowedPatterns: []
   VersionAdded: '0.32'
 Lint/NestedPercentLiteral:
   Description: Checks for nested percent literals.
-  Enabled: false
+  Enabled: true
   VersionAdded: '0.52'
 Lint/NextWithoutAccumulator:
   Description: Do not omit the accumulator when calling `next` in a `reduce`/`inject`
     block.
-  Enabled: false
+  Enabled: true
   VersionAdded: '0.36'
 Lint/NoReturnInBeginEndBlocks:
   Description: Do not `return` inside `begin..end` blocks in assignment contexts.
@@ -1586,11 +1586,11 @@ Lint/NumberedParameterAssignment:
   VersionAdded: '1.9'
 Lint/NumericOperationWithConstantResult:
   Description: Checks for numeric operations with constant results.
-  Enabled: false
+  Enabled: true
   VersionAdded: '1.69'
 Lint/OrAssignmentToConstant:
   Description: Checks unintended or-assignment to constant.
-  Enabled: false
+  Enabled: true
   Safe: false
   VersionAdded: '1.9'
 Lint/OrderedMagicComments:
@@ -1609,7 +1609,7 @@ Lint/OutOfRangeRegexpRef:
 Lint/ParenthesesAsGroupedExpression:
   Description: Checks for method calls with a space before the opening parenthesis.
   StyleGuide: "#parens-no-spaces"
-  Enabled: false
+  Enabled: true
   VersionAdded: '0.12'
   VersionChanged: '0.83'
 Lint/PercentStringArray:
@@ -1639,11 +1639,11 @@ Lint/RandOne:
 Lint/RedundantCopDisableDirective:
   Description: 'Checks for rubocop:disable comments that can be removed. Note: this
     cop is not disabled when disabling all cops. It must be explicitly disabled.'
-  Enabled: false
+  Enabled: true
   VersionAdded: '0.76'
 Lint/RedundantCopEnableDirective:
   Description: Checks for rubocop:enable comments that can be removed.
-  Enabled: false
+  Enabled: true
   VersionAdded: '0.76'
 Lint/RedundantDirGlobSort:
   Description: Checks for redundant `sort` method to `Dir.glob` and `Dir[]`.
@@ -1681,7 +1681,7 @@ Lint/RedundantSplatExpansion:
 Lint/RedundantStringCoercion:
   Description: Checks for Object#to_s usage in string interpolation.
   StyleGuide: "#no-to-s"
-  Enabled: false
+  Enabled: true
   VersionAdded: '0.19'
   VersionChanged: '0.77'
 Lint/RedundantTypeConversion:
@@ -1690,11 +1690,11 @@ Lint/RedundantTypeConversion:
   VersionAdded: '1.72'
 Lint/RedundantWithIndex:
   Description: Checks for redundant `with_index`.
-  Enabled: false
+  Enabled: true
   VersionAdded: '0.50'
 Lint/RedundantWithObject:
   Description: Checks for redundant `with_object`.
-  Enabled: false
+  Enabled: true
   VersionAdded: '0.51'
 Lint/RefinementImportMethods:
   Description: Use `Refinement#import_methods` when using `include` or `prepend` in
@@ -1705,7 +1705,7 @@ Lint/RefinementImportMethods:
 Lint/RegexpAsCondition:
   Description: Do not use regexp literal as a condition. The regexp literal matches
     `$_` implicitly.
-  Enabled: false
+  Enabled: true
   VersionAdded: '0.51'
   VersionChanged: '0.86'
 Lint/RequireParentheses:
@@ -1733,11 +1733,11 @@ Lint/RescueType:
   VersionAdded: '0.49'
 Lint/ReturnInVoidContext:
   Description: Checks for return in void context.
-  Enabled: false
+  Enabled: true
   VersionAdded: '0.50'
 Lint/SafeNavigationChain:
   Description: Do not chain ordinary method call after safe navigation operator.
-  Enabled: false
+  Enabled: true
   VersionAdded: '0.47'
   VersionChanged: '0.77'
   AllowedMethods:
@@ -1772,11 +1772,11 @@ Lint/ScriptPermission:
   VersionChanged: '0.50'
 Lint/SelfAssignment:
   Description: Checks for self-assignments.
-  Enabled: false
+  Enabled: true
   VersionAdded: '0.89'
 Lint/SendWithMixinArgument:
   Description: Checks for `send` method when using mixin.
-  Enabled: false
+  Enabled: true
   VersionAdded: '0.75'
 Lint/ShadowedArgument:
   Description: Avoid reassigning arguments before they were used.
@@ -1845,13 +1845,13 @@ Lint/TopLevelReturnWithArgument:
   - "/**/*.jb"
 Lint/TrailingCommaInAttributeDeclaration:
   Description: Checks for trailing commas in attribute declarations.
-  Enabled: false
+  Enabled: true
   AutoCorrect: contextual
   VersionAdded: '0.90'
   VersionChanged: '1.61'
 Lint/TripleQuotes:
   Description: Checks for useless triple quote constructs.
-  Enabled: false
+  Enabled: true
   VersionAdded: '1.9'
 Lint/UnderscorePrefixedVariableName:
   Description: Do not use prefix `_` for a variable that is used.
@@ -4562,6 +4562,11 @@ Style/ZeroLengthPredicate:
   Safe: false
   VersionAdded: '0.37'
   VersionChanged: '0.39'
+Lint/NoReturnInMemoization:
+  Enabled: true
+  VersionAdded: 3.0.0
+  Description: Checks for the use of a `return` with a value in `begin..end` blocks
+    in the context of instance variable assignment such as memoization.
 ThreadSafety/ClassAndModuleAttributes:
   Description: Avoid mutating class and module attributes.
   Enabled: true

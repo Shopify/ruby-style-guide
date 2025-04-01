@@ -2,6 +2,8 @@
 
 require "minitest/autorun"
 
+require "rubocop-shopify"
+
 module Warning
   class << self
     def warn(message)

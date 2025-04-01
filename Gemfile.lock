@@ -1,7 +1,8 @@
 PATH
   remote: .
   specs:
-    rubocop-shopify (2.15.1)
+    rubocop-shopify (3.0.0)
+      lint_roller
       rubocop (~> 1.72, >= 1.72.1)
       rubocop-thread_safety (>= 0.7.1)
 
@@ -37,6 +38,10 @@ GEM
     rubocop-ast (1.43.0)
       parser (>= 3.3.7.2)
       prism (~> 1.4)
+    rubocop-minitest (0.37.1)
+      lint_roller (~> 1.1)
+      rubocop (>= 1.72.1, < 2.0)
+      rubocop-ast (>= 1.38.0, < 2.0)
     rubocop-thread_safety (0.7.2)
       lint_roller (~> 1.1)
       rubocop (~> 1.72, >= 1.72.1)
@@ -52,6 +57,7 @@ DEPENDENCIES
   diffy
   minitest
   rake
+  rubocop-minitest
   rubocop-shopify!
 
 BUNDLED WITH

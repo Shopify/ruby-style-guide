@@ -7,3 +7,4 @@ gemspec
 gem "diffy"
 gem "minitest"
 gem "rake"
+gem "rubocop-minitest"

@@ -1,0 +1,4 @@
+Lint/NoReturnInMemoization:
+  Enabled: true
+  VersionAdded: "3.0.0"
+  Description: "Checks for the use of a `return` with a value in `begin..end` blocks in the context of instance variable assignment such as memoization."
