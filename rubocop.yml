@@ -364,9 +364,6 @@ Lint/RescueException:
 Lint/RescueType:
   Enabled: false
 
-Lint/SafeNavigationChain:
-  Enabled: false
-
 Lint/SafeNavigationConsistency:
   Enabled: false
 
