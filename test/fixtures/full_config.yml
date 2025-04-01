@@ -81,7 +81,7 @@ AllCops:
   CacheRootDirectory:
   AllowSymlinksInCacheRootDirectory: false
   TargetRubyVersion:
-  ParserEngine: parser_whitequark
+  ParserEngine: default
   SuggestExtensions:
     rubocop-rails:
     - rails
@@ -1358,10 +1358,9 @@ Lint/EmptyConditionalBody:
     a body.
   Enabled: false
   AutoCorrect: contextual
-  SafeAutoCorrect: false
   AllowComments: true
   VersionAdded: '0.89'
-  VersionChanged: '1.61'
+  VersionChanged: '1.73'
 Lint/EmptyEnsure:
   Description: Checks for empty ensure block.
   Enabled: true
@@ -2272,12 +2271,17 @@ Naming/MethodName:
   StyleGuide: "#snake-case-symbols-methods-vars"
   Enabled: false
   VersionAdded: '0.50'
+  VersionChanged: '1.75'
   EnforcedStyle: snake_case
   SupportedStyles:
   - snake_case
   - camelCase
   AllowedPatterns:
   - "\\Atest_"
+  ForbiddenIdentifiers:
+  - __id__
+  - __send__
+  ForbiddenPatterns: []
 Naming/MethodParameterName:
   Description: Checks for method parameter names that contain capital letters, end
     in numbers, or do not meet a minimal length.
@@ -2308,7 +2312,7 @@ Naming/PredicateName:
   StyleGuide: "#bool-methods-qmark"
   Enabled: false
   VersionAdded: '0.50'
-  VersionChanged: '0.77'
+  VersionChanged: '1.75'
   NamePrefix:
   - is_
   ForbiddenPrefixes:
@@ -2355,6 +2359,8 @@ Naming/VariableNumber:
   CheckMethodNames: true
   CheckSymbols: true
   AllowedIdentifiers:
+  - TLS1_1
+  - TLS1_2
   - capture3
   - iso8601
   - rfc1123_date
@@ -2613,8 +2619,19 @@ Style/ClassAndModuleChildren:
   SafeAutoCorrect: false
   Enabled: false
   VersionAdded: '0.19'
+  VersionChanged: '1.74'
   EnforcedStyle: nested
   SupportedStyles:
+  - nested
+  - compact
+  EnforcedStyleForClasses:
+  SupportedStylesForClasses:
+  -
+  - nested
+  - compact
+  EnforcedStyleForModules:
+  SupportedStylesForModules:
+  -
   - nested
   - compact
 Style/ClassCheck:
@@ -2739,6 +2756,11 @@ Style/CommentedKeyword:
   SafeAutoCorrect: false
   VersionAdded: '0.51'
   VersionChanged: '1.19'
+Style/ComparableBetween:
+  Description: Enforces the use of `Comparable#between?` instead of logical comparison.
+  Enabled: false
+  VersionAdded: '1.74'
+  StyleGuide: "#ranges-or-between"
 Style/ComparableClamp:
   Description: Enforces the use of `Comparable#clamp` instead of comparison by minimum
     and maximum.
@@ -3057,8 +3079,9 @@ Style/FormatStringToken:
   - template
   - unannotated
   MaxUnannotatedPlaceholdersAllowed: 1
+  Mode: aggressive
   VersionAdded: '0.49'
-  VersionChanged: '1.0'
+  VersionChanged: '1.74'
   AllowedMethods: []
   AllowedPatterns: []
 Style/FrozenStringLiteralComment:
@@ -3133,6 +3156,11 @@ Style/HashExcept:
   Safe: false
   VersionAdded: '1.7'
   VersionChanged: '1.39'
+Style/HashFetchChain:
+  Description: Use `Hash#dig` instead of chained `fetch` calls.
+  Enabled: false
+  Safe: false
+  VersionAdded: '1.75'
 Style/HashLikeCase:
   Description: Checks for places where `case-when` represents a simple 1:1 mapping
     and can be replaced with a hash lookup.
@@ -3289,6 +3317,16 @@ Style/ItAssignment:
   Description: Checks for assignment to `it` inside a block.
   Enabled: false
   VersionAdded: '1.70'
+Style/ItBlockParameter:
+  Description: Checks for blocks with one argument where `it` block parameter can
+    be used.
+  Enabled: false
+  EnforcedStyle: allow_named_parameter
+  SupportedStyles:
+  - allow_named_parameter
+  - always
+  - disallow
+  VersionAdded: '1.75'
 Style/KeywordArgumentsMerging:
   Description: When passing an existing hash as keyword arguments, provide additional
     arguments directly rather than using `merge`.
@@ -3526,7 +3564,7 @@ Style/MultipleComparison:
   ComparisonsThreshold: 2
 Style/MutableConstant:
   Description: Do not assign mutable objects to constants.
-  Enabled: false
+  Enabled: true
   VersionAdded: '0.34'
   VersionChanged: '1.8'
   SafeAutoCorrect: false
@@ -3609,9 +3647,10 @@ Style/Next:
   StyleGuide: "#no-nested-conditionals"
   Enabled: false
   VersionAdded: '0.22'
-  VersionChanged: '0.35'
+  VersionChanged: '1.75'
   EnforcedStyle: skip_modifier_ifs
   MinBodyLength: 3
+  AllowConsecutiveConditionals: false
   SupportedStyles:
   - skip_modifier_ifs
   - always
@@ -4528,6 +4567,38 @@ Lint/NoReturnInMemoization:
   VersionAdded: 3.0.0
   Description: Checks for the use of a `return` with a value in `begin..end` blocks
     in the context of instance variable assignment such as memoization.
+ThreadSafety/ClassAndModuleAttributes:
+  Description: Avoid mutating class and module attributes.
+  Enabled: true
+  ActiveSupportClassAttributeAllowed: false
+ThreadSafety/ClassInstanceVariable:
+  Description: Avoid class instance variables.
+  Enabled: false
+ThreadSafety/MutableClassInstanceVariable:
+  Description: Do not assign mutable objects to class instance variables.
+  Enabled: false
+  EnforcedStyle: literals
+  SafeAutoCorrect: false
+  SupportedStyles:
+  - literals
+  - strict
+ThreadSafety/NewThread:
+  Description: Avoid starting new threads. Let a framework like Sidekiq handle the
+    threads.
+  Enabled: false
+ThreadSafety/DirChdir:
+  Description: Avoid using `Dir.chdir` due to its process-wide effect.
+  Enabled: true
+  AllowCallWithBlock: false
+ThreadSafety/RackMiddlewareInstanceVariable:
+  Description: Avoid instance variables in Rack middleware.
+  Enabled: false
+  Include:
+  - app/middleware/**/*.rb
+  - lib/middleware/**/*.rb
+  - app/middlewares/**/*.rb
+  - lib/middlewares/**/*.rb
+  AllowedIdentifiers: []
 inherit_mode:
   merge:
   - Exclude

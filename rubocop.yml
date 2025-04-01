@@ -1,11 +1,10 @@
 <%
-  require "rubocop/shopify/gem_version_string_comparable_backport"
-
   rubocop_version = Gem.loaded_specs.fetch("rubocop").version
 %>
 
 plugins:
   - rubocop-shopify
+  - rubocop-thread_safety
 
 inherit_mode:
   merge:
@@ -700,6 +699,11 @@ Style/CommentAnnotation:
 Style/CommentedKeyword:
   Enabled: false
 
+<% if rubocop_version >= "1.74" %>
+Style/ComparableBetween:
+  Enabled: false
+<% end %>
+
 Style/ComparableClamp:
   Enabled: false
 
@@ -852,6 +856,11 @@ Style/HashEachMethods:
 Style/HashExcept:
   Enabled: false
 
+<% if rubocop_version >= "1.75" %>
+Style/HashFetchChain:
+  Enabled: false
+<% end %>
+
 Style/HashLikeCase:
   Enabled: false
 
@@ -896,6 +905,11 @@ Style/InverseMethods:
 
 Style/ItAssignment:
   Enabled: false
+
+<% if rubocop_version >= "1.75" %>
+Style/ItBlockParameter:
+  Enabled: false
+<% end %>
 
 Style/KeywordArgumentsMerging:
   Enabled: false
@@ -986,9 +1000,6 @@ Style/MultilineWhenThen:
   Enabled: false
 
 Style/MultipleComparison:
-  Enabled: false
-
-Style/MutableConstant:
   Enabled: false
 
 Style/NegatedIf:
@@ -1362,4 +1373,16 @@ Style/YodaCondition:
   Enabled: false
 
 Style/ZeroLengthPredicate:
+  Enabled: false
+
+ThreadSafety/ClassInstanceVariable:
+  Enabled: false
+
+ThreadSafety/MutableClassInstanceVariable:
+  Enabled: false
+
+ThreadSafety/NewThread:
+  Enabled: false
+
+ThreadSafety/RackMiddlewareInstanceVariable:
   Enabled: false

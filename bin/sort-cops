@@ -58,7 +58,7 @@ def sort_cops(file_path)
 end
 
 if ARGV.empty?
-  puts "Usage: ruby sort_cops.rb path/to/rubocop.yml"
+  puts "Usage: ruby sort-cops path/to/rubocop.yml"
   exit 1
 end
 
