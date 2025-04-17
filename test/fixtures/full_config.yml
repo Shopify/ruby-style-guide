@@ -735,7 +735,7 @@ Layout/LineEndStringConcatenationIndentation:
 Layout/LineLength:
   Description: Checks that line length does not exceed the configured limit.
   StyleGuide: "#max-line-length"
-  Enabled: true
+  Enabled: false
   VersionAdded: '0.25'
   VersionChanged: '1.69'
   Max: 120
@@ -745,9 +745,7 @@ Layout/LineLength:
   - http
   - https
   IgnoreCopDirectives: true
-  AllowedPatterns:
-  - "\\A\\s*(remote_)?test(_\\w+)?\\s.*(do|->)(\\s|\\Z)"
-  - "\\A\\s*def test_\\w+\\s*\\Z"
+  AllowedPatterns: []
   SplitStrings: false
 Layout/MultilineArrayBraceLayout:
   Description: Checks that the closing brace in an array literal is either on the
