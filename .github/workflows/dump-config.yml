@@ -22,13 +22,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
         with:
           ref: ${{ github.head_ref }}
           token: ${{ secrets.SHOPIFY_GH_ACCESS_TOKEN }}
 
       - name: Setup Ruby
-        uses: ruby/setup-ruby@v1
+        uses: ruby/setup-ruby@dffc446db9ba5a0c4446edb5bca1c5c473a806c5 # v1.235.0
         with:
           bundler-cache: true
 
@@ -36,7 +36,7 @@ jobs:
         run: bundle exec rake config:dump
 
       - name: Commit & push
-        uses: EndBug/add-and-commit@v9
+        uses: EndBug/add-and-commit@a94899bca583c204427a224a7af87c02f9b325d5 # v9.1.4
         id: push
         with:
           add: 'test/fixtures/full_config.yml'
