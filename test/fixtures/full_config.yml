@@ -188,7 +188,8 @@ Bundler/OrderedGems:
 Gemspec/AddRuntimeDependency:
   Description: Prefer `add_dependency` over `add_runtime_dependency`.
   StyleGuide: "#add_dependency_vs_add_runtime_dependency"
-  Reference: https://github.com/rubygems/rubygems/issues/7799#issuecomment-2192720316
+  References:
+  - https://github.com/rubygems/rubygems/issues/7799#issuecomment-2192720316
   Enabled: false
   VersionAdded: '1.65'
   Include:
@@ -252,7 +253,7 @@ Gemspec/RequireMFA:
   Severity: warning
   VersionAdded: '1.23'
   VersionChanged: '1.40'
-  Reference:
+  References:
   - https://guides.rubygems.org/mfa-requirement-opt-in/
   Include:
   - "**/*.gemspec"
@@ -432,7 +433,7 @@ Layout/EmptyLineAfterMultilineCondition:
   Description: Enforces empty line after multiline condition.
   Enabled: false
   VersionAdded: '0.90'
-  Reference:
+  References:
   - https://github.com/airbnb/ruby#multiline-if-newline
 Layout/EmptyLineBetweenDefs:
   Description: Use empty lines between class/module/method defs.
@@ -460,7 +461,7 @@ Layout/EmptyLinesAroundAccessModifier:
   SupportedStyles:
   - around
   - only_before
-  Reference:
+  References:
   - https://edgeguides.rubyonrails.org/contributing_to_ruby_on_rails.html#follow-the-coding-conventions
 Layout/EmptyLinesAroundArguments:
   Description: Keeps track of empty lines around method arguments.
@@ -664,7 +665,7 @@ Layout/IndentationConsistency:
   SupportedStyles:
   - normal
   - indented_internal_methods
-  Reference:
+  References:
   - https://edgeguides.rubyonrails.org/contributing_to_ruby_on_rails.html#follow-the-coding-conventions
 Layout/IndentationStyle:
   Description: Consistent indentation either with tabs only or spaces only.
@@ -1478,7 +1479,8 @@ Lint/InterpolationCheck:
   VersionChanged: '1.40'
 Lint/ItWithoutArgumentsInBlock:
   Description: Checks uses of `it` calls without arguments in block.
-  Reference: https://bugs.ruby-lang.org/issues/18980
+  References:
+  - https://bugs.ruby-lang.org/issues/18980
   Enabled: false
   VersionAdded: '1.59'
 Lint/LambdaWithoutLiteralBlock:
@@ -2004,7 +2006,7 @@ Lint/Void:
 Metrics/AbcSize:
   Description: A calculated magnitude based on number of assignments, branches, and
     conditions.
-  Reference:
+  References:
   - http://c2.com/cgi/wiki?AbcMetric
   - https://en.wikipedia.org/wiki/ABC_Software_Metric
   Enabled: false
@@ -2389,7 +2391,8 @@ Security/IoMethods:
 Security/JSONLoad:
   Description: Prefer usage of `JSON.parse` over `JSON.load` due to potential security
     issues. See reference for more information.
-  Reference: https://ruby-doc.org/stdlib-2.7.0/libdoc/json/rdoc/JSON.html#method-i-load
+  References:
+  - https://ruby-doc.org/stdlib-2.7.0/libdoc/json/rdoc/JSON.html#method-i-load
   Enabled: false
   VersionAdded: '0.43'
   VersionChanged: '1.22'
@@ -2397,7 +2400,8 @@ Security/JSONLoad:
 Security/MarshalLoad:
   Description: Avoid using of `Marshal.load` or `Marshal.restore` due to potential
     security issues. See reference for more information.
-  Reference: https://ruby-doc.org/core-2.7.0/Marshal.html#module-Marshal-label-Security+considerations
+  References:
+  - https://ruby-doc.org/core-2.7.0/Marshal.html#module-Marshal-label-Security+considerations
   Enabled: false
   VersionAdded: '0.47'
 Security/Open:
@@ -2410,7 +2414,8 @@ Security/Open:
 Security/YAMLLoad:
   Description: Prefer usage of `YAML.safe_load` over `YAML.load` due to potential
     security issues. See reference for more information.
-  Reference: https://ruby-doc.org/stdlib-2.7.0/libdoc/yaml/rdoc/YAML.html#module-YAML-label-Security
+  References:
+  - https://ruby-doc.org/stdlib-2.7.0/libdoc/yaml/rdoc/YAML.html#module-YAML-label-Security
   Enabled: false
   VersionAdded: '0.47'
   SafeAutoCorrect: false
@@ -2490,7 +2495,8 @@ Style/ArrayCoercion:
   VersionAdded: '0.88'
 Style/ArrayFirstLast:
   Description: Use `arr.first` and `arr.last` instead of `arr[0]` and `arr[-1]`.
-  Reference: "#first-and-last"
+  References:
+  - "#first-and-last"
   Enabled: false
   VersionAdded: '1.58'
   Safe: false
@@ -2759,7 +2765,9 @@ Style/CommentedKeyword:
 Style/ComparableBetween:
   Description: Enforces the use of `Comparable#between?` instead of logical comparison.
   Enabled: false
+  Safe: false
   VersionAdded: '1.74'
+  VersionChanged: '1.75'
   StyleGuide: "#ranges-or-between"
 Style/ComparableClamp:
   Description: Enforces the use of `Comparable#clamp` instead of comparison by minimum
@@ -3003,7 +3011,7 @@ Style/ExponentialNotation:
   - integral
 Style/FetchEnvVar:
   Description: Suggests `ENV.fetch` for the replacement of `ENV[]`.
-  Reference:
+  References:
   - https://rubystyle.guide/#hash-fetch-defaults
   Enabled: false
   VersionAdded: '1.28'
@@ -3037,7 +3045,8 @@ Style/FileWrite:
 Style/FloatDivision:
   Description: For performing float division, coerce one side only.
   StyleGuide: "#float-division"
-  Reference: https://blog.rubystyle.guide/ruby/2019/06/21/float-division.html
+  References:
+  - https://blog.rubystyle.guide/ruby/2019/06/21/float-division.html
   Enabled: false
   VersionAdded: '0.72'
   VersionChanged: '1.9'
@@ -3110,7 +3119,8 @@ Style/GlobalStdStream:
 Style/GlobalVars:
   Description: Do not introduce global variables.
   StyleGuide: "#instance-vars"
-  Reference: https://www.zenspider.com/ruby/quickref.html
+  References:
+  - https://www.zenspider.com/ruby/quickref.html
   Enabled: false
   VersionAdded: '0.13'
   AllowedVariables: []
@@ -3751,7 +3761,7 @@ Style/OneLineConditional:
 Style/OpenStructUse:
   Description: Avoid using OpenStruct. As of Ruby 3.0, use is officially discouraged
     due to performance, version compatibility, and potential security issues.
-  Reference:
+  References:
   - https://docs.ruby-lang.org/en/3.0.0/OpenStruct.html#class-OpenStruct-label-Caveats
   Enabled: false
   Safe: false
@@ -3950,7 +3960,8 @@ Style/RedundantFetchBlock:
   Description: Use `fetch(key, value)` instead of `fetch(key) { value }` when value
     has Numeric, Rational, Complex, Symbol or String type, `false`, `true`, `nil`
     or is a constant.
-  Reference: https://github.com/fastruby/fast-ruby#hashfetch-with-argument-vs-hashfetch--block-code
+  References:
+  - https://github.com/fastruby/fast-ruby#hashfetch-with-argument-vs-hashfetch--block-code
   Enabled: false
   Safe: false
   SafeForConstants: false
@@ -4145,7 +4156,8 @@ Style/SafeNavigationChainLength:
   Max: 2
 Style/Sample:
   Description: Use `sample` instead of `shuffle.first`, `shuffle.last`, and `shuffle[Integer]`.
-  Reference: https://github.com/fastruby/fast-ruby#arrayshufflefirst-vs-arraysample-code
+  References:
+  - https://github.com/fastruby/fast-ruby#arrayshufflefirst-vs-arraysample-code
   Enabled: false
   VersionAdded: '0.30'
 Style/SelectByRegexp:
@@ -4533,7 +4545,8 @@ Style/YAMLFileRead:
   VersionAdded: '1.53'
 Style/YodaCondition:
   Description: Forbid or enforce yoda conditions.
-  Reference: https://en.wikipedia.org/wiki/Yoda_conditions
+  References:
+  - https://en.wikipedia.org/wiki/Yoda_conditions
   Enabled: false
   EnforcedStyle: forbid_for_all_comparison_operators
   SupportedStyles:
