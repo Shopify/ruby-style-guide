@@ -452,6 +452,11 @@ Lint/UselessAssignment:
 Lint/UselessConstantScoping:
   Enabled: false
 
+<% if rubocop_version >= "1.76" %>
+Lint/UselessDefaultValueArgument:
+  Enabled: true
+<% end %>
+
 Lint/UselessDefined:
   Enabled: false
 

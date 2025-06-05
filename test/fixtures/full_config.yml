@@ -1958,7 +1958,7 @@ Lint/UselessConstantScoping:
 Lint/UselessDefaultValueArgument:
   Description: Checks for usage of `fetch` or `Array.new` with default value argument
     and block.
-  Enabled: pending
+  Enabled: true
   VersionAdded: '1.76'
   Safe: false
   AllowedReceivers: []
