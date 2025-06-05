@@ -2332,19 +2332,13 @@ Naming/PredicateMethod:
 Naming/PredicatePrefix:
   Description: Predicate method names should not be prefixed and end with a `?`.
   StyleGuide: "#bool-methods-qmark"
-  Enabled: true
+  Enabled: false
   VersionAdded: '0.50'
   VersionChanged: '1.75'
   NamePrefix:
   - is_
-  - has_
-  - have_
-  - does_
   ForbiddenPrefixes:
   - is_
-  - has_
-  - have_
-  - does_
   AllowedMethods:
   - is_a?
   MethodDefinitionMacros:
@@ -4658,9 +4652,3 @@ inherit_mode:
   merge:
   - Exclude
   - Include
-Naming/PredicateName:
-  Enabled: false
-  NamePrefix:
-  - is_
-  ForbiddenPrefixes:
-  - is_
