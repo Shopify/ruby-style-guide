@@ -1985,7 +1985,7 @@ Lint/UselessNumericOperation:
   VersionAdded: '1.66'
 Lint/UselessOr:
   Description: Checks for useless OR expressions.
-  Enabled: pending
+  Enabled: true
   VersionAdded: '1.76'
 Lint/UselessRescue:
   Description: Checks for useless `rescue`s.

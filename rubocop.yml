@@ -469,6 +469,11 @@ Lint/UselessMethodDefinition:
 Lint/UselessNumericOperation:
   Enabled: false
 
+<% if rubocop_version >= "1.76" %>
+Lint/UselessOr:
+  Enabled: true
+<% end %>
+
 Lint/UselessRescue:
   Enabled: false
 
