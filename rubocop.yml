@@ -789,6 +789,11 @@ Style/EmptyLiteral:
 Style/EmptyMethod:
   Enabled: false
 
+<% if rubocop_version >= "1.76" %>
+Style/EmptyStringInsideInterpolation:
+  Enabled: false
+<% end %>
+
 Style/Encoding:
   Enabled: false
 

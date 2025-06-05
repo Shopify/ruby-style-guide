@@ -2966,7 +2966,7 @@ Style/EmptyMethod:
 Style/EmptyStringInsideInterpolation:
   Description: Checks for empty strings being assigned inside string interpolation.
   StyleGuide: "#empty-strings-in-interpolation"
-  Enabled: pending
+  Enabled: false
   EnforcedStyle: trailing_conditional
   SupportedStyles:
   - trailing_conditional
