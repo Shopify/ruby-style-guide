@@ -1,3 +1,5 @@
 up:
   - ruby
   - bundler
+
+test: bundle exec rake

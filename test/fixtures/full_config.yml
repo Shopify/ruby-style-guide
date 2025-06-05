@@ -1387,7 +1387,7 @@ Lint/EmptyInterpolation:
   Enabled: true
   AutoCorrect: contextual
   VersionAdded: '0.20'
-  VersionChanged: '1.61'
+  VersionChanged: '1.76'
 Lint/EmptyWhen:
   Description: Checks for `when` branches with empty bodies.
   Enabled: false
@@ -1794,6 +1794,7 @@ Lint/ShadowingOuterLocalVariable:
     or block local variables.
   Enabled: false
   VersionAdded: '0.9'
+  VersionChanged: '1.76'
 Lint/SharedMutableDefault:
   Description: Checks for mutable literals used as default arguments during Hash initialization.
   StyleGuide: "#no-mutable-defaults"
@@ -1954,6 +1955,13 @@ Lint/UselessConstantScoping:
   Description: Checks for useless constant scoping.
   Enabled: false
   VersionAdded: '1.72'
+Lint/UselessDefaultValueArgument:
+  Description: Checks for usage of `fetch` or `Array.new` with default value argument
+    and block.
+  Enabled: true
+  VersionAdded: '1.76'
+  Safe: false
+  AllowedReceivers: []
 Lint/UselessDefined:
   Description: Checks for calls to `defined?` with strings and symbols. The result
     of such a call will always be truthy.
@@ -1975,6 +1983,10 @@ Lint/UselessNumericOperation:
   Description: Checks for useless numeric operations.
   Enabled: false
   VersionAdded: '1.66'
+Lint/UselessOr:
+  Description: Checks for useless OR expressions.
+  Enabled: true
+  VersionAdded: '1.76'
 Lint/UselessRescue:
   Description: Checks for useless `rescue`s.
   Enabled: false
@@ -2309,8 +2321,16 @@ Naming/MethodParameterName:
   - pp
   - to
   ForbiddenNames: []
-Naming/PredicateName:
-  Description: Check the names of predicate methods.
+Naming/PredicateMethod:
+  Description: Checks that predicate methods end with `?` and non-predicate methods
+    do not.
+  Enabled: false
+  VersionAdded: '1.76'
+  Mode: conservative
+  AllowedMethods:
+  - call
+Naming/PredicatePrefix:
+  Description: Predicate method names should not be prefixed and end with a `?`.
   StyleGuide: "#bool-methods-qmark"
   Enabled: false
   VersionAdded: '0.50'
@@ -2943,6 +2963,15 @@ Style/EmptyMethod:
   SupportedStyles:
   - compact
   - expanded
+Style/EmptyStringInsideInterpolation:
+  Description: Checks for empty strings being assigned inside string interpolation.
+  StyleGuide: "#empty-strings-in-interpolation"
+  Enabled: false
+  EnforcedStyle: trailing_conditional
+  SupportedStyles:
+  - trailing_conditional
+  - ternary
+  VersionAdded: '1.76'
 Style/Encoding:
   Description: Use UTF-8 as the source file encoding.
   StyleGuide: "#utf-8"
@@ -3331,12 +3360,14 @@ Style/ItBlockParameter:
   Description: Checks for blocks with one argument where `it` block parameter can
     be used.
   Enabled: false
-  EnforcedStyle: only_numbered_parameters
+  EnforcedStyle: allow_single_line
   SupportedStyles:
+  - allow_single_line
   - only_numbered_parameters
   - always
   - disallow
   VersionAdded: '1.75'
+  VersionChanged: '1.76'
 Style/KeywordArgumentsMerging:
   Description: When passing an existing hash as keyword arguments, provide additional
     arguments directly rather than using `merge`.
@@ -3908,6 +3939,11 @@ Style/RedundantArrayConstructor:
   Description: Checks for the instantiation of array using redundant `Array` constructor.
   Enabled: false
   VersionAdded: '1.52'
+Style/RedundantArrayFlatten:
+  Description: Checks for redundant calls of `Array#flatten`.
+  Enabled: true
+  Safe: false
+  VersionAdded: '1.76'
 Style/RedundantAssignment:
   Description: Checks for redundant assignment before returning.
   Enabled: false
