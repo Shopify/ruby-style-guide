@@ -571,6 +571,11 @@ Naming/MethodParameterName:
   Enabled: false
 
 <% if rubocop_version >= "1.76" %>
+Naming/PredicateMethod:
+  Enabled: false
+<% end %>
+
+<% if rubocop_version >= "1.76" %>
 Naming/PredicatePrefix:
 <% else %>
 Naming/PredicateName:

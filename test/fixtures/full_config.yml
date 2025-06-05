@@ -2324,7 +2324,7 @@ Naming/MethodParameterName:
 Naming/PredicateMethod:
   Description: Checks that predicate methods end with `?` and non-predicate methods
     do not.
-  Enabled: pending
+  Enabled: false
   VersionAdded: '1.76'
   Mode: conservative
   AllowedMethods:
