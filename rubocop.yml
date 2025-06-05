@@ -1138,6 +1138,11 @@ Style/RedundantArgument:
 Style/RedundantArrayConstructor:
   Enabled: false
 
+<% if rubocop_version >= "1.76" %>
+Style/RedundantArrayFlatten:
+  Enabled: true
+<% end %>
+
 Style/RedundantAssignment:
   Enabled: false
 

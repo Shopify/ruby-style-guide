@@ -3941,7 +3941,7 @@ Style/RedundantArrayConstructor:
   VersionAdded: '1.52'
 Style/RedundantArrayFlatten:
   Description: Checks for redundant calls of `Array#flatten`.
-  Enabled: pending
+  Enabled: true
   Safe: false
   VersionAdded: '1.76'
 Style/RedundantAssignment:
