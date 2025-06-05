@@ -378,8 +378,10 @@ Lint/ShadowedArgument:
 Lint/ShadowedException:
   Enabled: false
 
+<% if rubocop_version < "1.76" %>
 Lint/ShadowingOuterLocalVariable:
   Enabled: false
+<% end %>
 
 Lint/SharedMutableDefault:
   Enabled: false
