@@ -378,8 +378,10 @@ Lint/ShadowedArgument:
 Lint/ShadowedException:
   Enabled: false
 
+<% if rubocop_version < "1.76" %>
 Lint/ShadowingOuterLocalVariable:
   Enabled: false
+<% end %>
 
 Lint/SharedMutableDefault:
   Enabled: false
@@ -450,6 +452,11 @@ Lint/UselessAssignment:
 Lint/UselessConstantScoping:
   Enabled: false
 
+<% if rubocop_version >= "1.76" %>
+Lint/UselessDefaultValueArgument:
+  Enabled: true
+<% end %>
+
 Lint/UselessDefined:
   Enabled: false
 
@@ -461,6 +468,11 @@ Lint/UselessMethodDefinition:
 
 Lint/UselessNumericOperation:
   Enabled: false
+
+<% if rubocop_version >= "1.76" %>
+Lint/UselessOr:
+  Enabled: true
+<% end %>
 
 Lint/UselessRescue:
   Enabled: false
@@ -558,7 +570,16 @@ Naming/MethodName:
 Naming/MethodParameterName:
   Enabled: false
 
+<% if rubocop_version >= "1.76" %>
+Naming/PredicateMethod:
+  Enabled: false
+<% end %>
+
+<% if rubocop_version >= "1.76" %>
+Naming/PredicatePrefix:
+<% else %>
 Naming/PredicateName:
+<% end %>
   Enabled: false
   NamePrefix:
   - is_
@@ -767,6 +788,11 @@ Style/EmptyLiteral:
 
 Style/EmptyMethod:
   Enabled: false
+
+<% if rubocop_version >= "1.76" %>
+Style/EmptyStringInsideInterpolation:
+  Enabled: false
+<% end %>
 
 Style/Encoding:
   Enabled: false
@@ -1111,6 +1137,11 @@ Style/RedundantArgument:
 
 Style/RedundantArrayConstructor:
   Enabled: false
+
+<% if rubocop_version >= "1.76" %>
+Style/RedundantArrayFlatten:
+  Enabled: true
+<% end %>
 
 Style/RedundantAssignment:
   Enabled: false
