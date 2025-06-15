@@ -396,7 +396,7 @@ Lint/SuppressedExceptionInNumberConversion:
   Enabled: false
 
 Lint/SymbolConversion:
-  Enabled: false
+  Enabled: true
 
 Lint/ToEnumArguments:
   Enabled: false
