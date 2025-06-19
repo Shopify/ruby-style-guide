@@ -4616,38 +4616,6 @@ Lint/NoReturnInMemoization:
   VersionAdded: 3.0.0
   Description: Checks for the use of a `return` with a value in `begin..end` blocks
     in the context of instance variable assignment such as memoization.
-ThreadSafety/ClassAndModuleAttributes:
-  Description: Avoid mutating class and module attributes.
-  Enabled: true
-  ActiveSupportClassAttributeAllowed: false
-ThreadSafety/ClassInstanceVariable:
-  Description: Avoid class instance variables.
-  Enabled: false
-ThreadSafety/MutableClassInstanceVariable:
-  Description: Do not assign mutable objects to class instance variables.
-  Enabled: false
-  EnforcedStyle: literals
-  SafeAutoCorrect: false
-  SupportedStyles:
-  - literals
-  - strict
-ThreadSafety/NewThread:
-  Description: Avoid starting new threads. Let a framework like Sidekiq handle the
-    threads.
-  Enabled: false
-ThreadSafety/DirChdir:
-  Description: Avoid using `Dir.chdir` due to its process-wide effect.
-  Enabled: true
-  AllowCallWithBlock: false
-ThreadSafety/RackMiddlewareInstanceVariable:
-  Description: Avoid instance variables in Rack middleware.
-  Enabled: false
-  Include:
-  - app/middleware/**/*.rb
-  - lib/middleware/**/*.rb
-  - app/middlewares/**/*.rb
-  - lib/middlewares/**/*.rb
-  AllowedIdentifiers: []
 inherit_mode:
   merge:
   - Exclude

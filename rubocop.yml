@@ -4,7 +4,6 @@
 
 plugins:
   - rubocop-shopify
-  - rubocop-thread_safety
 
 inherit_mode:
   merge:
@@ -1406,14 +1405,3 @@ Style/YodaCondition:
 Style/ZeroLengthPredicate:
   Enabled: false
 
-ThreadSafety/ClassInstanceVariable:
-  Enabled: false
-
-ThreadSafety/MutableClassInstanceVariable:
-  Enabled: false
-
-ThreadSafety/NewThread:
-  Enabled: false
-
-ThreadSafety/RackMiddlewareInstanceVariable:
-  Enabled: false
