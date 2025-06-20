@@ -4,7 +4,6 @@ PATH
     rubocop-shopify (3.0.0)
       lint_roller
       rubocop (~> 1.72, >= 1.72.1)
-      rubocop-thread_safety (>= 0.7.1)
 
 GEM
   remote: https://rubygems.org/
@@ -42,9 +41,6 @@ GEM
       lint_roller (~> 1.1)
       rubocop (>= 1.75.0, < 2.0)
       rubocop-ast (>= 1.38.0, < 2.0)
-    rubocop-thread_safety (0.7.2)
-      lint_roller (~> 1.1)
-      rubocop (~> 1.72, >= 1.72.1)
     ruby-progressbar (1.13.0)
     unicode-display_width (3.1.4)
       unicode-emoji (~> 4.0, >= 4.0.4)
