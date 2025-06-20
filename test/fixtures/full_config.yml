@@ -194,6 +194,12 @@ Gemspec/AddRuntimeDependency:
   VersionAdded: '1.65'
   Include:
   - "**/*.gemspec"
+Gemspec/AttributeAssignment:
+  Description: Use consistent style for Gemspec attributes assignment.
+  Enabled: pending
+  VersionAdded: '1.77'
+  Include:
+  - "**/*.gemspec"
 Gemspec/DependencyVersion:
   Description: Requires or forbids specifying gem dependency versions.
   Enabled: false
@@ -742,6 +748,7 @@ Layout/LineLength:
   Max: 120
   AllowHeredoc: true
   AllowURI: true
+  AllowQualifiedName: true
   URISchemes:
   - http
   - https
@@ -1776,6 +1783,7 @@ Lint/SelfAssignment:
   Description: Checks for self-assignments.
   Enabled: true
   VersionAdded: '0.89'
+  AllowRBSInlineAnnotation: false
 Lint/SendWithMixinArgument:
   Description: Checks for `send` method when using mixin.
   Enabled: true
@@ -2019,7 +2027,7 @@ Metrics/AbcSize:
   Description: A calculated magnitude based on number of assignments, branches, and
     conditions.
   References:
-  - http://c2.com/cgi/wiki?AbcMetric
+  - https://wiki.c2.com/?AbcMetric
   - https://en.wikipedia.org/wiki/ABC_Software_Metric
   Enabled: false
   VersionAdded: '0.27'
@@ -2326,9 +2334,12 @@ Naming/PredicateMethod:
     do not.
   Enabled: false
   VersionAdded: '1.76'
+  VersionChanged: '1.76'
   Mode: conservative
   AllowedMethods:
   - call
+  AllowedPatterns: []
+  AllowBangMethods: false
 Naming/PredicatePrefix:
   Description: Predicate method names should not be prefixed and end with a `?`.
   StyleGuide: "#bool-methods-qmark"
@@ -2729,6 +2740,12 @@ Style/CollectionMethods:
   MethodsAcceptingSymbol:
   - inject
   - reduce
+Style/CollectionQuerying:
+  Description: Prefer `Enumerable` predicate methods over expressions with `count`.
+  StyleGuide: "#collection-querying"
+  Enabled: pending
+  VersionAdded: '1.77'
+  Safe: false
 Style/ColonMethodCall:
   Description: 'Do not use :: for method call.'
   StyleGuide: "#double-colons"
@@ -3045,6 +3062,7 @@ Style/FetchEnvVar:
   Enabled: false
   VersionAdded: '1.28'
   AllowedVars: []
+  DefaultToNil: true
 Style/FileEmpty:
   Description: Prefer to use `File.empty?('path/to/file')` when checking if a file
     is empty.
@@ -3793,7 +3811,7 @@ Style/OpenStructUse:
   Description: Avoid using OpenStruct. As of Ruby 3.0, use is officially discouraged
     due to performance, version compatibility, and potential security issues.
   References:
-  - https://docs.ruby-lang.org/en/3.0.0/OpenStruct.html#class-OpenStruct-label-Caveats
+  - https://docs.ruby-lang.org/en/3.0/OpenStruct.html#class-OpenStruct-label-Caveats
   Enabled: false
   Safe: false
   VersionAdded: '1.23'
