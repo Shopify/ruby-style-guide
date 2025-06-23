@@ -702,6 +702,11 @@ Style/ClassVars:
 Style/CollectionCompact:
   Enabled: false
 
+<% if rubocop_version >= '1.77' %>
+Style/CollectionQuerying:
+  Enabled: true
+<% end %>
+
 Style/ColonMethodCall:
   Enabled: false
 
