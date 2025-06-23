@@ -196,7 +196,7 @@ Gemspec/AddRuntimeDependency:
   - "**/*.gemspec"
 Gemspec/AttributeAssignment:
   Description: Use consistent style for Gemspec attributes assignment.
-  Enabled: pending
+  Enabled: true
   VersionAdded: '1.77'
   Include:
   - "**/*.gemspec"
