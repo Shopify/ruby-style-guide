@@ -2334,12 +2334,14 @@ Naming/PredicateMethod:
     do not.
   Enabled: false
   VersionAdded: '1.76'
-  VersionChanged: '1.76'
+  VersionChanged: '1.78'
   Mode: conservative
   AllowedMethods:
   - call
   AllowedPatterns: []
   AllowBangMethods: false
+  WaywardPredicates:
+  - nonzero?
 Naming/PredicatePrefix:
   Description: Predicate method names should not be prefixed and end with a `?`.
   StyleGuide: "#bool-methods-qmark"
