@@ -1,3 +1,9 @@
+Lint/NoDisableComment:
+  Enabled: true
+  VersionAdded: "3.0.0"
+  Description: "Checks for the use of `rubocop:disable` and `rubocop:todo` comments."
+  AllowedCops: []
+
 Lint/NoReturnInMemoization:
   Enabled: true
   VersionAdded: "3.0.0"
