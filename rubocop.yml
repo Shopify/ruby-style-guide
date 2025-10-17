@@ -1098,7 +1098,7 @@ Style/OneLineConditional:
   Enabled: false
 
 Style/OpenStructUse:
-  Enabled: false
+  Enabled: true
 
 Style/OperatorMethodCall:
   Enabled: false
