@@ -3814,7 +3814,7 @@ Style/OpenStructUse:
     due to performance, version compatibility, and potential security issues.
   References:
   - https://docs.ruby-lang.org/en/3.0/OpenStruct.html#class-OpenStruct-label-Caveats
-  Enabled: false
+  Enabled: true
   Safe: false
   VersionAdded: '1.23'
   VersionChanged: '1.51'
