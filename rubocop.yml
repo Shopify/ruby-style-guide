@@ -789,6 +789,9 @@ Style/NegatedUnless:
 Style/NestedFileDirname:
   Enabled: true
 
+Style/Next:
+  Enabled: false
+
 Style/NilLambda:
   Enabled: false
 
