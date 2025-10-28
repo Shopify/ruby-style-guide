@@ -3601,7 +3601,7 @@ Style/NestedTernaryOperator:
 Style/Next:
   Description: Use `next` to skip iteration instead of a condition at the end.
   StyleGuide: "#no-nested-conditionals"
-  Enabled: true
+  Enabled: false
   VersionAdded: '0.22'
   VersionChanged: '0.35'
   EnforcedStyle: skip_modifier_ifs
