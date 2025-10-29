@@ -21,7 +21,7 @@ GEM
     prism (1.4.0)
     racc (1.8.1)
     rainbow (3.1.1)
-    rake (13.3.0)
+    rake (13.3.1)
     regexp_parser (2.10.0)
     rubocop (1.78.0)
       json (~> 2.3)
