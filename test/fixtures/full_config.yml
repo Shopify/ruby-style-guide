@@ -2132,7 +2132,7 @@ Metrics/PerceivedComplexity:
 Migration/DepartmentName:
   Description: Check that cop names in rubocop:disable (etc) comments are given with
     department name.
-  Enabled: false
+  Enabled: true
   VersionAdded: '0.75'
 Naming/AccessorMethodName:
   Description: Checks the naming of accessor methods for get_/set_.

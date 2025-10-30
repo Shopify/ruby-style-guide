@@ -532,11 +532,6 @@ Metrics/PerceivedComplexity:
   Enabled: false
 
 
-# Migration Department
-Migration/DepartmentName:
-  Enabled: false
-
-
 # Naming Department
 Naming/AccessorMethodName:
   Enabled: false
