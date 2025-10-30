@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{{ page.title | default: site.title }}</title>
+    <meta name="description" content="{{ page.excerpt | default: site.description | strip_html | normalize_whitespace | truncate: 160 }}">
+    <link rel="stylesheet" href="{{ '/css/main.css' | relative_url }}">
+    {% seo %}
+  </head>
+
+  <body>
+    <section class="section">
+      <div class="container">
+        <div class="content">
+          {{ content }}
+        </div>
+
+        {% include footer.html %}
+      </div>
+    </section>
+  </body>
+</html>
