@@ -1,9 +1,25 @@
 # Site settings
 title: 'Ruby Style Guide'
 description: "Shopify's Ruby Style Guide"
+url: "https://ruby-style-guide.shopify.com"
+baseurl: ""
+
+# Build settings
+markdown: kramdown
+kramdown:
+  input: GFM
+  syntax_highlighter: rouge
+
+plugins:
+  - jekyll-seo-tag
+
 exclude:
   - Gemfile
   - Gemfile.lock
   - Rakefile
   - rubocop-shopify.gemspec
   - shipit.rubygems.yml
+  - vendor
+  - test
+  - bin
+  - gemfiles
