@@ -2132,7 +2132,7 @@ Metrics/PerceivedComplexity:
 Migration/DepartmentName:
   Description: Check that cop names in rubocop:disable (etc) comments are given with
     department name.
-  Enabled: false
+  Enabled: true
   VersionAdded: '0.75'
 Naming/AccessorMethodName:
   Description: Checks the naming of accessor methods for get_/set_.
@@ -2165,7 +2165,7 @@ Naming/BlockForwarding:
 Naming/BlockParameterName:
   Description: Checks for block parameter names that contain capital letters, end
     in numbers, or do not meet a minimal length.
-  Enabled: false
+  Enabled: true
   VersionAdded: '0.53'
   VersionChanged: '0.77'
   MinNameLength: 1
@@ -2175,7 +2175,7 @@ Naming/BlockParameterName:
 Naming/ClassAndModuleCamelCase:
   Description: Use CamelCase for classes and modules.
   StyleGuide: "#camelcase-classes"
-  Enabled: false
+  Enabled: true
   VersionAdded: '0.50'
   VersionChanged: '0.85'
   AllowedNames:
@@ -2183,7 +2183,7 @@ Naming/ClassAndModuleCamelCase:
 Naming/ConstantName:
   Description: Constants should use SCREAMING_SNAKE_CASE.
   StyleGuide: "#screaming-snake-case"
-  Enabled: false
+  Enabled: true
   VersionAdded: '0.50'
 Naming/FileName:
   Description: Use snake_case for source file names.
@@ -2246,7 +2246,7 @@ Naming/FileName:
 Naming/HeredocDelimiterCase:
   Description: Use configured case for heredoc delimiters.
   StyleGuide: "#heredoc-delimiters"
-  Enabled: false
+  Enabled: true
   VersionAdded: '0.50'
   VersionChanged: '1.2'
   EnforcedStyle: uppercase
@@ -2303,15 +2303,14 @@ Naming/MemoizedInstanceVariableName:
 Naming/MethodName:
   Description: Use the configured style when naming methods.
   StyleGuide: "#snake-case-symbols-methods-vars"
-  Enabled: false
+  Enabled: true
   VersionAdded: '0.50'
   VersionChanged: '1.75'
   EnforcedStyle: snake_case
   SupportedStyles:
   - snake_case
   - camelCase
-  AllowedPatterns:
-  - "\\Atest_"
+  AllowedPatterns: []
   ForbiddenIdentifiers:
   - __id__
   - __send__
@@ -2319,10 +2318,10 @@ Naming/MethodName:
 Naming/MethodParameterName:
   Description: Checks for method parameter names that contain capital letters, end
     in numbers, or do not meet a minimal length.
-  Enabled: false
+  Enabled: true
   VersionAdded: '0.53'
   VersionChanged: '0.77'
-  MinNameLength: 3
+  MinNameLength: 1
   AllowNamesEndingInNumbers: true
   AllowedNames:
   - as
@@ -2381,7 +2380,7 @@ Naming/RescuedExceptionsVariableName:
 Naming/VariableName:
   Description: Use the configured style when naming variables.
   StyleGuide: "#snake-case-symbols-methods-vars"
-  Enabled: false
+  Enabled: true
   VersionAdded: '0.50'
   VersionChanged: '1.73'
   EnforcedStyle: snake_case
