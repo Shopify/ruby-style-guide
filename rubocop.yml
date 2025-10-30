@@ -545,19 +545,7 @@ Naming/BinaryOperatorParameterName:
 Naming/BlockForwarding:
   Enabled: false
 
-Naming/BlockParameterName:
-  Enabled: false
-
-Naming/ClassAndModuleCamelCase:
-  Enabled: false
-
-Naming/ConstantName:
-  Enabled: false
-
 Naming/FileName:
-  Enabled: false
-
-Naming/HeredocDelimiterCase:
   Enabled: false
 
 Naming/HeredocDelimiterNaming:
@@ -566,13 +554,8 @@ Naming/HeredocDelimiterNaming:
 Naming/MemoizedInstanceVariableName:
   Enabled: false
 
-Naming/MethodName:
-  Enabled: false
-  AllowedPatterns:
-    - '\Atest_'
-
 Naming/MethodParameterName:
-  Enabled: false
+  MinNameLength: 1
 
 <% if rubocop_version >= "1.76" %>
 Naming/PredicateMethod:
@@ -591,9 +574,6 @@ Naming/PredicateName:
   - is_
 
 Naming/RescuedExceptionsVariableName:
-  Enabled: false
-
-Naming/VariableName:
   Enabled: false
 
 Naming/VariableNumber:
