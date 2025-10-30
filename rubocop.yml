@@ -79,6 +79,11 @@ Layout/EmptyLineAfterGuardClause:
 Layout/EmptyLines:
   Enabled: false
 
+<% if rubocop_version >= '1.79' %>
+Layout/EmptyLinesAfterModuleInclusion:
+  Enabled: false
+<% end %>
+
 Layout/EndAlignment:
   Enabled: false
   EnforcedStyleAlignWith: variable
@@ -645,6 +650,11 @@ Style/ArgumentsForwarding:
 
 Style/ArrayIntersect:
   Enabled: false
+
+<% if rubocop_version >= '1.81' %>
+Style/ArrayIntersectWithSingleElement:
+  Enabled: false
+<% end %>
 
 Style/ArrayJoin:
   Enabled: false
@@ -1414,4 +1424,3 @@ Style/YodaCondition:
 
 Style/ZeroLengthPredicate:
   Enabled: false
-

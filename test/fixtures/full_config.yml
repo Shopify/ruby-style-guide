@@ -461,7 +461,7 @@ Layout/EmptyLines:
 Layout/EmptyLinesAfterModuleInclusion:
   Description: Keeps track of empty lines after module inclusion methods.
   StyleGuide: "#empty-lines-after-module-inclusion"
-  Enabled: pending
+  Enabled: false
   VersionAdded: '1.79'
 Layout/EmptyLinesAroundAccessModifier:
   Description: Keep blank lines around access modifiers.
@@ -2553,7 +2553,7 @@ Style/ArrayIntersect:
   VersionAdded: '1.40'
 Style/ArrayIntersectWithSingleElement:
   Description: Use `include?(element)` instead of `intersect?([element])`.
-  Enabled: pending
+  Enabled: false
   Safe: false
   VersionAdded: '1.81'
 Style/ArrayJoin:
