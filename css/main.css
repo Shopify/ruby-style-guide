@@ -29,71 +29,75 @@ body {
   padding: 0 1rem;
 }
 
-.content h1,
-.content h2,
-.content h3,
-.content h4,
-.content h5,
-.content h6 {
-  color: var(--color-red);
-  font-weight: 600;
-  line-height: 1.125;
-}
+.content {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    color: var(--color-red);
+    font-weight: 600;
+    line-height: 1.125;
+  }
 
-.content h1 { font-size: 2.25rem; margin-bottom: 1rem; }
-.content h2 { font-size: 2rem; margin-bottom: 0.875rem; }
-.content h3 { font-size: 1.875rem; margin-bottom: 0.875rem; }
-.content h4 { font-size: 1.5rem; margin-bottom: 0.625rem; }
-.content h5 { font-size: 1.25rem; margin-bottom: 0.5rem; }
+  h1 { font-size: 2.25rem; margin-bottom: 1rem; }
+  h2 { font-size: 2rem; margin-bottom: 0.875rem; }
+  h3 { font-size: 1.875rem; margin-bottom: 0.875rem; }
+  h4 { font-size: 1.5rem; margin-bottom: 0.625rem; }
+  h5 { font-size: 1.25rem; margin-bottom: 0.5rem; }
 
-.content p:not(:last-child),
-.content dl:not(:last-child),
-.content ol:not(:last-child),
-.content ul:not(:last-child),
-.content blockquote:not(:last-child),
-.content pre:not(:last-child),
-.content table:not(:last-child) {
+  p:not(:last-child),
+  dl:not(:last-child),
+  ol:not(:last-child),
+  ul:not(:last-child),
+  blockquote:not(:last-child),
+  pre:not(:last-child),
+  table:not(:last-child) {
     margin-bottom: 1em;
-}
+  }
 
-.content ul,
-.content ol {
-  list-style: disc outside;
-  margin-left: 2em;
-  margin-bottom: 1rem;
-}
+  ul,
+  ol {
+    list-style: disc outside;
+    margin-left: 2em;
+    margin-bottom: 1rem;
+  }
 
-.content li { margin-bottom: 0.5rem; }
+  li {
+    margin-bottom: 0.5rem;
+  }
 
-.content blockquote {
-  background-color: #f5f5f5;
-  border-left: 5px solid #dbdbdb;
-  padding: 1.25em 1.5em;
-}
+  blockquote {
+    background-color: #f5f5f5;
+    border-left: 5px solid #dbdbdb;
+    padding: 1.25em 1.5em;
+  }
 
-.content code {
-  background-color: var(--color-bg-code);
-  color: var(--color-inline-code);
-  padding: 0.25em 0.5em;
-  border-radius: 3px;
-  font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
-  font-size: 0.9em;
-}
+  code {
+    background-color: var(--color-bg-code);
+    color: var(--color-inline-code);
+    padding: 0.25em 0.5em;
+    border-radius: 3px;
+    font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+    font-size: 0.9em;
+  }
 
-.content pre code {
-  background-color: transparent;
-  color: inherit;
-  padding: 0;
+  pre code {
+    background-color: transparent;
+    color: inherit;
+    padding: 0;
+  }
 }
 
 a {
   color: var(--color-red);
   text-decoration: none;
-}
 
-a:hover {
-  color: #751f15;
-  text-decoration: underline;
+  &:hover {
+    color: #751f15;
+    text-decoration: underline;
+  }
 }
 
 .footer {
@@ -102,231 +106,235 @@ a:hover {
   text-align: center;
   margin-top: 3rem;
   border-top: 1px solid var(--color-border);
-}
 
-.footer .content {
-  font-size: 0.9rem;
+  .content {
+    font-size: 0.9rem;
+  }
 }
 
 /* Rouge syntax highlighting - Monokai theme */
+
+div.highlight {
+  padding: 1em;
+}
+
 .highlight {
   background: #272822;
   color: #f8f8f2;
   overflow: auto;
   border-radius: 0.3em;
+
+  table {
+    td { padding: 5px; }
+    pre { margin: 0; }
+  }
+
+  pre {
+    margin: 0;
+    background: transparent;
+  }
+
+  code {
+    background: transparent;
+    color: inherit;
+    padding: 0;
+  }
+
+  /* Comments */
+  .c,
+  .ch,
+  .cd,
+  .cm,
+  .cpf,
+  .c1,
+  .cs {
+    color: #75715e;
+    font-style: italic;
+  }
+
+  /* Errors */
+  .err {
+    color: #960050;
+    background-color: #1e0010;
+  }
+
+  /* Keywords */
+  .k,
+  .kc,
+  .kd,
+  .kp,
+  .kr,
+  .kt,
+  .kv {
+    color: #66d9ef;
+  }
+
+  .kn {
+    color: #f92672;
+  }
+
+  /* Literals */
+  .l,
+  .m,
+  .mb,
+  .mf,
+  .mh,
+  .mi,
+  .mo,
+  .mx,
+  .il {
+    color: #ae81ff;
+  }
+
+  /* Strings */
+  .s,
+  .sa,
+  .sb,
+  .sc,
+  .sd,
+  .s2,
+  .sh,
+  .si,
+  .sx,
+  .s1,
+  .dl {
+    color: #e6db74;
+  }
+
+  .se {
+    color: #ae81ff;
+  }
+
+  .sr,
+  .ss {
+    color: #e6db74;
+  }
+
+  /* Names */
+  .n {
+    color: #f8f8f2;
+  }
+
+  .na {
+    color: #a6e22e;
+  }
+
+  .nb,
+  .bp {
+    color: #f8f8f2;
+  }
+
+  .nc {
+    color: #a6e22e;
+  }
+
+  .no {
+    color: #66d9ef;
+  }
+
+  .nd {
+    color: #a6e22e;
+  }
+
+  .ni {
+    color: #f8f8f2;
+  }
+
+  .ne {
+    color: #a6e22e;
+  }
+
+  .nf,
+  .fm {
+    color: #a6e22e;
+  }
+
+  .nl,
+  .nn {
+    color: #f8f8f2;
+  }
+
+  .nt {
+    color: #f92672;
+  }
+
+  .nv,
+  .vc,
+  .vg,
+  .vi,
+  .vm {
+    color: #f8f8f2;
+  }
+
+  .nx {
+    color: #a6e22e;
+  }
+
+  .py {
+    color: #f8f8f2;
+  }
+
+  /* Operators */
+  .o,
+  .ow {
+    color: #f92672;
+  }
+
+  /* Punctuation */
+  .p {
+    color: #f8f8f2;
+  }
+
+  /* Text/Whitespace */
+  .w {
+    color: #f8f8f2;
+  }
+
+  /* Generic */
+  .gd {
+    color: #f92672;
+  }
+
+  .ge {
+    font-style: italic;
+  }
+
+  .gh {
+    color: #75715e;
+  }
+
+  .gi {
+    color: #a6e22e;
+  }
+
+  .go {
+    color: #66d9ef;
+  }
+
+  .gp {
+    color: #f92672;
+    font-weight: bold;
+  }
+
+  .gr {
+    color: #f92672;
+  }
+
+  .gs {
+    font-weight: bold;
+  }
+
+  .gt {
+    color: #f92672;
+  }
+
+  .gu {
+    color: #75715e;
+  }
 }
 
-div.highlight { padding: 1em; }
-
-.highlight table td { padding: 5px; }
-.highlight table pre { margin: 0; }
-.highlight pre {
-  margin: 0;
-  background: transparent;
-}
-
-.highlight code {
-  background: transparent;
-  color: inherit;
-  padding: 0;
-}
-
-/* Comments */
-.highlight .c,
-.highlight .ch,
-.highlight .cd,
-.highlight .cm,
-.highlight .cpf,
-.highlight .c1,
-.highlight .cs {
-  color: #75715e;
-  font-style: italic;
-}
-
-/* Errors */
-.highlight .err {
-  color: #960050;
-  background-color: #1e0010;
-}
-
-/* Keywords */
-.highlight .k,
-.highlight .kc,
-.highlight .kd,
-.highlight .kp,
-.highlight .kr,
-.highlight .kt,
-.highlight .kv {
-  color: #66d9ef;
-}
-
-.highlight .kn {
-  color: #f92672;
-}
-
-/* Literals */
-.highlight .l,
-.highlight .m,
-.highlight .mb,
-.highlight .mf,
-.highlight .mh,
-.highlight .mi,
-.highlight .mo,
-.highlight .mx,
-.highlight .il {
-  color: #ae81ff;
-}
-
-/* Strings */
-.highlight .s,
-.highlight .sa,
-.highlight .sb,
-.highlight .sc,
-.highlight .sd,
-.highlight .s2,
-.highlight .sh,
-.highlight .si,
-.highlight .sx,
-.highlight .s1,
-.highlight .dl {
-  color: #e6db74;
-}
-
-.highlight .se {
-  color: #ae81ff;
-}
-
-.highlight .sr {
-  color: #e6db74;
-}
-
-.highlight .ss {
-  color: #e6db74;
-}
-
-/* Names */
-.highlight .n {
-  color: #f8f8f2;
-}
-
-.highlight .na {
-  color: #a6e22e;
-}
-
-.highlight .nb,
-.highlight .bp {
-  color: #f8f8f2;
-}
-
-.highlight .nc {
-  color: #a6e22e;
-}
-
-.highlight .no {
-  color: #66d9ef;
-}
-
-.highlight .nd {
-  color: #a6e22e;
-}
-
-.highlight .ni {
-  color: #f8f8f2;
-}
-
-.highlight .ne {
-  color: #a6e22e;
-}
-
-.highlight .nf,
-.highlight .fm {
-  color: #a6e22e;
-}
-
-.highlight .nl {
-  color: #f8f8f2;
-}
-
-.highlight .nn {
-  color: #f8f8f2;
-}
-
-.highlight .nt {
-  color: #f92672;
-}
-
-.highlight .nv,
-.highlight .vc,
-.highlight .vg,
-.highlight .vi,
-.highlight .vm {
-  color: #f8f8f2;
-}
-
-.highlight .nx {
-  color: #a6e22e;
-}
-
-.highlight .py {
-  color: #f8f8f2;
-}
-
-/* Operators */
-.highlight .o,
-.highlight .ow {
-  color: #f92672;
-}
-
-/* Punctuation */
-.highlight .p {
-  color: #f8f8f2;
-}
-
-/* Text/Whitespace */
-.highlight .w {
-  color: #f8f8f2;
-}
-
-/* Generic */
-.highlight .gd {
-  color: #f92672;
-}
-
-.highlight .ge {
-  font-style: italic;
-}
-
-.highlight .gh {
-  color: #75715e;
-}
-
-.highlight .gi {
-  color: #a6e22e;
-}
-
-.highlight .go {
-  color: #66d9ef;
-}
-
-.highlight .gp {
-  color: #f92672;
-  font-weight: bold;
-}
-
-.highlight .gr {
-  color: #f92672;
-}
-
-.highlight .gs {
-  font-weight: bold;
-}
-
-.highlight .gt {
-  color: #f92672;
-}
-
-.highlight .gu {
-  color: #75715e;
+div.highlight {
+  padding: 1em;
 }
 
 pre {
