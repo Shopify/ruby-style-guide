@@ -1,5 +1,5 @@
 ---
-layout: base
+layout: default
 title: Ruby Style Guide
 permalink: '/'
 ---
@@ -31,16 +31,16 @@ documentation](https://docs.rubocop.org/rubocop/).
 We offer a default RuboCop configuration you can inherit from and be in sync
 with this Style Guide. To use it, you can add this to your `Gemfile`:
 
-  ~~~ruby
-  gem "rubocop-shopify", require: false
-  ~~~
+~~~ruby
+gem "rubocop-shopify", require: false
+~~~
 
 And add to the top of your project's RuboCop configuration file:
 
-  ~~~yml
-  inherit_gem:
-    rubocop-shopify: rubocop.yml
-  ~~~
+~~~yml
+inherit_gem:
+  rubocop-shopify: rubocop.yml
+~~~
 
 Any `Include` or `Exclude` configuration provided will be merged with RuboCop's defaults.
 

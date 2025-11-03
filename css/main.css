@@ -1,0 +1,349 @@
+/*! minireset.css v0.0.6 | MIT License | github.com/jgthms/minireset.css */html,body,p,ol,ul,li,dl,dt,dd,blockquote,figure,fieldset,legend,textarea,pre,iframe,hr,h1,h2,h3,h4,h5,h6{margin:0;padding:0}h1,h2,h3,h4,h5,h6{font-size:100%;font-weight:normal}ul{list-style:none}button,input,select{margin:0}html{box-sizing:border-box}*,*::before,*::after{box-sizing:inherit}img,video{height:auto;max-width:100%}iframe{border:0}table{border-collapse:collapse;border-spacing:0}td,th{padding:0}
+
+/* Colors */
+:root {
+  --color-red: #de2134;
+  --color-white: #fff;
+  --color-text: #4a4a4a;
+  --color-bg-code: #f5f5f5;
+  --color-inline-code: #da1039;
+  --color-border: #dbdbdb;
+}
+
+/* Basic styles */
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+  font-size: 20px;
+  line-height: 2;
+  color: var(--color-text);
+  margin: 0;
+}
+
+.section {
+  padding: 3rem 1.5rem;
+}
+
+.container {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+.content {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    color: var(--color-red);
+    font-weight: 600;
+    line-height: 1.125;
+  }
+
+  h1 { font-size: 2.25rem; margin-bottom: 1rem; }
+  h2 { font-size: 2rem; margin-bottom: 0.875rem; }
+  h3 { font-size: 1.875rem; margin-bottom: 0.875rem; }
+  h4 { font-size: 1.5rem; margin-bottom: 0.625rem; }
+  h5 { font-size: 1.25rem; margin-bottom: 0.5rem; }
+
+  p:not(:last-child),
+  dl:not(:last-child),
+  ol:not(:last-child),
+  ul:not(:last-child),
+  blockquote:not(:last-child),
+  pre:not(:last-child),
+  table:not(:last-child) {
+    margin-bottom: 1em;
+  }
+
+  ul,
+  ol {
+    list-style: disc outside;
+    margin-left: 2em;
+    margin-bottom: 1rem;
+  }
+
+  li {
+    margin-bottom: 0.5rem;
+  }
+
+  blockquote {
+    background-color: #f5f5f5;
+    border-left: 5px solid #dbdbdb;
+    padding: 1.25em 1.5em;
+  }
+
+  code {
+    background-color: var(--color-bg-code);
+    color: var(--color-inline-code);
+    padding: 0.25em 0.5em;
+    border-radius: 3px;
+    font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+    font-size: 0.9em;
+  }
+
+  pre code {
+    background-color: transparent;
+    color: inherit;
+    padding: 0;
+  }
+}
+
+a {
+  color: var(--color-red);
+  text-decoration: none;
+
+  &:hover {
+    color: #751f15;
+    text-decoration: underline;
+  }
+}
+
+.footer {
+  background-color: var(--color-white);
+  padding: 3rem 1.5rem;
+  text-align: center;
+  margin-top: 3rem;
+  border-top: 1px solid var(--color-border);
+
+  .content {
+    font-size: 0.9rem;
+  }
+}
+
+/* Rouge syntax highlighting - Monokai theme */
+
+div.highlight {
+  padding: 1em;
+}
+
+.highlight {
+  background: #272822;
+  color: #f8f8f2;
+  overflow: auto;
+  border-radius: 0.3em;
+
+  table {
+    td { padding: 5px; }
+    pre { margin: 0; }
+  }
+
+  pre {
+    margin: 0;
+    background: transparent;
+  }
+
+  code {
+    background: transparent;
+    color: inherit;
+    padding: 0;
+  }
+
+  /* Comments */
+  .c,
+  .ch,
+  .cd,
+  .cm,
+  .cpf,
+  .c1,
+  .cs {
+    color: #75715e;
+    font-style: italic;
+  }
+
+  /* Errors */
+  .err {
+    color: #960050;
+    background-color: #1e0010;
+  }
+
+  /* Keywords */
+  .k,
+  .kc,
+  .kd,
+  .kp,
+  .kr,
+  .kt,
+  .kv {
+    color: #66d9ef;
+  }
+
+  .kn {
+    color: #f92672;
+  }
+
+  /* Literals */
+  .l,
+  .m,
+  .mb,
+  .mf,
+  .mh,
+  .mi,
+  .mo,
+  .mx,
+  .il {
+    color: #ae81ff;
+  }
+
+  /* Strings */
+  .s,
+  .sa,
+  .sb,
+  .sc,
+  .sd,
+  .s2,
+  .sh,
+  .si,
+  .sx,
+  .s1,
+  .dl {
+    color: #e6db74;
+  }
+
+  .se {
+    color: #ae81ff;
+  }
+
+  .sr,
+  .ss {
+    color: #e6db74;
+  }
+
+  /* Names */
+  .n {
+    color: #f8f8f2;
+  }
+
+  .na {
+    color: #a6e22e;
+  }
+
+  .nb,
+  .bp {
+    color: #f8f8f2;
+  }
+
+  .nc {
+    color: #a6e22e;
+  }
+
+  .no {
+    color: #66d9ef;
+  }
+
+  .nd {
+    color: #a6e22e;
+  }
+
+  .ni {
+    color: #f8f8f2;
+  }
+
+  .ne {
+    color: #a6e22e;
+  }
+
+  .nf,
+  .fm {
+    color: #a6e22e;
+  }
+
+  .nl,
+  .nn {
+    color: #f8f8f2;
+  }
+
+  .nt {
+    color: #f92672;
+  }
+
+  .nv,
+  .vc,
+  .vg,
+  .vi,
+  .vm {
+    color: #f8f8f2;
+  }
+
+  .nx {
+    color: #a6e22e;
+  }
+
+  .py {
+    color: #f8f8f2;
+  }
+
+  /* Operators */
+  .o,
+  .ow {
+    color: #f92672;
+  }
+
+  /* Punctuation */
+  .p {
+    color: #f8f8f2;
+  }
+
+  /* Text/Whitespace */
+  .w {
+    color: #f8f8f2;
+  }
+
+  /* Generic */
+  .gd {
+    color: #f92672;
+  }
+
+  .ge {
+    font-style: italic;
+  }
+
+  .gh {
+    color: #75715e;
+  }
+
+  .gi {
+    color: #a6e22e;
+  }
+
+  .go {
+    color: #66d9ef;
+  }
+
+  .gp {
+    color: #f92672;
+    font-weight: bold;
+  }
+
+  .gr {
+    color: #f92672;
+  }
+
+  .gs {
+    font-weight: bold;
+  }
+
+  .gt {
+    color: #f92672;
+  }
+
+  .gu {
+    color: #75715e;
+  }
+}
+
+div.highlight {
+  padding: 1em;
+}
+
+pre {
+  white-space: pre;
+  word-wrap: normal;
+  font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+}
+
+code {
+  font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+  font-size: 0.9em;
+}

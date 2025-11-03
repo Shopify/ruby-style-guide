@@ -8,3 +8,5 @@ gem "diffy"
 gem "minitest"
 gem "rake"
 gem "rubocop-minitest"
+
+gem "github-pages"
