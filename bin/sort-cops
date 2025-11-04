@@ -1,7 +1,7 @@
 #!/usr/bin/env ruby
 # frozen_string_literal: true
 
-require 'yaml'
+require "yaml"
 
 def extract_cop_entries(content)
   # Extract all cop configurations (entries that start with a department name)
@@ -19,7 +19,7 @@ def extract_cop_entries(content)
       end
 
       # Start new cop
-      current_cop = line.split(':').first
+      current_cop = line.split(":").first
       current_config = [line]
     elsif current_cop
       current_config << line

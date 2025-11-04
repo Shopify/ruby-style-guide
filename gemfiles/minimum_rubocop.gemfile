@@ -5,7 +5,7 @@ eval_gemfile "../Gemfile"
 # This extracts the minimum rubocop version from our gemspec,
 # allowing us to ensure that it remains compatible.
 
-supported_requirement_types = ['>=', '~>']
+supported_requirement_types = [">=", "~>"]
 supported_requirements, unsupported_requirements = Gem::Specification
   .load("rubocop-shopify.gemspec")
   .dependencies.find { |d| d.name == "rubocop" }
