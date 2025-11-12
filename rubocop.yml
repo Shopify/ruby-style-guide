@@ -640,6 +640,9 @@ Style/BarePercentLiterals:
 Style/BeginBlock:
   Enabled: false
 
+Style/BisectedAttrAccessor:
+  Enabled: false
+
 Style/BitwisePredicate:
   Enabled: false
 
