@@ -749,7 +749,7 @@ Layout/LineLength:
   StyleGuide: "#max-line-length"
   Enabled: false
   VersionAdded: '0.25'
-  VersionChanged: '1.69'
+  VersionChanged: '1.82'
   Max: 120
   AllowHeredoc: true
   AllowURI: true
@@ -757,7 +757,8 @@ Layout/LineLength:
   URISchemes:
   - http
   - https
-  IgnoreCopDirectives: true
+  AllowRBSInlineAnnotation: false
+  AllowCopDirectives: true
   AllowedPatterns:
   - "\\A\\s*(remote_)?test(_\\w+)?\\s.*(do|->)(\\s|\\Z)"
   - "\\A\\s*def test_\\w+\\s*\\Z"
@@ -2006,7 +2007,10 @@ Lint/UselessNumericOperation:
 Lint/UselessOr:
   Description: Checks for useless OR expressions.
   Enabled: true
+  SafeAutoCorrect: false
+  AutoCorrect: contextual
   VersionAdded: '1.76'
+  VersionChanged: '1.82'
 Lint/UselessRescue:
   Description: Checks for useless `rescue`s.
   Enabled: false
@@ -2497,7 +2501,7 @@ Style/Alias:
   - prefer_alias_method
 Style/AmbiguousEndlessMethodDefinition:
   Description: Checks for endless methods inside operators of lower precedence.
-  StyleGuide: "#ambiguous-endless-method-defintions"
+  StyleGuide: "#ambiguous-endless-method-definitions"
   Enabled: false
   VersionAdded: '1.68'
 Style/AndOr:
@@ -2648,9 +2652,11 @@ Style/BlockDelimiters:
   AllowBracesOnProceduralOneLiners: false
   BracesRequiredMethods: []
 Style/CaseEquality:
-  Description: Avoid explicit use of the case equality operator(===).
+  Description: Avoid explicit use of the case equality operator (`===`).
   StyleGuide: "#no-case-equality"
   Enabled: false
+  References:
+  - https://docs.rubocop.org/rubocop-performance/cops_performance.html#performanceregexpmatch
   VersionAdded: '0.9'
   VersionChanged: '0.89'
   AllowOnConstant: true
@@ -3435,7 +3441,7 @@ Style/LambdaCall:
   Enabled: false
   AutoCorrect: contextual
   VersionAdded: '0.13'
-  VersionChanged: "<<next>>"
+  VersionChanged: '1.81'
   EnforcedStyle: call
   SupportedStyles:
   - call
@@ -3498,6 +3504,7 @@ Style/MethodCallWithArgsParentheses:
   - puts
   AllowedPatterns: []
   IncludedMacros: []
+  IncludedMacroPatterns: []
   AllowParenthesesInMultilineCall: false
   AllowParenthesesInChaining: false
   AllowParenthesesInCamelCaseMethod: false
@@ -3587,6 +3594,11 @@ Style/ModuleFunction:
   - forbidden
   Autocorrect: false
   SafeAutoCorrect: false
+Style/ModuleMemberExistenceCheck:
+  Description: Checks for usage of `Module` methods returning arrays that can be replaced
+    with equivalent predicates.
+  Enabled: true
+  VersionAdded: '1.82'
 Style/MultilineBlockChain:
   Description: Avoid multi-line chains of blocks.
   StyleGuide: "#single-line-blocks"
@@ -3970,6 +3982,7 @@ Style/RedundantArgument:
     sum: 0
     exit: true
     exit!: false
+    to_i: 10
     split: " "
     chomp: "\n"
     chomp!: "\n"
