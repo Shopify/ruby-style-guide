@@ -998,6 +998,11 @@ Style/ModuleFunction:
   Enabled: false
   EnforcedStyle: extend_self
 
+<% if rubocop_version >= "1.82" %>
+Style/ModuleMemberExistenceCheck:
+  Enabled: true
+<% end %>
+
 Style/MultilineBlockChain:
   Enabled: false
 
