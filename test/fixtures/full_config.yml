@@ -3597,7 +3597,7 @@ Style/ModuleFunction:
 Style/ModuleMemberExistenceCheck:
   Description: Checks for usage of `Module` methods returning arrays that can be replaced
     with equivalent predicates.
-  Enabled: pending
+  Enabled: true
   VersionAdded: '1.82'
 Style/MultilineBlockChain:
   Description: Avoid multi-line chains of blocks.
