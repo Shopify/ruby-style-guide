@@ -229,7 +229,7 @@ Lint/DuplicateSetElement:
   Enabled: true
 
 Lint/EmptyBlock:
-  Enabled: false
+  Enabled: true
 
 Lint/EmptyClass:
   Enabled: false
