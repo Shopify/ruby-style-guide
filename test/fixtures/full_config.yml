@@ -593,6 +593,7 @@ Layout/FirstArrayElementLineBreak:
   Description: Checks for a line break before the first element in a multi-line array.
   Enabled: false
   VersionAdded: '0.49'
+  AllowImplicitArrayLiterals: false
   AllowMultilineFinalElement: true
 Layout/FirstHashElementIndentation:
   Description: Checks the indentation of the first key in a hash literal.
@@ -695,6 +696,10 @@ Layout/IndentationWidth:
   Enabled: true
   VersionAdded: '0.49'
   Width: 2
+  EnforcedStyleAlignWith: start_of_line
+  SupportedStylesAlignWith:
+  - start_of_line
+  - relative_to_receiver
   AllowedPatterns: []
 Layout/InitialIndentation:
   Description: Checks the indentation of the first non-blank non-comment line in a
@@ -2966,6 +2971,14 @@ Style/EmptyCaseCondition:
   Description: Avoid empty condition in case statements.
   Enabled: false
   VersionAdded: '0.40'
+Style/EmptyClassDefinition:
+  Description: Enforces consistent style for empty class definitions.
+  Enabled: pending
+  VersionAdded: '1.83'
+  EnforcedStyle: class_definition
+  SupportedStyles:
+  - class_definition
+  - class_new
 Style/EmptyElse:
   Description: Avoid empty else-clauses.
   Enabled: false
@@ -3249,6 +3262,15 @@ Style/HashLikeCase:
   Enabled: false
   VersionAdded: '0.88'
   MinBranchesCount: 3
+Style/HashLookupMethod:
+  Description: Enforces the use of either `Hash#[]` or `Hash#fetch` for hash lookup.
+  Enabled: false
+  Safe: false
+  VersionAdded: '1.83'
+  EnforcedStyle: brackets
+  SupportedStyles:
+  - brackets
+  - fetch
 Style/HashSlice:
   Description: Checks for usages of `Hash#reject`, `Hash#select`, and `Hash#filter`
     methods that can be replaced with `Hash#slice` method.
@@ -3599,6 +3621,7 @@ Style/ModuleMemberExistenceCheck:
     with equivalent predicates.
   Enabled: true
   VersionAdded: '1.82'
+  AllowedMethods: []
 Style/MultilineBlockChain:
   Description: Avoid multi-line chains of blocks.
   StyleGuide: "#single-line-blocks"
@@ -3694,6 +3717,12 @@ Style/NegatedWhile:
   StyleGuide: "#until-for-negatives"
   Enabled: false
   VersionAdded: '0.20'
+Style/NegativeArrayIndex:
+  Description: Use negative array indices instead of calculating array length minus
+    a value. Also handles range patterns with length calculations. Recognizes preserving
+    methods and their combinations, allowing safe replacement when the receiver matches.
+  Enabled: pending
+  VersionAdded: '1.83'
 Style/NestedFileDirname:
   Description: Checks for nested `File.dirname`.
   Enabled: false
@@ -4218,6 +4247,11 @@ Style/ReturnNilInPredicateMethodDefinition:
   AllowedPatterns: []
   VersionAdded: '1.53'
   VersionChanged: '1.67'
+Style/ReverseFind:
+  Description: Use `array.rfind` instead of `array.reverse.find`.
+  Enabled: pending
+  Safe: false
+  VersionAdded: '1.83'
 Style/SafeNavigation:
   Description: Transforms usages of a method call safeguarded by a check for the existence
     of the object to safe navigation (`&.`). Autocorrection is unsafe as it assumes
