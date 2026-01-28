@@ -1185,6 +1185,9 @@ Style/RedundantRegexpConstructor:
 Style/RedundantRegexpEscape:
   Enabled: false
 
+Style/RedundantSelf:
+  Enabled: false
+
 Style/RedundantSelfAssignment:
   Enabled: false
 
