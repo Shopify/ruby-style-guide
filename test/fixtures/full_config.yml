@@ -2502,12 +2502,12 @@ Style/Alias:
 Style/AmbiguousEndlessMethodDefinition:
   Description: Checks for endless methods inside operators of lower precedence.
   StyleGuide: "#ambiguous-endless-method-definitions"
-  Enabled: false
+  Enabled: true
   VersionAdded: '1.68'
 Style/AndOr:
   Description: Use &&/|| instead of and/or.
   StyleGuide: "#no-and-or-or"
-  Enabled: false
+  Enabled: true
   SafeAutoCorrect: false
   VersionAdded: '0.9'
   VersionChanged: '1.21'
@@ -2540,7 +2540,7 @@ Style/ArrayCoercion:
     array.
   StyleGuide: "#array-coercion"
   Safe: false
-  Enabled: false
+  Enabled: true
   VersionAdded: '0.88'
 Style/ArrayFirstLast:
   Description: Use `arr.first` and `arr.last` instead of `arr[0]` and `arr[-1]`.
@@ -2576,7 +2576,7 @@ Style/AsciiComments:
 Style/Attr:
   Description: Checks for uses of Module#attr.
   StyleGuide: "#attr"
-  Enabled: false
+  Enabled: true
   VersionAdded: '0.9'
   VersionChanged: '0.12'
 Style/AutoResourceCleanup:
@@ -2612,7 +2612,7 @@ Style/BitwisePredicate:
 Style/BlockComments:
   Description: Do not use block comments.
   StyleGuide: "#no-block-comments"
-  Enabled: false
+  Enabled: true
   VersionAdded: '0.9'
   VersionChanged: '0.23'
 Style/BlockDelimiters:
@@ -2673,13 +2673,13 @@ Style/CaseLikeIf:
 Style/CharacterLiteral:
   Description: Checks for uses of character literals.
   StyleGuide: "#no-character-literals"
-  Enabled: false
+  Enabled: true
   VersionAdded: '0.9'
 Style/ClassAndModuleChildren:
   Description: Checks style of children classes and modules.
   StyleGuide: "#namespace-definition"
   SafeAutoCorrect: false
-  Enabled: false
+  Enabled: true
   VersionAdded: '0.19'
   VersionChanged: '1.74'
   EnforcedStyle: nested
@@ -2721,14 +2721,14 @@ Style/ClassEqualityComparison:
 Style/ClassMethods:
   Description: Use self when defining module/class methods.
   StyleGuide: "#def-self-class-methods"
-  Enabled: false
+  Enabled: true
   VersionAdded: '0.9'
   VersionChanged: '0.20'
 Style/ClassMethodsDefinitions:
   Description: Enforces using `def self.method_name` or `class << self` to define
     class methods.
   StyleGuide: "#def-self-class-methods"
-  Enabled: false
+  Enabled: true
   VersionAdded: '0.89'
   EnforcedStyle: self_class
   SupportedStyles:
@@ -2737,7 +2737,7 @@ Style/ClassMethodsDefinitions:
 Style/ClassVars:
   Description: Avoid the use of class variables.
   StyleGuide: "#no-class-vars"
-  Enabled: false
+  Enabled: true
   VersionAdded: '0.13'
 Style/CollectionCompact:
   Description: Use `{Array,Hash}#{compact,compact!}` instead of custom logic to reject
@@ -2768,23 +2768,23 @@ Style/CollectionMethods:
 Style/CollectionQuerying:
   Description: Prefer `Enumerable` predicate methods over expressions with `count`.
   StyleGuide: "#collection-querying"
-  Enabled: true
+  Enabled: false
   VersionAdded: '1.77'
   Safe: false
 Style/ColonMethodCall:
   Description: 'Do not use :: for method call.'
   StyleGuide: "#double-colons"
-  Enabled: false
+  Enabled: true
   VersionAdded: '0.9'
 Style/ColonMethodDefinition:
   Description: 'Do not use :: for defining class methods.'
   StyleGuide: "#colon-method-definition"
-  Enabled: false
+  Enabled: true
   VersionAdded: '0.52'
 Style/CombinableDefined:
   Description: Checks successive `defined?` calls that can be combined into a single
     call.
-  Enabled: false
+  Enabled: true
   VersionAdded: '1.68'
 Style/CombinableLoops:
   Description: Checks for places where multiple consecutive loops over the same data
@@ -2877,7 +2877,7 @@ Style/DataInheritance:
 Style/DateTime:
   Description: Use Time over DateTime.
   StyleGuide: "#date-time"
-  Enabled: false
+  Enabled: true
   VersionAdded: '0.51'
   VersionChanged: '0.92'
   SafeAutoCorrect: false
@@ -2885,12 +2885,12 @@ Style/DateTime:
 Style/DefWithParentheses:
   Description: Use def with parentheses when there are arguments.
   StyleGuide: "#method-parens"
-  Enabled: false
+  Enabled: true
   VersionAdded: '0.9'
   VersionChanged: '0.12'
 Style/DigChain:
   Description: Use `dig` with multiple parameters instead of chaining multiple calls.
-  Enabled: false
+  Enabled: true
   Safe: false
   VersionAdded: '1.69'
 Style/Dir:
@@ -3029,7 +3029,7 @@ Style/EndBlock:
 Style/EndlessMethod:
   Description: Avoid the use of multi-lined endless method definitions.
   StyleGuide: "#endless-methods"
-  Enabled: false
+  Enabled: true
   VersionAdded: '1.8'
   EnforcedStyle: allow_single_line
   SupportedStyles:
@@ -3193,7 +3193,7 @@ Style/GlobalVars:
   StyleGuide: "#instance-vars"
   References:
   - https://www.zenspider.com/ruby/quickref.html
-  Enabled: false
+  Enabled: true
   VersionAdded: '0.13'
   AllowedVariables: []
 Style/GuardClause:
@@ -3259,7 +3259,7 @@ Style/HashSyntax:
   Description: 'Prefer Ruby 1.9 hash syntax { a: 1, b: 2 } over 1.8 syntax { :a =>
     1, :b => 2 }.'
   StyleGuide: "#hash-literals"
-  Enabled: false
+  Enabled: true
   VersionAdded: '0.9'
   VersionChanged: '1.67'
   EnforcedStyle: ruby19
@@ -3455,7 +3455,7 @@ Style/LineEndConcatenation:
   VersionChanged: '0.64'
 Style/MagicCommentFormat:
   Description: Use a consistent style for magic comments.
-  Enabled: false
+  Enabled: true
   VersionAdded: '1.35'
   EnforcedStyle: snake_case
   SupportedStyles:
@@ -3531,7 +3531,7 @@ Style/MethodCalledOnDoEndBlock:
 Style/MethodDefParentheses:
   Description: Checks if the method definitions have or don't have parentheses.
   StyleGuide: "#method-parens"
-  Enabled: false
+  Enabled: true
   VersionAdded: '0.16'
   VersionChanged: '1.7'
   EnforcedStyle: require_parentheses
@@ -4002,7 +4002,7 @@ Style/RedundantAssignment:
 Style/RedundantBegin:
   Description: Don't use begin blocks when they are not needed.
   StyleGuide: "#begin-implicit"
-  Enabled: false
+  Enabled: true
   VersionAdded: '0.10'
   VersionChanged: '0.21'
 Style/RedundantCapitalW:
@@ -4135,7 +4135,7 @@ Style/RedundantRegexpEscape:
 Style/RedundantReturn:
   Description: Don't use return where it's not required.
   StyleGuide: "#no-explicit-return"
-  Enabled: false
+  Enabled: true
   VersionAdded: '0.10'
   VersionChanged: '0.14'
   AllowMultipleReturnValues: false
@@ -4262,7 +4262,7 @@ Style/SelfAssignment:
 Style/Semicolon:
   Description: Don't use semicolons to terminate expressions.
   StyleGuide: "#no-semicolon"
-  Enabled: false
+  Enabled: true
   VersionAdded: '0.9'
   VersionChanged: '0.19'
   AllowAsExpressionSeparator: false
@@ -4395,7 +4395,7 @@ Style/StringLiterals:
   Enabled: false
   VersionAdded: '0.9'
   VersionChanged: '0.36'
-  EnforcedStyle: double_quotes
+  EnforcedStyle: single_quotes
   SupportedStyles:
   - single_quotes
   - double_quotes
@@ -4405,7 +4405,7 @@ Style/StringLiteralsInInterpolation:
     match the configured preference.
   Enabled: false
   VersionAdded: '0.27'
-  EnforcedStyle: double_quotes
+  EnforcedStyle: single_quotes
   SupportedStyles:
   - single_quotes
   - double_quotes
@@ -4456,7 +4456,7 @@ Style/SymbolArray:
   - brackets
 Style/SymbolLiteral:
   Description: Use plain symbols instead of string symbols when possible.
-  Enabled: false
+  Enabled: true
   VersionAdded: '0.30'
 Style/SymbolProc:
   Description: Use symbols as procs instead of blocks when possible.
@@ -4487,15 +4487,15 @@ Style/TopLevelMethodDefinition:
   VersionAdded: '1.15'
 Style/TrailingBodyOnClass:
   Description: Class body goes below class statement.
-  Enabled: false
+  Enabled: true
   VersionAdded: '0.53'
 Style/TrailingBodyOnMethodDefinition:
   Description: Method body goes below definition.
-  Enabled: false
+  Enabled: true
   VersionAdded: '0.52'
 Style/TrailingBodyOnModule:
   Description: Module body goes below module statement.
-  Enabled: false
+  Enabled: true
   VersionAdded: '0.53'
 Style/TrailingCommaInArguments:
   Description: Checks for trailing comma in argument lists.
@@ -4536,7 +4536,7 @@ Style/TrailingCommaInHashLiteral:
   VersionAdded: '0.53'
 Style/TrailingMethodEndStatement:
   Description: Checks for trailing end statement on line of method body.
-  Enabled: false
+  Enabled: true
   VersionAdded: '0.52'
 Style/TrailingUnderscoreVariable:
   Description: Checks for the usage of unneeded trailing underscores at the end of
@@ -4576,7 +4576,7 @@ Style/TrivialAccessors:
 Style/UnlessElse:
   Description: Do not use unless with else. Rewrite these with the positive case first.
   StyleGuide: "#no-else-with-unless"
-  Enabled: false
+  Enabled: true
   VersionAdded: '0.9'
 Style/UnlessLogicalOperators:
   Description: Checks for use of logical operators in an unless condition.
@@ -4595,7 +4595,7 @@ Style/VariableInterpolation:
   Description: Don't interpolate global, instance and class variables directly in
     strings.
   StyleGuide: "#curlies-interpolate"
-  Enabled: false
+  Enabled: true
   VersionAdded: '0.9'
   VersionChanged: '0.20'
 Style/WhenThen:

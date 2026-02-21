@@ -92,12 +92,12 @@ class ConfigTest < Minitest::Test
 
   def test_config_does_not_check_for_rubocop_versions_below_minimum_version
     rubocop_version_requirement = Gem
-      .loaded_specs.fetch('rubocop-shopify')
-      .dependencies.find { _1.name == 'rubocop' }
+      .loaded_specs.fetch("rubocop-shopify")
+      .dependencies.find { _1.name == "rubocop" }
       .requirement
 
     # RuboCop version checks are done in ERB, so we need to read the raw file
-    redundant_rubocop_version_checks = File.read('rubocop.yml').each_line.with_index.filter_map do |line, index|
+    redundant_rubocop_version_checks = File.read("rubocop.yml").each_line.with_index.filter_map do |line, index|
       match = line.match(/<% if rubocop_version >= "(?<version>.*)" %>/)
       next unless match
 
