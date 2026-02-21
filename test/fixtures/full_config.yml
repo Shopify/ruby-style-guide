@@ -1357,7 +1357,7 @@ Lint/ElseLayout:
   VersionChanged: '1.2'
 Lint/EmptyBlock:
   Description: Checks for blocks without a body.
-  Enabled: false
+  Enabled: true
   VersionAdded: '1.1'
   VersionChanged: '1.15'
   AllowComments: true
