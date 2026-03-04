@@ -2034,7 +2034,7 @@ Lint/UselessTimes:
   VersionChanged: '1.61'
 Lint/Void:
   Description: Possible use of operator/literal/variable in void context.
-  Enabled: false
+  Enabled: true
   AutoCorrect: contextual
   VersionAdded: '0.9'
   VersionChanged: '1.61'

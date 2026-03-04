@@ -495,10 +495,6 @@ Lint/UselessSetterCall:
 Lint/UselessTimes:
   Enabled: false
 
-Lint/Void:
-  Enabled: false
-
-
 # Metrics Department
 Metrics/AbcSize:
   Enabled: false
