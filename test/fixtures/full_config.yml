@@ -4320,7 +4320,7 @@ Style/ReturnNilInPredicateMethodDefinition:
   AllowedPatterns: []
 Style/ReverseFind:
   Description: Use `array.rfind` instead of `array.reverse.find`.
-  Enabled: true
+  Enabled: false
   Safe: false
   VersionAdded: '1.84'
 Style/SafeNavigation:

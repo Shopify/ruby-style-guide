@@ -1270,7 +1270,7 @@ Style/ReturnNilInPredicateMethodDefinition:
 
 <% if rubocop_version >= "1.84" %>
 Style/ReverseFind:
-  Enabled: true
+  Enabled: false
 <% end %>
 
 Style/SafeNavigation:
