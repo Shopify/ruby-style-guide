@@ -2,19 +2,15 @@
 AllCops:
   RubyInterpreters:
   - ruby
-  - macruby
   - rake
   - jruby
-  - rbx
   Include:
   - "**/*.rb"
   - "**/*.arb"
   - "**/*.axlsx"
   - "**/*.builder"
-  - "**/*.fcgi"
   - "**/*.gemfile"
   - "**/*.gemspec"
-  - "**/*.god"
   - "**/*.jb"
   - "**/*.jbuilder"
   - "**/*.mspec"
@@ -23,15 +19,12 @@ AllCops:
   - "**/*.podspec"
   - "**/*.rabl"
   - "**/*.rake"
-  - "**/*.rbuild"
   - "**/*.rbw"
-  - "**/*.rbx"
   - "**/*.ru"
   - "**/*.ruby"
   - "**/*.schema"
   - "**/*.spec"
   - "**/*.thor"
-  - "**/*.watchr"
   - "**/.irbrc"
   - "**/.pryrc"
   - "**/.simplecov"
@@ -41,7 +34,6 @@ AllCops:
   - "**/Brewfile"
   - "**/Buildfile"
   - "**/Capfile"
-  - "**/Cheffile"
   - "**/Dangerfile"
   - "**/Deliverfile"
   - "**/Fastfile"
@@ -58,7 +50,6 @@ AllCops:
   - "**/Snapfile"
   - "**/Steepfile"
   - "**/Thorfile"
-  - "**/Vagabondfile"
   - "**/Vagrantfile"
   Exclude:
   - "/node_modules/**/*"
@@ -593,6 +584,7 @@ Layout/FirstArrayElementLineBreak:
   Description: Checks for a line break before the first element in a multi-line array.
   Enabled: false
   VersionAdded: '0.49'
+  AllowImplicitArrayLiterals: false
   AllowMultilineFinalElement: true
 Layout/FirstHashElementIndentation:
   Description: Checks the indentation of the first key in a hash literal.
@@ -695,6 +687,10 @@ Layout/IndentationWidth:
   Enabled: true
   VersionAdded: '0.49'
   Width: 2
+  EnforcedStyleAlignWith: start_of_line
+  SupportedStylesAlignWith:
+  - start_of_line
+  - relative_to_receiver
   AllowedPatterns: []
 Layout/InitialIndentation:
   Description: Checks the indentation of the first non-blank non-comment line in a
@@ -1205,6 +1201,10 @@ Lint/CopDirectiveSyntax:
   Description: Checks that `# rubocop:` directives are strictly formatted.
   Enabled: true
   VersionAdded: '1.72'
+Lint/DataDefineOverride:
+  Description: Disallow overriding the `Data` built-in methods via `Data.define`.
+  Enabled: true
+  VersionAdded: '1.85'
 Lint/Debugger:
   Description: Checks for debugger calls.
   Enabled: true
@@ -1774,8 +1774,9 @@ Lint/SafeNavigationConsistency:
     condition, consistent and appropriate safe navigation, without excess or deficiency,
     is used for all method calls on the same object.
   Enabled: false
+  SafeAutoCorrect: false
   VersionAdded: '0.55'
-  VersionChanged: '0.77'
+  VersionChanged: '1.85'
   AllowedMethods:
   - present?
   - blank?
@@ -1924,6 +1925,11 @@ Lint/UnreachableLoop:
   VersionChanged: '1.7'
   AllowedPatterns:
   - !ruby/regexp /(exactly|at_least|at_most)\(\d+\)\.times/
+Lint/UnreachablePatternBranch:
+  Description: Checks for unreachable `in` pattern branches after an unconditional
+    catch-all pattern.
+  Enabled: true
+  VersionAdded: '1.85'
 Lint/UnusedBlockArgument:
   Description: Checks for unused block arguments.
   StyleGuide: "#underscore-unused-vars"
@@ -2356,6 +2362,7 @@ Naming/PredicateMethod:
   AllowedPatterns: []
   AllowBangMethods: false
   WaywardPredicates:
+  - infinite?
   - nonzero?
 Naming/PredicatePrefix:
   Description: Predicate method names should not be prefixed and end with a `?`.
@@ -2966,6 +2973,17 @@ Style/EmptyCaseCondition:
   Description: Avoid empty condition in case statements.
   Enabled: false
   VersionAdded: '0.40'
+Style/EmptyClassDefinition:
+  Description: Enforces consistent style for empty class definitions.
+  Enabled: false
+  VersionAdded: '1.84'
+  VersionChanged: '1.86'
+  EnforcedStyle: class_keyword
+  SupportedStyles:
+  - class_keyword
+  - class_new
+  - class_definition
+  AllowedParentClasses: []
 Style/EmptyElse:
   Description: Avoid empty else-clauses.
   Enabled: false
@@ -3099,6 +3117,11 @@ Style/FileNull:
   Enabled: false
   SafeAutoCorrect: false
   VersionAdded: '1.69'
+Style/FileOpen:
+  Description: Checks for `File.open` without a block, which can leak file descriptors.
+  Enabled: false
+  Safe: false
+  VersionAdded: '1.85'
 Style/FileRead:
   Description: Favor `File.(bin)read` convenience methods.
   StyleGuide: "#file-read"
@@ -3249,6 +3272,15 @@ Style/HashLikeCase:
   Enabled: false
   VersionAdded: '0.88'
   MinBranchesCount: 3
+Style/HashLookupMethod:
+  Description: Enforces the use of either `Hash#[]` or `Hash#fetch` for hash lookup.
+  Enabled: false
+  Safe: false
+  VersionAdded: '1.84'
+  EnforcedStyle: brackets
+  SupportedStyles:
+  - brackets
+  - fetch
 Style/HashSlice:
   Description: Checks for usages of `Hash#reject`, `Hash#select`, and `Hash#filter`
     methods that can be replaced with `Hash#slice` method.
@@ -3319,6 +3351,7 @@ Style/IfWithBooleanLiteralBranches:
   VersionAdded: '1.9'
   SafeAutoCorrect: false
   AllowedMethods:
+  - infinite?
   - nonzero?
 Style/IfWithSemicolon:
   Description: Do not use if x; .... Use the ternary operator instead.
@@ -3478,6 +3511,11 @@ Style/MapIntoArray:
   VersionAdded: '1.63'
   VersionChanged: '1.67'
   Safe: false
+Style/MapJoin:
+  Description: Checks for redundant `map(&:to_s)` before `join`.
+  Enabled: true
+  Safe: false
+  VersionAdded: '1.85'
 Style/MapToHash:
   Description: Prefer `to_h` with a block over `map.to_h`.
   Enabled: false
@@ -3694,6 +3732,12 @@ Style/NegatedWhile:
   StyleGuide: "#until-for-negatives"
   Enabled: false
   VersionAdded: '0.20'
+Style/NegativeArrayIndex:
+  Description: Use negative array indices instead of calculating array length minus
+    a value. Also handles range patterns with length calculations. Recognizes preserving
+    methods and their combinations, allowing safe replacement when the receiver matches.
+  Enabled: true
+  VersionAdded: '1.84'
 Style/NestedFileDirname:
   Description: Checks for nested `File.dirname`.
   Enabled: false
@@ -3831,6 +3875,16 @@ Style/ObjectThen:
   SupportedStyles:
   - then
   - yield_self
+Style/OneClassPerFile:
+  Description: Checks that each source file defines at most one top-level class or
+    module.
+  Enabled: false
+  VersionAdded: '1.85'
+  VersionChanged: '1.86'
+  AllowedClasses: []
+  Exclude:
+  - "/spec/**/*"
+  - "/test/**/*"
 Style/OneLineConditional:
   Description: Favor the ternary operator (?:) or multi-line constructs over single-line
     if/then/else/end constructs.
@@ -3901,6 +3955,12 @@ Style/ParenthesesAroundCondition:
   VersionChanged: '0.56'
   AllowSafeAssignment: true
   AllowInMultilineConditions: false
+Style/PartitionInsteadOfDoubleSelect:
+  Description: Checks for consecutive `select`/`filter`/`find_all` and `reject` calls
+    on the same receiver with the same block body.
+  Enabled: false
+  Safe: false
+  VersionAdded: '1.85'
 Style/PercentLiteralDelimiters:
   Description: Use `%`-literal delimiters consistently.
   StyleGuide: "#percent-literal-braces"
@@ -3927,6 +3987,11 @@ Style/PerlBackrefs:
   StyleGuide: "#no-perl-regexp-last-matchers"
   Enabled: false
   VersionAdded: '0.13'
+Style/PredicateWithKind:
+  Description: Prefer `any?(Klass)` to `any? { |x| x.is_a?(Klass) }`.
+  Enabled: false
+  SafeAutoCorrect: false
+  VersionAdded: '1.85'
 Style/PreferredHashMethods:
   Description: Checks use of `has_key?` and `has_value?` Hash methods.
   StyleGuide: "#hash-key"
@@ -3971,6 +4036,12 @@ Style/RandomWithOffset:
   StyleGuide: "#random-numbers"
   Enabled: false
   VersionAdded: '0.52'
+Style/ReduceToHash:
+  Description: Use `to_h { ... }` instead of `each_with_object`, `inject`, or `reduce`
+    to build a hash.
+  Enabled: true
+  Safe: false
+  VersionAdded: '1.85'
 Style/RedundantArgument:
   Description: Checks for a redundant argument passed to certain methods.
   Enabled: false
@@ -4015,6 +4086,7 @@ Style/RedundantCondition:
   VersionAdded: '0.76'
   VersionChanged: '1.73'
   AllowedMethods:
+  - infinite?
   - nonzero?
 Style/RedundantConditional:
   Description: Don't return true/false from a conditional.
@@ -4105,6 +4177,10 @@ Style/RedundantLineContinuation:
   Description: Checks for redundant line continuation.
   Enabled: false
   VersionAdded: '1.49'
+Style/RedundantMinMaxBy:
+  Description: Identifies places where `max_by`/`min_by` can be replaced by `max`/`min`.
+  Enabled: true
+  VersionAdded: '1.85'
 Style/RedundantParentheses:
   Description: Checks for parentheses that seem not to serve any purpose.
   Enabled: false
@@ -4170,6 +4246,12 @@ Style/RedundantStringEscape:
   Description: Checks for redundant escapes in string literals.
   Enabled: false
   VersionAdded: '1.37'
+Style/RedundantStructKeywordInit:
+  Description: Checks for redundant `keyword_init` option for `Struct.new`.
+  Enabled: false
+  SafeAutoCorrect: false
+  VersionAdded: '1.85'
+  VersionChanged: '1.86'
 Style/RegexpLiteral:
   Description: Use / or %r around regular expressions.
   StyleGuide: "#percent-r"
@@ -4218,6 +4300,11 @@ Style/ReturnNilInPredicateMethodDefinition:
   AllowedPatterns: []
   VersionAdded: '1.53'
   VersionChanged: '1.67'
+Style/ReverseFind:
+  Description: Use `array.rfind` instead of `array.reverse.find`.
+  Enabled: true
+  Safe: false
+  VersionAdded: '1.84'
 Style/SafeNavigation:
   Description: Transforms usages of a method call safeguarded by a check for the existence
     of the object to safe navigation (`&.`). Autocorrection is unsafe as it assumes
@@ -4247,8 +4334,18 @@ Style/Sample:
   - https://github.com/fastruby/fast-ruby#arrayshufflefirst-vs-arraysample-code
   Enabled: false
   VersionAdded: '0.30'
+Style/SelectByKind:
+  Description: Prefer grep/grep_v to select/reject/find/detect with a kind check.
+  Enabled: true
+  SafeAutoCorrect: false
+  VersionAdded: '1.85'
+Style/SelectByRange:
+  Description: Prefer grep/grep_v to select/reject/find/detect with a range check.
+  Enabled: true
+  SafeAutoCorrect: false
+  VersionAdded: '1.85'
 Style/SelectByRegexp:
-  Description: Prefer grep/grep_v to select/reject with a regexp match.
+  Description: Prefer grep/grep_v to select/reject/find/detect with a regexp match.
   Enabled: false
   SafeAutoCorrect: false
   VersionAdded: '1.22'
@@ -4469,6 +4566,11 @@ Style/SymbolProc:
   - define_method
   AllowedPatterns: []
   AllowComments: false
+Style/TallyMethod:
+  Description: Prefer `Enumerable#tally` over manual counting patterns.
+  Enabled: true
+  Safe: false
+  VersionAdded: '1.85'
 Style/TernaryParentheses:
   Description: Checks for use of parentheses around ternary conditions.
   Enabled: false
