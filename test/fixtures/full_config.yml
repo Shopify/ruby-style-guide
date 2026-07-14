@@ -1203,7 +1203,7 @@ Lint/CopDirectiveSyntax:
   VersionAdded: '1.72'
 Lint/DataDefineOverride:
   Description: Disallow overriding the `Data` built-in methods via `Data.define`.
-  Enabled: pending
+  Enabled: true
   VersionAdded: '1.85'
 Lint/Debugger:
   Description: Checks for debugger calls.
@@ -1928,7 +1928,7 @@ Lint/UnreachableLoop:
 Lint/UnreachablePatternBranch:
   Description: Checks for unreachable `in` pattern branches after an unconditional
     catch-all pattern.
-  Enabled: pending
+  Enabled: true
   VersionAdded: '1.85'
 Lint/UnusedBlockArgument:
   Description: Checks for unused block arguments.
@@ -2975,7 +2975,7 @@ Style/EmptyCaseCondition:
   VersionAdded: '0.40'
 Style/EmptyClassDefinition:
   Description: Enforces consistent style for empty class definitions.
-  Enabled: pending
+  Enabled: false
   VersionAdded: '1.84'
   VersionChanged: '1.86'
   EnforcedStyle: class_keyword
@@ -3119,7 +3119,7 @@ Style/FileNull:
   VersionAdded: '1.69'
 Style/FileOpen:
   Description: Checks for `File.open` without a block, which can leak file descriptors.
-  Enabled: pending
+  Enabled: false
   Safe: false
   VersionAdded: '1.85'
 Style/FileRead:
@@ -3513,7 +3513,7 @@ Style/MapIntoArray:
   Safe: false
 Style/MapJoin:
   Description: Checks for redundant `map(&:to_s)` before `join`.
-  Enabled: pending
+  Enabled: true
   Safe: false
   VersionAdded: '1.85'
 Style/MapToHash:
@@ -3736,7 +3736,7 @@ Style/NegativeArrayIndex:
   Description: Use negative array indices instead of calculating array length minus
     a value. Also handles range patterns with length calculations. Recognizes preserving
     methods and their combinations, allowing safe replacement when the receiver matches.
-  Enabled: pending
+  Enabled: true
   VersionAdded: '1.84'
 Style/NestedFileDirname:
   Description: Checks for nested `File.dirname`.
@@ -3878,7 +3878,7 @@ Style/ObjectThen:
 Style/OneClassPerFile:
   Description: Checks that each source file defines at most one top-level class or
     module.
-  Enabled: pending
+  Enabled: false
   VersionAdded: '1.85'
   VersionChanged: '1.86'
   AllowedClasses: []
@@ -3958,7 +3958,7 @@ Style/ParenthesesAroundCondition:
 Style/PartitionInsteadOfDoubleSelect:
   Description: Checks for consecutive `select`/`filter`/`find_all` and `reject` calls
     on the same receiver with the same block body.
-  Enabled: pending
+  Enabled: false
   Safe: false
   VersionAdded: '1.85'
 Style/PercentLiteralDelimiters:
@@ -3989,7 +3989,7 @@ Style/PerlBackrefs:
   VersionAdded: '0.13'
 Style/PredicateWithKind:
   Description: Prefer `any?(Klass)` to `any? { |x| x.is_a?(Klass) }`.
-  Enabled: pending
+  Enabled: false
   SafeAutoCorrect: false
   VersionAdded: '1.85'
 Style/PreferredHashMethods:
@@ -4039,7 +4039,7 @@ Style/RandomWithOffset:
 Style/ReduceToHash:
   Description: Use `to_h { ... }` instead of `each_with_object`, `inject`, or `reduce`
     to build a hash.
-  Enabled: pending
+  Enabled: true
   Safe: false
   VersionAdded: '1.85'
 Style/RedundantArgument:
@@ -4179,7 +4179,7 @@ Style/RedundantLineContinuation:
   VersionAdded: '1.49'
 Style/RedundantMinMaxBy:
   Description: Identifies places where `max_by`/`min_by` can be replaced by `max`/`min`.
-  Enabled: pending
+  Enabled: true
   VersionAdded: '1.85'
 Style/RedundantParentheses:
   Description: Checks for parentheses that seem not to serve any purpose.
@@ -4302,7 +4302,7 @@ Style/ReturnNilInPredicateMethodDefinition:
   VersionChanged: '1.67'
 Style/ReverseFind:
   Description: Use `array.rfind` instead of `array.reverse.find`.
-  Enabled: pending
+  Enabled: true
   Safe: false
   VersionAdded: '1.84'
 Style/SafeNavigation:
@@ -4336,12 +4336,12 @@ Style/Sample:
   VersionAdded: '0.30'
 Style/SelectByKind:
   Description: Prefer grep/grep_v to select/reject/find/detect with a kind check.
-  Enabled: pending
+  Enabled: true
   SafeAutoCorrect: false
   VersionAdded: '1.85'
 Style/SelectByRange:
   Description: Prefer grep/grep_v to select/reject/find/detect with a range check.
-  Enabled: pending
+  Enabled: true
   SafeAutoCorrect: false
   VersionAdded: '1.85'
 Style/SelectByRegexp:
@@ -4568,7 +4568,7 @@ Style/SymbolProc:
   AllowComments: false
 Style/TallyMethod:
   Description: Prefer `Enumerable#tally` over manual counting patterns.
-  Enabled: pending
+  Enabled: true
   Safe: false
   VersionAdded: '1.85'
 Style/TernaryParentheses:
