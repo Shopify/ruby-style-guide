@@ -711,9 +711,6 @@ Style/ConditionalAssignment:
 Style/DataInheritance:
   Enabled: false
 
-Style/DateTime:
-  Enabled: true
-
 Style/DigChain:
   Enabled: true
 

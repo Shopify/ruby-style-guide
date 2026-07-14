@@ -2877,7 +2877,7 @@ Style/DataInheritance:
 Style/DateTime:
   Description: Use Time over DateTime.
   StyleGuide: "#date-time"
-  Enabled: true
+  Enabled: false
   VersionAdded: '0.51'
   VersionChanged: '0.92'
   SafeAutoCorrect: false
