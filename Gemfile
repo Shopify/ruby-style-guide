@@ -9,4 +9,5 @@ gem "minitest"
 gem "rake"
 gem "rubocop-minitest"
 
-gem "github-pages"
+gem "jekyll"
+gem "jekyll-seo-tag"
