@@ -74,7 +74,7 @@ module RuboCop
       #     end
       #   end
       class NoReturnInMemoization < ::RuboCop::Cop::Base
-        MSG = 'Do not `return` in `begin..end` blocks in instance variable assignment contexts.'
+        MSG = "Do not `return` in `begin..end` blocks in instance variable assignment contexts."
 
         def on_or_asgn(node)
           node.each_node(:kwbegin) do |kwbegin_node|

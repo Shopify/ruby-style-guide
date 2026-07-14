@@ -611,13 +611,13 @@ Style/Alias:
   EnforcedStyle: prefer_alias_method
 
 Style/AmbiguousEndlessMethodDefinition:
-  Enabled: false
-
-Style/AndOr:
-  Enabled: false
+  Enabled: true
 
 Style/ArgumentsForwarding:
   Enabled: false
+
+Style/ArrayCoercion:
+  Enabled: true
 
 Style/ArrayIntersect:
   Enabled: false
@@ -628,9 +628,6 @@ Style/ArrayIntersectWithSingleElement:
 <% end %>
 
 Style/ArrayJoin:
-  Enabled: false
-
-Style/Attr:
   Enabled: false
 
 Style/BarePercentLiterals:
@@ -645,9 +642,6 @@ Style/BisectedAttrAccessor:
 Style/BitwisePredicate:
   Enabled: false
 
-Style/BlockComments:
-  Enabled: false
-
 Style/BlockDelimiters:
   Enabled: false
 
@@ -659,9 +653,6 @@ Style/CaseEquality:
 Style/CaseLikeIf:
   Enabled: false
 
-Style/CharacterLiteral:
-  Enabled: false
-
 Style/ClassAndModuleChildren:
   Enabled: false
 
@@ -671,31 +662,20 @@ Style/ClassCheck:
 Style/ClassEqualityComparison:
   Enabled: false
 
-Style/ClassMethods:
-  Enabled: false
-
 Style/ClassMethodsDefinitions:
+  Enabled: true
   EnforcedStyle: self_class
-
-Style/ClassVars:
-  Enabled: false
 
 Style/CollectionCompact:
   Enabled: false
 
 <% if rubocop_version >= '1.77' %>
 Style/CollectionQuerying:
-  Enabled: true
+  Enabled: false
 <% end %>
 
-Style/ColonMethodCall:
-  Enabled: false
-
-Style/ColonMethodDefinition:
-  Enabled: false
-
 Style/CombinableDefined:
-  Enabled: false
+  Enabled: true
 
 Style/CombinableLoops:
   Enabled: false
@@ -727,11 +707,8 @@ Style/ConditionalAssignment:
 Style/DataInheritance:
   Enabled: false
 
-Style/DefWithParentheses:
-  Enabled: false
-
 Style/DigChain:
-  Enabled: false
+  Enabled: true
 
 Style/Dir:
   Enabled: false
@@ -791,7 +768,7 @@ Style/EndBlock:
   Enabled: false
 
 Style/EndlessMethod:
-  Enabled: false
+  Enabled: true
 
 Style/EnvHome:
   Enabled: false
@@ -854,9 +831,6 @@ Style/FrozenStringLiteralComment:
 Style/GlobalStdStream:
   Enabled: false
 
-Style/GlobalVars:
-  Enabled: false
-
 Style/GuardClause:
   Enabled: false
 
@@ -881,9 +855,6 @@ Style/HashLikeCase:
   Enabled: false
 
 Style/HashSlice:
-  Enabled: false
-
-Style/HashSyntax:
   Enabled: false
 
 Style/HashTransformKeys:
@@ -943,7 +914,7 @@ Style/LineEndConcatenation:
   Enabled: false
 
 Style/MagicCommentFormat:
-  Enabled: false
+  Enabled: true
   ValueCapitalization: lowercase
 
 Style/MapCompactWithConditionalBlock:
@@ -970,9 +941,6 @@ Style/MethodCallWithArgsParentheses:
   - "/**/Gemfile"
 
 Style/MethodCallWithoutArgsParentheses:
-  Enabled: false
-
-Style/MethodDefParentheses:
   Enabled: false
 
 Style/MinMax:
@@ -1141,9 +1109,6 @@ Style/RedundantArrayFlatten:
 Style/RedundantAssignment:
   Enabled: false
 
-Style/RedundantBegin:
-  Enabled: false
-
 Style/RedundantCapitalW:
   Enabled: false
 
@@ -1216,9 +1181,6 @@ Style/RedundantRegexpConstructor:
 Style/RedundantRegexpEscape:
   Enabled: false
 
-Style/RedundantReturn:
-  Enabled: false
-
 Style/RedundantSelf:
   Enabled: false
 
@@ -1265,9 +1227,6 @@ Style/SelectByRegexp:
 Style/SelfAssignment:
   Enabled: false
 
-Style/Semicolon:
-  Enabled: false
-
 Style/SendWithLiteralMethodName:
   Enabled: false
 
@@ -1306,11 +1265,9 @@ Style/StringConcatenation:
 
 Style/StringLiterals:
   Enabled: false
-  EnforcedStyle: double_quotes
 
 Style/StringLiteralsInInterpolation:
   Enabled: false
-  EnforcedStyle: double_quotes
 
 Style/Strip:
   Enabled: false
@@ -1331,22 +1288,10 @@ Style/SymbolArray:
   Enabled: false
   EnforcedStyle: brackets
 
-Style/SymbolLiteral:
-  Enabled: false
-
 Style/SymbolProc:
   Enabled: false
 
 Style/TernaryParentheses:
-  Enabled: false
-
-Style/TrailingBodyOnClass:
-  Enabled: false
-
-Style/TrailingBodyOnMethodDefinition:
-  Enabled: false
-
-Style/TrailingBodyOnModule:
   Enabled: false
 
 Style/TrailingCommaInArguments:
@@ -1361,22 +1306,13 @@ Style/TrailingCommaInHashLiteral:
   Enabled: false
   EnforcedStyleForMultiline: consistent_comma
 
-Style/TrailingMethodEndStatement:
-  Enabled: false
-
 Style/TrailingUnderscoreVariable:
   Enabled: false
 
 Style/TrivialAccessors:
   Enabled: false
 
-Style/UnlessElse:
-  Enabled: false
-
 Style/UnpackFirst:
-  Enabled: false
-
-Style/VariableInterpolation:
   Enabled: false
 
 Style/WhenThen:
