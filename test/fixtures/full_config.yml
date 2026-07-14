@@ -2679,7 +2679,7 @@ Style/ClassAndModuleChildren:
   Description: Checks style of children classes and modules.
   StyleGuide: "#namespace-definition"
   SafeAutoCorrect: false
-  Enabled: true
+  Enabled: false
   VersionAdded: '0.19'
   VersionChanged: '1.74'
   EnforcedStyle: nested
