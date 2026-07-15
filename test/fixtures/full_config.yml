@@ -4788,6 +4788,12 @@ Lint/NoReturnInMemoization:
   VersionAdded: 3.0.0
   Description: Checks for the use of a `return` with a value in `begin..end` blocks
     in the context of instance variable assignment such as memoization.
+Lint/ProcCaseWhen:
+  Enabled: true
+  VersionAdded: "3.0.2"
+  Description: 'Checks for `case`/`when` where every `when` is a proc or value literal:
+    each inline proc literal allocates a new `Proc` every time the `case` runs and
+    adds `Proc#call` overhead, for what is just a harder-to-read `if`/`elsif` tree.'
 inherit_mode:
   merge:
   - Exclude

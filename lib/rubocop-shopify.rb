@@ -4,3 +4,4 @@ require "rubocop/shopify/version"
 require "rubocop/shopify/plugin"
 
 require "rubocop/cop/lint/no_return_in_memoization"
+require "rubocop/cop/lint/proc_case_when"
