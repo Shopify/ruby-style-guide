@@ -23,10 +23,8 @@ Bundler/OrderedGems:
 Gemspec/AddRuntimeDependency:
   Enabled: false
 
-<% if rubocop_version >= '1.77' %>
 Gemspec/AttributeAssignment:
   Enabled: true
-<% end %>
 
 Gemspec/DeprecatedAttributeAssignment:
   Enabled: true
@@ -79,10 +77,8 @@ Layout/EmptyLineAfterGuardClause:
 Layout/EmptyLines:
   Enabled: false
 
-<% if rubocop_version >= '1.79' %>
 Layout/EmptyLinesAfterModuleInclusion:
   Enabled: false
-<% end %>
 
 Layout/EndAlignment:
   Enabled: false
@@ -210,12 +206,13 @@ Lint/ConstantReassignment:
 Lint/CopDirectiveSyntax:
   Enabled: true
 
-<% if rubocop_version >= "1.85" %>
 Lint/DataDefineOverride:
   Enabled: true
-<% end %>
 
 Lint/DeprecatedConstants:
+  Enabled: false
+
+Lint/DeprecatedReference:
   Enabled: false
 
 Lint/DuplicateBranch:
@@ -300,6 +297,9 @@ Lint/MixedCaseRange:
   Enabled: true
 
 Lint/MixedRegexpCaptureTypes:
+  Enabled: false
+
+Lint/NameTypo:
   Enabled: false
 
 Lint/NoReturnInBeginEndBlocks:
@@ -392,11 +392,6 @@ Lint/ShadowedArgument:
 Lint/ShadowedException:
   Enabled: false
 
-<% if rubocop_version < "1.76" %>
-Lint/ShadowingOuterLocalVariable:
-  Enabled: false
-<% end %>
-
 Lint/SharedMutableDefault:
   Enabled: false
 
@@ -445,10 +440,8 @@ Lint/UnreachableCode:
 Lint/UnreachableLoop:
   Enabled: false
 
-<% if rubocop_version >= "1.85" %>
 Lint/UnreachablePatternBranch:
   Enabled: true
-<% end %>
 
 Lint/UnusedBlockArgument:
   Enabled: false
@@ -471,10 +464,8 @@ Lint/UselessAssignment:
 Lint/UselessConstantScoping:
   Enabled: false
 
-<% if rubocop_version >= "1.76" %>
 Lint/UselessDefaultValueArgument:
   Enabled: true
-<% end %>
 
 Lint/UselessDefined:
   Enabled: false
@@ -488,10 +479,8 @@ Lint/UselessMethodDefinition:
 Lint/UselessNumericOperation:
   Enabled: false
 
-<% if rubocop_version >= "1.76" %>
 Lint/UselessOr:
   Enabled: true
-<% end %>
 
 Lint/UselessRescue:
   Enabled: false
@@ -563,16 +552,10 @@ Naming/MemoizedInstanceVariableName:
 Naming/MethodParameterName:
   MinNameLength: 1
 
-<% if rubocop_version >= "1.76" %>
 Naming/PredicateMethod:
   Enabled: false
-<% end %>
 
-<% if rubocop_version >= "1.76" %>
 Naming/PredicatePrefix:
-<% else %>
-Naming/PredicateName:
-<% end %>
   Enabled: false
   NamePrefix:
   - is_
@@ -632,10 +615,8 @@ Style/ArrayCoercion:
 Style/ArrayIntersect:
   Enabled: false
 
-<% if rubocop_version >= '1.81' %>
 Style/ArrayIntersectWithSingleElement:
   Enabled: false
-<% end %>
 
 Style/ArrayJoin:
   Enabled: false
@@ -679,10 +660,8 @@ Style/ClassMethodsDefinitions:
 Style/CollectionCompact:
   Enabled: false
 
-<% if rubocop_version >= '1.77' %>
 Style/CollectionQuerying:
   Enabled: false
-<% end %>
 
 Style/CombinableDefined:
   Enabled: true
@@ -700,10 +679,8 @@ Style/CommentAnnotation:
 Style/CommentedKeyword:
   Enabled: false
 
-<% if rubocop_version >= "1.74" %>
 Style/ComparableBetween:
   Enabled: false
-<% end %>
 
 Style/ComparableClamp:
   Enabled: false
@@ -750,10 +727,8 @@ Style/EmptyBlockParameter:
 Style/EmptyCaseCondition:
   Enabled: false
 
-<% if rubocop_version >= "1.84" %>
 Style/EmptyClassDefinition:
   Enabled: false
-<% end %>
 
 Style/EmptyElse:
   Enabled: false
@@ -771,10 +746,8 @@ Style/EmptyLiteral:
 Style/EmptyMethod:
   Enabled: false
 
-<% if rubocop_version >= "1.76" %>
 Style/EmptyStringInsideInterpolation:
   Enabled: false
-<% end %>
 
 Style/Encoding:
   Enabled: false
@@ -815,10 +788,8 @@ Style/FileEmpty:
 Style/FileNull:
   Enabled: false
 
-<% if rubocop_version >= "1.85" %>
 Style/FileOpen:
   Enabled: false
-<% end %>
 
 Style/FileRead:
   Enabled: false
@@ -866,10 +837,8 @@ Style/HashEachMethods:
 Style/HashExcept:
   Enabled: false
 
-<% if rubocop_version >= "1.75" %>
 Style/HashFetchChain:
   Enabled: false
-<% end %>
 
 Style/HashLikeCase:
   Enabled: false
@@ -913,10 +882,8 @@ Style/InverseMethods:
 Style/ItAssignment:
   Enabled: false
 
-<% if rubocop_version >= "1.75" %>
 Style/ItBlockParameter:
   Enabled: false
-<% end %>
 
 Style/KeywordArgumentsMerging:
   Enabled: false
@@ -943,10 +910,8 @@ Style/MapCompactWithConditionalBlock:
 Style/MapIntoArray:
   Enabled: false
 
-<% if rubocop_version >= "1.85" %>
 Style/MapJoin:
   Enabled: true
-<% end %>
 
 Style/MapToHash:
   Enabled: false
@@ -987,10 +952,8 @@ Style/ModuleFunction:
   Enabled: false
   EnforcedStyle: extend_self
 
-<% if rubocop_version >= "1.82" %>
 Style/ModuleMemberExistenceCheck:
   Enabled: true
-<% end %>
 
 Style/MultilineBlockChain:
   Enabled: false
@@ -1028,10 +991,8 @@ Style/NegatedUnless:
 Style/NegatedWhile:
   Enabled: false
 
-<% if rubocop_version >= "1.84" %>
 Style/NegativeArrayIndex:
   Enabled: true
-<% end %>
 
 Style/NestedFileDirname:
   Enabled: false
@@ -1078,10 +1039,8 @@ Style/NumericPredicate:
 Style/ObjectThen:
   Enabled: false
 
-<% if rubocop_version >= "1.85" %>
 Style/OneClassPerFile:
   Enabled: false
-<% end %>
 
 Style/OneLineConditional:
   Enabled: false
@@ -1107,10 +1066,8 @@ Style/ParallelAssignment:
 Style/ParenthesesAroundCondition:
   Enabled: false
 
-<% if rubocop_version >= "1.85" %>
 Style/PartitionInsteadOfDoubleSelect:
   Enabled: false
-<% end %>
 
 Style/PercentLiteralDelimiters:
   Enabled: false
@@ -1121,10 +1078,8 @@ Style/PercentQLiterals:
 Style/PerlBackrefs:
   Enabled: false
 
-<% if rubocop_version >= "1.85" %>
 Style/PredicateWithKind:
   Enabled: false
-<% end %>
 
 Style/PreferredHashMethods:
   Enabled: false
@@ -1141,10 +1096,8 @@ Style/RaiseArgs:
 Style/RandomWithOffset:
   Enabled: false
 
-<% if rubocop_version >= "1.85" %>
 Style/ReduceToHash:
   Enabled: true
-<% end %>
 
 Style/RedundantArgument:
   Enabled: false
@@ -1152,10 +1105,8 @@ Style/RedundantArgument:
 Style/RedundantArrayConstructor:
   Enabled: false
 
-<% if rubocop_version >= "1.76" %>
 Style/RedundantArrayFlatten:
   Enabled: true
-<% end %>
 
 Style/RedundantAssignment:
   Enabled: false
@@ -1211,10 +1162,8 @@ Style/RedundantInterpolationUnfreeze:
 Style/RedundantLineContinuation:
   Enabled: false
 
-<% if rubocop_version >= "1.85" %>
 Style/RedundantMinMaxBy:
   Enabled: true
-<% end %>
 
 Style/RedundantParentheses:
   Enabled: false
@@ -1265,10 +1214,8 @@ Style/RescueStandardError:
 Style/ReturnNilInPredicateMethodDefinition:
   Enabled: false
 
-<% if rubocop_version >= "1.84" %>
 Style/ReverseFind:
   Enabled: false
-<% end %>
 
 Style/SafeNavigation:
   Enabled: false
@@ -1279,15 +1226,11 @@ Style/SafeNavigationChainLength:
 Style/Sample:
   Enabled: false
 
-<% if rubocop_version >= "1.85" %>
 Style/SelectByKind:
   Enabled: true
-<% end %>
 
-<% if rubocop_version >= "1.85" %>
 Style/SelectByRange:
   Enabled: true
-<% end %>
 
 Style/SelectByRegexp:
   Enabled: false
@@ -1359,10 +1302,8 @@ Style/SymbolArray:
 Style/SymbolProc:
   Enabled: false
 
-<% if rubocop_version >= "1.85" %>
 Style/TallyMethod:
   Enabled: true
-<% end %>
 
 Style/TernaryParentheses:
   Enabled: false

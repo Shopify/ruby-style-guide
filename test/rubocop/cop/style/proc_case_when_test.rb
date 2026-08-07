@@ -1,14 +1,12 @@
 # frozen_string_literal: true
 
 require "test_helper"
-require "rubocop/minitest/assert_offense"
+require "rubocop/test_case"
 
 module RuboCop
   module Cop
     module Style
-      class ProcCaseWhenTest < ::Minitest::Test
-        include ::RuboCop::Minitest::AssertOffense
-
+      class ProcCaseWhenTest < TestCase
         MESSAGE = "Avoid a `case`/`when` where every `when` is a proc or value " \
           "literal: each proc literal allocates a new `Proc` every time the " \
           "`case` is evaluated and adds `Proc#call` overhead, and the whole " \

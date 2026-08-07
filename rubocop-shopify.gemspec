@@ -29,6 +29,6 @@ Gem::Specification.new do |s|
 
   s.required_ruby_version = ">= 3.3.0"
 
-  s.add_dependency("rubocop", "~> 1.72", ">= 1.72.1")
+  s.add_dependency("rubocop", "~> 1.89")
   s.add_dependency("lint_roller")
 end
