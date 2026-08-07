@@ -8,5 +8,5 @@ test: bundle exec rake
 
 commands:
   dump-config:
-    description: Dump the full RuboCop config as a YAML file for testing
+    desc: Dump the full RuboCop config as a YAML file for testing
     run: bundle exec rake config:dump
