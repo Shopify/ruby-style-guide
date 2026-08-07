@@ -1196,9 +1196,6 @@ Style/RedundantFilterChain:
 Style/RedundantFormat:
   Enabled: false
 
-Style/RedundantFreeze:
-  Enabled: false
-
 Style/RedundantHeredocDelimiterQuotes:
   Enabled: false
 
