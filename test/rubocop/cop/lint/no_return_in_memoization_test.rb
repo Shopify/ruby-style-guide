@@ -1,14 +1,12 @@
 # frozen_string_literal: true
 
 require "test_helper"
-require "rubocop/minitest/assert_offense"
+require "rubocop/test_case"
 
 module RuboCop
   module Cop
     module Lint
-      class NoReturnInMemoizationTest < ::Minitest::Test
-        include ::RuboCop::Minitest::AssertOffense
-
+      class NoReturnInMemoizationTest < TestCase
         def setup
           @cop = NoReturnInMemoization.new
         end
