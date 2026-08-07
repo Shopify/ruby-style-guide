@@ -4166,7 +4166,7 @@ Style/RedundantFormat:
   VersionChanged: '1.72'
 Style/RedundantFreeze:
   Description: Checks usages of Object#freeze on immutable objects.
-  Enabled: false
+  Enabled: true
   VersionAdded: '0.34'
   VersionChanged: '0.66'
 Style/RedundantHeredocDelimiterQuotes:
