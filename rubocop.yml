@@ -218,6 +218,11 @@ Lint/DataDefineOverride:
 Lint/DeprecatedConstants:
   Enabled: false
 
+<% if rubocop_version >= "1.89" %>
+Lint/DeprecatedReference:
+  Enabled: false
+<% end %>
+
 Lint/DuplicateBranch:
   Enabled: false
 
@@ -301,6 +306,11 @@ Lint/MixedCaseRange:
 
 Lint/MixedRegexpCaptureTypes:
   Enabled: false
+
+<% if rubocop_version >= "1.89" %>
+Lint/NameTypo:
+  Enabled: false
+<% end %>
 
 Lint/NoReturnInBeginEndBlocks:
   Enabled: false

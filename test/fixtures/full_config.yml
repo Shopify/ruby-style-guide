@@ -1303,7 +1303,7 @@ Lint/DeprecatedOpenSSLConstant:
 Lint/DeprecatedReference:
   Description: Checks for references to methods and constants documented as deprecated
     with a YARD `@deprecated` tag. Requires `AllCops/UseProjectIndex` to be enabled.
-  Enabled: pending
+  Enabled: false
   VersionAdded: '1.89'
 Lint/DisjunctiveAssignmentInConstructor:
   Description: In constructor, plain assignment is preferred over disjunctive.
@@ -1574,7 +1574,7 @@ Lint/MultipleComparison:
 Lint/NameTypo:
   Description: Checks for probable typos in constant and method names, using the project
     index.
-  Enabled: pending
+  Enabled: false
   CheckConstants: true
   CheckMethods: true
   AllowedNames: []
