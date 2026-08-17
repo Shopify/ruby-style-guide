@@ -36,7 +36,7 @@ jobs:
         run: bundle exec rake config:dump
 
       - name: Commit & push
-        uses: EndBug/add-and-commit@290ea2c423ad77ca9c62ae0f5b224379612c0321 # v10.0.0
+        uses: EndBug/add-and-commit@645ecc0dd0a57f4d86d26c0aa5fc42c0a856fbca # v11.0.0
         id: push
         with:
           add: 'test/fixtures/full_config.yml'
