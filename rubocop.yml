@@ -1180,9 +1180,6 @@ Style/RedundantRegexpCharacterClass:
 Style/RedundantRegexpConstructor:
   Enabled: false
 
-Style/RedundantRegexpEscape:
-  Enabled: false
-
 Style/RedundantSelf:
   Enabled: false
 
