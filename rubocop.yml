@@ -386,6 +386,9 @@ Lint/SafeNavigationWithEmpty:
 Lint/ScriptPermission:
   Enabled: false
 
+Lint/SelfAssignment:
+  AllowRBSInlineAnnotation: true
+
 Lint/ShadowedArgument:
   Enabled: false
 

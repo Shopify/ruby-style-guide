@@ -1833,7 +1833,7 @@ Lint/SelfAssignment:
   Description: Checks for self-assignments.
   Enabled: true
   VersionAdded: '0.89'
-  AllowRBSInlineAnnotation: false
+  AllowRBSInlineAnnotation: true
 Lint/SendWithMixinArgument:
   Description: Checks for `send` method when using mixin.
   Enabled: true
