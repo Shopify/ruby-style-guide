@@ -57,6 +57,7 @@ AllCops:
   - "/vendor/**/*"
   - "/.git/**/*"
   DefaultFormatter: progress
+  FailLevel: refactor
   DisplayCopNames: true
   DisplayStyleGuide: false
   StyleGuideBaseURL: https://shopify.github.io/ruby-style-guide/
@@ -300,7 +301,7 @@ Layout/ArgumentAlignment:
   IndentationWidth:
 Layout/ArrayAlignment:
   Description: Align the elements of an array literal if they span more than one line.
-  StyleGuide: "#no-double-indent"
+  StyleGuide: "#align-multiline-arrays"
   Enabled: false
   VersionAdded: '0.49'
   VersionChanged: '0.77'
@@ -435,6 +436,8 @@ Layout/EmptyLineAfterMagicComment:
   StyleGuide: "#separate-magic-comments-from-code"
   Enabled: true
   VersionAdded: '0.49'
+  VersionChanged: '1.91'
+  NumberOfEmptyLines: 1
 Layout/EmptyLineAfterMultilineCondition:
   Description: Enforces empty line after multiline condition.
   Enabled: false
@@ -956,6 +959,7 @@ Layout/SpaceAroundOperators:
   StyleGuide: "#spaces-operators"
   Enabled: true
   VersionAdded: '0.49'
+  VersionChanged: '1.90'
   AllowForAlignment: true
   EnforcedStyleForExponentOperator: no_space
   SupportedStylesForExponentOperator:
@@ -1150,6 +1154,11 @@ Lint/AmbiguousRegexpLiteral:
   Enabled: false
   VersionAdded: '0.17'
   VersionChanged: '0.83'
+Lint/ArgumentMismatch:
+  Description: Checks for calls that pass the wrong number of positional arguments
+    to a method, using the project index.
+  Enabled: false
+  VersionAdded: '1.90'
 Lint/ArrayLiteralInRegexp:
   Description: Checks for an array literal interpolated inside a regexp.
   Enabled: false
@@ -1213,6 +1222,7 @@ Lint/CopDirectiveSyntax:
   Description: Checks that `# rubocop:` directives are strictly formatted.
   Enabled: true
   VersionAdded: '1.72'
+  VersionChanged: '1.91'
 Lint/DataDefineOverride:
   Description: Disallow overriding the `Data` built-in methods via `Data.define`.
   Enabled: true
@@ -1307,6 +1317,7 @@ Lint/DeprecatedReference:
   VersionAdded: '1.89'
 Lint/DisjunctiveAssignmentInConstructor:
   Description: In constructor, plain assignment is preferred over disjunctive.
+  StyleGuide: "#disjunctive-assignment-in-constructor"
   Enabled: true
   Safe: false
   VersionAdded: '0.62'
@@ -1345,9 +1356,10 @@ Lint/DuplicateMethods:
   Description: Checks for duplicate method definitions.
   Enabled: true
   VersionAdded: '0.29'
-  VersionChanged: '1.89'
+  VersionChanged: '1.90'
   DelegatingMethods:
   - delegate
+  AllowedCrossFilePaths: []
 Lint/DuplicateRegexpCharacterClassElement:
   Description: Checks for duplicate elements in Regexp character classes.
   Enabled: true
@@ -1543,11 +1555,17 @@ Lint/Loop:
   VersionAdded: '0.9'
   VersionChanged: '1.3'
   Safe: false
+Lint/MisplacedMagicComment:
+  Description: Checks for magic comments placed where Ruby silently ignores them.
+  StyleGuide: "#magic-comments-first"
+  Enabled: false
+  SafeAutoCorrect: false
+  VersionAdded: '1.91'
 Lint/MissingCopEnableDirective:
   Description: Checks for a `# rubocop:enable` after `# rubocop:disable`.
   Enabled: true
   VersionAdded: '0.52'
-  VersionChanged: '1.88'
+  VersionChanged: '1.90'
   MaxRangeSize: .inf
 Lint/MissingSuper:
   Description: Checks for the presence of constructors and lifecycle callbacks without
@@ -1564,6 +1582,7 @@ Lint/MixedCaseRange:
   VersionAdded: '1.53'
 Lint/MixedRegexpCaptureTypes:
   Description: Do not mix named captures and numbered captures in a Regexp literal.
+  StyleGuide: "#do-not-mix-named-and-numbered-captures"
   Enabled: false
   VersionAdded: '0.85'
 Lint/MultipleComparison:
@@ -1646,7 +1665,7 @@ Lint/OrderedMagicComments:
   Enabled: false
   SafeAutoCorrect: false
   VersionAdded: '0.53'
-  VersionChanged: '1.37'
+  VersionChanged: '1.91'
 Lint/OutOfRangeRegexpRef:
   Description: Checks for out of range reference for Regexp because it always returns
     nil.
@@ -1692,6 +1711,7 @@ Lint/RedundantCopEnableDirective:
   Description: Checks for rubocop:enable comments that can be removed.
   Enabled: true
   VersionAdded: '0.76'
+  VersionChanged: '1.90'
 Lint/RedundantDirGlobSort:
   Description: Checks for redundant `sort` method to `Dir.glob` and `Dir[]`.
   Enabled: false
@@ -1845,6 +1865,7 @@ Lint/ShadowedArgument:
   IgnoreImplicitReferences: false
 Lint/ShadowedException:
   Description: Avoid rescuing a higher level exception before a lower level exception.
+  StyleGuide: "#exception-ordering"
   Enabled: false
   VersionAdded: '0.41'
 Lint/ShadowingOuterLocalVariable:
@@ -1862,6 +1883,11 @@ Lint/StructNewOverride:
   Description: Disallow overriding the `Struct` built-in methods via `Struct.new`.
   Enabled: false
   VersionAdded: '0.81'
+Lint/SuperArgumentMismatch:
+  Description: Checks for `super` calls that pass the wrong number of positional arguments
+    to the overridden implementation, using the project index.
+  Enabled: false
+  VersionAdded: '1.90'
 Lint/SuppressedException:
   Description: Don't suppress exceptions.
   StyleGuide: "#dont-hide-exceptions"
@@ -1942,6 +1968,7 @@ Lint/UnexpectedBlockArity:
     sort: 2
 Lint/UnifiedInteger:
   Description: Use Integer instead of Fixnum or Bignum.
+  StyleGuide: "#integer-type-checking"
   Enabled: false
   VersionAdded: '0.43'
 Lint/UnmodifiedReduceAccumulator:
@@ -1991,7 +2018,10 @@ Lint/UnusedPrivateMethod:
   Description: Checks for private instance methods that are not referenced anywhere
     in the project. Requires `AllCops/UseProjectIndex` to be enabled.
   Enabled: false
+  AllowedNames: []
+  AllowedPatterns: []
   VersionAdded: '1.89'
+  VersionChanged: '1.90'
 Lint/UriEscapeUnescape:
   Description: "`URI.escape` method is obsolete and should not be used. Instead, use
     `CGI.escape`, `URI.encode_www_form` or `URI.encode_www_form_component` depending
@@ -2023,6 +2053,7 @@ Lint/UselessConstantScoping:
   Description: Checks for useless constant scoping.
   Enabled: false
   VersionAdded: '1.72'
+  VersionChanged: '1.90'
 Lint/UselessDefaultValueArgument:
   Description: Checks for usage of `fetch` or `Array.new` with default value argument
     and block.
@@ -2596,6 +2627,7 @@ Style/ArrayCoercion:
   VersionAdded: '0.88'
 Style/ArrayFirstLast:
   Description: Use `arr.first` and `arr.last` instead of `arr[0]` and `arr[-1]`.
+  StyleGuide: "#first-and-last"
   References:
   - "#first-and-last"
   Enabled: false
@@ -2898,6 +2930,7 @@ Style/ConditionalAssignment:
   Description: Use the return value of `if` and `case` statements for assignment to
     a variable and variable comparison instead of assigning that variable inside of
     each branch.
+  StyleGuide: "#use-if-case-returns"
   Enabled: false
   VersionAdded: '0.36'
   VersionChanged: '0.47'
@@ -2928,7 +2961,7 @@ Style/DataInheritance:
   VersionChanged: '1.51'
 Style/DateTime:
   Description: Use Time over DateTime.
-  StyleGuide: "#date-time"
+  StyleGuide: "#no-datetime"
   Enabled: false
   VersionAdded: '0.51'
   VersionChanged: '0.92'
@@ -2955,13 +2988,22 @@ Style/DirEmpty:
     is empty.
   Enabled: false
   VersionAdded: '1.48'
+Style/DirectiveScope:
+  Description: Checks for directive scopes that can be expressed with the tighter
+    `disable-next` form.
+  Enabled: false
+  SafeAutoCorrect: false
+  VersionAdded: '1.90'
+  VersionChanged: '1.91'
 Style/DisableCopsWithinSourceCodeDirective:
   Description: Forbids disabling/enabling cops within source code.
   Enabled: false
   VersionAdded: '0.82'
-  VersionChanged: '1.89'
+  VersionChanged: '1.90'
   AllowedCops: []
   DisallowedCops: []
+  AllowWithReason: false
+  AllowedDirectives: []
 Style/DocumentDynamicEvalDefinition:
   Description: When using `class_eval` (or other `eval`) with string interpolation,
     add a comment block showing its appearance if interpolated.
@@ -2987,10 +3029,6 @@ Style/DocumentationMethod:
   - "/spec/**/*"
   - "/test/**/*"
   RequireForNonPublicMethods: false
-Style/DoubleCopDisableDirective:
-  Description: Checks for double rubocop:disable comments on a single line.
-  Enabled: false
-  VersionAdded: '0.73'
 Style/DoubleNegation:
   Description: Checks for uses of double negation (!!).
   StyleGuide: "#no-bang-bang"
@@ -3022,6 +3060,7 @@ Style/EmptyCaseCondition:
   VersionAdded: '0.40'
 Style/EmptyClassDefinition:
   Description: Enforces consistent style for empty class definitions.
+  StyleGuide: "#single-line-classes"
   Enabled: false
   VersionAdded: '1.84'
   VersionChanged: '1.86'
@@ -3161,11 +3200,13 @@ Style/FileEmpty:
   VersionAdded: '1.48'
 Style/FileNull:
   Description: Use `File::NULL` instead of hardcoding "dev/null".
+  StyleGuide: "#null-devices"
   Enabled: false
   SafeAutoCorrect: false
   VersionAdded: '1.69'
 Style/FileOpen:
   Description: Checks for `File.open` without a block, which can leak file descriptors.
+  StyleGuide: "#auto-release-resources"
   Enabled: false
   Safe: false
   VersionAdded: '1.85'
@@ -3223,6 +3264,7 @@ Style/FormatString:
   - percent
 Style/FormatStringToken:
   Description: Use a consistent style for format string tokens.
+  StyleGuide: "#named-format-tokens"
   Enabled: false
   VersionAdded: '0.49'
   VersionChanged: '1.74'
@@ -3358,12 +3400,14 @@ Style/HashSyntax:
   PreferHashRocketsForNonAlnumEndingSymbols: false
 Style/HashTransformKeys:
   Description: Prefer `transform_keys` over `each_with_object`, `map`, or `to_h`.
+  StyleGuide: "#hash-transform-methods"
   Enabled: false
   VersionAdded: '0.80'
   VersionChanged: '0.90'
   Safe: false
 Style/HashTransformValues:
   Description: Prefer `transform_values` over `each_with_object`, `map`, or `to_h`.
+  StyleGuide: "#hash-transform-methods"
   Enabled: false
   VersionAdded: '0.80'
   VersionChanged: '0.90'
@@ -3500,7 +3544,7 @@ Style/KeywordArgumentsMerging:
 Style/KeywordParametersOrder:
   Description: Enforces that optional keyword parameters are placed at the end of
     the parameters list.
-  StyleGuide: "#keyword-parameters-order"
+  StyleGuide: "#keyword-arguments-order"
   Enabled: false
   VersionAdded: '0.90'
   VersionChanged: '1.7'
@@ -3529,6 +3573,7 @@ Style/LambdaCall:
 Style/LineEndConcatenation:
   Description: Use \ instead of + or << to concatenate two string literals at line
     end.
+  StyleGuide: "#heredoc-long-strings"
   Enabled: false
   SafeAutoCorrect: false
   VersionAdded: '0.18'
@@ -3537,6 +3582,7 @@ Style/MagicCommentFormat:
   Description: Use a consistent style for magic comments.
   Enabled: true
   VersionAdded: '1.35'
+  VersionChanged: '1.91'
   EnforcedStyle: snake_case
   SupportedStyles:
   - snake_case
@@ -3770,7 +3816,7 @@ Style/NegatedIfElseCondition:
   VersionAdded: '1.2'
 Style/NegatedUnless:
   Description: Favor if over unless for negative conditions.
-  StyleGuide: "#if-for-negatives"
+  StyleGuide: "#unless-for-negatives"
   Enabled: false
   VersionAdded: '0.69'
   EnforcedStyle: both
@@ -3929,6 +3975,7 @@ Style/ObjectThen:
 Style/OneClassPerFile:
   Description: Checks that each source file defines at most one top-level class or
     module.
+  StyleGuide: "#one-class-per-file"
   Enabled: false
   VersionAdded: '1.85'
   VersionChanged: '1.86'
@@ -4227,6 +4274,7 @@ Style/RedundantInterpolationUnfreeze:
   VersionAdded: '1.66'
 Style/RedundantLineContinuation:
   Description: Checks for redundant line continuation.
+  StyleGuide: "#no-trailing-backslash"
   Enabled: false
   VersionAdded: '1.49'
 Style/RedundantMinMaxBy:
@@ -4258,6 +4306,7 @@ Style/RedundantRegexpConstructor:
   VersionAdded: '1.52'
 Style/RedundantRegexpEscape:
   Description: Checks for redundant escapes in Regexps.
+  StyleGuide: "#limit-escapes"
   Enabled: true
   VersionAdded: '0.85'
 Style/RedundantReturn:
@@ -4635,6 +4684,12 @@ Style/TernaryParentheses:
   - require_no_parentheses
   - require_parentheses_when_complex
   AllowSafeAssignment: true
+Style/TimeNow:
+  Description: Prefer `Time.now` over `Time.new` when retrieving the current system
+    time.
+  StyleGuide: "#time-now"
+  Enabled: false
+  VersionAdded: '1.90'
 Style/TopLevelMethodDefinition:
   Description: Looks for top-level method definitions.
   StyleGuide: "#top-level-methods"
@@ -4696,6 +4751,7 @@ Style/TrailingMethodEndStatement:
 Style/TrailingUnderscoreVariable:
   Description: Checks for the usage of unneeded trailing underscores at the end of
     parallel variable assignment.
+  StyleGuide: "#trailing-underscore-variables"
   Enabled: false
   VersionAdded: '0.31'
   VersionChanged: '0.35'
