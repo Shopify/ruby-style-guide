@@ -4090,7 +4090,7 @@ Style/RandomWithOffset:
 Style/ReduceToHash:
   Description: Use `to_h { ... }` instead of `each_with_object`, `inject`, or `reduce`
     to build a hash.
-  Enabled: true
+  Enabled: false
   Safe: false
   VersionAdded: '1.85'
 Style/RedundantArgument:
