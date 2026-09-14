@@ -185,6 +185,11 @@ Lint/AmbiguousRange:
 Lint/AmbiguousRegexpLiteral:
   Enabled: false
 
+<% if rubocop_version >= "1.91.0" %>
+Lint/ArgumentMismatch:
+  Enabled: false
+<% end %>
+
 Lint/ArrayLiteralInRegexp:
   Enabled: false
 
@@ -201,9 +206,6 @@ Lint/ConstantOverwrittenInRescue:
   Enabled: true
 
 Lint/ConstantReassignment:
-  Enabled: true
-
-Lint/CopDirectiveSyntax:
   Enabled: true
 
 Lint/DataDefineOverride:
@@ -289,6 +291,11 @@ Lint/LiteralAssignmentInCondition:
 
 Lint/Loop:
   Enabled: false
+
+<% if rubocop_version >= "1.91.0" %>
+Lint/MisplacedMagicComment:
+  Enabled: false
+<% end %>
 
 Lint/MissingSuper:
   Enabled: false
@@ -397,6 +404,11 @@ Lint/SharedMutableDefault:
 
 Lint/StructNewOverride:
   Enabled: false
+
+<% if rubocop_version >= "1.91.0" %>
+Lint/SuperArgumentMismatch:
+  Enabled: false
+<% end %>
 
 Lint/SuppressedException:
   Enabled: false
@@ -703,14 +715,21 @@ Style/Dir:
 Style/DirEmpty:
   Enabled: false
 
+<% if rubocop_version >= "1.91.0" %>
+Style/DirectiveScope:
+  Enabled: false
+<% end %>
+
 Style/DocumentDynamicEvalDefinition:
   Enabled: false
 
 Style/Documentation:
   Enabled: false
 
+<% if rubocop_version < "1.91.0" %>
 Style/DoubleCopDisableDirective:
   Enabled: false
+<% end %>
 
 Style/DoubleNegation:
   Enabled: false
@@ -1304,6 +1323,11 @@ Style/TallyMethod:
 
 Style/TernaryParentheses:
   Enabled: false
+
+<% if rubocop_version >= "1.91.0" %>
+Style/TimeNow:
+  Enabled: false
+<% end %>
 
 Style/TrailingCommaInArguments:
   Enabled: false

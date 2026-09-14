@@ -57,6 +57,7 @@ AllCops:
   - "/vendor/**/*"
   - "/.git/**/*"
   DefaultFormatter: progress
+  FailLevel: refactor
   DisplayCopNames: true
   DisplayStyleGuide: false
   StyleGuideBaseURL: https://shopify.github.io/ruby-style-guide/
@@ -435,7 +436,7 @@ Layout/EmptyLineAfterMagicComment:
   StyleGuide: "#separate-magic-comments-from-code"
   Enabled: true
   VersionAdded: '0.49'
-  VersionChanged: '1.90'
+  VersionChanged: '1.91'
   NumberOfEmptyLines: 1
 Layout/EmptyLineAfterMultilineCondition:
   Description: Enforces empty line after multiline condition.
@@ -1156,7 +1157,7 @@ Lint/AmbiguousRegexpLiteral:
 Lint/ArgumentMismatch:
   Description: Checks for calls that pass the wrong number of positional arguments
     to a method, using the project index.
-  Enabled: pending
+  Enabled: false
   VersionAdded: '1.90'
 Lint/ArrayLiteralInRegexp:
   Description: Checks for an array literal interpolated inside a regexp.
@@ -1221,7 +1222,7 @@ Lint/CopDirectiveSyntax:
   Description: Checks that `# rubocop:` directives are strictly formatted.
   Enabled: true
   VersionAdded: '1.72'
-  VersionChanged: '1.90'
+  VersionChanged: '1.91'
 Lint/DataDefineOverride:
   Description: Disallow overriding the `Data` built-in methods via `Data.define`.
   Enabled: true
@@ -1554,6 +1555,12 @@ Lint/Loop:
   VersionAdded: '0.9'
   VersionChanged: '1.3'
   Safe: false
+Lint/MisplacedMagicComment:
+  Description: Checks for magic comments placed where Ruby silently ignores them.
+  StyleGuide: "#magic-comments-first"
+  Enabled: false
+  SafeAutoCorrect: false
+  VersionAdded: '1.91'
 Lint/MissingCopEnableDirective:
   Description: Checks for a `# rubocop:enable` after `# rubocop:disable`.
   Enabled: true
@@ -1658,7 +1665,7 @@ Lint/OrderedMagicComments:
   Enabled: false
   SafeAutoCorrect: false
   VersionAdded: '0.53'
-  VersionChanged: '1.37'
+  VersionChanged: '1.91'
 Lint/OutOfRangeRegexpRef:
   Description: Checks for out of range reference for Regexp because it always returns
     nil.
@@ -1879,7 +1886,7 @@ Lint/StructNewOverride:
 Lint/SuperArgumentMismatch:
   Description: Checks for `super` calls that pass the wrong number of positional arguments
     to the overridden implementation, using the project index.
-  Enabled: pending
+  Enabled: false
   VersionAdded: '1.90'
 Lint/SuppressedException:
   Description: Don't suppress exceptions.
@@ -2984,9 +2991,10 @@ Style/DirEmpty:
 Style/DirectiveScope:
   Description: Checks for directive scopes that can be expressed with the tighter
     `disable-next` form.
-  Enabled: pending
+  Enabled: false
   SafeAutoCorrect: false
   VersionAdded: '1.90'
+  VersionChanged: '1.91'
 Style/DisableCopsWithinSourceCodeDirective:
   Description: Forbids disabling/enabling cops within source code.
   Enabled: false
@@ -2994,7 +3002,8 @@ Style/DisableCopsWithinSourceCodeDirective:
   VersionChanged: '1.90'
   AllowedCops: []
   DisallowedCops: []
-  AllowTrailingComment: false
+  AllowWithReason: false
+  AllowedDirectives: []
 Style/DocumentDynamicEvalDefinition:
   Description: When using `class_eval` (or other `eval`) with string interpolation,
     add a comment block showing its appearance if interpolated.
@@ -3020,10 +3029,6 @@ Style/DocumentationMethod:
   - "/spec/**/*"
   - "/test/**/*"
   RequireForNonPublicMethods: false
-Style/DoubleCopDisableDirective:
-  Description: Checks for double rubocop:disable comments on a single line.
-  Enabled: false
-  VersionAdded: '0.73'
 Style/DoubleNegation:
   Description: Checks for uses of double negation (!!).
   StyleGuide: "#no-bang-bang"
@@ -3577,6 +3582,7 @@ Style/MagicCommentFormat:
   Description: Use a consistent style for magic comments.
   Enabled: true
   VersionAdded: '1.35'
+  VersionChanged: '1.91'
   EnforcedStyle: snake_case
   SupportedStyles:
   - snake_case
@@ -4682,7 +4688,7 @@ Style/TimeNow:
   Description: Prefer `Time.now` over `Time.new` when retrieving the current system
     time.
   StyleGuide: "#time-now"
-  Enabled: pending
+  Enabled: false
   VersionAdded: '1.90'
 Style/TopLevelMethodDefinition:
   Description: Looks for top-level method definitions.
