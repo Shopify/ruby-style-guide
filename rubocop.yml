@@ -1097,7 +1097,7 @@ Style/RandomWithOffset:
   Enabled: false
 
 Style/ReduceToHash:
-  Enabled: true
+  Enabled: false
 
 Style/RedundantArgument:
   Enabled: false
