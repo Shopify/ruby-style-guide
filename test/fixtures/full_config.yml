@@ -2999,7 +2999,7 @@ Style/DisableCopsWithinSourceCodeDirective:
   Description: Forbids disabling/enabling cops within source code.
   Enabled: false
   VersionAdded: '0.82'
-  VersionChanged: '1.90'
+  VersionChanged: '1.92'
   AllowedCops: []
   DisallowedCops: []
   AllowWithReason: false
@@ -3834,7 +3834,9 @@ Style/NegativeArrayIndex:
     a value. Also handles range patterns with length calculations. Recognizes preserving
     methods and their combinations, allowing safe replacement when the receiver matches.
   Enabled: true
+  Safe: false
   VersionAdded: '1.84'
+  VersionChanged: '1.92'
 Style/NestedFileDirname:
   Description: Checks for nested `File.dirname`.
   Enabled: false
