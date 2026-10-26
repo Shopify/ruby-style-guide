@@ -65,6 +65,23 @@ module RuboCop
       #     end
       #   end
       #
+      #   # good - not an assignment to an instance variable
+      #   def foo
+      #     foo ||= begin
+      #       return 1 if bar
+      #       2
+      #     end
+      #   end
+      #
+      #   # bad - a local variable captured by a block outlives the method call
+      #   cache = nil
+      #   define_method(:foo) do
+      #     cache ||= begin
+      #       return 1 if bar
+      #       2
+      #     end
+      #   end
+      #
       #   # good - proper exception handling without return
       #   def foo
       #     @foo ||= begin
@@ -76,22 +93,34 @@ module RuboCop
       class NoReturnInMemoization < ::RuboCop::Cop::Base
         MSG = "Do not `return` in `begin..end` blocks in instance variable assignment contexts."
 
+        def on_ivasgn(node)
+          check_returns(node)
+        end
+
         def on_or_asgn(node)
+          return if node.assignment_node.lvasgn_type? &&
+            node.each_ancestor(:def, :defs, :block, :numblock, :itblock).first&.type?(:def, :defs)
+
+          check_returns(node)
+        end
+
+        def on_op_asgn(node)
+          return unless node.assignment_node.ivasgn_type?
+
+          check_returns(node)
+        end
+
+        alias on_and_asgn on_or_asgn
+
+        private
+
+        def check_returns(node)
           node.each_node(:kwbegin) do |kwbegin_node|
             kwbegin_node.each_node(:return) do |return_node|
               add_offense(return_node)
             end
           end
         end
-
-        def on_op_asgn(node)
-          return unless node.assignment_node.ivasgn_type?
-
-          on_or_asgn(node)
-        end
-
-        alias on_ivasgn on_or_asgn
-        alias on_and_asgn on_or_asgn
       end
     end
   end
